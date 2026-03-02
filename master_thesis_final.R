@@ -14,6 +14,13 @@
 #   - Dose bins are defined from the 2019 cross-section of the lagged density
 #     D_{r,t}: Low = (tau_20, tau_50], High = D > tau_75.
 #   - Treatment timing g = first year D_{r,t} > tau_20.
+#
+# OUTPUTS:
+#   - 18 Callaway & Sant'Anna models (wages + employment x dose/region/gender/race)
+#   - 2 robustness models (alternative lag = 3 years)
+#   - 7 publication figures (Figures_Final/)
+#   - ATT summary table, event-study CSVs, balance table (Tables_Final/)
+#   - Audit log with pre-trend tests (Documentation_Final/audit_log.rds)
 # ==============================================================================
 
 rm(list = ls())
@@ -66,9 +73,14 @@ theme_set(theme_classic() + theme(
 # ==============================================================================
 
 # Helper 1 — join nome_microrregiao into any data frame with id_microrregiao
+# Defensive: skips join if columns already exist.
 add_micro_names <- function(df, geo) {
+  cols_needed <- c("nome_microrregiao", "sigla_uf")
+  cols_missing <- setdiff(cols_needed, names(df))
+  if (length(cols_missing) == 0) return(df)
   lkp <- geo %>%
-    distinct(id_microrregiao, nome_microrregiao, sigla_uf, .keep_all = FALSE)
+    distinct(id_microrregiao, .keep_all = TRUE) %>%
+    select(id_microrregiao, all_of(cols_missing))
   df %>% left_join(lkp, by = "id_microrregiao")
 }
 
@@ -83,8 +95,19 @@ pretrend_ftest <- function(att_gt_obj) {
     return(list(statistic = NA_real_, df = 0L, p.value = NA_real_))
   }
   ests <- es$att.egt[pre_idx]
-  # V.analytical contains the full variance-covariance matrix of ATT_ES
-  vcv  <- es$V_analytical.aggte[pre_idx, pre_idx, drop = FALSE]
+
+  # Defensively find the VCov matrix — field name may vary across did versions
+  vcv_candidates <- intersect(
+    c("V_analytical.aggte", "V.analytical.aggte", "V_analytical"),
+    names(es)
+  )
+  if (length(vcv_candidates) > 0) {
+    vcv_full <- es[[vcv_candidates[1]]]
+    vcv <- vcv_full[pre_idx, pre_idx, drop = FALSE]
+  } else {
+    vcv <- NULL
+  }
+
   if (is.null(vcv) || any(is.na(vcv))) {
     warning("VCov matrix not available; falling back to pointwise SEs.")
     ses <- es$se.egt[pre_idx]
@@ -102,7 +125,8 @@ pretrend_ftest <- function(att_gt_obj) {
 
 # Helper 3 — run Callaway & Sant'Anna estimation
 # ALWAYS uses control_group = "notyettreated" (Chapter 4 identification).
-# Returns a list: att_gt object, aggte event study, tidy df, pre-trend test.
+# Returns: att_gt object, dynamic event study, simple ATT aggregate,
+#          tidy df, pre-trend test, label, sample sizes.
 run_cs <- function(d, outcome_var, label = "") {
   d_agg <- d %>%
     group_by(id_num, ano, g) %>%
@@ -110,10 +134,11 @@ run_cs <- function(d, outcome_var, label = "") {
 
   n_treated <- d_agg %>% filter(g > 0) %>% pull(id_num) %>% n_distinct()
   n_notyet  <- d_agg %>% filter(g == 0) %>% pull(id_num) %>% n_distinct()
+  n_obs     <- nrow(d_agg)
 
   if (n_treated < 20) stop(sprintf("[%s] Only %d treated units (need >= 20).", label, n_treated))
   if (n_notyet  < 20) stop(sprintf("[%s] Only %d not-yet-treated units (need >= 20).", label, n_notyet))
-  message(sprintf("   [%s] %d treated | %d not-yet-treated units", label, n_treated, n_notyet))
+  message(sprintf("   [%s] %d treated | %d not-yet-treated | %d obs", label, n_treated, n_notyet, n_obs))
 
   # --- Core estimator: HARDCODED notyettreated, no adaptive logic ---
   att <- did::att_gt(
@@ -127,18 +152,50 @@ run_cs <- function(d, outcome_var, label = "") {
     print_details          = FALSE
   )
 
+  # Dynamic event study
   es      <- did::aggte(att, type = "dynamic", na.rm = TRUE)
   es_tidy <- broom::tidy(es)
-  # NOTE: NAs in estimates are preserved — NOT replaced with 0
+
+  # Simple ATT aggregate — the headline number for the abstract
+  att_simple <- did::aggte(att, type = "simple", na.rm = TRUE)
 
   pretrend <- pretrend_ftest(att)
-  message(sprintf("   [%s] Pre-trend Wald p = %.4f", label, pretrend$p.value))
+  message(sprintf("   [%s] ATT = %.4f (SE = %.4f) | Pre-trend Wald p = %.4f",
+                  label, att_simple$overall.att, att_simple$overall.se, pretrend$p.value))
 
-  list(att_gt = att, es = es, tidy = es_tidy, pretrend = pretrend, label = label)
+  list(
+    att_gt   = att,
+    es       = es,
+    tidy     = es_tidy,
+    simple   = att_simple,
+    pretrend = pretrend,
+    label    = label,
+    n_obs    = n_obs,
+    n_treated = n_treated,
+    n_notyet  = n_notyet
+  )
 }
 
-# Helper 4 — publication event-study plot (two overlaid series)
-plot_event_study <- function(df1, df2, l1, l2, c1, c2, title_txt) {
+# Helper 4 — build a one-row summary tibble from a run_cs result
+build_att_row <- function(res) {
+  s <- res$simple
+  tibble(
+    Model      = res$label,
+    ATT        = round(s$overall.att, 4),
+    SE         = round(s$overall.se, 4),
+    CI_low     = round(s$overall.att - 1.96 * s$overall.se, 4),
+    CI_high    = round(s$overall.att + 1.96 * s$overall.se, 4),
+    Pretrend_p = round(res$pretrend$p.value, 4),
+    N_obs      = res$n_obs,
+    N_treated  = res$n_treated,
+    N_notyet   = res$n_notyet
+  )
+}
+
+# Helper 5 — publication event-study plot (two overlaid series)
+# ylab parameter allows different labels for wages vs employment outcomes.
+plot_event_study <- function(df1, df2, l1, l2, c1, c2, title_txt,
+                             ylab = "ATT on log(wages in min. wage units)") {
   ggplot() +
     geom_hline(yintercept = 0, color = "black",  linetype = "solid",  linewidth = 0.4) +
     geom_vline(xintercept = -1, color = "grey40", linetype = "dashed", linewidth = 0.5) +
@@ -154,16 +211,16 @@ plot_event_study <- function(df1, df2, l1, l2, c1, c2, title_txt) {
     scale_x_continuous(breaks = seq(-10, 10, 2)) +
     labs(
       title    = title_txt,
-      subtitle = "95% confidence bands | Callaway & Sant'Anna (2021), not-yet-treated comparison",
+      subtitle = "95% confidence bands | CS (2021), not-yet-treated comparison",
       x        = "Event time relative to first treatment year",
-      y        = "ATT (log wages, minimum wages)"
+      y        = ylab
     )
 }
 
 # ==============================================================================
 # SECTION 2: DOCUMENTATION & PROVENANCE (APPENDIX)
 # ==============================================================================
-message(" [1/10] Fetching Official Dictionaries...")
+message(" [1/12] Fetching Official Dictionaries...")
 
 tryCatch({
   dict_prouni <- basedosdados::read_sql(
@@ -186,14 +243,13 @@ tryCatch({
     "SELECT nome_coluna, chave, valor
      FROM `basedosdados.br_ibge_censo_demografico.dicionario`
      WHERE id_tabela = 'microdados_pessoa_2010'")
-  # BUG FIX: old code wrote dict_rais here instead of dict_census
   write_csv(dict_census, "Documentation_Final/appendix_census_codes.csv")
 }, error = function(e) message("  Warning: Census dict skipped."))
 
 # ==============================================================================
 # SECTION 3: DATA EXTRACTION FROM BIGQUERY
 # ==============================================================================
-message(" [2/10] Extracting Data from BigQuery...")
+message(" [2/12] Extracting Data from BigQuery...")
 
 # 3A. Geography crosswalk (municipality -> microregion)
 df_geo <- basedosdados::read_sql("
@@ -207,8 +263,6 @@ df_geo <- basedosdados::read_sql("
 ")
 
 # 3B. Census 2010 — youth population denominator + covariates
-# FIX: alias is pop_18_24 (was pop_18_24_total, causing downstream mismatch)
-# NEW: pop_nonwhite defined as raca_cor IN ('2','3') = Preta + Parda
 df_census <- basedosdados::read_sql("
   SELECT
     id_municipio,
@@ -265,7 +319,6 @@ df_prouni_raw <- bind_rows(p1, p2, p3)
 rm(p1, p2, p3); gc()
 
 # 3D. RAIS outcomes — safe year-by-year loop
-# NEW: adds sexo, renames to n_vinculos, adds tipo_vinculo + status_vinculo filters
 message("   -> Downloading RAIS (Safe Loop)...")
 rais_list <- list()
 for (y in params$years) {
@@ -292,6 +345,13 @@ for (y in params$years) {
   }, error = function(e) message(sprintf("     Error fetching year %d: %s", y, e$message)))
   gc()
 }
+
+# CHECK: all years downloaded before we lose the list
+missing_years <- setdiff(as.character(params$years), names(rais_list))
+if (length(missing_years) > 0) {
+  stop(sprintf("RAIS download incomplete — missing years: %s", paste(missing_years, collapse = ", ")))
+}
+
 df_rais <- bind_rows(rais_list)
 rm(rais_list); gc()
 
@@ -303,7 +363,7 @@ rm(rais_list); gc()
 #   Dose bins from 2019 cross-section: Low = (tau_20, tau_50], High > tau_75
 #   Timing g = first year D_{r,t} > tau_20, else g = 0 (not-yet-treated)
 # ==============================================================================
-message(" [3/10] Defining Treatment Dose & Timing...")
+message(" [3/12] Defining Treatment Dose & Timing...")
 
 # 4.1 Aggregate ProUni to microregion x year
 df_prouni_agg <- df_prouni_raw %>%
@@ -346,10 +406,8 @@ tau_75 <- quantile(df_2019$D_rt, params$q_high, na.rm = TRUE)
 message(sprintf("   Thresholds: tau_20=%.4f | tau_50=%.4f | tau_75=%.4f", tau_20, tau_50, tau_75))
 
 # 4.5 Classify dose bins and compute treatment timing g
-# REMOVED: "Control" group, "Medium Dose" bin — only Low and High remain.
-# g = first year D_rt crosses tau_20; g = 0 for regions that never cross
-#     (these serve as not-yet-treated comparisons in did::att_gt, NOT as a
-#      permanent "control" group).
+# Only Low and High bins. g = first year D_rt crosses tau_20.
+# Regions that never cross get g = 0 (not-yet-treated comparisons in did::att_gt).
 df_final <- df_panel %>%
   left_join(
     df_2019 %>% select(id_microrregiao, D_rt_2019 = D_rt),
@@ -357,13 +415,11 @@ df_final <- df_panel %>%
   ) %>%
   group_by(id_microrregiao) %>%
   mutate(
-    # 2-bin classification from 2019 cross-section of lagged density
     dose_bin = case_when(
       D_rt_2019 >  tau_20 & D_rt_2019 <= tau_50 ~ "Low",
       D_rt_2019 >  tau_75                        ~ "High",
       TRUE                                        ~ NA_character_
     ),
-    # Treatment timing: first year D_rt crosses tau_20
     g = {
       crossing <- ano[D_rt > tau_20]
       if (length(crossing) == 0) 0L else as.integer(min(crossing))
@@ -381,15 +437,14 @@ message(sprintf("   Microregions: %d total | %d with g > 0 | %d with g = 0",
 # ==============================================================================
 # SECTION 5: SANITY CHECKS (fail-fast)
 # ==============================================================================
-message(" [4/10] Running Sanity Checks...")
+message(" [4/12] Running Sanity Checks...")
 
 # CHECK 1: No duplicate (id_microrregiao, ano) in the treatment panel
 n_dup <- df_final %>% count(id_microrregiao, ano) %>% filter(n > 1) %>% nrow()
 if (n_dup > 0) stop(sprintf("FAIL: %d duplicate (id_microrregiao, ano) pairs.", n_dup))
 message("   [OK] No duplicate (id_microrregiao, ano) pairs.")
 
-# CHECK 2: D_rt = 0 before first meaningful year (2005 + lag_years - 1 = 2008)
-# With a 4-year lag, D_rt for 2005-2008 should be 0 (no prior cumulative to lag).
+# CHECK 2: D_rt = 0 before first meaningful year (2005 + lag_years = 2009)
 pre_lag_bad <- df_final %>%
   filter(ano < (min(params$years) + params$lag_years), D_rt != 0) %>%
   nrow()
@@ -415,8 +470,7 @@ for (b in c("Low", "High")) {
 }
 message("   [OK] Both bins have > 50 microregions.")
 
-# CHECK 4: D_rt is weakly increasing over time for each microregion
-# (cumulative density should not decrease)
+# CHECK 4: D_rt is weakly increasing over time
 non_monotone <- df_final %>%
   group_by(id_microrregiao) %>%
   arrange(ano) %>%
@@ -434,9 +488,9 @@ message(" -> All sanity checks passed.")
 # ==============================================================================
 # SECTION 6: DESCRIPTIVE STATISTICS
 # ==============================================================================
-message(" [5/10] Generating Descriptive Tables...")
+message(" [5/12] Generating Descriptive Tables...")
 
-# Table 1: Bin summary — replaces old 4-group table
+# Table 1: Bin summary
 tab1 <- df_final %>%
   filter(ano == max(params$years), !is.na(dose_bin)) %>%
   group_by(dose_bin) %>%
@@ -488,7 +542,7 @@ message("   Table 2 saved.")
 # ==============================================================================
 # SECTION 7: CASE STUDIES (4 auto-selected representative microregions)
 # ==============================================================================
-message(" [6/10] Selecting Case Study Microregions...")
+message(" [6/12] Selecting Case Study Microregions...")
 
 candidates <- df_final %>%
   filter(ano == max(params$years), !is.na(dose_bin), g > 0) %>%
@@ -502,18 +556,18 @@ case_micro <- bind_rows(
 ) %>%
   select(id_microrregiao, nome_microrregiao, sigla_uf, region_type, dose_bin, g, D_rt_2019)
 
+stopifnot("Need exactly 4 case study units" = nrow(case_micro) == 4)
 write_csv(case_micro, "Tables_Final/table3_casestudy_units.csv")
 message("   Selected case study microregions:")
 print(case_micro)
 
-# Case study trajectory plot is generated AFTER df_reg_all is built (Section 8)
-
 # ==============================================================================
 # SECTION 8: PREPARE REGRESSION DATASETS
 # ==============================================================================
-message(" [7/10] Building Regression Datasets...")
+message(" [7/12] Building Regression Datasets...")
 
-# Merge RAIS outcomes with geography and treatment variables
+# 8.1 Build the FULL merged dataset (all races, both sexes)
+# No hard-coded race filter here — subsets are created below for heterogeneity.
 df_reg_all <- df_rais %>%
   inner_join(
     df_geo %>% select(id_municipio, id_microrregiao),
@@ -526,30 +580,51 @@ df_reg_all <- df_rais %>%
   inner_join(
     df_final %>% select(id_microrregiao, ano, g, dose_bin, sigla_uf),
     by = c("id_microrregiao", "ano")
-  ) %>%
-  # FIX: non-white = codes 2 (Preta), 4 (Parda), 8 (Indigena)
-  # Old code incorrectly included code "1" (Branca/White)
-  filter(raca_cor %in% c("2", "4", "8"))
+  )
 
-# --- Dose-bin subsets ---
-# Each subset includes the dose-bin's treated units PLUS all g=0 units
-# (not-yet-treated comparisons). The did package with control_group="notyettreated"
-# uses g=0 units as the comparison pool.
-data_low  <- df_reg_all %>% filter(dose_bin == "Low"  | g == 0)
-data_high <- df_reg_all %>% filter(dose_bin == "High" | g == 0)
+# 8.2 Demographic subsets
+# Non-white = codes 2 (Preta), 4 (Parda), 8 (Indigena)
+# White     = code 1 (Branca)
+df_nonwhite <- df_reg_all %>% filter(raca_cor %in% c("2", "4", "8"))
+df_white    <- df_reg_all %>% filter(raca_cor == "1")
 
-# --- Regional heterogeneity subsets ---
-# Include all binned microregions (Low + High) within each geographic area.
-# Regions not in either bin are excluded.
-data_cen <- df_reg_all %>% filter(sigla_uf %in% params$central_states,  !is.na(dose_bin) | g == 0)
-data_mar <- df_reg_all %>% filter(!sigla_uf %in% params$central_states, !is.na(dose_bin) | g == 0)
+# Gender subsets (from non-white, matching main results population)
+df_male   <- df_nonwhite %>% filter(sexo == "1")
+df_female <- df_nonwhite %>% filter(sexo == "2")
 
-message(sprintf("   data_low:  %d rows | data_high: %d rows", nrow(data_low), nrow(data_high)))
-message(sprintf("   data_cen:  %d rows | data_mar:  %d rows", nrow(data_cen), nrow(data_mar)))
+# 8.3 Dose-bin subsets for MAIN RESULTS (non-white, both genders)
+# Each includes the dose-bin's treated units + all g=0 (not-yet-treated) units.
+data_low  <- df_nonwhite %>% filter(dose_bin == "Low"  | g == 0)
+data_high <- df_nonwhite %>% filter(dose_bin == "High" | g == 0)
 
-# --- Case study wage trajectory plot ---
+# 8.4 Regional heterogeneity subsets (non-white, both genders)
+data_cen <- df_nonwhite %>% filter(sigla_uf %in% params$central_states,  !is.na(dose_bin) | g == 0)
+data_mar <- df_nonwhite %>% filter(!sigla_uf %in% params$central_states, !is.na(dose_bin) | g == 0)
+
+# 8.5 Gender heterogeneity subsets
+data_low_male   <- df_male   %>% filter(dose_bin == "Low"  | g == 0)
+data_low_female <- df_female %>% filter(dose_bin == "Low"  | g == 0)
+data_high_male  <- df_male   %>% filter(dose_bin == "High" | g == 0)
+data_high_female <- df_female %>% filter(dose_bin == "High" | g == 0)
+
+# 8.6 Race heterogeneity subsets
+data_low_white    <- df_white    %>% filter(dose_bin == "Low"  | g == 0)
+data_low_nonwhite <- df_nonwhite %>% filter(dose_bin == "Low"  | g == 0)
+data_high_white   <- df_white    %>% filter(dose_bin == "High" | g == 0)
+data_high_nonwhite <- df_nonwhite %>% filter(dose_bin == "High" | g == 0)
+
+message(sprintf("   Main:    data_low=%d | data_high=%d rows", nrow(data_low), nrow(data_high)))
+message(sprintf("   Region:  data_cen=%d | data_mar=%d rows",  nrow(data_cen), nrow(data_mar)))
+message(sprintf("   Gender:  low_m=%d | low_f=%d | high_m=%d | high_f=%d",
+                nrow(data_low_male), nrow(data_low_female),
+                nrow(data_high_male), nrow(data_high_female)))
+message(sprintf("   Race:    low_w=%d | low_nw=%d | high_w=%d | high_nw=%d",
+                nrow(data_low_white), nrow(data_low_nonwhite),
+                nrow(data_high_white), nrow(data_high_nonwhite)))
+
+# 8.7 Case study wage trajectory plot
 cs_ids <- case_micro$id_microrregiao
-df_case_plot <- df_reg_all %>%
+df_case_plot <- df_nonwhite %>%
   filter(id_microrregiao %in% cs_ids) %>%
   inner_join(
     case_micro %>% select(id_microrregiao, nome_microrregiao, dose_bin, region_type, g),
@@ -580,30 +655,158 @@ ggsave("Figures_Final/fig_0_casestudy_trajectories.png", p_cases, width = 10, he
 message("   Case study figure saved.")
 
 # ==============================================================================
-# SECTION 9: CALLAWAY & SANT'ANNA ESTIMATION
+# SECTION 9A: MAIN ESTIMATION — WAGES (non-white, 4 models)
 # ==============================================================================
-message(" [8/10] Running Callaway & Sant'Anna Models...")
+message(" [8/12] Running Main Wage Models (Callaway & Sant'Anna)...")
 
-message("   -> Low Dose Model...")
-res_low  <- run_cs(data_low,  "log_wage_sm", label = "Low")
+message("   -> Low Dose / Wages...")
+res_low  <- run_cs(data_low,  "log_wage_sm", label = "Low/Wages")
 
-message("   -> High Dose Model...")
-res_high <- run_cs(data_high, "log_wage_sm", label = "High")
+message("   -> High Dose / Wages...")
+res_high <- run_cs(data_high, "log_wage_sm", label = "High/Wages")
 
-message("   -> Central Region Model...")
-res_cen  <- run_cs(data_cen,  "log_wage_sm", label = "Central")
+message("   -> Central / Wages...")
+res_cen  <- run_cs(data_cen,  "log_wage_sm", label = "Central/Wages")
 
-message("   -> Marginal Region Model...")
-res_mar  <- run_cs(data_mar,  "log_wage_sm", label = "Marginal")
-
-message(" -> All models completed.")
+message("   -> Marginal / Wages...")
+res_mar  <- run_cs(data_mar,  "log_wage_sm", label = "Marginal/Wages")
 
 # ==============================================================================
-# SECTION 10: VISUALIZATION & AUDIT LOG
+# SECTION 9B: EMPLOYMENT MARGIN — n_vinculos (non-white, 4 models)
 # ==============================================================================
-message(" [9/10] Generating Publication Figures...")
+message("   -> Low Dose / Employment...")
+res_low_emp  <- run_cs(data_low,  "n_vinculos", label = "Low/Emp")
 
-# Figure 1: Dose-Response (High vs Low)
+message("   -> High Dose / Employment...")
+res_high_emp <- run_cs(data_high, "n_vinculos", label = "High/Emp")
+
+message("   -> Central / Employment...")
+res_cen_emp  <- run_cs(data_cen,  "n_vinculos", label = "Central/Emp")
+
+message("   -> Marginal / Employment...")
+res_mar_emp  <- run_cs(data_mar,  "n_vinculos", label = "Marginal/Emp")
+
+# ==============================================================================
+# SECTION 9C: GENDER HETEROGENEITY — log wages (4 models)
+# ==============================================================================
+message(" [9/12] Running Gender Heterogeneity Models...")
+
+message("   -> Male / Low Dose...")
+res_male_low   <- run_cs(data_low_male,   "log_wage_sm", label = "Male/Low")
+
+message("   -> Female / Low Dose...")
+res_female_low <- run_cs(data_low_female, "log_wage_sm", label = "Female/Low")
+
+message("   -> Male / High Dose...")
+res_male_high  <- run_cs(data_high_male,  "log_wage_sm", label = "Male/High")
+
+message("   -> Female / High Dose...")
+res_female_high <- run_cs(data_high_female, "log_wage_sm", label = "Female/High")
+
+# ==============================================================================
+# SECTION 9D: RACE HETEROGENEITY — log wages (4 models)
+# ==============================================================================
+message("   Running Race Heterogeneity Models...")
+
+message("   -> White / Low Dose...")
+res_white_low    <- run_cs(data_low_white,    "log_wage_sm", label = "White/Low")
+
+message("   -> Non-white / Low Dose...")
+res_nonwhite_low <- run_cs(data_low_nonwhite, "log_wage_sm", label = "Nonwhite/Low")
+
+message("   -> White / High Dose...")
+res_white_high   <- run_cs(data_high_white,   "log_wage_sm", label = "White/High")
+
+message("   -> Non-white / High Dose...")
+res_nonwhite_high <- run_cs(data_high_nonwhite, "log_wage_sm", label = "Nonwhite/High")
+
+# ==============================================================================
+# SECTION 9E: ROBUSTNESS — ALTERNATIVE LAG (lag = 3 years, 2 models)
+# ==============================================================================
+message(" [10/12] Running Robustness: Alternative Lag (3 years)...")
+
+# Recompute D_rt with lag = 3 on the same panel infrastructure
+lag_alt <- 3L
+df_panel_lag3 <- df_panel %>%
+  group_by(id_microrregiao) %>%
+  arrange(ano) %>%
+  mutate(
+    D_rt_alt = (dplyr::lag(cum_schol, lag_alt, default = 0) / pop) * 1000
+  ) %>%
+  ungroup()
+
+df_2019_lag3 <- df_panel_lag3 %>% filter(ano == max(params$years))
+tau_20_alt <- quantile(df_2019_lag3$D_rt_alt, params$q_low,  na.rm = TRUE)
+tau_50_alt <- quantile(df_2019_lag3$D_rt_alt, params$q_mid,  na.rm = TRUE)
+tau_75_alt <- quantile(df_2019_lag3$D_rt_alt, params$q_high, na.rm = TRUE)
+
+df_final_lag3 <- df_panel_lag3 %>%
+  left_join(
+    df_2019_lag3 %>% select(id_microrregiao, D_rt_2019_alt = D_rt_alt),
+    by = "id_microrregiao"
+  ) %>%
+  group_by(id_microrregiao) %>%
+  mutate(
+    dose_bin_alt = case_when(
+      D_rt_2019_alt > tau_20_alt & D_rt_2019_alt <= tau_50_alt ~ "Low",
+      D_rt_2019_alt > tau_75_alt                               ~ "High",
+      TRUE                                                      ~ NA_character_
+    ),
+    g_alt = {
+      crossing <- ano[D_rt_alt > tau_20_alt]
+      if (length(crossing) == 0) 0L else as.integer(min(crossing))
+    }
+  ) %>%
+  ungroup() %>%
+  mutate(g_alt = ifelse(is.infinite(g_alt), 0L, g_alt))
+
+# Build robustness regression data (non-white only)
+df_rob <- df_nonwhite %>%
+  select(-g, -dose_bin) %>%
+  inner_join(
+    df_final_lag3 %>% select(id_microrregiao, ano, g_alt, dose_bin_alt),
+    by = c("id_microrregiao", "ano")
+  ) %>%
+  rename(g = g_alt, dose_bin = dose_bin_alt)
+
+data_low_lag3  <- df_rob %>% filter(dose_bin == "Low"  | g == 0)
+data_high_lag3 <- df_rob %>% filter(dose_bin == "High" | g == 0)
+
+message("   -> Low Dose / Lag=3...")
+res_low_lag3  <- run_cs(data_low_lag3,  "log_wage_sm", label = "Low/Lag3")
+
+message("   -> High Dose / Lag=3...")
+res_high_lag3 <- run_cs(data_high_lag3, "log_wage_sm", label = "High/Lag3")
+
+message(" -> All 18 + 2 robustness models completed.")
+
+# ==============================================================================
+# SECTION 9F: ATT SUMMARY TABLE
+# ==============================================================================
+message("   Building ATT summary table...")
+
+all_results <- list(
+  res_low, res_high, res_cen, res_mar,
+  res_low_emp, res_high_emp, res_cen_emp, res_mar_emp,
+  res_male_low, res_female_low, res_male_high, res_female_high,
+  res_white_low, res_nonwhite_low, res_white_high, res_nonwhite_high,
+  res_low_lag3, res_high_lag3
+)
+
+tab_att <- bind_rows(lapply(all_results, build_att_row))
+write_csv(tab_att, "Tables_Final/table4_summary_att.csv")
+print(xtable(tab_att, caption = "Summary of ATT Estimates Across All Models",
+             digits = c(0, 0, 4, 4, 4, 4, 4, 0, 0, 0)),
+      file = "Tables_Final/table4_summary_att.tex")
+message("   Table 4 (ATT summary) saved.")
+print(tab_att)
+
+# ==============================================================================
+# SECTION 10: VISUALIZATION
+# ==============================================================================
+message(" [11/12] Generating Publication Figures...")
+
+# Figure 1: Dose-Response — wages (High vs Low)
 p1 <- plot_event_study(
   res_low$tidy, res_high$tidy,
   "Low Dose", "High Dose",
@@ -612,7 +815,7 @@ p1 <- plot_event_study(
 )
 ggsave("Figures_Final/fig_1_mechanism_dose.png", p1, width = 9, height = 5.5, dpi = 300)
 
-# Figure 2: Regional Divergence (Central vs Marginal)
+# Figure 2: Regional Divergence — wages (Central vs Marginal)
 p2 <- plot_event_study(
   res_cen$tidy, res_mar$tidy,
   "Central (South/Southeast)", "Marginal (North/Northeast)",
@@ -621,21 +824,86 @@ p2 <- plot_event_study(
 )
 ggsave("Figures_Final/fig_2_result_region.png", p2, width = 9, height = 5.5, dpi = 300)
 
-# Save event-study estimates as CSVs for appendix
-write_csv(res_low$tidy,  "Tables_Final/es_low_dose.csv")
-write_csv(res_high$tidy, "Tables_Final/es_high_dose.csv")
-write_csv(res_cen$tidy,  "Tables_Final/es_central.csv")
-write_csv(res_mar$tidy,  "Tables_Final/es_marginal.csv")
+# Figure 3: Dose-Response — employment (High vs Low)
+p3 <- plot_event_study(
+  res_low_emp$tidy, res_high_emp$tidy,
+  "Low Dose", "High Dose",
+  "#E69F00", "#0072B2",
+  "Employment Margin: High vs. Low Exposure",
+  ylab = "ATT on formal employment (n_vinculos)"
+)
+ggsave("Figures_Final/fig_3_employment_dose.png", p3, width = 9, height = 5.5, dpi = 300)
 
-message(" [10/10] Saving Audit Log...")
+# Figure 4: Gender heterogeneity — wages (Male vs Female, Low and High)
+p4_low <- plot_event_study(
+  res_male_low$tidy, res_female_low$tidy,
+  "Male", "Female",
+  "#1b9e77", "#d95f02",
+  "Gender Gap: Low Dose"
+)
+p4_high <- plot_event_study(
+  res_male_high$tidy, res_female_high$tidy,
+  "Male", "Female",
+  "#1b9e77", "#d95f02",
+  "Gender Gap: High Dose"
+)
+ggsave("Figures_Final/fig_4a_gender_low.png",  p4_low,  width = 9, height = 5.5, dpi = 300)
+ggsave("Figures_Final/fig_4b_gender_high.png", p4_high, width = 9, height = 5.5, dpi = 300)
 
-# ---------- AUDIT LOG ----------
+# Figure 5: Race heterogeneity — wages (White vs Non-white, Low and High)
+p5_low <- plot_event_study(
+  res_white_low$tidy, res_nonwhite_low$tidy,
+  "White", "Non-white",
+  "#7570b3", "#e7298a",
+  "Race Gap: Low Dose"
+)
+p5_high <- plot_event_study(
+  res_white_high$tidy, res_nonwhite_high$tidy,
+  "White", "Non-white",
+  "#7570b3", "#e7298a",
+  "Race Gap: High Dose"
+)
+ggsave("Figures_Final/fig_5a_race_low.png",  p5_low,  width = 9, height = 5.5, dpi = 300)
+ggsave("Figures_Final/fig_5b_race_high.png", p5_high, width = 9, height = 5.5, dpi = 300)
+
+# Figure 6: Robustness — main spec (lag=4) vs alternative (lag=3)
+p6 <- plot_event_study(
+  res_low$tidy, res_low_lag3$tidy,
+  "Baseline (lag = 4)", "Robustness (lag = 3)",
+  "#0072B2", "#D55E00",
+  "Robustness: Sensitivity to Lag Length (Low Dose)"
+)
+ggsave("Figures_Final/fig_6_robustness_lag.png", p6, width = 9, height = 5.5, dpi = 300)
+
+# Save all event-study estimates as CSVs for appendix
+es_exports <- list(
+  es_low_wage = res_low$tidy, es_high_wage = res_high$tidy,
+  es_cen_wage = res_cen$tidy, es_mar_wage = res_mar$tidy,
+  es_low_emp = res_low_emp$tidy, es_high_emp = res_high_emp$tidy,
+  es_cen_emp = res_cen_emp$tidy, es_mar_emp = res_mar_emp$tidy,
+  es_male_low = res_male_low$tidy, es_female_low = res_female_low$tidy,
+  es_male_high = res_male_high$tidy, es_female_high = res_female_high$tidy,
+  es_white_low = res_white_low$tidy, es_nonwhite_low = res_nonwhite_low$tidy,
+  es_white_high = res_white_high$tidy, es_nonwhite_high = res_nonwhite_high$tidy,
+  es_low_lag3 = res_low_lag3$tidy, es_high_lag3 = res_high_lag3$tidy
+)
+for (nm in names(es_exports)) {
+  write_csv(es_exports[[nm]], sprintf("Tables_Final/%s.csv", nm))
+}
+message("   All figures and event-study CSVs saved.")
+
+# ==============================================================================
+# SECTION 11: AUDIT LOG
+# ==============================================================================
+message(" [12/12] Saving Audit Log...")
+
 audit_log <- list(
   timestamp  = Sys.time(),
   params     = params,
   n_units    = n_distinct(df_final$id_microrregiao),
   n_years    = length(params$years),
   thresholds = list(tau_20 = tau_20, tau_50 = tau_50, tau_75 = tau_75),
+  thresholds_lag3 = list(tau_20 = tau_20_alt, tau_50 = tau_50_alt, tau_75 = tau_75_alt),
   bin_sizes  = list(
     Low  = bin_sizes$n_regions[bin_sizes$dose_bin == "Low"],
     High = bin_sizes$n_regions[bin_sizes$dose_bin == "High"]
@@ -644,24 +912,45 @@ audit_log <- list(
     min = min(df_final$g[df_final$g > 0], na.rm = TRUE),
     max = max(df_final$g[df_final$g > 0], na.rm = TRUE)
   ),
+  att_summary = tab_att,
   pretrend = list(
-    Low      = res_low$pretrend,
-    High     = res_high$pretrend,
-    Central  = res_cen$pretrend,
-    Marginal = res_mar$pretrend
+    Low_Wages      = res_low$pretrend,
+    High_Wages     = res_high$pretrend,
+    Central_Wages  = res_cen$pretrend,
+    Marginal_Wages = res_mar$pretrend,
+    Low_Emp        = res_low_emp$pretrend,
+    High_Emp       = res_high_emp$pretrend,
+    Male_Low       = res_male_low$pretrend,
+    Female_Low     = res_female_low$pretrend,
+    Male_High      = res_male_high$pretrend,
+    Female_High    = res_female_high$pretrend,
+    White_Low      = res_white_low$pretrend,
+    Nonwhite_Low   = res_nonwhite_low$pretrend,
+    White_High     = res_white_high$pretrend,
+    Nonwhite_High  = res_nonwhite_high$pretrend,
+    Low_Lag3       = res_low_lag3$pretrend,
+    High_Lag3      = res_high_lag3$pretrend
   ),
   case_studies = case_micro
 )
 saveRDS(audit_log, "Documentation_Final/audit_log.rds")
 
-# Print summary for console
+# Print summary
 message("\n=== AUDIT SUMMARY ===")
 message(sprintf("  Microregions: %d | Years: %d", audit_log$n_units, audit_log$n_years))
 message(sprintf("  Bins: Low = %d | High = %d", audit_log$bin_sizes$Low, audit_log$bin_sizes$High))
 message(sprintf("  Treatment year range: %d - %d", audit_log$g_range$min, audit_log$g_range$max))
-message(sprintf("  Pre-trend p-values: Low=%.4f | High=%.4f | Central=%.4f | Marginal=%.4f",
+message("  --- Headline ATTs (non-white, wages) ---")
+message(sprintf("  Low:  %.4f (SE %.4f) | High: %.4f (SE %.4f)",
+                res_low$simple$overall.att, res_low$simple$overall.se,
+                res_high$simple$overall.att, res_high$simple$overall.se))
+message(sprintf("  Central: %.4f | Marginal: %.4f",
+                res_cen$simple$overall.att, res_mar$simple$overall.att))
+message("  --- Pre-trend p-values (wages, main) ---")
+message(sprintf("  Low=%.4f | High=%.4f | Central=%.4f | Marginal=%.4f",
                 res_low$pretrend$p.value, res_high$pretrend$p.value,
                 res_cen$pretrend$p.value, res_mar$pretrend$p.value))
+message("  --- Models estimated: 18 main + 2 robustness = 20 total ---")
 message("=====================\n")
 
 message("DONE. All outputs saved to Figures_Final/, Tables_Final/, Documentation_Final/.")
