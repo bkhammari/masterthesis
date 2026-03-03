@@ -279,10 +279,12 @@ df_geo <- basedosdados::read_sql("
 ")
 
 # 3B. Census 2010 — youth population denominator + covariates
+# NOTE: id_microrregiao is NOT selected from Census microdata — that column has
+# unreliable one-digit values. The correct municipality->microregion mapping
+# comes from df_geo (the official IBGE directory) via id_municipio joins.
 df_census <- basedosdados::read_sql("
   SELECT
     id_municipio,
-    id_microrregiao,
     v0601 AS sexo,
     v0606 AS raca_cor,
 
@@ -309,7 +311,6 @@ df_census <- basedosdados::read_sql("
     AND v0601 NOT IN ('9')
     AND v0606 NOT IN ('9')
   GROUP BY
-    id_microrregiao,
     id_municipio,
     v0601,
     v0606
