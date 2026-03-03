@@ -509,8 +509,12 @@ df_final <- df_panel %>%
       D_at_entry >  tau_75                         ~ "High",
       TRUE                                         ~ NA_character_
     ),
-    # g = first year D_rt crosses tau_20 (the entry-distribution threshold)
-    g = {
+    # FIX: g = 0 for regions with D_at_entry <= tau_20 (bottom 20% of entry
+    # distribution). These serve as the not-yet-treated comparison group.
+    # Only regions whose initial dose exceeds tau_20 are "meaningfully treated".
+    g = if (is.na(D_at_entry[1]) || D_at_entry[1] <= tau_20) {
+      0L
+    } else {
       crossing <- ano[D_rt > tau_20]
       if (length(crossing) == 0) 0L else as.integer(min(crossing))
     }
@@ -875,7 +879,10 @@ df_final_lag3 <- df_panel_lag3 %>%
       D_at_entry_alt >  tau_75_alt                                ~ "High",
       TRUE                                                         ~ NA_character_
     ),
-    g_alt = {
+    # FIX: g_alt = 0 for regions with entry dose <= tau_20_alt (comparison group)
+    g_alt = if (is.na(D_at_entry_alt[1]) || D_at_entry_alt[1] <= tau_20_alt) {
+      0L
+    } else {
       crossing <- ano[D_rt_alt > tau_20_alt]
       if (length(crossing) == 0) 0L else as.integer(min(crossing))
     }
