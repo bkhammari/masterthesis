@@ -739,7 +739,7 @@ cs_ids <- case_micro$id_microrregiao
 df_case_plot <- df_nonwhite %>%
   filter(id_microrregiao %in% cs_ids) %>%
   inner_join(
-    case_micro %>% select(id_microrregiao, nome_microrregiao, dose_bin, region_type, g),
+    case_micro %>% select(id_microrregiao, nome_microrregiao, region_type),
     by = "id_microrregiao"
   ) %>%
   mutate(event_time = ano - g) %>%
