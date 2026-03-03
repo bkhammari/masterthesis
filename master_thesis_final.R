@@ -127,10 +127,26 @@ pretrend_ftest <- function(att_gt_obj) {
 # ALWAYS uses control_group = "notyettreated" (Chapter 4 identification).
 # Returns: att_gt object, dynamic event study, simple ATT aggregate,
 #          tidy df, pre-trend test, label, sample sizes.
-run_cs <- function(d, outcome_var, label = "") {
-  d_agg <- d %>%
-    group_by(id_num, ano, g) %>%
-    summarise(y = mean(.data[[outcome_var]], na.rm = TRUE), .groups = "drop")
+#
+# agg controls how municipality-level cells are aggregated to microregions:
+#   "wmean"  — weighted mean using n_vinculos (for log wages, hourly wages, etc.)
+#   "logsum" — log of total count (for employment: log(sum(n_vinculos)))
+run_cs <- function(d, outcome_var, label = "", agg = c("wmean", "logsum")) {
+  agg <- match.arg(agg)
+
+  d_agg <- if (agg == "wmean") {
+    # Population-weighted average: larger municipalities contribute proportionally
+    d %>%
+      group_by(id_num, ano, g) %>%
+      summarise(y = weighted.mean(.data[[outcome_var]], w = n_vinculos, na.rm = TRUE),
+                .groups = "drop")
+  } else {
+    # Log of total employment count across all municipalities in the microregion
+    d %>%
+      group_by(id_num, ano, g) %>%
+      summarise(y = log(sum(.data[[outcome_var]], na.rm = TRUE)),
+                .groups = "drop")
+  }
 
   n_treated <- d_agg %>% filter(g > 0) %>% pull(id_num) %>% n_distinct()
   n_notyet  <- d_agg %>% filter(g == 0) %>% pull(id_num) %>% n_distinct()
@@ -677,16 +693,16 @@ res_mar  <- run_cs(data_mar,  "log_wage_sm", label = "Marginal/Wages")
 # SECTION 9B: EMPLOYMENT MARGIN — n_vinculos (non-white, 4 models)
 # ==============================================================================
 message("   -> Low Dose / Employment...")
-res_low_emp  <- run_cs(data_low,  "n_vinculos", label = "Low/Emp")
+res_low_emp  <- run_cs(data_low,  "n_vinculos", label = "Low/Emp",  agg = "logsum")
 
 message("   -> High Dose / Employment...")
-res_high_emp <- run_cs(data_high, "n_vinculos", label = "High/Emp")
+res_high_emp <- run_cs(data_high, "n_vinculos", label = "High/Emp", agg = "logsum")
 
 message("   -> Central / Employment...")
-res_cen_emp  <- run_cs(data_cen,  "n_vinculos", label = "Central/Emp")
+res_cen_emp  <- run_cs(data_cen,  "n_vinculos", label = "Central/Emp", agg = "logsum")
 
 message("   -> Marginal / Employment...")
-res_mar_emp  <- run_cs(data_mar,  "n_vinculos", label = "Marginal/Emp")
+res_mar_emp  <- run_cs(data_mar,  "n_vinculos", label = "Marginal/Emp", agg = "logsum")
 
 # ==============================================================================
 # SECTION 9C: GENDER HETEROGENEITY — log wages (4 models)
@@ -832,7 +848,7 @@ p3 <- plot_event_study(
   "Low Dose", "High Dose",
   "#E69F00", "#0072B2",
   "Employment Margin: High vs. Low Exposure",
-  ylab = "ATT on formal employment (n_vinculos)"
+  ylab = "ATT on log(formal employment)"
 )
 ggsave("Figures_Final/fig_3_employment_dose.png", p3, width = 9, height = 5.5, dpi = 300)
 
