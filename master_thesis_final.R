@@ -337,7 +337,7 @@ for (y in params$years) {
       ano = ", y, "
       AND idade BETWEEN ", params$age_min, " AND ", params$age_max, "
       AND valor_remuneracao_media_sm > 0
-      AND tipo_vinculo = 10
+      AND tipo_vinculo = '10'
       AND vinculo_ativo_3112 = 1
     GROUP BY ano, id_municipio, raca_cor, sexo
   ")
