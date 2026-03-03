@@ -96,6 +96,11 @@ theme_set(theme_classic() + theme(
 # SECTION 1: HELPER FUNCTIONS
 # ==============================================================================
 
+# Helper 0 — escape curly braces in error messages for cli compatibility
+# The cli package intercepts message() and parses {}-expressions. BigQuery
+# errors often contain type info like {INT64, STRING} which crashes cli.
+safe_err_msg <- function(e) gsub("\\{", "{{", gsub("\\}", "}}", conditionMessage(e)))
+
 # Helper 1 — join nome_microrregiao into any data frame with id_microrregiao
 # Defensive: skips join if columns already exist.
 add_micro_names <- function(df, geo) {
@@ -389,13 +394,15 @@ for (y in params$years) {
       AND idade BETWEEN ", params$age_min, " AND ", params$age_max, "
       AND valor_remuneracao_media_sm > 0
       AND tipo_vinculo = '10'
-      AND vinculo_ativo_3112 = 1
+      AND vinculo_ativo_3112 = '1'
     GROUP BY ano, id_municipio, raca_cor, sexo
   ")
   tryCatch({
     rais_list[[as.character(y)]] <- basedosdados::read_sql(q)
     message(sprintf("     Year %d OK", y))
-  }, error = function(e) message(sprintf("     Error fetching year %d: %s", y, e$message)))
+  }, error = function(e) {
+    message(sprintf("     Error fetching year %d: %s", y, safe_err_msg(e)))
+  })
   gc()
 }
 
@@ -910,13 +917,13 @@ res_low_dr  <- tryCatch({
   message("   -> Low Dose / DR Wages...")
   run_cs(data_low, "log_wage_sm", label = "Low/DR",
          xformla = dr_xformla, covars_df = df_covars_dr)
-}, error = function(e) { message(sprintf("   WARNING: Low/DR failed: %s", e$message)); NULL })
+}, error = function(e) { message(sprintf("   WARNING: Low/DR failed: %s", safe_err_msg(e))); NULL })
 
 res_high_dr <- tryCatch({
   message("   -> High Dose / DR Wages...")
   run_cs(data_high, "log_wage_sm", label = "High/DR",
          xformla = dr_xformla, covars_df = df_covars_dr)
-}, error = function(e) { message(sprintf("   WARNING: High/DR failed: %s", e$message)); NULL })
+}, error = function(e) { message(sprintf("   WARNING: High/DR failed: %s", safe_err_msg(e))); NULL })
 
 # NEW: Flag divergence between unconditional and conditional estimates
 dr_divergence_flag <- FALSE
@@ -976,7 +983,7 @@ run_honest <- function(es_obj, label) {
     message(sprintf("   [%s] HonestDiD breakdown Mbar = %.2f", label, bd))
     list(label = label, results = results, breakdown = bd)
   }, error = function(e) {
-    warning(sprintf("HonestDiD failed for %s: %s", label, e$message))
+    warning(sprintf("HonestDiD failed for %s: %s", label, safe_err_msg(e)))
     list(label = label, results = NULL, breakdown = NA_real_)
   })
 }
@@ -1013,7 +1020,7 @@ if (requireNamespace("HonestDiD", quietly = TRUE)) {
                          gsub("[/ ]", "_", tolower(hr$label)))
         ggsave(fname, p_honest, width = 7, height = 5, dpi = 300)
         message(sprintf("   Saved: %s", fname))
-      }, error = function(e) message(sprintf("   WARNING: HonestDiD plot failed for %s: %s", nm, e$message)))
+      }, error = function(e) message(sprintf("   WARNING: HonestDiD plot failed for %s: %s", nm, safe_err_msg(e))))
     }
   }
 } else {
@@ -1065,7 +1072,7 @@ if (requireNamespace("sf", quietly = TRUE) && requireNamespace("geobr", quietly 
     message("   -> High Dose / Buffer exclusion...")
     res_high_buffer <- run_cs(data_high_nobuffer, "log_wage_sm", label = "High/Buffer")
 
-  }, error = function(e) message(sprintf("   WARNING: Buffer-zone test failed: %s", e$message)))
+  }, error = function(e) message(sprintf("   WARNING: Buffer-zone test failed: %s", safe_err_msg(e))))
 } else {
   message("   SKIPPED: sf/geobr packages not available.")
 }
@@ -1106,13 +1113,13 @@ res_placebo_high <- NULL
 #       AND idade BETWEEN 36 AND 50
 #       AND valor_remuneracao_media_sm > 0
 #       AND tipo_vinculo = '10'
-#       AND vinculo_ativo_3112 = 1
+#       AND vinculo_ativo_3112 = '1'
 #     GROUP BY ano, id_municipio, raca_cor, sexo
 #   ")
 #   tryCatch({
 #     placebo_list[[as.character(y)]] <- basedosdados::read_sql(q_placebo)
 #     message(sprintf("     Placebo year %d OK", y))
-#   }, error = function(e) message(sprintf("     Error fetching placebo year %d: %s", y, e$message)))
+#   }, error = function(e) message(sprintf("     Error fetching placebo year %d: %s", y, safe_err_msg(e))))
 #   gc()
 # }
 #
@@ -1157,7 +1164,7 @@ if (requireNamespace("fixest", quietly = TRUE)) {
     twfe_coef <- fixest::coeftable(twfe_fit)
     message(sprintf("   TWFE coeff = %.4f (SE = %.4f, p = %.4f)",
                     twfe_coef[1, "Estimate"], twfe_coef[1, "Std. Error"], twfe_coef[1, "Pr(>|t|)"]))
-  }, error = function(e) message(sprintf("   WARNING: TWFE failed: %s", e$message)))
+  }, error = function(e) message(sprintf("   WARNING: TWFE failed: %s", safe_err_msg(e))))
 } else {
   message("   SKIPPED: fixest package not available.")
 }
@@ -1198,9 +1205,9 @@ run_alt_cutoffs <- function(q_lo, q_hi, suffix) {
     filter(dose_bin == "High" | g == 0)
 
   res_lo <- tryCatch(run_cs(data_low_alt,  "log_wage_sm", label = paste0("Low/", suffix)),
-                     error = function(e) { message(sprintf("   WARNING: %s Low failed: %s", suffix, e$message)); NULL })
+                     error = function(e) { message(sprintf("   WARNING: %s Low failed: %s", suffix, safe_err_msg(e))); NULL })
   res_hi <- tryCatch(run_cs(data_high_alt, "log_wage_sm", label = paste0("High/", suffix)),
-                     error = function(e) { message(sprintf("   WARNING: %s High failed: %s", suffix, e$message)); NULL })
+                     error = function(e) { message(sprintf("   WARNING: %s High failed: %s", suffix, safe_err_msg(e))); NULL })
   list(low = res_lo, high = res_hi)
 }
 
