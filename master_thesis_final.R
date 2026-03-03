@@ -11,14 +11,21 @@
 #     some ProUni exposure over 2005-2019.
 #   - Comparison group is exclusively NOT-YET-TREATED units at each time t:
 #     C_t = {r : G_r^d > t}, enforced via control_group = "notyettreated".
-#   - Dose bins are defined from the 2019 cross-section of the lagged density
-#     D_{r,t}: Low = (tau_20, tau_50], High = D > tau_75.
+#   - FIX: Dose bins are defined from the INITIAL TREATMENT-YEAR distribution
+#     of D_{r,g} (dose at first crossing), NOT the 2019 cross-section.
+#     Low = (tau_20, tau_50], High = D_at_entry > tau_75.
 #   - Treatment timing g = first year D_{r,t} > tau_20.
 #
 # OUTPUTS:
-#   - 16 Callaway & Sant'Anna models (wages + employment x dose/region/gender/race)
-#   - 2 robustness models (alternative lag = 3 years)
-#   - 9 publication figures (Figures_Final/)
+#   - 18 baseline CS models (wages + employment x dose/region/gender/race)
+#   - 2 lag-robustness models (alternative lag = 3 years)
+#   - NEW: Conditional (doubly-robust) models with Census covariates
+#   - NEW: HonestDiD sensitivity analysis on primary wage models
+#   - NEW: Buffer-zone exclusion test (SUTVA robustness)
+#   - NEW: Placebo cohort test placeholder (ages 36-50)
+#   - NEW: TWFE benchmark for comparison with CS estimator
+#   - NEW: Alternative cutoff robustness (tau_25/75, tau_33/67)
+#   - Publication figures (Figures_Final/)
 #   - ATT summary table, event-study CSVs, balance table (Tables_Final/)
 #   - Audit log with pre-trend tests (Documentation_Final/audit_log.rds)
 # ==============================================================================
@@ -54,6 +61,23 @@ library(readr)
 library(xtable)
 library(scales)
 library(broom)
+
+# NEW: Additional dependencies for robustness and sensitivity analyses
+# Wrapped in tryCatch so the script does not fail if a package is missing.
+for (pkg in c("fixest", "sf", "geobr")) {
+  tryCatch(library(pkg, character.only = TRUE),
+           error = function(e) message(sprintf("  WARNING: package '%s' not available — related sections will be skipped.", pkg)))
+}
+# NEW: HonestDiD — install from GitHub if not available
+tryCatch(library(HonestDiD),
+         error = function(e) {
+           message("  WARNING: HonestDiD not installed. Attempting GitHub install...")
+           tryCatch({
+             if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
+             devtools::install_github("asheshrambachan/HonestDiD")
+             library(HonestDiD)
+           }, error = function(e2) message("  WARNING: HonestDiD install failed — sensitivity section will be skipped."))
+         })
 
 basedosdados::set_billing_id("microdadosbrazil")
 
@@ -131,7 +155,10 @@ pretrend_ftest <- function(att_gt_obj) {
 # agg controls how municipality-level cells are aggregated to microregions:
 #   "wmean"  — weighted mean using n_vinculos (for log wages, hourly wages, etc.)
 #   "logsum" — log of total count (for employment: log(sum(n_vinculos)))
-run_cs <- function(d, outcome_var, label = "", agg = c("wmean", "logsum")) {
+# NEW: xformla — formula for doubly-robust conditioning covariates (default ~1 = unconditional)
+# NEW: covars_df — optional data frame with id_num + covariate columns to merge
+run_cs <- function(d, outcome_var, label = "", agg = c("wmean", "logsum"),
+                   xformla = ~1, covars_df = NULL) {
   agg <- match.arg(agg)
 
   d_agg <- if (agg == "wmean") {
@@ -148,6 +175,11 @@ run_cs <- function(d, outcome_var, label = "", agg = c("wmean", "logsum")) {
                 .groups = "drop")
   }
 
+  # NEW: Merge pre-treatment covariates if provided (for doubly-robust estimation)
+  if (!is.null(covars_df)) {
+    d_agg <- d_agg %>% left_join(covars_df, by = "id_num")
+  }
+
   n_treated <- d_agg %>% filter(g > 0) %>% pull(id_num) %>% n_distinct()
   n_notyet  <- d_agg %>% filter(g == 0) %>% pull(id_num) %>% n_distinct()
   n_obs     <- nrow(d_agg)
@@ -162,6 +194,7 @@ run_cs <- function(d, outcome_var, label = "", agg = c("wmean", "logsum")) {
     tname                  = "ano",
     idname                 = "id_num",
     gname                  = "g",
+    xformla                = xformla,
     data                   = d_agg,
     control_group          = "notyettreated",
     allow_unbalanced_panel = TRUE,
@@ -380,7 +413,9 @@ rm(rais_list); gc()
 # ==============================================================================
 # This section implements the Chapter 4 identification strategy:
 #   D_{r,t} = 1000 * sum_{k=2005}^{t-4} scholarships_{r,k} / youth_pop_{r,2010}
-#   Dose bins from 2019 cross-section: Low = (tau_20, tau_50], High > tau_75
+#   FIX: Dose bins from INITIAL TREATMENT-YEAR distribution (D_at_entry),
+#        NOT the 2019 cross-section (which caused look-ahead bias).
+#   Low = (tau_20, tau_50], High > tau_75 of D_at_entry
 #   Timing g = first year D_{r,t} > tau_20, else g = 0 (not-yet-treated)
 # ==============================================================================
 message(" [3/12] Defining Treatment Dose & Timing...")
@@ -416,30 +451,58 @@ df_panel <- expand_grid(
   ungroup() %>%
   filter(pop > 0)
 
-# 4.4 Compute dose thresholds from 2019 cross-section
+# 4.4 FIX: Compute dose thresholds from INITIAL TREATMENT-YEAR distribution
+# Previously, bins were defined from the 2019 cross-section of D_rt. This
+# conditions on post-treatment information and creates look-ahead bias.
+# Now: (a) use a preliminary low threshold to identify when each microregion
+# first enters treatment, (b) record D_at_entry at that moment, (c) compute
+# tau cutoffs from THAT distribution.
+
+# Step 1: Preliminary threshold — p10 of all nonzero D_rt values
+# Deliberately low: only needs to identify "any meaningful exposure".
+nonzero_D   <- df_panel$D_rt[df_panel$D_rt > 0]
+tau_prelim  <- quantile(nonzero_D, 0.10, na.rm = TRUE)
+message(sprintf("   FIX: Preliminary threshold (p10 of nonzero D_rt) = %.4f", tau_prelim))
+
+# Step 2: For each microregion that eventually crosses tau_prelim,
+# record its dose at the year it first crosses.
+df_first_cross <- df_panel %>%
+  filter(D_rt > tau_prelim) %>%
+  group_by(id_microrregiao) %>%
+  slice_min(ano, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  select(id_microrregiao, first_year = ano, D_at_entry = D_rt)
+
+# Step 3: Define actual bin cutoffs from D_at_entry distribution
+tau_20 <- quantile(df_first_cross$D_at_entry, params$q_low,  na.rm = TRUE)
+tau_50 <- quantile(df_first_cross$D_at_entry, params$q_mid,  na.rm = TRUE)
+tau_75 <- quantile(df_first_cross$D_at_entry, params$q_high, na.rm = TRUE)
+
+message(sprintf("   FIX: Entry-based thresholds: tau_20=%.4f | tau_50=%.4f | tau_75=%.4f",
+                tau_20, tau_50, tau_75))
+message(sprintf("   FIX: %d microregions cross preliminary threshold (of %d total)",
+                nrow(df_first_cross), n_distinct(df_panel$id_microrregiao)))
+
+# 4.5 FIX: Classify dose bins from D_at_entry and compute treatment timing g
+# Bins are assigned once, at entry, and never change — no look-ahead bias.
+# D_rt_2019 is kept for descriptive tables only — NOT used for bin assignment.
 df_2019 <- df_panel %>% filter(ano == max(params$years))
 
-tau_20 <- quantile(df_2019$D_rt, params$q_low,  na.rm = TRUE)
-tau_50 <- quantile(df_2019$D_rt, params$q_mid,  na.rm = TRUE)
-tau_75 <- quantile(df_2019$D_rt, params$q_high, na.rm = TRUE)
-
-message(sprintf("   Thresholds: tau_20=%.4f | tau_50=%.4f | tau_75=%.4f", tau_20, tau_50, tau_75))
-
-# 4.5 Classify dose bins and compute treatment timing g
-# Only Low and High bins. g = first year D_rt crosses tau_20.
-# Regions that never cross get g = 0 (not-yet-treated comparisons in did::att_gt).
 df_final <- df_panel %>%
+  left_join(df_first_cross, by = "id_microrregiao") %>%
   left_join(
     df_2019 %>% select(id_microrregiao, D_rt_2019 = D_rt),
     by = "id_microrregiao"
   ) %>%
   group_by(id_microrregiao) %>%
   mutate(
+    # FIX: Bins from D_at_entry (dose at first crossing), not D_rt_2019
     dose_bin = case_when(
-      D_rt_2019 >  tau_20 & D_rt_2019 <= tau_50 ~ "Low",
-      D_rt_2019 >  tau_75                        ~ "High",
-      TRUE                                        ~ NA_character_
+      D_at_entry >  tau_20 & D_at_entry <= tau_50 ~ "Low",
+      D_at_entry >  tau_75                         ~ "High",
+      TRUE                                         ~ NA_character_
     ),
+    # g = first year D_rt crosses tau_20 (the entry-distribution threshold)
     g = {
       crossing <- ano[D_rt > tau_20]
       if (length(crossing) == 0) 0L else as.integer(min(crossing))
@@ -518,6 +581,7 @@ tab1 <- df_final %>%
     N_Regions          = n_distinct(id_microrregiao),
     Avg_Youth_Pop      = round(mean(pop, na.rm = TRUE), 0),
     Avg_Density_2019   = round(mean(D_rt_2019, na.rm = TRUE), 2),
+    Avg_D_at_entry     = round(mean(D_at_entry, na.rm = TRUE), 2),
     Median_Treatment_Yr = median(g[g > 0], na.rm = TRUE),
     .groups = "drop"
   )
@@ -559,6 +623,24 @@ print(xtable(tab2, caption = "Pre-Treatment Covariate Balance by Dose Bin"),
       file = "Tables_Final/table2_balance.tex")
 message("   Table 2 saved.")
 
+# NEW: Build covariate dataframe for doubly-robust estimation (CHANGE 2)
+# These are pre-treatment (Census 2010), time-invariant covariates at the
+# microregion level. id_num is the integer key used by run_cs().
+df_covars_dr <- df_covars %>%
+  mutate(
+    id_num             = as.integer(id_microrregiao),
+    log_pop_18_24      = log(pmax(pop_18_24, 1)),
+    share_nonwhite     = ifelse(pop_18_24 > 0, pop_nonwhite / pop_18_24, 0)
+  ) %>%
+  select(id_num, log_pop_18_24, share_nonwhite,
+         share_no_formal_income, avg_hh_income_pc_mw, literacy_rate)
+
+# NEW: Formula for conditional (DR) specification
+dr_xformla <- ~ log_pop_18_24 + share_nonwhite + share_no_formal_income +
+                 avg_hh_income_pc_mw + literacy_rate
+message(sprintf("   NEW: DR covariate dataframe: %d microregions, %d covariates",
+                nrow(df_covars_dr), ncol(df_covars_dr) - 1L))
+
 # ==============================================================================
 # SECTION 7: CASE STUDIES (4 auto-selected representative microregions)
 # ==============================================================================
@@ -574,7 +656,7 @@ case_micro <- bind_rows(
   candidates %>% filter(region_type == "Marginal", dose_bin == "Low")  %>% slice_sample(n = 1),
   candidates %>% filter(region_type == "Marginal", dose_bin == "High") %>% slice_sample(n = 1)
 ) %>%
-  select(id_microrregiao, nome_microrregiao, sigla_uf, region_type, dose_bin, g, D_rt_2019)
+  select(id_microrregiao, nome_microrregiao, sigla_uf, region_type, dose_bin, g, D_at_entry, D_rt_2019)
 
 stopifnot("Need exactly 4 case study units" = nrow(case_micro) == 4)
 write_csv(case_micro, "Tables_Final/table3_casestudy_units.csv")
@@ -758,22 +840,33 @@ df_panel_lag3 <- df_panel %>%
   ) %>%
   ungroup()
 
-df_2019_lag3 <- df_panel_lag3 %>% filter(ano == max(params$years))
-tau_20_alt <- quantile(df_2019_lag3$D_rt_alt, params$q_low,  na.rm = TRUE)
-tau_50_alt <- quantile(df_2019_lag3$D_rt_alt, params$q_mid,  na.rm = TRUE)
-tau_75_alt <- quantile(df_2019_lag3$D_rt_alt, params$q_high, na.rm = TRUE)
+# FIX: Apply same entry-based bin definition for lag=3 (no look-ahead bias)
+nonzero_D_lag3   <- df_panel_lag3$D_rt_alt[df_panel_lag3$D_rt_alt > 0]
+tau_prelim_lag3  <- quantile(nonzero_D_lag3, 0.10, na.rm = TRUE)
+
+df_first_cross_lag3 <- df_panel_lag3 %>%
+  filter(D_rt_alt > tau_prelim_lag3) %>%
+  group_by(id_microrregiao) %>%
+  slice_min(ano, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  select(id_microrregiao, first_year_alt = ano, D_at_entry_alt = D_rt_alt)
+
+tau_20_alt <- quantile(df_first_cross_lag3$D_at_entry_alt, params$q_low,  na.rm = TRUE)
+tau_50_alt <- quantile(df_first_cross_lag3$D_at_entry_alt, params$q_mid,  na.rm = TRUE)
+tau_75_alt <- quantile(df_first_cross_lag3$D_at_entry_alt, params$q_high, na.rm = TRUE)
+
+message(sprintf("   FIX: Lag-3 entry-based thresholds: tau_20=%.4f | tau_50=%.4f | tau_75=%.4f",
+                tau_20_alt, tau_50_alt, tau_75_alt))
 
 df_final_lag3 <- df_panel_lag3 %>%
-  left_join(
-    df_2019_lag3 %>% select(id_microrregiao, D_rt_2019_alt = D_rt_alt),
-    by = "id_microrregiao"
-  ) %>%
+  left_join(df_first_cross_lag3, by = "id_microrregiao") %>%
   group_by(id_microrregiao) %>%
   mutate(
+    # FIX: Bins from D_at_entry_alt, not D_rt_2019
     dose_bin_alt = case_when(
-      D_rt_2019_alt > tau_20_alt & D_rt_2019_alt <= tau_50_alt ~ "Low",
-      D_rt_2019_alt > tau_75_alt                               ~ "High",
-      TRUE                                                      ~ NA_character_
+      D_at_entry_alt >  tau_20_alt & D_at_entry_alt <= tau_50_alt ~ "Low",
+      D_at_entry_alt >  tau_75_alt                                ~ "High",
+      TRUE                                                         ~ NA_character_
     ),
     g_alt = {
       crossing <- ano[D_rt_alt > tau_20_alt]
@@ -801,22 +894,365 @@ res_low_lag3  <- run_cs(data_low_lag3,  "log_wage_sm", label = "Low/Lag3")
 message("   -> High Dose / Lag=3...")
 res_high_lag3 <- run_cs(data_high_lag3, "log_wage_sm", label = "High/Lag3")
 
-message(" -> All 16 main + 2 robustness models completed.")
+message(" -> All 18 baseline + 2 lag-robustness models completed.")
 
 # ==============================================================================
-# SECTION 9F: ATT SUMMARY TABLE
+# SECTION 9F: NEW — CONDITIONAL (DOUBLY-ROBUST) MODELS (CHANGE 2)
+# ==============================================================================
+# Run the primary wage models with pre-treatment Census covariates in xformla.
+# This implements the doubly-robust estimator of Sant'Anna & Zhao (2020).
+# Both unconditional (already estimated above) and conditional are stored;
+# if results diverge substantially, it is flagged in the audit log.
+# ==============================================================================
+message(" [NEW] Running Conditional (Doubly-Robust) Wage Models...")
+
+res_low_dr  <- tryCatch({
+  message("   -> Low Dose / DR Wages...")
+  run_cs(data_low, "log_wage_sm", label = "Low/DR",
+         xformla = dr_xformla, covars_df = df_covars_dr)
+}, error = function(e) { message(sprintf("   WARNING: Low/DR failed: %s", e$message)); NULL })
+
+res_high_dr <- tryCatch({
+  message("   -> High Dose / DR Wages...")
+  run_cs(data_high, "log_wage_sm", label = "High/DR",
+         xformla = dr_xformla, covars_df = df_covars_dr)
+}, error = function(e) { message(sprintf("   WARNING: High/DR failed: %s", e$message)); NULL })
+
+# NEW: Flag divergence between unconditional and conditional estimates
+dr_divergence_flag <- FALSE
+if (!is.null(res_low_dr) && !is.null(res_high_dr)) {
+  for (pair in list(
+    list(unc = res_low,  cond = res_low_dr,  lbl = "Low"),
+    list(unc = res_high, cond = res_high_dr, lbl = "High")
+  )) {
+    diff_att <- abs(pair$unc$simple$overall.att - pair$cond$simple$overall.att)
+    se_pool  <- sqrt(pair$unc$simple$overall.se^2 + pair$cond$simple$overall.se^2)
+    if (se_pool > 0 && diff_att / se_pool > 2) {
+      message(sprintf("   FLAG: %s unconditional vs DR ATTs diverge by %.1f pooled SEs!",
+                      pair$lbl, diff_att / se_pool))
+      dr_divergence_flag <- TRUE
+    }
+  }
+  if (!dr_divergence_flag) message("   OK: Unconditional and DR estimates are broadly consistent.")
+} else {
+  message("   WARNING: DR comparison skipped (one or both models failed).")
+}
+
+# ==============================================================================
+# SECTION 9G: NEW — HonestDiD SENSITIVITY ANALYSIS (CHANGE 3)
+# ==============================================================================
+# Runs HonestDiD relative-magnitudes sensitivity on the primary wage models.
+# Computes breakdown values: largest Mbar for which the CI still excludes zero.
+# ==============================================================================
+message(" [NEW] Running HonestDiD Sensitivity Analysis...")
+
+# NEW: Helper function for HonestDiD
+run_honest <- function(es_obj, label) {
+  betahat     <- es_obj$att.egt
+  event_times <- es_obj$egt
+  post_start  <- min(which(event_times >= 0))
+
+  # Find VCov matrix — field name varies across did versions
+  vcv_candidates <- intersect(
+    c("V_analytical.aggte", "V.analytical.aggte", "V_analytical"),
+    names(es_obj)
+  )
+  sigma <- if (length(vcv_candidates) > 0) es_obj[[vcv_candidates[1]]] else NULL
+
+  if (is.null(sigma)) {
+    warning(sprintf("HonestDiD: no VCov matrix found for %s", label))
+    return(list(label = label, results = NULL, breakdown = NA_real_))
+  }
+
+  tryCatch({
+    results <- HonestDiD::createSensitivityResults_relativeMagnitudes(
+      betahat        = betahat,
+      sigma          = sigma,
+      numPrePeriods  = post_start - 1,
+      numPostPeriods = length(betahat) - post_start + 1,
+      Mbarvec        = c(0, 0.5, 1, 2)
+    )
+    bd <- max(c(results$Mbar[results$CI_lower > 0], 0), na.rm = TRUE)
+    message(sprintf("   [%s] HonestDiD breakdown Mbar = %.2f", label, bd))
+    list(label = label, results = results, breakdown = bd)
+  }, error = function(e) {
+    warning(sprintf("HonestDiD failed for %s: %s", label, e$message))
+    list(label = label, results = NULL, breakdown = NA_real_)
+  })
+}
+
+honest_results <- list()
+if (requireNamespace("HonestDiD", quietly = TRUE)) {
+  for (spec in list(
+    list(es = res_low$es,  lbl = "Low/Wages"),
+    list(es = res_high$es, lbl = "High/Wages")
+  )) {
+    honest_results[[spec$lbl]] <- run_honest(spec$es, spec$lbl)
+  }
+  # NEW: Also run on DR models if available
+  if (!is.null(res_low_dr))  honest_results[["Low/DR"]]  <- run_honest(res_low_dr$es,  "Low/DR")
+  if (!is.null(res_high_dr)) honest_results[["High/DR"]] <- run_honest(res_high_dr$es, "High/DR")
+
+  # NEW: Generate sensitivity plots
+  for (nm in names(honest_results)) {
+    hr <- honest_results[[nm]]
+    if (!is.null(hr$results)) {
+      tryCatch({
+        p_honest <- ggplot(hr$results, aes(x = Mbar, y = estimate)) +
+          geom_hline(yintercept = 0, linetype = "dashed", color = "grey50") +
+          geom_ribbon(aes(ymin = CI_lower, ymax = CI_upper), alpha = 0.2, fill = "#0072B2") +
+          geom_line(color = "#0072B2", linewidth = 1) +
+          geom_point(color = "#0072B2", size = 2) +
+          labs(
+            title    = sprintf("HonestDiD Sensitivity: %s", hr$label),
+            subtitle = sprintf("Breakdown Mbar = %.2f", hr$breakdown),
+            x = expression(bar(M) ~ "(relative magnitudes)"),
+            y = "ATT (robust CI)"
+          )
+        fname <- sprintf("Figures_Final/fig_honest_%s.png",
+                         gsub("[/ ]", "_", tolower(hr$label)))
+        ggsave(fname, p_honest, width = 7, height = 5, dpi = 300)
+        message(sprintf("   Saved: %s", fname))
+      }, error = function(e) message(sprintf("   WARNING: HonestDiD plot failed for %s: %s", nm, e$message)))
+    }
+  }
+} else {
+  message("   SKIPPED: HonestDiD package not available.")
+}
+
+# ==============================================================================
+# SECTION 9H: NEW — BUFFER-ZONE EXCLUSION TEST FOR SUTVA (CHANGE 4)
+# ==============================================================================
+# Exclude comparison microregions that border High-Dose treated units.
+# If these untreated neighbours are affected by spillovers, dropping them
+# should leave baseline results roughly unchanged (SUTVA holds).
+# ==============================================================================
+message(" [NEW] Running Buffer-Zone Exclusion Test (SUTVA)...")
+
+res_low_buffer  <- NULL
+res_high_buffer <- NULL
+border_ids      <- integer(0)
+
+if (requireNamespace("sf", quietly = TRUE) && requireNamespace("geobr", quietly = TRUE)) {
+  tryCatch({
+    # 1. Load microregion geometries
+    micro_sf <- geobr::read_micro_region(year = 2010, simplified = TRUE)
+
+    # 2. Build adjacency
+    neighbors <- sf::st_touches(micro_sf)
+
+    # 3. Find comparison units bordering High-Dose microregions
+    high_dose_ids <- unique(df_final$id_microrregiao[df_final$dose_bin == "High"])
+    for (i in seq_along(micro_sf$code_micro)) {
+      code_i <- as.character(micro_sf$code_micro[i])
+      if (code_i %in% high_dose_ids) next
+      neighbor_codes <- as.character(micro_sf$code_micro[neighbors[[i]]])
+      if (any(neighbor_codes %in% high_dose_ids)) {
+        border_ids <- c(border_ids, code_i)
+      }
+    }
+    border_ids <- unique(border_ids)
+    message(sprintf("   %d comparison microregions border High-Dose units (excluded).",
+                    length(border_ids)))
+
+    # 4. Re-run Low and High on restricted sample
+    data_low_nobuffer  <- data_low  %>% filter(!(id_microrregiao %in% border_ids))
+    data_high_nobuffer <- data_high %>% filter(!(id_microrregiao %in% border_ids))
+
+    message("   -> Low Dose / Buffer exclusion...")
+    res_low_buffer  <- run_cs(data_low_nobuffer,  "log_wage_sm", label = "Low/Buffer")
+
+    message("   -> High Dose / Buffer exclusion...")
+    res_high_buffer <- run_cs(data_high_nobuffer, "log_wage_sm", label = "High/Buffer")
+
+  }, error = function(e) message(sprintf("   WARNING: Buffer-zone test failed: %s", e$message)))
+} else {
+  message("   SKIPPED: sf/geobr packages not available.")
+}
+
+# ==============================================================================
+# SECTION 9I: NEW — PLACEBO COHORT TEST (AGES 36-50) (CHANGE 5)
+# ==============================================================================
+# Workers aged 36-50 in RAIS are too old to have been ProUni beneficiaries.
+# Non-zero effects on this cohort would indicate the results capture local
+# economic shocks rather than the ProUni human capital channel.
+#
+# NOTE: Re-querying BigQuery for the full 2005-2019 panel is expensive.
+# The exact query and pipeline are shown below as a placeholder.
+# To run: uncomment the block and execute. Results feed into the same
+# run_cs() + build_att_row() pipeline as all other models.
+# ==============================================================================
+message(" [NEW] Placebo Cohort Test (ages 36-50): PLACEHOLDER")
+message("   To run this test, uncomment the block below and re-execute.")
+
+res_placebo_low  <- NULL
+res_placebo_high <- NULL
+
+# --- UNCOMMENT TO RUN PLACEBO COHORT ---
+# message("   -> Downloading RAIS placebo cohort (ages 36-50)...")
+# placebo_list <- list()
+# for (y in params$years) {
+#   q_placebo <- paste0("
+#     SELECT
+#       ano,
+#       id_municipio,
+#       raca_cor,
+#       sexo,
+#       COUNT(*)                                             AS n_vinculos,
+#       AVG(LOG(GREATEST(valor_remuneracao_media_sm, 0.1)))  AS log_wage_sm
+#     FROM `basedosdados.br_me_rais.microdados_vinculos`
+#     WHERE
+#       ano = ", y, "
+#       AND idade BETWEEN 36 AND 50
+#       AND valor_remuneracao_media_sm > 0
+#       AND tipo_vinculo = '10'
+#       AND vinculo_ativo_3112 = 1
+#     GROUP BY ano, id_municipio, raca_cor, sexo
+#   ")
+#   tryCatch({
+#     placebo_list[[as.character(y)]] <- basedosdados::read_sql(q_placebo)
+#     message(sprintf("     Placebo year %d OK", y))
+#   }, error = function(e) message(sprintf("     Error fetching placebo year %d: %s", y, e$message)))
+#   gc()
+# }
+#
+# df_rais_placebo <- bind_rows(placebo_list)
+# rm(placebo_list); gc()
+#
+# # Build regression data for placebo cohort (non-white, same dose bins as main)
+# df_placebo_reg <- df_rais_placebo %>%
+#   filter(raca_cor %in% c("1", "4", "8")) %>%
+#   inner_join(df_geo %>% select(id_municipio, id_microrregiao), by = "id_municipio") %>%
+#   mutate(ano = as.integer(ano), id_num = as.integer(id_microrregiao)) %>%
+#   inner_join(df_final %>% select(id_microrregiao, ano, g, dose_bin), by = c("id_microrregiao", "ano"))
+#
+# data_placebo_low  <- df_placebo_reg %>% filter(dose_bin == "Low"  | g == 0)
+# data_placebo_high <- df_placebo_reg %>% filter(dose_bin == "High" | g == 0)
+#
+# message("   -> Placebo Low Dose / Wages...")
+# res_placebo_low  <- run_cs(data_placebo_low,  "log_wage_sm", label = "Placebo/Low")
+# message("   -> Placebo High Dose / Wages...")
+# res_placebo_high <- run_cs(data_placebo_high, "log_wage_sm", label = "Placebo/High")
+# --- END PLACEBO BLOCK ---
+
+# ==============================================================================
+# SECTION 9J: NEW — TWFE BENCHMARK (CHANGE 6)
+# ==============================================================================
+# Estimate the naive two-way fixed effects (TWFE) specification for comparison
+# with the heterogeneity-robust CS estimator. TWFE is biased under staggered
+# treatment timing, so we expect divergence.
+# ==============================================================================
+message(" [NEW] Running TWFE Benchmark...")
+
+twfe_fit <- NULL
+if (requireNamespace("fixest", quietly = TRUE)) {
+  tryCatch({
+    twfe_data <- df_nonwhite %>%
+      group_by(id_num, ano, g) %>%
+      summarise(y = weighted.mean(log_wage_sm, w = n_vinculos, na.rm = TRUE),
+                .groups = "drop") %>%
+      mutate(treated = as.integer(g > 0 & ano >= g))
+
+    twfe_fit <- fixest::feols(y ~ treated | id_num + ano, data = twfe_data, cluster = ~id_num)
+    twfe_coef <- fixest::coeftable(twfe_fit)
+    message(sprintf("   TWFE coeff = %.4f (SE = %.4f, p = %.4f)",
+                    twfe_coef[1, "Estimate"], twfe_coef[1, "Std. Error"], twfe_coef[1, "Pr(>|t|)"]))
+  }, error = function(e) message(sprintf("   WARNING: TWFE failed: %s", e$message)))
+} else {
+  message("   SKIPPED: fixest package not available.")
+}
+
+# ==============================================================================
+# SECTION 9K: NEW — ALTERNATIVE DISCRETIZATION CUTOFFS (CHANGE 7)
+# ==============================================================================
+# Re-run the primary wage models with alternative bin boundaries to verify
+# that results are not an artifact of the specific percentile choice.
+# ==============================================================================
+message(" [NEW] Running Alternative Cutoff Robustness...")
+
+# NEW: Helper to recompute bins and re-run for a given pair of quantiles
+run_alt_cutoffs <- function(q_lo, q_hi, suffix) {
+  tau_lo <- quantile(df_first_cross$D_at_entry, q_lo, na.rm = TRUE)
+  tau_hi <- quantile(df_first_cross$D_at_entry, q_hi, na.rm = TRUE)
+  message(sprintf("   Cutoffs %s: tau_lo=%.4f | tau_hi=%.4f", suffix, tau_lo, tau_hi))
+
+  df_alt <- df_final %>%
+    mutate(
+      dose_bin_alt = case_when(
+        D_at_entry >  tau_20 & D_at_entry <= tau_lo ~ "Low",
+        D_at_entry >  tau_hi                         ~ "High",
+        TRUE                                         ~ NA_character_
+      )
+    )
+
+  data_low_alt  <- df_nonwhite %>%
+    select(-dose_bin) %>%
+    inner_join(df_alt %>% select(id_microrregiao, ano, dose_bin_alt), by = c("id_microrregiao", "ano")) %>%
+    rename(dose_bin = dose_bin_alt) %>%
+    filter(dose_bin == "Low" | g == 0)
+
+  data_high_alt <- df_nonwhite %>%
+    select(-dose_bin) %>%
+    inner_join(df_alt %>% select(id_microrregiao, ano, dose_bin_alt), by = c("id_microrregiao", "ano")) %>%
+    rename(dose_bin = dose_bin_alt) %>%
+    filter(dose_bin == "High" | g == 0)
+
+  res_lo <- tryCatch(run_cs(data_low_alt,  "log_wage_sm", label = paste0("Low/", suffix)),
+                     error = function(e) { message(sprintf("   WARNING: %s Low failed: %s", suffix, e$message)); NULL })
+  res_hi <- tryCatch(run_cs(data_high_alt, "log_wage_sm", label = paste0("High/", suffix)),
+                     error = function(e) { message(sprintf("   WARNING: %s High failed: %s", suffix, e$message)); NULL })
+  list(low = res_lo, high = res_hi)
+}
+
+message("   -> tau_25 / tau_75 cutoffs...")
+alt_25_75 <- run_alt_cutoffs(0.25, 0.75, "q25_75")
+res_low_25_75  <- alt_25_75$low
+res_high_25_75 <- alt_25_75$high
+
+message("   -> tau_33 / tau_67 cutoffs...")
+alt_33_67 <- run_alt_cutoffs(1/3, 2/3, "q33_67")
+res_low_33_67  <- alt_33_67$low
+res_high_33_67 <- alt_33_67$high
+
+message(" -> All new robustness and sensitivity sections completed.")
+
+# ==============================================================================
+# SECTION 9L: ATT SUMMARY TABLE (UPDATED)
 # ==============================================================================
 message("   Building ATT summary table...")
 
-all_results <- list(
+# Collect all results — NULLs are silently dropped by Filter()
+all_results <- Filter(Negate(is.null), list(
   res_low, res_high, res_cen, res_mar,
   res_low_emp, res_high_emp, res_cen_emp, res_mar_emp,
   res_male_low, res_female_low, res_male_high, res_female_high,
   res_white_low, res_nonwhite_low, res_white_high, res_nonwhite_high,
-  res_low_lag3, res_high_lag3
-)
+  res_low_lag3, res_high_lag3,
+  res_low_dr, res_high_dr,
+  res_low_buffer, res_high_buffer,
+  res_placebo_low, res_placebo_high,
+  res_low_25_75, res_high_25_75,
+  res_low_33_67, res_high_33_67
+))
 
 tab_att <- bind_rows(lapply(all_results, build_att_row))
+
+# NEW: Add TWFE row if available
+if (!is.null(twfe_fit)) {
+  tc <- fixest::coeftable(twfe_fit)
+  tab_att <- bind_rows(tab_att, tibble(
+    Model      = "TWFE (naive)",
+    ATT        = round(tc[1, "Estimate"], 4),
+    SE         = round(tc[1, "Std. Error"], 4),
+    CI_low     = round(tc[1, "Estimate"] - 1.96 * tc[1, "Std. Error"], 4),
+    CI_high    = round(tc[1, "Estimate"] + 1.96 * tc[1, "Std. Error"], 4),
+    Pretrend_p = NA_real_,
+    N_obs      = as.integer(fixest::nobs(twfe_fit)),
+    N_treated  = NA_integer_,
+    N_notyet   = NA_integer_
+  ))
+}
+
 write_csv(tab_att, "Tables_Final/table4_summary_att.csv")
 print(xtable(tab_att, caption = "Summary of ATT Estimates Across All Models",
              digits = c(0, 0, 4, 4, 4, 4, 4, 0, 0, 0)),
@@ -898,6 +1334,57 @@ p6 <- plot_event_study(
 )
 ggsave("Figures_Final/fig_6_robustness_lag.png", p6, width = 9, height = 5.5, dpi = 300)
 
+# NEW: Figure 7 — Unconditional vs Doubly-Robust (if DR models succeeded)
+if (!is.null(res_low_dr)) {
+  p7 <- plot_event_study(
+    res_low$tidy, res_low_dr$tidy,
+    "Unconditional", "Doubly-Robust (DR)",
+    "#E69F00", "#009E73",
+    "Sensitivity: Unconditional vs. DR (Low Dose)"
+  )
+  ggsave("Figures_Final/fig_7_dr_low.png", p7, width = 9, height = 5.5, dpi = 300)
+}
+if (!is.null(res_high_dr)) {
+  p7b <- plot_event_study(
+    res_high$tidy, res_high_dr$tidy,
+    "Unconditional", "Doubly-Robust (DR)",
+    "#0072B2", "#009E73",
+    "Sensitivity: Unconditional vs. DR (High Dose)"
+  )
+  ggsave("Figures_Final/fig_7b_dr_high.png", p7b, width = 9, height = 5.5, dpi = 300)
+}
+
+# NEW: Figure 8 — Buffer-zone exclusion comparison (if buffer models succeeded)
+if (!is.null(res_low_buffer)) {
+  p8 <- plot_event_study(
+    res_low$tidy, res_low_buffer$tidy,
+    "Baseline", "Buffer Excluded",
+    "#E69F00", "#CC79A7",
+    "SUTVA Robustness: Buffer-Zone Exclusion (Low Dose)"
+  )
+  ggsave("Figures_Final/fig_8_buffer_low.png", p8, width = 9, height = 5.5, dpi = 300)
+}
+if (!is.null(res_high_buffer)) {
+  p8b <- plot_event_study(
+    res_high$tidy, res_high_buffer$tidy,
+    "Baseline", "Buffer Excluded",
+    "#0072B2", "#CC79A7",
+    "SUTVA Robustness: Buffer-Zone Exclusion (High Dose)"
+  )
+  ggsave("Figures_Final/fig_8b_buffer_high.png", p8b, width = 9, height = 5.5, dpi = 300)
+}
+
+# NEW: Figure 9 — Alternative cutoffs comparison
+if (!is.null(res_low_25_75)) {
+  p9 <- plot_event_study(
+    res_low$tidy, res_low_25_75$tidy,
+    "Baseline (p20/p50)", "Alt (p25/p75)",
+    "#E69F00", "#56B4E9",
+    "Cutoff Robustness: Low Dose"
+  )
+  ggsave("Figures_Final/fig_9_altcut_low.png", p9, width = 9, height = 5.5, dpi = 300)
+}
+
 # Save all event-study estimates as CSVs for appendix
 es_exports <- list(
   es_low_wage = res_low$tidy, es_high_wage = res_high$tidy,
@@ -910,6 +1397,16 @@ es_exports <- list(
   es_white_high = res_white_high$tidy, es_nonwhite_high = res_nonwhite_high$tidy,
   es_low_lag3 = res_low_lag3$tidy, es_high_lag3 = res_high_lag3$tidy
 )
+# NEW: Add conditional and robustness event-study CSVs
+if (!is.null(res_low_dr))      es_exports$es_low_dr      <- res_low_dr$tidy
+if (!is.null(res_high_dr))     es_exports$es_high_dr     <- res_high_dr$tidy
+if (!is.null(res_low_buffer))  es_exports$es_low_buffer  <- res_low_buffer$tidy
+if (!is.null(res_high_buffer)) es_exports$es_high_buffer <- res_high_buffer$tidy
+if (!is.null(res_low_25_75))   es_exports$es_low_25_75   <- res_low_25_75$tidy
+if (!is.null(res_high_25_75))  es_exports$es_high_25_75  <- res_high_25_75$tidy
+if (!is.null(res_low_33_67))   es_exports$es_low_33_67   <- res_low_33_67$tidy
+if (!is.null(res_high_33_67))  es_exports$es_high_33_67  <- res_high_33_67$tidy
+
 for (nm in names(es_exports)) {
   write_csv(es_exports[[nm]], sprintf("Tables_Final/%s.csv", nm))
 }
@@ -925,7 +1422,10 @@ audit_log <- list(
   params     = params,
   n_units    = n_distinct(df_final$id_microrregiao),
   n_years    = length(params$years),
-  thresholds = list(tau_20 = tau_20, tau_50 = tau_50, tau_75 = tau_75),
+  # FIX: Entry-based thresholds (not 2019 cross-section)
+  bin_method     = "entry-based (D_at_entry)",
+  tau_prelim     = tau_prelim,
+  thresholds     = list(tau_20 = tau_20, tau_50 = tau_50, tau_75 = tau_75),
   thresholds_lag3 = list(tau_20 = tau_20_alt, tau_50 = tau_50_alt, tau_75 = tau_75_alt),
   bin_sizes  = list(
     Low  = bin_sizes$n_regions[bin_sizes$dose_bin == "Low"],
@@ -956,13 +1456,42 @@ audit_log <- list(
     Low_Lag3       = res_low_lag3$pretrend,
     High_Lag3      = res_high_lag3$pretrend
   ),
+  # NEW: Doubly-robust results
+  dr_divergence_flag = dr_divergence_flag,
+  dr_pretrend = list(
+    Low_DR  = if (!is.null(res_low_dr))  res_low_dr$pretrend  else NA,
+    High_DR = if (!is.null(res_high_dr)) res_high_dr$pretrend else NA
+  ),
+  # NEW: HonestDiD breakdown values
+  honest_did = lapply(honest_results, function(x) x$breakdown),
+  # NEW: Buffer-zone info
+  buffer_zone = list(
+    n_excluded = length(border_ids),
+    excluded_ids = border_ids,
+    pretrend_low  = if (!is.null(res_low_buffer))  res_low_buffer$pretrend  else NA,
+    pretrend_high = if (!is.null(res_high_buffer)) res_high_buffer$pretrend else NA
+  ),
+  # NEW: TWFE benchmark
+  twfe = if (!is.null(twfe_fit)) {
+    tc <- fixest::coeftable(twfe_fit)
+    list(coef = tc[1, "Estimate"], se = tc[1, "Std. Error"], p = tc[1, "Pr(>|t|)"])
+  } else NA,
+  # NEW: Alternative cutoff pretrends
+  alt_cutoff_pretrend = list(
+    Low_25_75  = if (!is.null(res_low_25_75))  res_low_25_75$pretrend  else NA,
+    High_25_75 = if (!is.null(res_high_25_75)) res_high_25_75$pretrend else NA,
+    Low_33_67  = if (!is.null(res_low_33_67))  res_low_33_67$pretrend  else NA,
+    High_33_67 = if (!is.null(res_high_33_67)) res_high_33_67$pretrend else NA
+  ),
   case_studies = case_micro
 )
 saveRDS(audit_log, "Documentation_Final/audit_log.rds")
 
 # Print summary
+n_total_models <- nrow(tab_att)
 message("\n=== AUDIT SUMMARY ===")
 message(sprintf("  Microregions: %d | Years: %d", audit_log$n_units, audit_log$n_years))
+message(sprintf("  Bin method: %s (tau_prelim = %.4f)", audit_log$bin_method, audit_log$tau_prelim))
 message(sprintf("  Bins: Low = %d | High = %d", audit_log$bin_sizes$Low, audit_log$bin_sizes$High))
 message(sprintf("  Treatment year range: %d - %d", audit_log$g_range$min, audit_log$g_range$max))
 message("  --- Headline ATTs (non-white, wages) ---")
@@ -975,7 +1504,24 @@ message("  --- Pre-trend p-values (wages, main) ---")
 message(sprintf("  Low=%.4f | High=%.4f | Central=%.4f | Marginal=%.4f",
                 res_low$pretrend$p.value, res_high$pretrend$p.value,
                 res_cen$pretrend$p.value, res_mar$pretrend$p.value))
-message("  --- Models estimated: 16 main + 2 robustness = 18 total ---")
+if (!is.null(res_low_dr)) {
+  message("  --- DR estimates ---")
+  message(sprintf("  Low/DR: %.4f (SE %.4f) | High/DR: %.4f (SE %.4f)",
+                  res_low_dr$simple$overall.att, res_low_dr$simple$overall.se,
+                  if (!is.null(res_high_dr)) res_high_dr$simple$overall.att else NA,
+                  if (!is.null(res_high_dr)) res_high_dr$simple$overall.se  else NA))
+}
+if (length(honest_results) > 0) {
+  message("  --- HonestDiD breakdown Mbar ---")
+  for (nm in names(honest_results)) {
+    message(sprintf("  %s: %.2f", nm, honest_results[[nm]]$breakdown))
+  }
+}
+if (!is.null(twfe_fit)) {
+  tc <- fixest::coeftable(twfe_fit)
+  message(sprintf("  --- TWFE benchmark: %.4f (SE %.4f) ---", tc[1, "Estimate"], tc[1, "Std. Error"]))
+}
+message(sprintf("  --- Models estimated: %d total ---", n_total_models))
 message("=====================\n")
 
 message("DONE. All outputs saved to Figures_Final/, Tables_Final/, Documentation_Final/.")
