@@ -16,9 +16,9 @@
 #   - Treatment timing g = first year D_{r,t} > tau_20.
 #
 # OUTPUTS:
-#   - 18 Callaway & Sant'Anna models (wages + employment x dose/region/gender/race)
+#   - 16 Callaway & Sant'Anna models (wages + employment x dose/region/gender/race)
 #   - 2 robustness models (alternative lag = 3 years)
-#   - 7 publication figures (Figures_Final/)
+#   - 9 publication figures (Figures_Final/)
 #   - ATT summary table, event-study CSVs, balance table (Tables_Final/)
 #   - Audit log with pre-trend tests (Documentation_Final/audit_log.rds)
 # ==============================================================================
@@ -288,7 +288,8 @@ df_census <- basedosdados::read_sql("
 
     SUM(peso_amostral) AS pop_18_24,
 
-    SUM(CASE WHEN v0606 IN ('2', '3')
+    /* Census IBGE v0606: 1=Branca, 2=Preta, 3=Amarela, 4=Parda, 5=Indigena */
+    SUM(CASE WHEN v0606 IN ('2', '4')
              THEN peso_amostral ELSE 0 END) AS pop_nonwhite,
 
     SUM(CASE WHEN v6400 = '3'
@@ -601,12 +602,15 @@ df_reg_all <- df_rais %>%
   )
 
 # 8.2 Demographic subsets
-# Non-white = codes 2 (Preta), 4 (Parda), 8 (Indigena)
-# White     = code 1 (Branca)
-df_nonwhite <- df_reg_all %>% filter(raca_cor %in% c("2", "4", "8"))
-df_white    <- df_reg_all %>% filter(raca_cor == "1")
+# RAIS uses MTE race coding (NOT IBGE):
+#   1 = Indígena, 2 = Branca, 4 = Preta, 6 = Amarela, 8 = Parda, 9 = Não informado
+# Non-white = codes 1 (Indígena), 4 (Preta), 8 (Parda)
+# White     = code 2 (Branca)
+df_nonwhite <- df_reg_all %>% filter(raca_cor %in% c("1", "4", "8"))
+df_white    <- df_reg_all %>% filter(raca_cor == "2")
 
 # Gender subsets (from non-white, matching main results population)
+# RAIS sexo: 1 = Masculino, 2 = Feminino
 df_male   <- df_nonwhite %>% filter(sexo == "1")
 df_female <- df_nonwhite %>% filter(sexo == "2")
 
@@ -796,7 +800,7 @@ res_low_lag3  <- run_cs(data_low_lag3,  "log_wage_sm", label = "Low/Lag3")
 message("   -> High Dose / Lag=3...")
 res_high_lag3 <- run_cs(data_high_lag3, "log_wage_sm", label = "High/Lag3")
 
-message(" -> All 18 + 2 robustness models completed.")
+message(" -> All 16 main + 2 robustness models completed.")
 
 # ==============================================================================
 # SECTION 9F: ATT SUMMARY TABLE
@@ -938,6 +942,8 @@ audit_log <- list(
     Marginal_Wages = res_mar$pretrend,
     Low_Emp        = res_low_emp$pretrend,
     High_Emp       = res_high_emp$pretrend,
+    Central_Emp    = res_cen_emp$pretrend,
+    Marginal_Emp   = res_mar_emp$pretrend,
     Male_Low       = res_male_low$pretrend,
     Female_Low     = res_female_low$pretrend,
     Male_High      = res_male_high$pretrend,
@@ -968,7 +974,7 @@ message("  --- Pre-trend p-values (wages, main) ---")
 message(sprintf("  Low=%.4f | High=%.4f | Central=%.4f | Marginal=%.4f",
                 res_low$pretrend$p.value, res_high$pretrend$p.value,
                 res_cen$pretrend$p.value, res_mar$pretrend$p.value))
-message("  --- Models estimated: 18 main + 2 robustness = 20 total ---")
+message("  --- Models estimated: 16 main + 2 robustness = 18 total ---")
 message("=====================\n")
 
 message("DONE. All outputs saved to Figures_Final/, Tables_Final/, Documentation_Final/.")
