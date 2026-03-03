@@ -300,17 +300,19 @@ df_census <- basedosdados::read_sql("
 
 # 3C. ProUni scholarships — batched download with demographic stratification
 message("   -> Downloading ProUni (Batched Strategy)...")
+# FIX: basedosdados uses 'sexo' and 'raca_cor' (not sexo_beneficiario/raca_cor_beneficiario)
+# Verified from: github.com/basedosdados/mais/blob/master/bases/br_mec_prouni/microdados/table_config.yaml
 q_prouni_base <- "
   SELECT
     ano,
     id_municipio,
-    raca_cor_beneficiario,
-    sexo_beneficiario,
+    raca_cor,
+    sexo,
     tipo_bolsa,
     COUNT(*) AS n_bolsas
   FROM `basedosdados.br_mec_prouni.microdados`
 "
-q_prouni_group <- "GROUP BY ano, id_municipio, raca_cor_beneficiario, sexo_beneficiario, tipo_bolsa"
+q_prouni_group <- "GROUP BY ano, id_municipio, raca_cor, sexo, tipo_bolsa"
 
 p1 <- basedosdados::read_sql(paste(q_prouni_base, "WHERE ano BETWEEN 2005 AND 2009", q_prouni_group))
 p2 <- basedosdados::read_sql(paste(q_prouni_base, "WHERE ano BETWEEN 2010 AND 2014", q_prouni_group))
@@ -335,8 +337,8 @@ for (y in params$years) {
       ano = ", y, "
       AND idade BETWEEN ", params$age_min, " AND ", params$age_max, "
       AND valor_remuneracao_media_sm > 0
-      AND tipo_vinculo  = 10
-      AND status_vinculo = 10
+      AND tipo_vinculo = 10
+      AND vinculo_ativo_3112 = 1
     GROUP BY ano, id_municipio, raca_cor, sexo
   ")
   tryCatch({
