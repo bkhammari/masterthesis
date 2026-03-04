@@ -1,119 +1,332 @@
-\chapter{Identification Strategy and Econometric Framework}
-\label{ch:experiment}
+\section{Data and Empirical Strategy}
+\label{sec:methodology}
 
-This chapter details the identification strategy used to estimate the causal effect of ProUni on labor market outcomes. The design exploits two independent sources of variation: (i) spatial heterogeneity in cumulative scholarship density across microregions, and (ii) the temporal exposure of different age cohorts. Specifically, following \citeA{Duflo2001}, I exploit the fact that only young workers (aged 22--28) could plausibly have benefited from ProUni scholarships, while older workers (aged 29--35) in the same microregion serve as a within-market control cohort. This age-cohort contrast, combined with spatial variation in scholarship density, yields a triple-difference (DDD) design that isolates the human capital channel from local economic shocks.
+\subsection{Introduction}
 
-\section{Treatment Variable}
-\label{sec:treatment}
+This chapter details the identification strategy employed to evaluate the distributional labor market consequences of the \acrfull{prouni}. The central empirical challenge in this analysis is to isolate the causal effect of a large-scale, staggered supply shock on local earnings from confounding factors such as secular growth trends or pre-existing regional divergence, especially in the context of Brazil's economic dualism.
 
-The treatment intensity measure is the cumulative ProUni scholarships per 1,000 youth population in each microregion $r$, lagged by four years to reflect the time between scholarship receipt and labor market entry:
-\begin{equation}
-    D_{r,t} = \frac{\sum_{s=2005}^{t-4} \text{Bolsas}_{r,s}}{\text{Pop}_{r,18\text{--}24}^{2010}} \times 1000.
-    \label{eq:dose}
-\end{equation}
-This variable is discretized into dose bins based on the 2019 cross-sectional distribution: ``Low'' (20th--50th percentile), ``High'' ($>$75th percentile), with the remaining microregions forming the not-yet-treated comparison group.
+Following the seminal framework of \citeA{Duflo2001}, I exploit two distinct dimensions of variation to identify these effects: the \emph{spatial intensity} of the program (the density of scholarships allocated to specific microregions) and the \emph{temporal exposure} of different cohorts (determined by the approximate timing of entry into the labor force). This interaction allows for a precise ``dosage'' design: rather than asking merely if ProUni worked, this thesis investigates how the magnitude of the supply shock interacts with local labor demand on the extensive and intensive margin.
 
-\section{Estimation Framework}
-\label{sec:estimation}
+However, departing from the parametric linear interaction models common in earlier literature, I follow the event-study logic for continuous treatments in \citeA{CallawayGoodmanBaconSantAnna2024}: I first construct a continuous, lagged measure of \acrshort{prouni} exposure (a scholarship-density “dose”), and then \emph{partially aggregate} this continuous dose into interpretable exposure strata, i.e., low- vs.\ high-dose bins.
+Within each stratum, I estimate group-time average treatment effects using the \texttt{did} implementation of \citeA{CallawaySantAnna2021} and aggregate them into dynamic event studies.
+This approach relaxes the strict assumptions of constant treatment effects and linearity, allowing for the explicit detection of non-linear mechanisms such as market saturation and scarcity effects.
 
-\subsection{Sample Construction}
-\label{sec:sample}
 
-The analysis sample consists of formal-sector workers (CLT contracts) aged 22--35 drawn from RAIS (\emph{Rela\c{c}\~{a}o Anual de Informa\c{c}\~{o}es Sociais}) for the years 2002--2019. I restrict attention to active contracts as of December 31 of each year (\texttt{vinculo\_ativo\_3112 = 1}) with positive remuneration.
+\subsection{Data Sources and Processing}
+\label{sec:data_processing}
 
-\paragraph{Age-Cohort Decomposition (Duflo-style).} To isolate the age-specific human capital channel from general local economic shocks, I decompose the main 22--35 sample into two cohorts:
+The analysis integrates and merges three primary administrative data sources, harmonized via the \texttt{basedosdados} infrastructure \cite{R-basedosdados} to ensure consistent geographic identifiers and variable definitions across the 2005--2019 period. This package sources data directly from the API of \href{https://basedosdados.org/}{Base dos Dados}, a non-profit open data platform that centralizes and harmonizes hundreds of public Brazilian datasets across regions and municipalities, notably focusing on socioeconomic microdata \cite{basedosdados.org, Dahis2022}. The data visualization in this thesis is facilitated by the \texttt{geobr} package developed by \citeA{R-geobr}. 
+
+\subsubsection{Labor Market Outcomes: \acrshort{rais}}
+
+\paragraph{Data description.}
+The primary source of the dependent variables is \acrfull{rais}, a matched employer–employee administrative census of Brazil's formal labor market created by decree in 1975. Unlike household surveys (e.g.\ \acrshort{pnad-c}), which are subject to sampling error and self-reporting bias, \acrshort{rais} provides near-universe coverage of formal earnings with geographic detail down to the municipal level, allowing precise estimation of local wage premia even in small and remote municipalities \cite{rais-sumario, rais-ibge, DixCarneiro2018}. Employer reporting is mandatory, and non-compliance is punishable by fines regulated by law, which underpins the high coverage of formal employment in the data \cite{EngbomEtAl2022}. 
+
+\acrshort{rais} is organized around the employment relationship (\emph{vínculo}): each row links a worker to an establishment in a given year and reports both worker characteristics (e.g.\ age, ethnicity/phenotype, gender) and job characteristics (e.g.\ remuneration) \cite{rais-sumario}.
+
+\paragraph{Sample construction.}
+To focus on the demographic directly exposed to the policy, I restrict the outcome sample to individuals aged \textbf{22 to 35 years}. This age band is chosen for two distinct reasons:
+\begin{enumerate}
+    \item \textbf{Policy exposure:} It captures the ``first generation'' of ProUni graduates entering the workforce (typically aged 22--24 at graduation) and their early career trajectory.
+    \item \textbf{Counterfactual cohort:} It excludes older cohorts whose wage dynamics are primarily driven by seniority or tenure, which might introduce noise into the estimation of returns to schooling \cite{Card1999, AngristPischke2009}.
+\end{enumerate}
+The panel strictly ends in 2019 to avoid the structural break caused by the COVID-19 pandemic, ensuring that the parallel trends assumption is not violated by asymmetric economic shocks in 2020. Outcomes are aggregated from municipality--year to microregion--year level.
+
+\paragraph{Main outcomes.}
+The main dependent variable is the average log monthly remuneration of formal workers aged 22–35, as reported in \acrshort{rais}. Specifically, I first compute the log of the average monthly remuneration in minimum wages at the municipality–year level, then aggregate to microregion–year (Section~\ref{sec:unit_analysis}). 
+
+In addition, I construct an extensive-margin outcome: the total number of formal \emph{vínculos} of individuals aged 22–35 in each microregion–year cell, distinguishing effects operating through wages from those through employment.
+
+
+
+\subsubsection{Treatment Intensity: \acrshort{prouni}}
+Treatment data is derived from the administrative records of the ProUni program, detailing the precise location (municipality of the \acrshort{hei}) and timing of every scholarship granted between 2005 and 2019.
 \begin{itemize}
-    \item \textbf{Exposed cohort (ages 22--28):} Workers who could
-    plausibly be ProUni graduates, having entered university at the
-    standard age (18--20) and graduated within 4--6 years.
-    \item \textbf{Control cohort (ages 29--35):} Workers too old to
-    have been ProUni beneficiaries at standard university-going age
-    during the treatment period.
+    \item \textbf{Spatial Aggregation:} Scholarship data are aggregated to the microregion level to align with the definition of the local labor market (see Section \ref{sec:unit_analysis}).
+    \item \textbf{Covariate Normalization:} To measure intensity rather than volume, scholarship counts are normalized by the local youth population (aged 18--24) obtained from the 2010 Demographic Census. This ensures the treatment variable reflects the ``saturation'' of the potential skilled labor force.
 \end{itemize}
-The primary outcome becomes the \emph{within-microregion wage gap} between these two cohorts:
+
+\subsubsection{Unit of Analysis: The Microregion}
+\label{sec:unit_analysis}
+
+While Brazil is administratively divided into 5,570 municipalities, this analysis aggregates data to the \textbf{Microregion} level ($N=558$), an official regional division above municipalities which the \acrshort{ibge} established in 1990 according to a.) the spatial structure of industrial and agricultural production and b.) the spatial interaction i.e., the flow of goods, capital, and information\footnote{
+IBGE’s meso/micro regionalization has been superseded by the Immediate and Intermediate Geographic Regions in 2017 but nonetheless I use microregions because they remain a standard unit in applied work with Brazilian administrative data that reduces municipality-level commuting measurement error.\cite{IBGE_QGR_2022}}. This aggregation is statistically necessary to address the ``spatial mismatch'' present in municipality-level data \cite{IBGE_QGR_2022}.
+\paragraph{}
+In integrated economic zones, an individual's residential location (where the scholarship is theoretically assigned) often differs from their workplace location (where the earnings outcome is measured) due to commuting patterns. As noted in the literature on Brazilian local labor markets \cite{DixCarneiro2018}, the Microregion can be regarded as a self-contained commuting zone in which labor supply and demand equilibrate. This approach minimizes measurement error from cross-municipal commuting while maintaining 558 clusters—well above the threshold required for valid cluster-robust inference \cite{CameronMiller2015}.
+In practice, outcome variables are constructed from municipality-year RAIS aggregates and then spatially aggregated to the microregion-year level via  mapping \texttt{id\_municipio} to \texttt{id\_microrregiao}. This ensures that the unit of analysis in the empirical design corresponds to economically integrated labor markets rather than individual municipalities.
+
+\subsubsection{Defining the Treatment: The ``Dose'' of Human Capital}
+\label{sec:treatment_def}
+
+A central hypothesis of this thesis is that educational supply shocks exhibit non-linearities. A linear continuous treatment specification (e.g., ``Effect per 1 additional scholarship'') assumes that the 100th scholarship has the same marginal effect as the 10,000th. This is unlikely to hold if local markets face capacity constraints. To capture potential non-linearities, I adopt a \textbf{discretized continuous treatment} approach.
+
+\subsubsection{The Continuous Dose Variable ($D_{r,t}$)}
+For each microregion $r$ and year $t$, I construct the cumulative scholarship density variable $D_{r,t}$:
+
 \begin{equation}
-    \Delta w_{r,t} = \bar{w}_{r,t}^{\text{young}} - \bar{w}_{r,t}^{\text{old}},
-    \label{eq:wage_gap}
+    D_{r,t} = \frac{\sum_{k=2005}^{t-4} \text{Scholarships}_{r,k}}{\text{Youth Population}_{r, 2010}} \times 1000
+    \label{eq:dose_variable}
 \end{equation}
-where $\bar{w}_{r,t}^{c}$ is the average log wage for cohort $c$ in microregion $r$ at time $t$. Any local shock that affects all ages equally (e.g., a factory closure, commodity price change) is absorbed by the differencing, leaving only the age-specific ProUni channel. This is analogous to \citeA{Duflo2001}'s comparison of young cohorts exposed to Indonesia's school construction program against older cohorts in the same district.
+\\
+Crucially, the numerator is \textbf{lagged by four years}. Following the logic in \citeA{Duflo2001}, an educational investment in year $t$ only becomes a \emph{labor supply shock} when beneficiaries plausibly complete their degree and enter the workforce.
+Accordingly, I interpret the lagged dose as a proxy for the local inflow of ProUni-educated workers, noting that the numerator captures \emph{scholarship grants} (not observed degree completions) and therefore represents an exposure measure rather than a literal count of graduates.
 
-\subsection{Callaway and Sant'Anna Estimator}
-\label{sec:cs_estimator}
 
-I estimate group-time average treatment effects $ATT(g,t)$ using the heterogeneity-robust estimator of \citeA{CallawayAndSantAnna2021}, which allows for staggered treatment adoption and heterogeneous treatment effects. The not-yet-treated comparison group is used throughout. Event-study aggregations follow:
+\subsubsection{Discretization}
+Following the methodological recommendations of \citeA{CallawayGoodmanBaconSantAnna2024} for handling continuous treatments with high dimensionality, I choose an aggregation strategy driven by the research question.
+\add{In the spirit of \citeA{CallawayGoodmanBaconSantAnna2024} and the associated event-study discussion, the goal of this step is to \emph{partially aggregate} a continuous exposure measure into a small number of empirically meaningful dose strata, yielding readable “dose-aware” event-study plots that still retain heterogeneity across the treatment distribution.}
+To explicitly test for diminishing marginal returns, I discretize the continuous density into intensity bins based on the distribution observed in the final sample year of 2019:
+
+\begin{itemize}
+    \item \textbf{Control Group (Baseline):} Microregions in the bottom 20\% of the density distribution ($D \leq \tau_{20}$). These regions received negligible exposure and serve as the counterfactual for ``no effective treatment.''
+    \item \textbf{Low Dose (Scarcity):} Microregions between the 20th and 50th percentiles ($D \in (\tau_{20}, \tau_{50}]$). These areas experienced a moderate, targeted supply shock, testing the ``Scarcity Rent'' hypothesis.
+    \item \textbf{High Dose (Saturation):} Microregions in the top quartile ($D > \tau_{75}$). These areas experienced a massive supply shock, testing the ``Saturation'' hypothesis.
+\end{itemize}
+
+This two-stratum partition emphasizes the theoretically motivated
+contrast between scarcity and saturation regimes while maintaining
+adequate sample sizes within each bin for reliable inference.
+Robustness to alternative cutoff choices ($\tau_{25}$/$\tau_{75}$ and
+$\tau_{33}$/$\tau_{67}$) is assessed in
+Section~\ref{sec:robustness}.
+
+\paragraph{Treatment-timing variable.}
+While the intensity bins are defined using \emph{mature} exposure
+(the cross-sectional distribution in 2019), the treatment-timing
+variable $G_d^r$ used in the staggered event-study design is defined
+separately as the \emph{first year} in which microregion $r$'s
+lagged density $D_{r,t}$ crosses the low-exposure threshold
+$\tau_{20}$:
 \begin{equation}
-    ATT_d^{\text{ES}}(e) = \frac{1}{|\mathcal{G}|}\sum_{g \in \mathcal{G}} ATT_d(g, g+e),
-    \label{eq:es_agg}
+    G_d^r = \min\bigl\{t \in [2009, 2019] : D_{r,t} > \tau_{20}\bigr\},
+    \label{eq:first_treat}
 \end{equation}
-where $e$ denotes event time relative to the first treatment year.
+with $G_d^r = \infty$ for any microregion whose density never
+exceeds $\tau_{20}$. This ensures a consistent event-time origin
+$e = t - G_d^r$ for both the Low-Exposure and High-Exposure
+subsamples.
 
-\subsection{Outcome Specifications}
-\label{sec:outcomes}
-
-\paragraph{Outcome 1: Log Wages (Pooled).} The baseline specification estimates the effect of ProUni intensity on average log wages (in minimum-wage units) for all workers aged 22--35 in the microregion-year cell. This captures both direct (human capital) and indirect (general equilibrium) effects.
-
-\paragraph{Outcome 2: Employment.} Total formal employment (\texttt{n\_vinculos}) as a measure of the extensive margin.
-
-\paragraph{Outcome 3: Cohort Wage Gap (Triple-Difference).} The headline specification estimates:
+\paragraph{Comparison group.}
+Since all 558 microregions eventually accumulate positive scholarship
+exposure over the 2005--2019 period, no microregion satisfies
+$D_{r,t} = 0$ permanently. The identification strategy therefore
+relies on \textbf{not-yet-treated} microregions as the comparison
+group, as explicitly sanctioned for staggered designs without a
+never-treated group by \citeA{CallawaySantAnna2021} (Section~5)
+and \citeA{CallawayGoodmanBaconSantAnna2024ES}. Formally, the
+comparison group for cohort $G_d^r = g$ at time $t$ is:
 \begin{equation}
-    \Delta w_{r,t}
-    \;=\;
-    ATT_d^{\Delta}(g, t)
-    \;\cdot\;
-    \mathbf{1}\{G_d^r = g,\; T = t\}
-    \;+\;
-    \alpha_r + \lambda_t + \varepsilon_{r,t},
-    \label{eq:main_gap}
+    C_t \;=\; \bigl\{r : G_d^r > t \bigr\},
+    \label{eq:comparison_group}
 \end{equation}
-where $\Delta w_{r,t}$ is the young--old wage gap defined in Equation~\ref{eq:wage_gap}. A positive $ATT_d^{\Delta}$ indicates that ProUni raised the relative wage of the exposed (young) cohort.
+consisting of all microregions that have not yet crossed the dose
+threshold $\tau_{20}$ by period $t$. When estimating $ATT_d(g,t)$
+for the Low-Exposure subsample, units in the High-Exposure bin are
+excluded from both the treated and the comparison sets, so that
+each dose-specific event study is internally coherent. This is
+implemented in \texttt{R} via \texttt{did::att\_gt()} with
+\texttt{control\_group = "notyettreated"}.
 
-\paragraph{Outcome 4: First Stage --- College Attainment Gap.} To recover the implied return to a ProUni degree, I estimate the ``first stage'' effect on the college attainment gap:
-\begin{equation}
-    \Delta s_{r,t}
-    \;=\;
-    ATT_d^{s}(g, t)
-    \;\cdot\;
-    \mathbf{1}\{G_d^r = g,\; T = t\}
-    \;+\;
-    \alpha_r + \lambda_t + \varepsilon_{r,t},
-    \label{eq:first_stage}
-\end{equation}
-where $\Delta s_{r,t} = s_{r,t}^{\text{young}} - s_{r,t}^{\text{old}}$ is the difference in college-educated worker shares between cohorts. The implied Wald/LATE estimate of the return to a ProUni degree is:
-\begin{equation}
-    \hat{\rho}_{\text{LATE}}
-    \;=\;
-    \frac{ATT_d^{\Delta}}{ATT_d^{s}},
-    \label{eq:wald}
-\end{equation}
-with standard errors computed via the delta method.
 
-\section{Identifying Assumptions}
+
+\subsection{Empirical Strategy: Heterogeneous \acrshort{did}}
+\label{sec:empirical_strategy}
+
+Identifying the causal effect of \acrshort{prouni} faces two central
+econometric challenges: the staggered nature of the treatment and the
+likelihood of heterogeneous effects over time. 
+
+In staggered adoption designs, the standard \acrfull{twfe} estimator
+effectively compares treated units not only to untreated units but also
+to already-treated units. If treatment effects vary over time (e.g., if
+the returns to a degree decline as the market becomes saturated),
+\acrshort{twfe} averages these comparisons using weights that can be
+negative. This ``negative weighting'' bias can severely distort estimates,
+potentially even flipping the sign of the coefficient \cite{GoodmanBacon2021}.
+Given that \acrshort{prouni} expanded gradually across Brazil, relying on
+\acrshort{twfe} risks using early adopters as `` illegal comparisons'' for late
+adopters. To address this, I employ the non-parametric, doubly-robust
+estimator proposed by \citeA{CallawaySantAnna2021}, adapting it for
+continuous treatments following \citeA{CallawayGoodmanBaconSantAnna2024ES}.
+
+\subsubsection{Identification Assumptions}
 \label{sec:assumptions}
 
-The key identifying assumption is that, in the absence of ProUni, the young--old wage gap would have evolved similarly in high-dose and low-dose microregions (\emph{parallel trends in the cohort gap}). This is weaker than requiring parallel trends in wage levels, since it allows for differential trends across regions as long as they affect both age groups equally. I assess this assumption through:
-\begin{enumerate}
-    \item Pre-trend F-tests on the event-study coefficients for $e < 0$.
-    \item The \citeA{RambachanRoth2023} honest confidence intervals under deviations from parallel trends (HonestDiD).
-    \item The old-cohort placebo: if only the young cohort is affected, the treatment effect on old-only wages should be zero.
-\end{enumerate}
+The causal interpretation of the group-time average treatment effects
+estimated in this framework rests on three assumptions.
 
-\section{Robustness Checks}
+\begin{description}
+
+\item[A1 — Conditional Parallel Trends (CPT).]
+In the absence of treatment, average potential outcomes in treated and
+comparison microregions would have followed parallel paths. Since no
+microregion remains permanently untreated, I rely on the \textbf{not-yet-treated}
+parallel trends assumption. Formally, for each dose stratum
+$d \in \{\text{Low}, \text{High}\}$, treatment cohort $g$, and calendar time
+$t < g$:
+\begin{equation}
+    \mathbb{E}\bigl[Y_{it}(0) - Y_{i,g-1}(0) \mid G_d = g\bigr]
+    =
+    \mathbb{E}\bigl[Y_{it}(0) - Y_{i,g-1}(0) \mid C_t\bigr],
+    \label{eq:cpt}
+\end{equation}
+where $C_t = \{r : G_d^r > t\}$ is the pool of microregions that have not yet
+crossed the dose-entry threshold by period $t$. 
+
+The plausibility of Assumption~\ref{eq:cpt} is supported by three institutional
+features. First, treatment timing is determined by the interaction of pre-existing
+private HEI infrastructure and national scholarship supply rules --- not by
+contemporaneous local wage growth. Second, because comparison units are drawn
+from the same dose stratum but are treated later, they share structural
+similarities with the treated cohort, reducing the risk of compositional bias.
+Third, the four-year lag in the dose variable $D_{r,t}$
+(Equation~\ref{eq:dose_variable}) ensures that treatment status is predetermined
+with respect to current labor market conditions.
+
+\item[A2 — No Interference / SUTVA.]
+The potential outcome of microregion $r$ depends only on its own treatment
+status and dose, not on the treatment assigned to other microregions. A violation
+would arise if ProUni graduates systematically migrate from treated to
+not-yet-treated regions, contaminating comparison-group outcomes. The use of
+microregions as the unit of analysis --- officially defined by \acrshort{ibge}
+as self-contained commuting zones --- substantially mitigates this risk by
+internalising local labor flows. Any residual interregional migration would
+likely attenuate the estimated effects toward zero, meaning the results should be
+interpreted as conservative lower bounds.
+
+\item[A3 — No Confounding Contemporaneous Changes.]
+No policy other than ProUni should affect treated and comparison microregions
+differentially in a manner correlated with treatment timing. The two major
+concurrent policies are \acrshort{fies} (credit expansion) and the Lei de Cotas
+(public quota law). Both operate at the national level, meaning their aggregate
+macroeconomic impacts are absorbed by time fixed effects. However, if FIES
+loans expanded disproportionately in early-treated ProUni markets, a residual
+confound could remain, which I address via robustness checks in
+Section~\ref{sec:robustness}.
+
+\end{description}
+
+\subsubsection{The Main Estimation Equations}
+\label{sec:estimation_equations}
+
+For each intensity bin $d \in \{\text{Low}, \text{High}\}$, I estimate
+group--time average treatment effects, $ATT_d(g,t)$, which compute the
+average effect for microregions first treated in year $g$ at time $t$,
+relative to the not-yet-treated comparison group $C_t$. 
+
+\paragraph{Outcome 1: Log Wages (Intensive Margin).}
+The primary specification, estimated via \texttt{did::att\_gt()}, implicitly
+models the outcome as:
+\begin{equation}
+    \ln \bar{w}_{r,t}
+    \;=\;
+    ATT_d(g, t)
+    \;\cdot\;
+    \mathbf{1}\{G_d^r = g,\; T = t\}
+    \;+\;
+    \alpha_r + \lambda_t + \varepsilon_{r,t},
+    \label{eq:main_wages}
+\end{equation}
+where $\ln \bar{w}_{r,t}$ is the log of average monthly remuneration
+(in minimum wages) for formal workers aged 22--35 in microregion $r$ and
+year $t$; $\alpha_r$ are microregion fixed effects absorbing time-invariant
+local fundamentals; and $\lambda_t$ are year fixed effects absorbing common
+macroeconomic cycles. Standard errors are clustered at the microregion level.
+
+\paragraph{Outcome 2: Formal Employment Count (Extensive Margin).}
+An analogous specification is estimated to capture extensive-margin dynamics
+using the log number of formal \emph{vínculos}, $\ln N_{r,t}$, among
+individuals aged 22--35:
+\begin{equation}
+    \ln N_{r,t}
+    \;=\;
+    ATT_d^{N}(g, t)
+    \;\cdot\;
+    \mathbf{1}\{G_d^r = g,\; T = t\}
+    \;+\;
+    \alpha_r + \lambda_t + \varepsilon_{r,t}.
+    \label{eq:main_employment}
+\end{equation}
+
+\paragraph{Dynamic Aggregation (Event Studies).}
+To assess the dynamic evolution of the effect and visually test Assumption~A1,
+the $ATT_d(g,t)$ parameters are aggregated into an event-study framework
+relative to the treatment year $g$:
+\begin{equation}
+    ATT_{ES}^d(e) = \sum_{g} w_g \, ATT_d(g, g + e),
+    \label{eq:event_study}
+\end{equation}
+where $e = t - g$ is event time and $w_g$ are cohort sizes used as aggregation
+weights. This is implemented via \texttt{did::aggte(type = "dynamic")}.
+
+\paragraph{Heterogeneity Subsamples.}
+To investigate distributional impacts, Equations~\ref{eq:main_wages} and
+\ref{eq:main_employment} are re-estimated on mutually exclusive demographic
+subsamples defined by Gender (Female vs.\ Male), Ethnicity (Non-white vs.\ White),
+and Region (North/Northeast vs.\ South/Southeast/Centre-West). For each subgroup,
+the outcome variable is computed strictly from the corresponding subset of
+RAIS records, maintaining the exact same cohort definitions and comparison groups.
+
+\subsubsection{Mechanisms: Testing for General Equilibrium Effects}
+\label{sec:mechanisms}
+
+A key theoretical concern in large-scale education programs is the potential for
+general equilibrium effects to dampen private returns. As noted by \citeA{Duflo2001},
+a massive supply shock could depress the wage premium through oversupply. 
+This thesis tests this hypothesis by comparing the dose-aware event studies:
+\begin{itemize}
+    \item \textbf{Scarcity hypothesis:} If $ATT_{ES}^{\text{Low}} > ATT_{ES}^{\text{High}}$,
+    the wage premium is preserved only when the supply shock is relatively scarce.
+    \item \textbf{Saturation hypothesis:} If $ATT_{ES}^{\text{High}}$ is significantly
+    lower or flat, it indicates that massive aggregate supply shocks erode private
+    returns through credential inflation and labor market congestion.
+\end{itemize}
+
+\subsection{Robustness Checks and Validity Tests}
 \label{sec:robustness}
 
-\subsection{TWFE Benchmark}
-A standard two-way fixed effects (TWFE) regression with microregion and year fixed effects is estimated for comparison with the heterogeneity-robust CS estimator.
+The following validation protocol will be executed in Section~\ref{sec:results}
+to systematically test the identification assumptions.
 
-\subsection{Alternative Discretization Cutoffs}
-The dose bins are re-computed using 25th/75th and 33rd/67th percentile cutoffs (instead of 20th/50th/75th) to verify that results are not driven by the choice of bin boundaries.
+\subsubsection{Testing Assumption A1: Pre-Trend Placebo Tests}
+The primary test of the conditional parallel trends assumption (A1) is the
+inspection of pre-treatment event-study coefficients $ATT_{ES}^d(e)$ for
+$e < 0$. Under A1, these should be statistically indistinguishable from zero.
+I report both point estimates and a joint $F$-test (Wald test) for pre-trends.
 
-\subsection{Buffer-Zone Exclusion}
-Microregions in the ``middle'' of the dose distribution (between the Low and High bins) are excluded to test sensitivity to SUTVA violations and spatial spillovers.
+As an additional falsification exercise, I re-estimate the main models on
+the sample of formal workers aged \textbf{36--50 years} --- a cohort too
+old to have been exposed to ProUni at standard university-going age. Finding
+non-zero post-treatment effects in this group would indicate that the baseline
+results capture broad local economic shocks rather than the specific human capital
+supply shock from ProUni graduates.
 
-\subsection{Doubly-Robust Estimation}
-The \citeA{SantAnnaZhao2020} doubly-robust estimator is applied, conditioning on pre-treatment Census covariates to improve efficiency and reduce bias from residual confounding.
+\subsubsection{Testing Assumption A2: Spatial Spillover Bounds}
+To probe the SUTVA assumption, I re-estimate the baseline model excluding
+microregions that share a geographic border with a High-Exposure microregion.
+If interregional spillovers are contaminating the comparison group, isolating
+geographically distant control units should yield systematically different ATT
+estimates.
 
-\subsubsection{Age-Cohort Placebo}
-As a built-in falsification test, I estimate the main specification separately for the young (22--28) and old (29--35) cohorts. Under the identifying assumption, the old-cohort ATT should be zero, confirming that the treatment effect is age-specific rather than reflecting general local economic shocks. This test is more powerful than an external placebo (e.g., ages 36--50) because it uses workers in the \emph{same microregion-year cell}, perfectly controlling for local conditions.
+\subsubsection{Testing Assumption A3: Concurrent Policy Controls}
+To address the FIES confound, I augment Equation~\ref{eq:main_wages} with a
+time-varying local control for the microregion-level log count of FIES contracts.
+Since FIES affects debt-financed enrollment rather than tax-exempt scholarship supply,
+controlling for its intensity helps parse out the distinct contribution of ProUni.
 
-\subsection{Continuous Treatment}
-As a further robustness check, I estimate the dose-response function using the continuous treatment DiD estimator of \citeA{CallawayGoodmanBaconSantAnna2024ES}, which avoids the discretization of the treatment variable entirely.
+\subsubsection{Discretization Sensitivity and TWFE Benchmark}
+To ensure results are not driven by the chosen dose thresholds ($\tau_{20}, \tau_{50}, \tau_{75}$),
+I re-run the analysis under alternative partition schemes ($\tau_{25}/\tau_{75}$ and
+$\tau_{33}/\tau_{67}$). Finally, I estimate the naive \acrshort{twfe} counterpart:
+\begin{equation}
+    \ln \bar{w}_{r,t}
+    \;=\;
+    \beta_{\text{TWFE}} \cdot \mathbf{1}\{D_{r,t} > \tau_{20}\}
+    \;+\;
+    \alpha_r + \lambda_t + \varepsilon_{r,t},
+    \label{eq:twfe_benchmark}
+\end{equation}
+and decompose it following \citeA{GoodmanBacon2021} to explicitly quantify the
+extent of negative weighting bias in this specific application, validating the
+necessity of the \citeA{CallawaySantAnna2021} approach.
+
