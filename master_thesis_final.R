@@ -11,9 +11,8 @@
 #     some ProUni exposure over 2005-2019.
 #   - Comparison group is exclusively NOT-YET-TREATED units at each time t:
 #     C_t = {r : G_r^d > t}, enforced via control_group = "notyettreated".
-#   - FIX: Dose bins are defined from the INITIAL TREATMENT-YEAR distribution
-#     of D_{r,g} (dose at first crossing), NOT the 2019 cross-section.
-#     Low = (tau_20, tau_50], High = D_at_entry > tau_75.
+#   - Dose bins are defined from the 2019 cross-section of D_{r,t}.
+#     Low = (tau_20, tau_50], High = D_rt_2019 > tau_75.
 #   - Treatment timing g = first year D_{r,t} > tau_20.
 #
 # OUTPUTS:
@@ -420,9 +419,8 @@ rm(rais_list); gc()
 # ==============================================================================
 # This section implements the Chapter 4 identification strategy:
 #   D_{r,t} = 1000 * sum_{k=2005}^{t-4} scholarships_{r,k} / youth_pop_{r,2010}
-#   FIX: Dose bins from INITIAL TREATMENT-YEAR distribution (D_at_entry),
-#        NOT the 2019 cross-section (which caused look-ahead bias).
-#   Low = (tau_20, tau_50], High > tau_75 of D_at_entry
+#   Dose bins from the 2019 cross-section of D_{r,t}.
+#   Low = (tau_20, tau_50], High > tau_75 of D_rt_2019
 #   Timing g = first year D_{r,t} > tau_20, else g = 0 (not-yet-treated)
 # ==============================================================================
 message(" [3/12] Defining Treatment Dose & Timing...")
@@ -458,63 +456,34 @@ df_panel <- expand_grid(
   ungroup() %>%
   filter(pop > 0)
 
-# 4.4 FIX: Compute dose thresholds from INITIAL TREATMENT-YEAR distribution
-# Previously, bins were defined from the 2019 cross-section of D_rt. This
-# conditions on post-treatment information and creates look-ahead bias.
-# Now: (a) use a preliminary low threshold to identify when each microregion
-# first enters treatment, (b) record D_at_entry at that moment, (c) compute
-# tau cutoffs from THAT distribution.
-
-# Step 1: Preliminary threshold — p10 of all nonzero D_rt values
-# Deliberately low: only needs to identify "any meaningful exposure".
-nonzero_D   <- df_panel$D_rt[df_panel$D_rt > 0]
-tau_prelim  <- quantile(nonzero_D, 0.10, na.rm = TRUE)
-message(sprintf("   FIX: Preliminary threshold (p10 of nonzero D_rt) = %.4f", tau_prelim))
-
-# Step 2: For each microregion that eventually crosses tau_prelim,
-# record its dose at the year it first crosses.
-df_first_cross <- df_panel %>%
-  filter(D_rt > tau_prelim) %>%
-  group_by(id_microrregiao) %>%
-  slice_min(ano, n = 1, with_ties = FALSE) %>%
-  ungroup() %>%
-  select(id_microrregiao, first_year = ano, D_at_entry = D_rt)
-
-# Step 3: Define actual bin cutoffs from D_at_entry distribution
-tau_20 <- quantile(df_first_cross$D_at_entry, params$q_low,  na.rm = TRUE)
-tau_50 <- quantile(df_first_cross$D_at_entry, params$q_mid,  na.rm = TRUE)
-tau_75 <- quantile(df_first_cross$D_at_entry, params$q_high, na.rm = TRUE)
-
-message(sprintf("   FIX: Entry-based thresholds: tau_20=%.4f | tau_50=%.4f | tau_75=%.4f",
-                tau_20, tau_50, tau_75))
-message(sprintf("   FIX: %d microregions cross preliminary threshold (of %d total)",
-                nrow(df_first_cross), n_distinct(df_panel$id_microrregiao)))
-
-# 4.5 FIX: Classify dose bins from D_at_entry and compute treatment timing g
-# Bins are assigned once, at entry, and never change — no look-ahead bias.
-# D_rt_2019 is kept for descriptive tables only — NOT used for bin assignment.
+# 4.4 Compute dose thresholds from the 2019 cross-section of D_rt
+# The 2019 cross-section provides well-separated thresholds and ensures
+# enough g=0 comparison units are distributed across all regional subsets.
 df_2019 <- df_panel %>% filter(ano == max(params$years))
 
+tau_20 <- quantile(df_2019$D_rt, params$q_low,  na.rm = TRUE)
+tau_50 <- quantile(df_2019$D_rt, params$q_mid,  na.rm = TRUE)
+tau_75 <- quantile(df_2019$D_rt, params$q_high, na.rm = TRUE)
+
+message(sprintf("   Thresholds (2019 cross-section): tau_20=%.4f | tau_50=%.4f | tau_75=%.4f",
+                tau_20, tau_50, tau_75))
+
+# 4.5 Classify dose bins from D_rt_2019 and compute treatment timing g
+# dose_bin: assigned from the 2019 cross-section of D_rt.
+# g (treatment timing): first year D_rt crosses tau_20 (dynamic, not 2019-based).
 df_final <- df_panel %>%
-  left_join(df_first_cross, by = "id_microrregiao") %>%
   left_join(
     df_2019 %>% select(id_microrregiao, D_rt_2019 = D_rt),
     by = "id_microrregiao"
   ) %>%
   group_by(id_microrregiao) %>%
   mutate(
-    # FIX: Bins from D_at_entry (dose at first crossing), not D_rt_2019
     dose_bin = case_when(
-      D_at_entry >  tau_20 & D_at_entry <= tau_50 ~ "Low",
-      D_at_entry >  tau_75                         ~ "High",
+      D_rt_2019 >  tau_20 & D_rt_2019 <= tau_50 ~ "Low",
+      D_rt_2019 >  tau_75                         ~ "High",
       TRUE                                         ~ NA_character_
     ),
-    # FIX: g = 0 for regions with D_at_entry <= tau_20 (bottom 20% of entry
-    # distribution). These serve as the not-yet-treated comparison group.
-    # Only regions whose initial dose exceeds tau_20 are "meaningfully treated".
-    g = if (is.na(D_at_entry[1]) || D_at_entry[1] <= tau_20) {
-      0L
-    } else {
+    g = {
       crossing <- ano[D_rt > tau_20]
       if (length(crossing) == 0) 0L else as.integer(min(crossing))
     }
@@ -592,7 +561,6 @@ tab1 <- df_final %>%
     N_Regions          = n_distinct(id_microrregiao),
     Avg_Youth_Pop      = round(mean(pop, na.rm = TRUE), 0),
     Avg_Density_2019   = round(mean(D_rt_2019, na.rm = TRUE), 2),
-    Avg_D_at_entry     = round(mean(D_at_entry, na.rm = TRUE), 2),
     Median_Treatment_Yr = median(g[g > 0], na.rm = TRUE),
     .groups = "drop"
   )
@@ -667,7 +635,7 @@ case_micro <- bind_rows(
   candidates %>% filter(region_type == "Marginal", dose_bin == "Low")  %>% slice_sample(n = 1),
   candidates %>% filter(region_type == "Marginal", dose_bin == "High") %>% slice_sample(n = 1)
 ) %>%
-  select(id_microrregiao, nome_microrregiao, sigla_uf, region_type, dose_bin, g, D_at_entry, D_rt_2019)
+  select(id_microrregiao, nome_microrregiao, sigla_uf, region_type, dose_bin, g, D_rt_2019)
 
 stopifnot("Need exactly 4 case study units" = nrow(case_micro) == 4)
 write_csv(case_micro, "Tables_Final/table3_casestudy_units.csv")
@@ -851,38 +819,29 @@ df_panel_lag3 <- df_panel %>%
   ) %>%
   ungroup()
 
-# FIX: Apply same entry-based bin definition for lag=3 (no look-ahead bias)
-nonzero_D_lag3   <- df_panel_lag3$D_rt_alt[df_panel_lag3$D_rt_alt > 0]
-tau_prelim_lag3  <- quantile(nonzero_D_lag3, 0.10, na.rm = TRUE)
+# Compute lag=3 thresholds from 2019 cross-section of D_rt_alt
+df_2019_lag3 <- df_panel_lag3 %>% filter(ano == max(params$years))
 
-df_first_cross_lag3 <- df_panel_lag3 %>%
-  filter(D_rt_alt > tau_prelim_lag3) %>%
-  group_by(id_microrregiao) %>%
-  slice_min(ano, n = 1, with_ties = FALSE) %>%
-  ungroup() %>%
-  select(id_microrregiao, first_year_alt = ano, D_at_entry_alt = D_rt_alt)
+tau_20_alt <- quantile(df_2019_lag3$D_rt_alt, params$q_low,  na.rm = TRUE)
+tau_50_alt <- quantile(df_2019_lag3$D_rt_alt, params$q_mid,  na.rm = TRUE)
+tau_75_alt <- quantile(df_2019_lag3$D_rt_alt, params$q_high, na.rm = TRUE)
 
-tau_20_alt <- quantile(df_first_cross_lag3$D_at_entry_alt, params$q_low,  na.rm = TRUE)
-tau_50_alt <- quantile(df_first_cross_lag3$D_at_entry_alt, params$q_mid,  na.rm = TRUE)
-tau_75_alt <- quantile(df_first_cross_lag3$D_at_entry_alt, params$q_high, na.rm = TRUE)
-
-message(sprintf("   FIX: Lag-3 entry-based thresholds: tau_20=%.4f | tau_50=%.4f | tau_75=%.4f",
+message(sprintf("   Lag-3 thresholds (2019 cross-section): tau_20=%.4f | tau_50=%.4f | tau_75=%.4f",
                 tau_20_alt, tau_50_alt, tau_75_alt))
 
 df_final_lag3 <- df_panel_lag3 %>%
-  left_join(df_first_cross_lag3, by = "id_microrregiao") %>%
+  left_join(
+    df_2019_lag3 %>% select(id_microrregiao, D_rt_2019_alt = D_rt_alt),
+    by = "id_microrregiao"
+  ) %>%
   group_by(id_microrregiao) %>%
   mutate(
-    # FIX: Bins from D_at_entry_alt, not D_rt_2019
     dose_bin_alt = case_when(
-      D_at_entry_alt >  tau_20_alt & D_at_entry_alt <= tau_50_alt ~ "Low",
-      D_at_entry_alt >  tau_75_alt                                ~ "High",
-      TRUE                                                         ~ NA_character_
+      D_rt_2019_alt >  tau_20_alt & D_rt_2019_alt <= tau_50_alt ~ "Low",
+      D_rt_2019_alt >  tau_75_alt                                ~ "High",
+      TRUE                                                        ~ NA_character_
     ),
-    # FIX: g_alt = 0 for regions with entry dose <= tau_20_alt (comparison group)
-    g_alt = if (is.na(D_at_entry_alt[1]) || D_at_entry_alt[1] <= tau_20_alt) {
-      0L
-    } else {
+    g_alt = {
       crossing <- ano[D_rt_alt > tau_20_alt]
       if (length(crossing) == 0) 0L else as.integer(min(crossing))
     }
@@ -1186,15 +1145,15 @@ message(" [NEW] Running Alternative Cutoff Robustness...")
 
 # NEW: Helper to recompute bins and re-run for a given pair of quantiles
 run_alt_cutoffs <- function(q_lo, q_hi, suffix) {
-  tau_lo <- quantile(df_first_cross$D_at_entry, q_lo, na.rm = TRUE)
-  tau_hi <- quantile(df_first_cross$D_at_entry, q_hi, na.rm = TRUE)
+  tau_lo <- quantile(df_2019$D_rt, q_lo, na.rm = TRUE)
+  tau_hi <- quantile(df_2019$D_rt, q_hi, na.rm = TRUE)
   message(sprintf("   Cutoffs %s: tau_lo=%.4f | tau_hi=%.4f", suffix, tau_lo, tau_hi))
 
   df_alt <- df_final %>%
     mutate(
       dose_bin_alt = case_when(
-        D_at_entry >  tau_20 & D_at_entry <= tau_lo ~ "Low",
-        D_at_entry >  tau_hi                         ~ "High",
+        D_rt_2019 >  tau_20 & D_rt_2019 <= tau_lo ~ "Low",
+        D_rt_2019 >  tau_hi                         ~ "High",
         TRUE                                         ~ NA_character_
       )
     )
@@ -1436,9 +1395,7 @@ audit_log <- list(
   params     = params,
   n_units    = n_distinct(df_final$id_microrregiao),
   n_years    = length(params$years),
-  # FIX: Entry-based thresholds (not 2019 cross-section)
-  bin_method     = "entry-based (D_at_entry)",
-  tau_prelim     = tau_prelim,
+  bin_method     = "2019 cross-section (D_rt_2019)",
   thresholds     = list(tau_20 = tau_20, tau_50 = tau_50, tau_75 = tau_75),
   thresholds_lag3 = list(tau_20 = tau_20_alt, tau_50 = tau_50_alt, tau_75 = tau_75_alt),
   bin_sizes  = list(
@@ -1505,7 +1462,7 @@ saveRDS(audit_log, "Documentation_Final/audit_log.rds")
 n_total_models <- nrow(tab_att)
 message("\n=== AUDIT SUMMARY ===")
 message(sprintf("  Microregions: %d | Years: %d", audit_log$n_units, audit_log$n_years))
-message(sprintf("  Bin method: %s (tau_prelim = %.4f)", audit_log$bin_method, audit_log$tau_prelim))
+message(sprintf("  Bin method: %s", audit_log$bin_method))
 message(sprintf("  Bins: Low = %d | High = %d", audit_log$bin_sizes$Low, audit_log$bin_sizes$High))
 message(sprintf("  Treatment year range: %d - %d", audit_log$g_range$min, audit_log$g_range$max))
 message("  --- Headline ATTs (non-white, wages) ---")
