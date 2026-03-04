@@ -188,8 +188,8 @@ run_cs <- function(d, outcome_var, label = "", agg = c("wmean", "logsum"),
   n_notyet  <- d_agg %>% filter(g == 0) %>% pull(id_num) %>% n_distinct()
   n_obs     <- nrow(d_agg)
 
-  if (n_treated < 20) stop(sprintf("[%s] Only %d treated units (need >= 20).", label, n_treated))
-  if (n_notyet  < 20) stop(sprintf("[%s] Only %d not-yet-treated units (need >= 20).", label, n_notyet))
+  if (n_treated < 20) { warning(sprintf("[%s] Only %d treated units (need >= 20). Skipping.", label, n_treated)); return(NULL) }
+  if (n_notyet  < 20) { warning(sprintf("[%s] Only %d not-yet-treated units (need >= 20). Skipping.", label, n_notyet)); return(NULL) }
   message(sprintf("   [%s] %d treated | %d not-yet-treated | %d obs", label, n_treated, n_notyet, n_obs))
 
   # --- Core estimator: HARDCODED notyettreated, no adaptive logic ---
@@ -1248,13 +1248,17 @@ p1 <- plot_event_study(
 ggsave("Figures_Final/fig_1_mechanism_dose.png", p1, width = 9, height = 5.5, dpi = 300)
 
 # Figure 2: Regional Divergence — wages (Central vs Marginal)
-p2 <- plot_event_study(
-  res_cen$tidy, res_mar$tidy,
-  "Central (South/Southeast)", "Marginal (North/Northeast)",
-  "#2980b9", "#e74c3c",
-  "Regional Divergence: Center vs. Periphery"
-)
-ggsave("Figures_Final/fig_2_result_region.png", p2, width = 9, height = 5.5, dpi = 300)
+if (!is.null(res_cen) && !is.null(res_mar)) {
+  p2 <- plot_event_study(
+    res_cen$tidy, res_mar$tidy,
+    "Central (South/Southeast)", "Marginal (North/Northeast)",
+    "#2980b9", "#e74c3c",
+    "Regional Divergence: Center vs. Periphery"
+  )
+  ggsave("Figures_Final/fig_2_result_region.png", p2, width = 9, height = 5.5, dpi = 300)
+} else {
+  message("   [SKIP] Figure 2: Regional divergence — insufficient units in Central or Marginal subset.")
+}
 
 # Figure 3: Dose-Response — employment (High vs Low)
 p3 <- plot_event_study(
@@ -1361,15 +1365,18 @@ if (!is.null(res_low_25_75)) {
 # Save all event-study estimates as CSVs for appendix
 es_exports <- list(
   es_low_wage = res_low$tidy, es_high_wage = res_high$tidy,
-  es_cen_wage = res_cen$tidy, es_mar_wage = res_mar$tidy,
   es_low_emp = res_low_emp$tidy, es_high_emp = res_high_emp$tidy,
-  es_cen_emp = res_cen_emp$tidy, es_mar_emp = res_mar_emp$tidy,
   es_male_low = res_male_low$tidy, es_female_low = res_female_low$tidy,
   es_male_high = res_male_high$tidy, es_female_high = res_female_high$tidy,
   es_white_low = res_white_low$tidy, es_nonwhite_low = res_nonwhite_low$tidy,
   es_white_high = res_white_high$tidy, es_nonwhite_high = res_nonwhite_high$tidy,
   es_low_lag3 = res_low_lag3$tidy, es_high_lag3 = res_high_lag3$tidy
 )
+# Add regional CSVs if available
+if (!is.null(res_cen))     es_exports$es_cen_wage <- res_cen$tidy
+if (!is.null(res_mar))     es_exports$es_mar_wage <- res_mar$tidy
+if (!is.null(res_cen_emp)) es_exports$es_cen_emp  <- res_cen_emp$tidy
+if (!is.null(res_mar_emp)) es_exports$es_mar_emp  <- res_mar_emp$tidy
 # NEW: Add conditional and robustness event-study CSVs
 if (!is.null(res_low_dr))      es_exports$es_low_dr      <- res_low_dr$tidy
 if (!is.null(res_high_dr))     es_exports$es_high_dr     <- res_high_dr$tidy
@@ -1410,12 +1417,8 @@ audit_log <- list(
   pretrend = list(
     Low_Wages      = res_low$pretrend,
     High_Wages     = res_high$pretrend,
-    Central_Wages  = res_cen$pretrend,
-    Marginal_Wages = res_mar$pretrend,
     Low_Emp        = res_low_emp$pretrend,
     High_Emp       = res_high_emp$pretrend,
-    Central_Emp    = res_cen_emp$pretrend,
-    Marginal_Emp   = res_mar_emp$pretrend,
     Male_Low       = res_male_low$pretrend,
     Female_Low     = res_female_low$pretrend,
     Male_High      = res_male_high$pretrend,
@@ -1469,12 +1472,19 @@ message("  --- Headline ATTs (non-white, wages) ---")
 message(sprintf("  Low:  %.4f (SE %.4f) | High: %.4f (SE %.4f)",
                 res_low$simple$overall.att, res_low$simple$overall.se,
                 res_high$simple$overall.att, res_high$simple$overall.se))
-message(sprintf("  Central: %.4f | Marginal: %.4f",
-                res_cen$simple$overall.att, res_mar$simple$overall.att))
+if (!is.null(res_cen) && !is.null(res_mar)) {
+  message(sprintf("  Central: %.4f | Marginal: %.4f",
+                  res_cen$simple$overall.att, res_mar$simple$overall.att))
+} else {
+  message("  Central/Marginal: skipped (insufficient units)")
+}
 message("  --- Pre-trend p-values (wages, main) ---")
-message(sprintf("  Low=%.4f | High=%.4f | Central=%.4f | Marginal=%.4f",
-                res_low$pretrend$p.value, res_high$pretrend$p.value,
-                res_cen$pretrend$p.value, res_mar$pretrend$p.value))
+message(sprintf("  Low=%.4f | High=%.4f",
+                res_low$pretrend$p.value, res_high$pretrend$p.value))
+if (!is.null(res_cen) && !is.null(res_mar)) {
+  message(sprintf("  Central=%.4f | Marginal=%.4f",
+                  res_cen$pretrend$p.value, res_mar$pretrend$p.value))
+}
 if (!is.null(res_low_dr)) {
   message("  --- DR estimates ---")
   message(sprintf("  Low/DR: %.4f (SE %.4f) | High/DR: %.4f (SE %.4f)",
