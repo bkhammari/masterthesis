@@ -1220,7 +1220,7 @@ if (!is.null(twfe_fit)) {
     CI_low     = round(tc[1, "Estimate"] - 1.96 * tc[1, "Std. Error"], 4),
     CI_high    = round(tc[1, "Estimate"] + 1.96 * tc[1, "Std. Error"], 4),
     Pretrend_p = NA_real_,
-    N_obs      = as.integer(fixest::nobs(twfe_fit)),
+    N_obs      = as.integer(stats::nobs(twfe_fit)),
     N_treated  = NA_integer_,
     N_notyet   = NA_integer_
   ))
