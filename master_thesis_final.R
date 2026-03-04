@@ -261,7 +261,7 @@ plot_event_study <- function(df1, df2, l1, l2, c1, c2, title_txt,
     geom_line(data = df1, aes(x = event.time, y = estimate, color = l1), linewidth = 1.1) +
     geom_point(data = df1, aes(x = event.time, y = estimate, color = l1), size = 1.8) +
     scale_color_manual(name = "", values = setNames(c(c1, c2), c(l1, l2))) +
-    scale_x_continuous(breaks = seq(-10, 10, 2)) +
+    scale_x_continuous(breaks = seq(-12, 10, 2), limits = c(NA, 10)) +
     labs(
       title    = title_txt,
       subtitle = "95% confidence bands | CS (2021), not-yet-treated comparison",
@@ -498,6 +498,49 @@ if (length(missing_cohort) > 0) {
 df_rais_cohort <- bind_rows(rais_cohort_list)
 rm(rais_cohort_list); gc()
 message(sprintf("   Cohort RAIS: %d rows", nrow(df_rais_cohort)))
+
+# ==============================================================================
+# NEW: SECTION 3F — RAIS WITH EDUCATION LEVEL (First Stage for LATE)
+# ==============================================================================
+# Downloads education attainment to compute college share — needed for
+# the Wald/LATE estimate (implied return to a ProUni degree).
+# College-educated: grau_instrucao_apos_2005 >= 9
+#   (9 = superior completo, 10 = mestrado, 11 = doutorado)
+# ==============================================================================
+message("\n SECTION 3F: Downloading RAIS with education level...")
+
+rais_educ_list <- list()
+for (y in params$years) {
+  q <- paste0("
+    SELECT
+      ano,
+      id_municipio,
+      raca_cor,
+      CASE
+        WHEN idade BETWEEN 22 AND 28 THEN 'young'
+        WHEN idade BETWEEN 29 AND 35 THEN 'old'
+      END AS age_group,
+      COUNT(*) AS n_vinculos,
+      SUM(CASE WHEN CAST(grau_instrucao_apos_2005 AS INT64) >= 9
+               THEN 1 ELSE 0 END) AS n_college
+    FROM `basedosdados.br_me_rais.microdados_vinculos`
+    WHERE
+      ano = ", y, "
+      AND idade BETWEEN 22 AND 35
+      AND valor_remuneracao_media_sm > 0
+      AND tipo_vinculo IN ('10')
+      AND vinculo_ativo_3112 = 1
+    GROUP BY ano, id_municipio, raca_cor, age_group
+  ")
+  tryCatch({
+    rais_educ_list[[as.character(y)]] <- basedosdados::read_sql(q)
+    message(sprintf("     Educ year %d OK", y))
+  }, error = function(e) message(sprintf("     ERROR educ year %d: %s", y, e$message)))
+  gc()
+}
+df_rais_educ <- bind_rows(rais_educ_list)
+rm(rais_educ_list); gc()
+message(sprintf("   Education RAIS: %d rows", nrow(df_rais_educ)))
 
 # ==============================================================================
 # SECTION 4: TREATMENT CONSTRUCTION
@@ -1018,6 +1061,104 @@ message(sprintf("   Young: low=%d | high=%d", nrow(young_low), nrow(young_high))
 message(sprintf("   Old:   low=%d | high=%d", nrow(old_low), nrow(old_high)))
 
 # ==============================================================================
+# NEW: SECTION 8D — EDUCATION OUTCOMES (First Stage for LATE)
+# ==============================================================================
+message("\n SECTION 8D: Building education outcomes...")
+
+df_educ_reg <- df_rais_educ %>%
+  inner_join(df_geo %>% select(id_municipio, id_microrregiao), by = "id_municipio") %>%
+  mutate(ano = as.integer(ano), id_num = as.integer(id_microrregiao)) %>%
+  inner_join(
+    df_final %>% select(id_microrregiao, ano, g, dose_bin),
+    by = c("id_microrregiao", "ano")
+  ) %>%
+  filter(raca_cor %in% c("1", "4", "8"))  # NEW: non-white
+
+# NEW: Aggregate to microregion-year-cohort
+df_educ_micro <- df_educ_reg %>%
+  group_by(id_num, id_microrregiao, ano, g, dose_bin, age_group) %>%
+  summarise(
+    total_workers = sum(n_vinculos, na.rm = TRUE),
+    total_college = sum(n_college, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(share_college = total_college / total_workers)
+
+# NEW: Pivot wide and compute gap
+df_educ_wide <- df_educ_micro %>%
+  pivot_wider(
+    id_cols = c(id_num, id_microrregiao, ano, g, dose_bin),
+    names_from = age_group,
+    values_from = c(share_college, total_workers),
+    names_sep = "_"
+  ) %>%
+  filter(!is.na(share_college_young), !is.na(share_college_old)) %>%
+  mutate(college_gap = share_college_young - share_college_old)
+
+message(sprintf("   Education panel: %d microregion-years", nrow(df_educ_wide)))
+
+# ==============================================================================
+# NEW: SECTION 8E — EXTENDED REGRESSION DATASETS
+# ==============================================================================
+message("\n SECTION 8E: Building extended regression datasets...")
+
+# NEW: Helper
+make_subset <- function(df, outcome_col, bin) {
+  df %>%
+    filter(dose_bin == bin | g == 0) %>%
+    mutate(y = .data[[outcome_col]]) %>%
+    select(id_num, ano, g, y)
+}
+
+# NEW: D. College share gap (first stage)
+college_gap_low  <- make_subset(df_educ_wide, "college_gap", "Low")
+college_gap_high <- make_subset(df_educ_wide, "college_gap", "High")
+
+# NEW: E. Gender heterogeneity on wage gap
+for (sex_val in c("1", "3")) {
+  sex_label <- ifelse(sex_val == "1", "male", "female")
+
+  df_sex <- df_cohort_reg %>%
+    filter(sexo == sex_val, raca_cor %in% c("1", "4", "8")) %>%
+    group_by(id_num, id_microrregiao, ano, g, dose_bin, age_group) %>%
+    summarise(avg_log_wage = weighted.mean(log_wage_sm, w = n_vinculos, na.rm = TRUE),
+              .groups = "drop") %>%
+    pivot_wider(id_cols = c(id_num, id_microrregiao, ano, g, dose_bin),
+                names_from = age_group, values_from = avg_log_wage, names_sep = "_") %>%
+    filter(!is.na(young), !is.na(old)) %>%
+    mutate(wage_gap = young - old)
+
+  assign(paste0("gap_", sex_label, "_low"),
+         df_sex %>% filter(dose_bin == "Low" | g == 0) %>%
+           mutate(y = wage_gap) %>% select(id_num, ano, g, y))
+  assign(paste0("gap_", sex_label, "_high"),
+         df_sex %>% filter(dose_bin == "High" | g == 0) %>%
+           mutate(y = wage_gap) %>% select(id_num, ano, g, y))
+}
+
+# NEW: F. Race heterogeneity on wage gap — White subsample
+df_cohort_white <- df_cohort_reg %>%
+  filter(raca_cor %in% c("2")) %>%
+  group_by(id_num, id_microrregiao, ano, g, dose_bin, age_group) %>%
+  summarise(avg_log_wage = weighted.mean(log_wage_sm, w = n_vinculos, na.rm = TRUE),
+            .groups = "drop") %>%
+  pivot_wider(id_cols = c(id_num, id_microrregiao, ano, g, dose_bin),
+              names_from = age_group, values_from = avg_log_wage, names_sep = "_") %>%
+  filter(!is.na(young), !is.na(old)) %>%
+  mutate(wage_gap = young - old)
+
+gap_white_low  <- df_cohort_white %>% filter(dose_bin == "Low" | g == 0) %>%
+  mutate(y = wage_gap) %>% select(id_num, ano, g, y)
+gap_white_high <- df_cohort_white %>% filter(dose_bin == "High" | g == 0) %>%
+  mutate(y = wage_gap) %>% select(id_num, ano, g, y)
+
+# NEW: Non-white already done above (gap_low, gap_high use df_cohort_nw)
+gap_nonwhite_low  <- gap_low
+gap_nonwhite_high <- gap_high
+
+message("   Extended regression datasets built.")
+
+# ==============================================================================
 # SECTION 9A: MAIN ESTIMATION — WAGES (non-white, 4 models)
 # ==============================================================================
 message(" [8/12] Running Main Wage Models (Callaway & Sant'Anna)...")
@@ -1193,6 +1334,56 @@ res_old_high <- tryCatch(run_cs_preagg(old_high, "Old/High"),
                           error = function(e) { message(sprintf("   WARNING: Old/High failed: %s", safe_err_msg(e))); NULL })
 
 message(" -> Cohort-based estimation completed.")
+
+# ==============================================================================
+# NEW: SECTION 9E2 — EXTENDED COHORT MODELS
+# ==============================================================================
+message(" [NEW] Running Extended Cohort Models...")
+
+# NEW: Initialize results
+res_college_low     <- NULL; res_college_high     <- NULL
+res_gap_male_low    <- NULL; res_gap_male_high    <- NULL
+res_gap_female_low  <- NULL; res_gap_female_high  <- NULL
+res_gap_white_low   <- NULL; res_gap_white_high   <- NULL
+res_gap_nonwhite_low <- NULL; res_gap_nonwhite_high <- NULL
+
+# NEW: D. First Stage: College share gap
+message("   -> College Gap / Low Dose...")
+res_college_low  <- tryCatch(run_cs_preagg(college_gap_low,  "CollegeGap/Low"),
+                              error = function(e) { message(sprintf("   WARNING: CollegeGap/Low failed: %s", safe_err_msg(e))); NULL })
+message("   -> College Gap / High Dose...")
+res_college_high <- tryCatch(run_cs_preagg(college_gap_high, "CollegeGap/High"),
+                              error = function(e) { message(sprintf("   WARNING: CollegeGap/High failed: %s", safe_err_msg(e))); NULL })
+
+# NEW: E. Gender heterogeneity on wage gap
+message("   -> Wage Gap / Male / Low Dose...")
+res_gap_male_low    <- tryCatch(run_cs_preagg(gap_male_low,   "WageGap/Male/Low"),
+                                 error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+message("   -> Wage Gap / Male / High Dose...")
+res_gap_male_high   <- tryCatch(run_cs_preagg(gap_male_high,  "WageGap/Male/High"),
+                                 error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+message("   -> Wage Gap / Female / Low Dose...")
+res_gap_female_low  <- tryCatch(run_cs_preagg(gap_female_low, "WageGap/Female/Low"),
+                                 error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+message("   -> Wage Gap / Female / High Dose...")
+res_gap_female_high <- tryCatch(run_cs_preagg(gap_female_high,"WageGap/Female/High"),
+                                 error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+
+# NEW: F. Race heterogeneity on wage gap
+message("   -> Wage Gap / White / Low Dose...")
+res_gap_white_low    <- tryCatch(run_cs_preagg(gap_white_low,    "WageGap/White/Low"),
+                                  error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+message("   -> Wage Gap / White / High Dose...")
+res_gap_white_high   <- tryCatch(run_cs_preagg(gap_white_high,   "WageGap/White/High"),
+                                  error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+message("   -> Wage Gap / Nonwhite / Low Dose...")
+res_gap_nonwhite_low <- tryCatch(run_cs_preagg(gap_nonwhite_low, "WageGap/Nonwhite/Low"),
+                                  error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+message("   -> Wage Gap / Nonwhite / High Dose...")
+res_gap_nonwhite_high<- tryCatch(run_cs_preagg(gap_nonwhite_high,"WageGap/Nonwhite/High"),
+                                  error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+
+message(" -> Extended cohort models completed.")
 
 # ==============================================================================
 # SECTION 9F: NEW — CONDITIONAL (DOUBLY-ROBUST) MODELS (CHANGE 2)
@@ -1547,6 +1738,157 @@ res_high_33_67 <- alt_33_67$high
 message(" -> All new robustness and sensitivity sections completed.")
 
 # ==============================================================================
+# NEW: SECTION 9M — IMPLIED RETURNS (Wald LATE)
+# ==============================================================================
+message("\n SECTION 9M: Computing Implied Returns (Wald LATE)...")
+
+compute_wald <- function(reduced_form, first_stage, label) {
+  if (is.null(reduced_form) || is.null(first_stage)) return(NULL)
+  rf_att <- reduced_form$simple$overall.att
+  rf_se  <- reduced_form$simple$overall.se
+  fs_att <- first_stage$simple$overall.att
+  fs_se  <- first_stage$simple$overall.se
+
+  if (abs(fs_att) < 0.001) {
+    warning(sprintf("[%s] First stage too weak (%.4f)", label, fs_att))
+    return(NULL)
+  }
+
+  wald  <- rf_att / fs_att
+  # NEW: Delta method SE
+  wald_se <- sqrt((1/fs_att)^2 * rf_se^2 + (rf_att/fs_att^2)^2 * fs_se^2)
+
+  message(sprintf("   [%s] LATE = %.3f (SE = %.3f) | RF = %.4f | FS = %.4f",
+                  label, wald, wald_se, rf_att, fs_att))
+
+  tibble(Label = label, LATE = wald, SE_LATE = wald_se,
+         RF_ATT = rf_att, RF_SE = rf_se, FS_ATT = fs_att, FS_SE = fs_se)
+}
+
+wald_low  <- compute_wald(res_gap_low,  res_college_low,  "Low Dose")
+wald_high <- compute_wald(res_gap_high, res_college_high, "High Dose")
+
+tab_wald <- bind_rows(wald_low, wald_high)
+if (nrow(tab_wald) > 0) {
+  write_csv(tab_wald, "Tables_Final/table_wald_late.csv")
+  message("   Wald estimates saved.")
+}
+
+# ==============================================================================
+# NEW: SECTION 9N — TWFE BENCHMARK ON COHORT OUTCOMES
+# ==============================================================================
+message("\n SECTION 9N: TWFE Benchmark on cohort outcomes...")
+
+tryCatch({
+  # NEW: TWFE on wage gap
+  twfe_gap_data <- df_cohort_wide %>%
+    mutate(treated = as.integer(g > 0 & ano >= g))
+
+  twfe_gap <- fixest::feols(wage_gap ~ treated | id_num + ano,
+                            data = twfe_gap_data, cluster = ~id_num)
+
+  # NEW: TWFE on young-only wages
+  twfe_young_data <- df_young_only %>%
+    mutate(treated = as.integer(g > 0 & ano >= g))
+  twfe_young <- fixest::feols(y_wage ~ treated | id_num + ano,
+                              data = twfe_young_data, cluster = ~id_num)
+
+  twfe_cohort_summary <- tibble(
+    Model = c("TWFE/WageGap", "TWFE/Young"),
+    Coef  = c(coef(twfe_gap)["treated"], coef(twfe_young)["treated"]),
+    SE    = c(se(twfe_gap)["treated"], se(twfe_young)["treated"]),
+    N     = c(nobs(twfe_gap), nobs(twfe_young))
+  )
+  write_csv(twfe_cohort_summary, "Tables_Final/table_twfe_cohort.csv")
+  message("   TWFE cohort benchmark saved.")
+}, error = function(e) message(sprintf("   TWFE cohort SKIPPED: %s", e$message)))
+
+# ==============================================================================
+# NEW: SECTION 9O — ALTERNATIVE CUTOFFS ON WAGE GAP
+# ==============================================================================
+message("\n SECTION 9O: Alternative cutoffs on wage gap...")
+
+# NEW: Get 2019 cross-section for threshold computation
+df_2019 <- df_final %>% filter(ano == max(params$years))
+
+alt_cohort_cutoffs <- list(
+  "q25_q75" = c(0.25, 0.75),
+  "q33_q67" = c(0.33, 0.67)
+)
+
+alt_cohort_results <- list()
+for (alt_name in names(alt_cohort_cutoffs)) {
+  qs <- alt_cohort_cutoffs[[alt_name]]
+  tau_alt_low  <- quantile(df_2019$D_rt, qs[1], na.rm = TRUE)
+  tau_alt_high <- quantile(df_2019$D_rt, qs[2], na.rm = TRUE)
+
+  # NEW: Reassign dose bins for cohort data
+  df_alt <- df_cohort_wide %>%
+    left_join(
+      df_final %>% select(id_microrregiao, ano, D_rt_2019) %>% distinct(),
+      by = c("id_microrregiao", "ano")
+    ) %>%
+    mutate(
+      alt_bin = case_when(
+        D_rt_2019 > tau_alt_low & D_rt_2019 <= quantile(df_2019$D_rt, 0.50, na.rm = TRUE) ~ "Low",
+        D_rt_2019 > tau_alt_high ~ "High",
+        TRUE ~ NA_character_
+      )
+    )
+
+  # NEW: Run on Low
+  d_alt_low <- df_alt %>% filter(alt_bin == "Low" | g == 0) %>%
+    mutate(y = wage_gap) %>% select(id_num, ano, g, y)
+  res <- tryCatch(run_cs_preagg(d_alt_low, paste0("AltCut/", alt_name, "/Low")),
+                  error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+  if (!is.null(res)) alt_cohort_results[[paste0(alt_name, "_low")]] <- res
+
+  # NEW: Run on High
+  d_alt_high <- df_alt %>% filter(alt_bin == "High" | g == 0) %>%
+    mutate(y = wage_gap) %>% select(id_num, ano, g, y)
+  res <- tryCatch(run_cs_preagg(d_alt_high, paste0("AltCut/", alt_name, "/High")),
+                  error = function(e) { message(sprintf("   WARNING: %s", safe_err_msg(e))); NULL })
+  if (!is.null(res)) alt_cohort_results[[paste0(alt_name, "_high")]] <- res
+}
+message("   Alternative cutoff models on wage gap done.")
+
+# ==============================================================================
+# NEW: SECTION 9P — CONTINUOUS DOSE-RESPONSE (contdid)
+# ==============================================================================
+message("\n SECTION 9P: contdid (optional)...")
+
+res_contdid <- NULL
+tryCatch({
+  if (!requireNamespace("contdid", quietly = TRUE)) {
+    devtools::install_github("bcallaway11/contdid")
+  }
+  library(contdid)
+
+  contdid_panel <- df_cohort_wide %>%
+    select(id_num, ano, g, wage_gap) %>%
+    inner_join(
+      df_final %>% mutate(id_num = as.integer(id_microrregiao)) %>%
+        select(id_num, ano, D_rt),
+      by = c("id_num", "ano")
+    ) %>%
+    filter(!is.na(wage_gap), !is.na(D_rt)) %>%
+    rename(id = id_num, time = ano, dose = D_rt, G = g, y = wage_gap)
+
+  res_contdid <- cont_did(
+    yname = "y", tname = "time", idname = "id",
+    dname = "dose", gname = "G",
+    data = as.data.frame(contdid_panel),
+    control_group = "notyettreated"
+  )
+
+  p_contdid <- plot(res_contdid)
+  ggsave("Figures_Final/fig_contdid.png", p_contdid, width = 9, height = 5.5, dpi = 300)
+  message("   contdid succeeded and saved.")
+}, error = function(e) {
+  message(sprintf("   contdid SKIPPED: %s", e$message))
+})
+
+# ==============================================================================
 # SECTION 9L: ATT SUMMARY TABLE (UPDATED)
 # ==============================================================================
 message("   Building ATT summary table...")
@@ -1566,7 +1908,13 @@ all_results <- Filter(Negate(is.null), list(
   # NEW: Cohort-based models (Duflo-style)
   res_gap_low, res_gap_high,
   res_young_low, res_young_high,
-  res_old_low, res_old_high
+  res_old_low, res_old_high,
+  # NEW: Extended cohort models
+  res_college_low, res_college_high,
+  res_gap_male_low, res_gap_male_high,
+  res_gap_female_low, res_gap_female_high,
+  res_gap_white_low, res_gap_white_high,
+  res_gap_nonwhite_low, res_gap_nonwhite_high
 ))
 
 tab_att <- bind_rows(lapply(all_results, build_att_row))
@@ -1791,6 +2139,54 @@ if (!is.null(res_young_high) && !is.null(res_old_high)) {
 
 message("   Cohort figures saved.")
 
+# ==============================================================================
+# NEW: SECTION 10C — EXTENDED COHORT FIGURES
+# ==============================================================================
+message(" [NEW] Generating extended cohort figures...")
+
+# NEW: FIG 4 — First stage: college share gap
+if (!is.null(res_college_low) && !is.null(res_college_high)) {
+  p <- plot_event_study(res_college_low$tidy, res_college_high$tidy,
+    "Low Dose", "High Dose", "#E69F00", "#0072B2",
+    "First Stage: College Share Gap (Young - Old)",
+    ylab = "ATT on college share gap")
+  ggsave("Figures_Final/fig_first_stage.png", p, width = 9, height = 5.5, dpi = 300)
+}
+
+# NEW: FIG 5 — Gender heterogeneity (wage gap)
+if (!is.null(res_gap_male_low) && !is.null(res_gap_female_low)) {
+  p <- plot_event_study(res_gap_male_low$tidy, res_gap_female_low$tidy,
+    "Male", "Female", "#009E73", "#D55E00",
+    "Gender Gap in Cohort Wage Premium: Low Dose",
+    ylab = "ATT on wage gap (young - old)")
+  ggsave("Figures_Final/fig_cohort_gender_low.png", p, width = 9, height = 5.5, dpi = 300)
+}
+if (!is.null(res_gap_male_high) && !is.null(res_gap_female_high)) {
+  p <- plot_event_study(res_gap_male_high$tidy, res_gap_female_high$tidy,
+    "Male", "Female", "#009E73", "#D55E00",
+    "Gender Gap in Cohort Wage Premium: High Dose",
+    ylab = "ATT on wage gap (young - old)")
+  ggsave("Figures_Final/fig_cohort_gender_high.png", p, width = 9, height = 5.5, dpi = 300)
+}
+
+# NEW: FIG 6 — Race heterogeneity (wage gap)
+if (!is.null(res_gap_nonwhite_low) && !is.null(res_gap_white_low)) {
+  p <- plot_event_study(res_gap_nonwhite_low$tidy, res_gap_white_low$tidy,
+    "Non-white", "White", "#CC79A7", "#56B4E9",
+    "Racial Gap in Cohort Wage Premium: Low Dose",
+    ylab = "ATT on wage gap (young - old)")
+  ggsave("Figures_Final/fig_cohort_race_low.png", p, width = 9, height = 5.5, dpi = 300)
+}
+if (!is.null(res_gap_nonwhite_high) && !is.null(res_gap_white_high)) {
+  p <- plot_event_study(res_gap_nonwhite_high$tidy, res_gap_white_high$tidy,
+    "Non-white", "White", "#CC79A7", "#56B4E9",
+    "Racial Gap in Cohort Wage Premium: High Dose",
+    ylab = "ATT on wage gap (young - old)")
+  ggsave("Figures_Final/fig_cohort_race_high.png", p, width = 9, height = 5.5, dpi = 300)
+}
+
+message("   Extended cohort figures saved.")
+
 # Save all event-study estimates as CSVs for appendix
 es_exports <- list(
   es_low_wage = res_low$tidy, es_high_wage = res_high$tidy,
@@ -1825,6 +2221,17 @@ if (!is.null(res_young_low))  es_exports$es_young_low  <- res_young_low$tidy
 if (!is.null(res_young_high)) es_exports$es_young_high <- res_young_high$tidy
 if (!is.null(res_old_low))    es_exports$es_old_low    <- res_old_low$tidy
 if (!is.null(res_old_high))   es_exports$es_old_high   <- res_old_high$tidy
+# NEW: Extended cohort event-study CSVs
+if (!is.null(res_college_low))     es_exports$es_college_low     <- res_college_low$tidy
+if (!is.null(res_college_high))    es_exports$es_college_high    <- res_college_high$tidy
+if (!is.null(res_gap_male_low))    es_exports$es_gap_male_low    <- res_gap_male_low$tidy
+if (!is.null(res_gap_male_high))   es_exports$es_gap_male_high   <- res_gap_male_high$tidy
+if (!is.null(res_gap_female_low))  es_exports$es_gap_female_low  <- res_gap_female_low$tidy
+if (!is.null(res_gap_female_high)) es_exports$es_gap_female_high <- res_gap_female_high$tidy
+if (!is.null(res_gap_white_low))   es_exports$es_gap_white_low   <- res_gap_white_low$tidy
+if (!is.null(res_gap_white_high))  es_exports$es_gap_white_high  <- res_gap_white_high$tidy
+if (!is.null(res_gap_nonwhite_low))  es_exports$es_gap_nonwhite_low  <- res_gap_nonwhite_low$tidy
+if (!is.null(res_gap_nonwhite_high)) es_exports$es_gap_nonwhite_high <- res_gap_nonwhite_high$tidy
 
 for (nm in names(es_exports)) {
   write_csv(es_exports[[nm]], sprintf("Tables_Final/%s.csv", nm))
@@ -1917,8 +2324,25 @@ audit_log <- list(
     Young_Low   = if (!is.null(res_young_low))  res_young_low$pretrend  else NA,
     Young_High  = if (!is.null(res_young_high)) res_young_high$pretrend else NA,
     Old_Low     = if (!is.null(res_old_low))    res_old_low$pretrend    else NA,
-    Old_High    = if (!is.null(res_old_high))   res_old_high$pretrend   else NA
+    Old_High    = if (!is.null(res_old_high))   res_old_high$pretrend   else NA,
+    College_Low = if (!is.null(res_college_low))  res_college_low$pretrend  else NA,
+    College_High= if (!is.null(res_college_high)) res_college_high$pretrend else NA,
+    GapMale_Low = if (!is.null(res_gap_male_low))   res_gap_male_low$pretrend   else NA,
+    GapMale_High= if (!is.null(res_gap_male_high))  res_gap_male_high$pretrend  else NA,
+    GapFemale_Low  = if (!is.null(res_gap_female_low))  res_gap_female_low$pretrend  else NA,
+    GapFemale_High = if (!is.null(res_gap_female_high)) res_gap_female_high$pretrend else NA,
+    GapWhite_Low   = if (!is.null(res_gap_white_low))   res_gap_white_low$pretrend   else NA,
+    GapWhite_High  = if (!is.null(res_gap_white_high))  res_gap_white_high$pretrend  else NA,
+    GapNonwhite_Low  = if (!is.null(res_gap_nonwhite_low))  res_gap_nonwhite_low$pretrend  else NA,
+    GapNonwhite_High = if (!is.null(res_gap_nonwhite_high)) res_gap_nonwhite_high$pretrend else NA
   ),
+  # NEW: Wald/LATE estimates
+  wald_late = tab_wald,
+  # NEW: Alt cutoff results on wage gap
+  alt_cohort_results = lapply(alt_cohort_results, function(r) {
+    list(label = r$label, att = r$simple$overall.att, se = r$simple$overall.se,
+         pretrend = r$pretrend$p.value)
+  }),
   case_studies = case_micro
 )
 saveRDS(audit_log, "Documentation_Final/audit_log.rds")
@@ -1973,15 +2397,28 @@ if (!is.null(res_placebo_low) || !is.null(res_placebo_high)) {
   if (!is.null(res_placebo_low))  message(sprintf("  Placebo/Low:  %.4f (SE %.4f)", res_placebo_low$simple$overall.att, res_placebo_low$simple$overall.se))
   if (!is.null(res_placebo_high)) message(sprintf("  Placebo/High: %.4f (SE %.4f)", res_placebo_high$simple$overall.att, res_placebo_high$simple$overall.se))
 }
-# NEW: Cohort analysis summary
+# NEW: Cohort analysis summary (extended)
 cohort_results_all <- Filter(Negate(is.null), list(
-  res_gap_low, res_gap_high, res_young_low, res_young_high, res_old_low, res_old_high
+  res_gap_low, res_gap_high, res_young_low, res_young_high, res_old_low, res_old_high,
+  res_college_low, res_college_high,
+  res_gap_male_low, res_gap_male_high, res_gap_female_low, res_gap_female_high,
+  res_gap_white_low, res_gap_white_high, res_gap_nonwhite_low, res_gap_nonwhite_high
 ))
 if (length(cohort_results_all) > 0) {
   message("  === COHORT ANALYSIS (Duflo-style) ===")
   for (r in cohort_results_all) {
-    message(sprintf("  %-15s ATT = %+.4f (SE = %.4f) | p_pretrend = %.4f",
-                    r$label, r$simple$overall.att, r$simple$overall.se, r$pretrend$p.value))
+    pt_pval <- ifelse(is.na(r$pretrend$p.value), NA, r$pretrend$p.value)
+    message(sprintf("  %-25s ATT = %+.4f (SE = %.4f) | p_pretrend = %.4f",
+                    r$label, r$simple$overall.att, r$simple$overall.se, pt_pval))
+  }
+}
+# NEW: Wald/LATE summary
+if (exists("tab_wald") && nrow(tab_wald) > 0) {
+  message("  === IMPLIED RETURNS (Wald LATE) ===")
+  for (i in seq_len(nrow(tab_wald))) {
+    message(sprintf("  %-15s LATE = %.3f (SE = %.3f) | RF = %.4f | FS = %.4f",
+                    tab_wald$Label[i], tab_wald$LATE[i], tab_wald$SE_LATE[i],
+                    tab_wald$RF_ATT[i], tab_wald$FS_ATT[i]))
   }
 }
 message(sprintf("  --- Models estimated: %d total ---", n_total_models))

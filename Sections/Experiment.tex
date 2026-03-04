@@ -1,0 +1,119 @@
+\chapter{Identification Strategy and Econometric Framework}
+\label{ch:experiment}
+
+This chapter details the identification strategy used to estimate the causal effect of ProUni on labor market outcomes. The design exploits two independent sources of variation: (i) spatial heterogeneity in cumulative scholarship density across microregions, and (ii) the temporal exposure of different age cohorts. Specifically, following \citeA{Duflo2001}, I exploit the fact that only young workers (aged 22--28) could plausibly have benefited from ProUni scholarships, while older workers (aged 29--35) in the same microregion serve as a within-market control cohort. This age-cohort contrast, combined with spatial variation in scholarship density, yields a triple-difference (DDD) design that isolates the human capital channel from local economic shocks.
+
+\section{Treatment Variable}
+\label{sec:treatment}
+
+The treatment intensity measure is the cumulative ProUni scholarships per 1,000 youth population in each microregion $r$, lagged by four years to reflect the time between scholarship receipt and labor market entry:
+\begin{equation}
+    D_{r,t} = \frac{\sum_{s=2005}^{t-4} \text{Bolsas}_{r,s}}{\text{Pop}_{r,18\text{--}24}^{2010}} \times 1000.
+    \label{eq:dose}
+\end{equation}
+This variable is discretized into dose bins based on the 2019 cross-sectional distribution: ``Low'' (20th--50th percentile), ``High'' ($>$75th percentile), with the remaining microregions forming the not-yet-treated comparison group.
+
+\section{Estimation Framework}
+\label{sec:estimation}
+
+\subsection{Sample Construction}
+\label{sec:sample}
+
+The analysis sample consists of formal-sector workers (CLT contracts) aged 22--35 drawn from RAIS (\emph{Rela\c{c}\~{a}o Anual de Informa\c{c}\~{o}es Sociais}) for the years 2002--2019. I restrict attention to active contracts as of December 31 of each year (\texttt{vinculo\_ativo\_3112 = 1}) with positive remuneration.
+
+\paragraph{Age-Cohort Decomposition (Duflo-style).} To isolate the age-specific human capital channel from general local economic shocks, I decompose the main 22--35 sample into two cohorts:
+\begin{itemize}
+    \item \textbf{Exposed cohort (ages 22--28):} Workers who could
+    plausibly be ProUni graduates, having entered university at the
+    standard age (18--20) and graduated within 4--6 years.
+    \item \textbf{Control cohort (ages 29--35):} Workers too old to
+    have been ProUni beneficiaries at standard university-going age
+    during the treatment period.
+\end{itemize}
+The primary outcome becomes the \emph{within-microregion wage gap} between these two cohorts:
+\begin{equation}
+    \Delta w_{r,t} = \bar{w}_{r,t}^{\text{young}} - \bar{w}_{r,t}^{\text{old}},
+    \label{eq:wage_gap}
+\end{equation}
+where $\bar{w}_{r,t}^{c}$ is the average log wage for cohort $c$ in microregion $r$ at time $t$. Any local shock that affects all ages equally (e.g., a factory closure, commodity price change) is absorbed by the differencing, leaving only the age-specific ProUni channel. This is analogous to \citeA{Duflo2001}'s comparison of young cohorts exposed to Indonesia's school construction program against older cohorts in the same district.
+
+\subsection{Callaway and Sant'Anna Estimator}
+\label{sec:cs_estimator}
+
+I estimate group-time average treatment effects $ATT(g,t)$ using the heterogeneity-robust estimator of \citeA{CallawayAndSantAnna2021}, which allows for staggered treatment adoption and heterogeneous treatment effects. The not-yet-treated comparison group is used throughout. Event-study aggregations follow:
+\begin{equation}
+    ATT_d^{\text{ES}}(e) = \frac{1}{|\mathcal{G}|}\sum_{g \in \mathcal{G}} ATT_d(g, g+e),
+    \label{eq:es_agg}
+\end{equation}
+where $e$ denotes event time relative to the first treatment year.
+
+\subsection{Outcome Specifications}
+\label{sec:outcomes}
+
+\paragraph{Outcome 1: Log Wages (Pooled).} The baseline specification estimates the effect of ProUni intensity on average log wages (in minimum-wage units) for all workers aged 22--35 in the microregion-year cell. This captures both direct (human capital) and indirect (general equilibrium) effects.
+
+\paragraph{Outcome 2: Employment.} Total formal employment (\texttt{n\_vinculos}) as a measure of the extensive margin.
+
+\paragraph{Outcome 3: Cohort Wage Gap (Triple-Difference).} The headline specification estimates:
+\begin{equation}
+    \Delta w_{r,t}
+    \;=\;
+    ATT_d^{\Delta}(g, t)
+    \;\cdot\;
+    \mathbf{1}\{G_d^r = g,\; T = t\}
+    \;+\;
+    \alpha_r + \lambda_t + \varepsilon_{r,t},
+    \label{eq:main_gap}
+\end{equation}
+where $\Delta w_{r,t}$ is the young--old wage gap defined in Equation~\ref{eq:wage_gap}. A positive $ATT_d^{\Delta}$ indicates that ProUni raised the relative wage of the exposed (young) cohort.
+
+\paragraph{Outcome 4: First Stage --- College Attainment Gap.} To recover the implied return to a ProUni degree, I estimate the ``first stage'' effect on the college attainment gap:
+\begin{equation}
+    \Delta s_{r,t}
+    \;=\;
+    ATT_d^{s}(g, t)
+    \;\cdot\;
+    \mathbf{1}\{G_d^r = g,\; T = t\}
+    \;+\;
+    \alpha_r + \lambda_t + \varepsilon_{r,t},
+    \label{eq:first_stage}
+\end{equation}
+where $\Delta s_{r,t} = s_{r,t}^{\text{young}} - s_{r,t}^{\text{old}}$ is the difference in college-educated worker shares between cohorts. The implied Wald/LATE estimate of the return to a ProUni degree is:
+\begin{equation}
+    \hat{\rho}_{\text{LATE}}
+    \;=\;
+    \frac{ATT_d^{\Delta}}{ATT_d^{s}},
+    \label{eq:wald}
+\end{equation}
+with standard errors computed via the delta method.
+
+\section{Identifying Assumptions}
+\label{sec:assumptions}
+
+The key identifying assumption is that, in the absence of ProUni, the young--old wage gap would have evolved similarly in high-dose and low-dose microregions (\emph{parallel trends in the cohort gap}). This is weaker than requiring parallel trends in wage levels, since it allows for differential trends across regions as long as they affect both age groups equally. I assess this assumption through:
+\begin{enumerate}
+    \item Pre-trend F-tests on the event-study coefficients for $e < 0$.
+    \item The \citeA{RambachanRoth2023} honest confidence intervals under deviations from parallel trends (HonestDiD).
+    \item The old-cohort placebo: if only the young cohort is affected, the treatment effect on old-only wages should be zero.
+\end{enumerate}
+
+\section{Robustness Checks}
+\label{sec:robustness}
+
+\subsection{TWFE Benchmark}
+A standard two-way fixed effects (TWFE) regression with microregion and year fixed effects is estimated for comparison with the heterogeneity-robust CS estimator.
+
+\subsection{Alternative Discretization Cutoffs}
+The dose bins are re-computed using 25th/75th and 33rd/67th percentile cutoffs (instead of 20th/50th/75th) to verify that results are not driven by the choice of bin boundaries.
+
+\subsection{Buffer-Zone Exclusion}
+Microregions in the ``middle'' of the dose distribution (between the Low and High bins) are excluded to test sensitivity to SUTVA violations and spatial spillovers.
+
+\subsection{Doubly-Robust Estimation}
+The \citeA{SantAnnaZhao2020} doubly-robust estimator is applied, conditioning on pre-treatment Census covariates to improve efficiency and reduce bias from residual confounding.
+
+\subsubsection{Age-Cohort Placebo}
+As a built-in falsification test, I estimate the main specification separately for the young (22--28) and old (29--35) cohorts. Under the identifying assumption, the old-cohort ATT should be zero, confirming that the treatment effect is age-specific rather than reflecting general local economic shocks. This test is more powerful than an external placebo (e.g., ages 36--50) because it uses workers in the \emph{same microregion-year cell}, perfectly controlling for local conditions.
+
+\subsection{Continuous Treatment}
+As a further robustness check, I estimate the dose-response function using the continuous treatment DiD estimator of \citeA{CallawayGoodmanBaconSantAnna2024ES}, which avoids the discretization of the treatment variable entirely.
