@@ -643,6 +643,103 @@ message("   Selected case study microregions:")
 print(case_micro)
 
 # ==============================================================================
+# NEW: SECTION 7B — GEOGRAPHIC DISTRIBUTION HEATMAP
+# ==============================================================================
+message(" Generating Geographic Heatmap...")
+
+tryCatch({
+  if (!requireNamespace("sf", quietly = TRUE) || !requireNamespace("geobr", quietly = TRUE)) {
+    stop("sf or geobr package not available")
+  }
+
+  # 1. Download microregion shapefile
+  micro_sf <- geobr::read_micro_region(year = 2010, simplified = TRUE)
+
+  # 2. Merge treatment data
+  #    df_final has id_microrregiao, D_rt_2019, dose_bin (from 2019 cross-section)
+  map_data <- micro_sf %>%
+    mutate(code_micro = as.character(code_micro)) %>%
+    left_join(
+      df_final %>%
+        filter(ano == max(params$years)) %>%
+        distinct(id_microrregiao, D_rt_2019, dose_bin) %>%
+        mutate(id_microrregiao = as.character(id_microrregiao)),
+      by = c("code_micro" = "id_microrregiao")
+    )
+
+  # 3. Continuous heatmap: scholarship density
+  p_heat <- ggplot(map_data) +
+    geom_sf(aes(fill = D_rt_2019), color = NA, linewidth = 0) +
+    scale_fill_viridis_c(
+      name = expression(D[r*","*2019]),
+      option = "inferno",
+      direction = -1,
+      na.value = "grey90",
+      trans = "sqrt",
+      breaks = c(0, 10, 50, 100, 200),
+      labels = c("0", "10", "50", "100", "200")
+    ) +
+    labs(
+      title = "ProUni Scholarship Density by Microregion",
+      subtitle = "Cumulative scholarships per 1,000 youth (lagged 4 years), 2019"
+    ) +
+    theme_void() +
+    theme(
+      plot.title = element_text(face = "bold", size = 14),
+      plot.subtitle = element_text(size = 10, color = "grey40"),
+      legend.position = c(0.15, 0.25),
+      legend.key.height = unit(1.2, "cm"),
+      legend.key.width = unit(0.4, "cm")
+    )
+
+  ggsave("Figures_Final/fig_map_dose_continuous.png", p_heat,
+         width = 8, height = 9, dpi = 300, bg = "white")
+
+  # 4. Categorical map: dose bins (Low / High / Baseline)
+  map_data <- map_data %>%
+    mutate(
+      bin_label = case_when(
+        dose_bin == "High" ~ "High Dose (> p75)",
+        dose_bin == "Low"  ~ "Low Dose (p20-p50)",
+        is.na(dose_bin) & !is.na(D_rt_2019) ~ "Baseline / Middle",
+        TRUE ~ "No data"
+      ),
+      bin_label = factor(bin_label, levels = c(
+        "High Dose (> p75)", "Low Dose (p20-p50)",
+        "Baseline / Middle", "No data"
+      ))
+    )
+
+  p_bins <- ggplot(map_data) +
+    geom_sf(aes(fill = bin_label), color = "white", linewidth = 0.05) +
+    scale_fill_manual(
+      name = "Dose Bin",
+      values = c(
+        "High Dose (> p75)" = "#d73027",
+        "Low Dose (p20-p50)" = "#fee08b",
+        "Baseline / Middle" = "#e0e0e0",
+        "No data" = "white"
+      ),
+      drop = FALSE
+    ) +
+    labs(
+      title = "Treatment Assignment by Dose Bin",
+      subtitle = "Based on 2019 cross-sectional distribution of lagged scholarship density"
+    ) +
+    theme_void() +
+    theme(
+      plot.title = element_text(face = "bold", size = 14),
+      plot.subtitle = element_text(size = 10, color = "grey40"),
+      legend.position = c(0.15, 0.25)
+    )
+
+  ggsave("Figures_Final/fig_map_dose_bins.png", p_bins,
+         width = 8, height = 9, dpi = 300, bg = "white")
+
+  message("   Heatmap figures saved.")
+}, error = function(e) message(sprintf("   WARNING: Geographic heatmap failed: %s", conditionMessage(e))))
+
+# ==============================================================================
 # SECTION 8: PREPARE REGRESSION DATASETS
 # ==============================================================================
 message(" [7/12] Building Regression Datasets...")
@@ -1118,8 +1215,10 @@ res_placebo_high <- NULL
 message(" [NEW] Running TWFE Benchmark...")
 
 twfe_fit <- NULL
+twfe_emp <- NULL
 if (requireNamespace("fixest", quietly = TRUE)) {
   tryCatch({
+    # Wages
     twfe_data <- df_nonwhite %>%
       group_by(id_num, ano, g) %>%
       summarise(y = weighted.mean(log_wage_sm, w = n_vinculos, na.rm = TRUE),
@@ -1127,9 +1226,28 @@ if (requireNamespace("fixest", quietly = TRUE)) {
       mutate(treated = as.integer(g > 0 & ano >= g))
 
     twfe_fit <- fixest::feols(y ~ treated | id_num + ano, data = twfe_data, cluster = ~id_num)
-    twfe_coef <- fixest::coeftable(twfe_fit)
-    message(sprintf("   TWFE coeff = %.4f (SE = %.4f, p = %.4f)",
-                    twfe_coef[1, "Estimate"], twfe_coef[1, "Std. Error"], twfe_coef[1, "Pr(>|t|)"]))
+    message(sprintf("   TWFE Wages:  coef=%.4f (SE=%.4f)",
+                    coef(twfe_fit)["treated"], fixest::se(twfe_fit)["treated"]))
+
+    # Employment
+    twfe_emp_data <- df_nonwhite %>%
+      group_by(id_num, ano, g) %>%
+      summarise(y = log(sum(n_vinculos, na.rm = TRUE)), .groups = "drop") %>%
+      mutate(treated = as.integer(g > 0 & ano >= g))
+
+    twfe_emp <- fixest::feols(y ~ treated | id_num + ano, data = twfe_emp_data, cluster = ~id_num)
+    message(sprintf("   TWFE Employ: coef=%.4f (SE=%.4f)",
+                    coef(twfe_emp)["treated"], fixest::se(twfe_emp)["treated"]))
+
+    # Export summary CSV
+    twfe_summary <- tibble(
+      Model = c("TWFE/Wages", "TWFE/Employment"),
+      Coef  = c(coef(twfe_fit)["treated"], coef(twfe_emp)["treated"]),
+      SE    = c(fixest::se(twfe_fit)["treated"], fixest::se(twfe_emp)["treated"]),
+      N     = c(stats::nobs(twfe_fit), stats::nobs(twfe_emp))
+    )
+    write_csv(twfe_summary, "Tables_Final/table5_twfe_benchmark.csv")
+    message("   TWFE benchmark saved.")
   }, error = function(e) message(sprintf("   WARNING: TWFE failed: %s", safe_err_msg(e))))
 } else {
   message("   SKIPPED: fixest package not available.")
@@ -1143,31 +1261,42 @@ if (requireNamespace("fixest", quietly = TRUE)) {
 # ==============================================================================
 message(" [NEW] Running Alternative Cutoff Robustness...")
 
-# NEW: Helper to recompute bins and re-run for a given pair of quantiles
+# NEW: Helper to recompute bins + g and re-run for a given pair of quantiles
 run_alt_cutoffs <- function(q_lo, q_hi, suffix) {
-  tau_lo <- quantile(df_2019$D_rt, q_lo, na.rm = TRUE)
-  tau_hi <- quantile(df_2019$D_rt, q_hi, na.rm = TRUE)
-  message(sprintf("   Cutoffs %s: tau_lo=%.4f | tau_hi=%.4f", suffix, tau_lo, tau_hi))
+  tau_lo  <- quantile(df_2019$D_rt, q_lo, na.rm = TRUE)
+  tau_mid <- quantile(df_2019$D_rt, mean(c(q_lo, q_hi)), na.rm = TRUE)
+  tau_hi  <- quantile(df_2019$D_rt, q_hi, na.rm = TRUE)
+  message(sprintf("   Cutoffs %s: tau_lo=%.4f | tau_mid=%.4f | tau_hi=%.4f", suffix, tau_lo, tau_mid, tau_hi))
 
+  # Recompute dose_bin and g using the new tau_lo threshold
   df_alt <- df_final %>%
+    group_by(id_microrregiao) %>%
     mutate(
       dose_bin_alt = case_when(
-        D_rt_2019 >  tau_20 & D_rt_2019 <= tau_lo ~ "Low",
-        D_rt_2019 >  tau_hi                         ~ "High",
-        TRUE                                         ~ NA_character_
-      )
-    )
+        D_rt_2019 >  tau_lo & D_rt_2019 <= tau_mid ~ "Low",
+        D_rt_2019 >  tau_hi                          ~ "High",
+        TRUE                                          ~ NA_character_
+      ),
+      g_alt = {
+        crossing <- ano[D_rt > tau_lo]
+        if (length(crossing) == 0) 0L else as.integer(min(crossing))
+      }
+    ) %>%
+    ungroup() %>%
+    mutate(g_alt = ifelse(is.infinite(g_alt), 0L, g_alt))
 
-  data_low_alt  <- df_nonwhite %>%
-    select(-dose_bin) %>%
-    inner_join(df_alt %>% select(id_microrregiao, ano, dose_bin_alt), by = c("id_microrregiao", "ano")) %>%
-    rename(dose_bin = dose_bin_alt) %>%
+  data_low_alt <- df_nonwhite %>%
+    select(-dose_bin, -g) %>%
+    inner_join(df_alt %>% select(id_microrregiao, ano, dose_bin_alt, g_alt),
+               by = c("id_microrregiao", "ano")) %>%
+    rename(dose_bin = dose_bin_alt, g = g_alt) %>%
     filter(dose_bin == "Low" | g == 0)
 
   data_high_alt <- df_nonwhite %>%
-    select(-dose_bin) %>%
-    inner_join(df_alt %>% select(id_microrregiao, ano, dose_bin_alt), by = c("id_microrregiao", "ano")) %>%
-    rename(dose_bin = dose_bin_alt) %>%
+    select(-dose_bin, -g) %>%
+    inner_join(df_alt %>% select(id_microrregiao, ano, dose_bin_alt, g_alt),
+               by = c("id_microrregiao", "ano")) %>%
+    rename(dose_bin = dose_bin_alt, g = g_alt) %>%
     filter(dose_bin == "High" | g == 0)
 
   res_lo <- tryCatch(run_cs(data_low_alt,  "log_wage_sm", label = paste0("Low/", suffix)),
@@ -1210,20 +1339,25 @@ all_results <- Filter(Negate(is.null), list(
 
 tab_att <- bind_rows(lapply(all_results, build_att_row))
 
-# NEW: Add TWFE row if available
-if (!is.null(twfe_fit)) {
-  tc <- fixest::coeftable(twfe_fit)
-  tab_att <- bind_rows(tab_att, tibble(
-    Model      = "TWFE (naive)",
-    ATT        = round(tc[1, "Estimate"], 4),
-    SE         = round(tc[1, "Std. Error"], 4),
-    CI_low     = round(tc[1, "Estimate"] - 1.96 * tc[1, "Std. Error"], 4),
-    CI_high    = round(tc[1, "Estimate"] + 1.96 * tc[1, "Std. Error"], 4),
-    Pretrend_p = NA_real_,
-    N_obs      = as.integer(stats::nobs(twfe_fit)),
-    N_treated  = NA_integer_,
-    N_notyet   = NA_integer_
-  ))
+# NEW: Add TWFE rows if available
+for (twfe_item in list(
+  list(fit = twfe_fit, label = "TWFE/Wages"),
+  list(fit = twfe_emp, label = "TWFE/Employment")
+)) {
+  if (!is.null(twfe_item$fit)) {
+    tc <- fixest::coeftable(twfe_item$fit)
+    tab_att <- bind_rows(tab_att, tibble(
+      Model      = twfe_item$label,
+      ATT        = round(tc[1, "Estimate"], 4),
+      SE         = round(tc[1, "Std. Error"], 4),
+      CI_low     = round(tc[1, "Estimate"] - 1.96 * tc[1, "Std. Error"], 4),
+      CI_high    = round(tc[1, "Estimate"] + 1.96 * tc[1, "Std. Error"], 4),
+      Pretrend_p = NA_real_,
+      N_obs      = as.integer(stats::nobs(twfe_item$fit)),
+      N_treated  = NA_integer_,
+      N_notyet   = NA_integer_
+    ))
+  }
 }
 
 write_csv(tab_att, "Tables_Final/table4_summary_att.csv")
@@ -1362,6 +1496,26 @@ if (!is.null(res_low_25_75)) {
   ggsave("Figures_Final/fig_9_altcut_low.png", p9, width = 9, height = 5.5, dpi = 300)
 }
 
+# NEW: Figure 10 — Placebo cohort comparison (if placebo models succeeded)
+if (!is.null(res_placebo_low)) {
+  p_placebo <- plot_event_study(
+    res_low$tidy, res_placebo_low$tidy,
+    "Main (ages 22-35)", "Placebo (ages 36-50)",
+    "#0072B2", "#999999",
+    "Placebo Test: Main vs. Non-Exposed Cohort (Low Dose)"
+  )
+  ggsave("Figures_Final/fig_10_placebo_cohort.png", p_placebo, width = 9, height = 5.5, dpi = 300)
+}
+if (!is.null(res_placebo_high)) {
+  p_placebo_h <- plot_event_study(
+    res_high$tidy, res_placebo_high$tidy,
+    "Main (ages 22-35)", "Placebo (ages 36-50)",
+    "#0072B2", "#999999",
+    "Placebo Test: Main vs. Non-Exposed Cohort (High Dose)"
+  )
+  ggsave("Figures_Final/fig_10b_placebo_cohort_high.png", p_placebo_h, width = 9, height = 5.5, dpi = 300)
+}
+
 # Save all event-study estimates as CSVs for appendix
 es_exports <- list(
   es_low_wage = res_low$tidy, es_high_wage = res_high$tidy,
@@ -1386,6 +1540,9 @@ if (!is.null(res_low_25_75))   es_exports$es_low_25_75   <- res_low_25_75$tidy
 if (!is.null(res_high_25_75))  es_exports$es_high_25_75  <- res_high_25_75$tidy
 if (!is.null(res_low_33_67))   es_exports$es_low_33_67   <- res_low_33_67$tidy
 if (!is.null(res_high_33_67))  es_exports$es_high_33_67  <- res_high_33_67$tidy
+# NEW: Placebo event-study CSVs
+if (!is.null(res_placebo_low))  es_exports$es_placebo_low  <- res_placebo_low$tidy
+if (!is.null(res_placebo_high)) es_exports$es_placebo_high <- res_placebo_high$tidy
 
 for (nm in names(es_exports)) {
   write_csv(es_exports[[nm]], sprintf("Tables_Final/%s.csv", nm))
@@ -1445,9 +1602,13 @@ audit_log <- list(
     pretrend_low  = if (!is.null(res_low_buffer))  res_low_buffer$pretrend  else NA,
     pretrend_high = if (!is.null(res_high_buffer)) res_high_buffer$pretrend else NA
   ),
-  # NEW: TWFE benchmark
-  twfe = if (!is.null(twfe_fit)) {
+  # NEW: TWFE benchmark (wages + employment)
+  twfe_wages = if (!is.null(twfe_fit)) {
     tc <- fixest::coeftable(twfe_fit)
+    list(coef = tc[1, "Estimate"], se = tc[1, "Std. Error"], p = tc[1, "Pr(>|t|)"])
+  } else NA,
+  twfe_emp = if (!is.null(twfe_emp)) {
+    tc <- fixest::coeftable(twfe_emp)
     list(coef = tc[1, "Estimate"], se = tc[1, "Std. Error"], p = tc[1, "Pr(>|t|)"])
   } else NA,
   # NEW: Alternative cutoff pretrends
@@ -1456,6 +1617,16 @@ audit_log <- list(
     High_25_75 = if (!is.null(res_high_25_75)) res_high_25_75$pretrend else NA,
     Low_33_67  = if (!is.null(res_low_33_67))  res_low_33_67$pretrend  else NA,
     High_33_67 = if (!is.null(res_high_33_67)) res_high_33_67$pretrend else NA
+  ),
+  # NEW: Placebo cohort pretrends
+  placebo_pretrend = list(
+    Placebo_Low  = if (!is.null(res_placebo_low))  res_placebo_low$pretrend  else NA,
+    Placebo_High = if (!is.null(res_placebo_high)) res_placebo_high$pretrend else NA
+  ),
+  # NEW: Heatmap paths
+  heatmap_paths = list(
+    continuous = "Figures_Final/fig_map_dose_continuous.png",
+    bins       = "Figures_Final/fig_map_dose_bins.png"
   ),
   case_studies = case_micro
 )
@@ -1500,7 +1671,16 @@ if (length(honest_results) > 0) {
 }
 if (!is.null(twfe_fit)) {
   tc <- fixest::coeftable(twfe_fit)
-  message(sprintf("  --- TWFE benchmark: %.4f (SE %.4f) ---", tc[1, "Estimate"], tc[1, "Std. Error"]))
+  message(sprintf("  --- TWFE Wages: %.4f (SE %.4f) ---", tc[1, "Estimate"], tc[1, "Std. Error"]))
+}
+if (!is.null(twfe_emp)) {
+  tc <- fixest::coeftable(twfe_emp)
+  message(sprintf("  --- TWFE Employment: %.4f (SE %.4f) ---", tc[1, "Estimate"], tc[1, "Std. Error"]))
+}
+if (!is.null(res_placebo_low) || !is.null(res_placebo_high)) {
+  message("  --- Placebo cohort (ages 36-50) ---")
+  if (!is.null(res_placebo_low))  message(sprintf("  Placebo/Low:  %.4f (SE %.4f)", res_placebo_low$simple$overall.att, res_placebo_low$simple$overall.se))
+  if (!is.null(res_placebo_high)) message(sprintf("  Placebo/High: %.4f (SE %.4f)", res_placebo_high$simple$overall.att, res_placebo_high$simple$overall.se))
 }
 message(sprintf("  --- Models estimated: %d total ---", n_total_models))
 message("=====================\n")
