@@ -270,6 +270,42 @@ plot_event_study <- function(df1, df2, l1, l2, c1, c2, title_txt,
     )
 }
 
+# NEW: Helper 6 — lightweight CS runner for pre-aggregated data
+# Accepts a data frame with columns: id_num, ano, g, y
+# (no internal aggregation step needed — data is already at microregion-year level)
+run_cs_preagg <- function(d, label) {
+  n_treated <- d %>% filter(g > 0) %>% pull(id_num) %>% n_distinct()
+  n_notyet  <- d %>% filter(g == 0) %>% pull(id_num) %>% n_distinct()
+
+  if (n_treated < 20 || n_notyet < 20) {
+    warning(sprintf("[%s] Insufficient units: %d treated, %d not-yet-treated", label, n_treated, n_notyet))
+    return(NULL)
+  }
+
+  message(sprintf("   [%s] %d treated | %d not-yet-treated | %d obs",
+                  label, n_treated, n_notyet, nrow(d)))
+
+  att <- did::att_gt(
+    yname  = "y", tname = "ano", idname = "id_num", gname = "g",
+    data   = d,
+    control_group = "notyettreated",
+    allow_unbalanced_panel = TRUE,
+    print_details = FALSE
+  )
+
+  es         <- did::aggte(att, type = "dynamic", na.rm = TRUE)
+  es_tidy    <- broom::tidy(es)
+  att_simple <- did::aggte(att, type = "simple", na.rm = TRUE)
+  pretrend   <- pretrend_ftest(att)
+
+  message(sprintf("   [%s] ATT = %.4f (SE = %.4f) | Pre-trend p = %.4f",
+                  label, att_simple$overall.att, att_simple$overall.se, pretrend$p.value))
+
+  list(att_gt = att, es = es, tidy = es_tidy, simple = att_simple,
+       pretrend = pretrend, label = label, n_obs = nrow(d),
+       n_treated = n_treated, n_notyet = n_notyet)
+}
+
 # ==============================================================================
 # SECTION 2: DOCUMENTATION & PROVENANCE (APPENDIX)
 # ==============================================================================
@@ -413,6 +449,55 @@ if (length(missing_years) > 0) {
 
 df_rais <- bind_rows(rais_list)
 rm(rais_list); gc()
+
+# ==============================================================================
+# NEW: SECTION 3E — RAIS AGE-COHORT SPLIT (Duflo-style)
+# ==============================================================================
+# Downloads the same RAIS data but split into two age cohorts:
+#   young (22-28): plausibly ProUni graduates
+#   old   (29-35): too old to have benefited from ProUni
+# The existing df_rais is kept unchanged — we need both.
+# ==============================================================================
+message(" [NEW] Downloading RAIS with age-cohort split...")
+
+rais_cohort_list <- list()
+for (y in params$years) {
+  q <- paste0("
+    SELECT
+      ano,
+      id_municipio,
+      raca_cor,
+      sexo,
+      CASE
+        WHEN idade BETWEEN 22 AND 28 THEN 'young'
+        WHEN idade BETWEEN 29 AND 35 THEN 'old'
+      END AS age_group,
+      COUNT(*)                                             AS n_vinculos,
+      AVG(LOG(GREATEST(valor_remuneracao_media_sm, 0.1)))  AS log_wage_sm
+    FROM `basedosdados.br_me_rais.microdados_vinculos`
+    WHERE
+      ano = ", y, "
+      AND idade BETWEEN 22 AND 35
+      AND valor_remuneracao_media_sm > 0
+      AND tipo_vinculo = '10'
+      AND vinculo_ativo_3112 = 1
+    GROUP BY ano, id_municipio, raca_cor, sexo, age_group
+  ")
+  tryCatch({
+    rais_cohort_list[[as.character(y)]] <- basedosdados::read_sql(q)
+    message(sprintf("     Cohort year %d OK", y))
+  }, error = function(e) message(sprintf("     Error cohort year %d: %s", y, safe_err_msg(e))))
+  gc()
+}
+
+missing_cohort <- setdiff(as.character(params$years), names(rais_cohort_list))
+if (length(missing_cohort) > 0) {
+  warning(sprintf("Cohort RAIS incomplete — missing: %s", paste(missing_cohort, collapse = ", ")))
+}
+
+df_rais_cohort <- bind_rows(rais_cohort_list)
+rm(rais_cohort_list); gc()
+message(sprintf("   Cohort RAIS: %d rows", nrow(df_rais_cohort)))
 
 # ==============================================================================
 # SECTION 4: TREATMENT CONSTRUCTION
@@ -836,6 +921,103 @@ ggsave("Figures_Final/fig_0_casestudy_trajectories.png", p_cases, width = 10, he
 message("   Case study figure saved.")
 
 # ==============================================================================
+# NEW: SECTION 8B — COHORT-BASED OUTCOME CONSTRUCTION (Duflo-style)
+# ==============================================================================
+message(" [NEW] Building cohort-based outcomes...")
+
+# NEW: 8B.1 Merge geography and treatment assignment
+df_cohort_reg <- df_rais_cohort %>%
+  inner_join(
+    df_geo %>% select(id_municipio, id_microrregiao),
+    by = "id_municipio"
+  ) %>%
+  mutate(
+    ano    = as.integer(ano),
+    id_num = as.integer(id_microrregiao)
+  ) %>%
+  inner_join(
+    df_final %>% select(id_microrregiao, ano, g, dose_bin, sigla_uf),
+    by = c("id_microrregiao", "ano")
+  )
+
+# NEW: 8B.2 Filter to non-white (matching main analysis population)
+df_cohort_nw <- df_cohort_reg %>%
+  filter(raca_cor %in% c("1", "4", "8"))
+
+# NEW: 8B.3 Aggregate to microregion-year-cohort level
+df_cohort_micro <- df_cohort_nw %>%
+  group_by(id_num, id_microrregiao, ano, g, dose_bin, age_group) %>%
+  summarise(
+    avg_log_wage = weighted.mean(log_wage_sm, w = n_vinculos, na.rm = TRUE),
+    total_emp    = sum(n_vinculos, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# NEW: 8B.4 Pivot to wide: one row per microregion-year with young/old columns
+df_cohort_wide <- df_cohort_micro %>%
+  pivot_wider(
+    id_cols     = c(id_num, id_microrregiao, ano, g, dose_bin),
+    names_from  = age_group,
+    values_from = c(avg_log_wage, total_emp),
+    names_sep   = "_"
+  ) %>%
+  filter(
+    !is.na(avg_log_wage_young),
+    !is.na(avg_log_wage_old)
+  )
+
+# NEW: OUTCOME 1 — Cohort wage gap (young - old)
+# This is the Duflo (2001) triple-diff outcome.
+# Under the null of no ProUni effect, this gap should be constant across
+# treated and comparison microregions. A positive ATT means ProUni
+# increased the relative wage of the young (exposed) cohort.
+df_cohort_wide <- df_cohort_wide %>%
+  mutate(
+    wage_gap        = avg_log_wage_young - avg_log_wage_old,
+    emp_ratio_young = total_emp_young / (total_emp_young + total_emp_old)
+  )
+
+# NEW: OUTCOME 2 — Young-only wage level (direct effect on exposed cohort, ages 22-28)
+df_young_only <- df_cohort_micro %>%
+  filter(age_group == "young") %>%
+  rename(y_wage = avg_log_wage, y_emp = total_emp)
+
+# NEW: OUTCOME 3 — Old-only wage level (placebo within same microregion-year)
+df_old_only <- df_cohort_micro %>%
+  filter(age_group == "old") %>%
+  rename(y_wage = avg_log_wage, y_emp = total_emp)
+
+message(sprintf("   Cohort panel: %d microregion-years with both cohorts", nrow(df_cohort_wide)))
+message(sprintf("   Young-only: %d obs | Old-only: %d obs",
+                nrow(df_young_only), nrow(df_old_only)))
+
+# ==============================================================================
+# NEW: SECTION 8C — COHORT REGRESSION DATASETS
+# ==============================================================================
+
+# NEW: Wage gap (triple-diff)
+gap_low  <- df_cohort_wide %>% filter(dose_bin == "Low"  | g == 0) %>%
+  mutate(y = wage_gap) %>% select(id_num, ano, g, y)
+gap_high <- df_cohort_wide %>% filter(dose_bin == "High" | g == 0) %>%
+  mutate(y = wage_gap) %>% select(id_num, ano, g, y)
+
+# NEW: Young-only wages
+young_low  <- df_young_only %>% filter(dose_bin == "Low"  | g == 0) %>%
+  mutate(y = y_wage) %>% select(id_num, ano, g, y)
+young_high <- df_young_only %>% filter(dose_bin == "High" | g == 0) %>%
+  mutate(y = y_wage) %>% select(id_num, ano, g, y)
+
+# NEW: Old-only wages (built-in placebo)
+old_low  <- df_old_only %>% filter(dose_bin == "Low"  | g == 0) %>%
+  mutate(y = y_wage) %>% select(id_num, ano, g, y)
+old_high <- df_old_only %>% filter(dose_bin == "High" | g == 0) %>%
+  mutate(y = y_wage) %>% select(id_num, ano, g, y)
+
+message(sprintf("   Gap:   low=%d | high=%d", nrow(gap_low), nrow(gap_high)))
+message(sprintf("   Young: low=%d | high=%d", nrow(young_low), nrow(young_high)))
+message(sprintf("   Old:   low=%d | high=%d", nrow(old_low), nrow(old_high)))
+
+# ==============================================================================
 # SECTION 9A: MAIN ESTIMATION — WAGES (non-white, 4 models)
 # ==============================================================================
 message(" [8/12] Running Main Wage Models (Callaway & Sant'Anna)...")
@@ -965,6 +1147,52 @@ message("   -> High Dose / Lag=3...")
 res_high_lag3 <- run_cs(data_high_lag3, "log_wage_sm", label = "High/Lag3")
 
 message(" -> All 18 baseline + 2 lag-robustness models completed.")
+
+# ==============================================================================
+# NEW: SECTION 9E2 — COHORT-BASED ESTIMATION (Duflo-style)
+# ==============================================================================
+# Exploit age-cohort variation: young (22-28) could plausibly be ProUni
+# graduates vs. old (29-35) who are too old to have benefited.
+# Three outcomes:
+#   A. Wage gap (young - old) — the triple-diff headline
+#   B. Young-only wages — direct effect on exposed cohort
+#   C. Old-only wages — built-in placebo (should be ~0)
+# ==============================================================================
+message(" [NEW] Running Cohort-Based Models...")
+
+# NEW: Initialize results to NULL for graceful handling
+res_gap_low    <- NULL; res_gap_high    <- NULL
+res_young_low  <- NULL; res_young_high  <- NULL
+res_old_low    <- NULL; res_old_high    <- NULL
+
+# NEW: A. Wage gap (triple-diff) — THE PRIMARY NEW RESULT
+message("   -> Wage Gap (young - old) / Low Dose...")
+res_gap_low  <- tryCatch(run_cs_preagg(gap_low,  "Gap/Low"),
+                          error = function(e) { message(sprintf("   WARNING: Gap/Low failed: %s", safe_err_msg(e))); NULL })
+
+message("   -> Wage Gap (young - old) / High Dose...")
+res_gap_high <- tryCatch(run_cs_preagg(gap_high, "Gap/High"),
+                          error = function(e) { message(sprintf("   WARNING: Gap/High failed: %s", safe_err_msg(e))); NULL })
+
+# NEW: B. Young-only wages — the exposed cohort
+message("   -> Young (22-28) / Low Dose...")
+res_young_low  <- tryCatch(run_cs_preagg(young_low,  "Young/Low"),
+                            error = function(e) { message(sprintf("   WARNING: Young/Low failed: %s", safe_err_msg(e))); NULL })
+
+message("   -> Young (22-28) / High Dose...")
+res_young_high <- tryCatch(run_cs_preagg(young_high, "Young/High"),
+                            error = function(e) { message(sprintf("   WARNING: Young/High failed: %s", safe_err_msg(e))); NULL })
+
+# NEW: C. Old-only wages — built-in placebo
+message("   -> Old (29-35) / Low Dose [PLACEBO]...")
+res_old_low  <- tryCatch(run_cs_preagg(old_low,  "Old/Low"),
+                          error = function(e) { message(sprintf("   WARNING: Old/Low failed: %s", safe_err_msg(e))); NULL })
+
+message("   -> Old (29-35) / High Dose [PLACEBO]...")
+res_old_high <- tryCatch(run_cs_preagg(old_high, "Old/High"),
+                          error = function(e) { message(sprintf("   WARNING: Old/High failed: %s", safe_err_msg(e))); NULL })
+
+message(" -> Cohort-based estimation completed.")
 
 # ==============================================================================
 # SECTION 9F: NEW — CONDITIONAL (DOUBLY-ROBUST) MODELS (CHANGE 2)
@@ -1334,7 +1562,11 @@ all_results <- Filter(Negate(is.null), list(
   res_low_buffer, res_high_buffer,
   res_placebo_low, res_placebo_high,
   res_low_25_75, res_high_25_75,
-  res_low_33_67, res_high_33_67
+  res_low_33_67, res_high_33_67,
+  # NEW: Cohort-based models (Duflo-style)
+  res_gap_low, res_gap_high,
+  res_young_low, res_young_high,
+  res_old_low, res_old_high
 ))
 
 tab_att <- bind_rows(lapply(all_results, build_att_row))
@@ -1516,6 +1748,49 @@ if (!is.null(res_placebo_high)) {
   ggsave("Figures_Final/fig_10b_placebo_cohort_high.png", p_placebo_h, width = 9, height = 5.5, dpi = 300)
 }
 
+# ==============================================================================
+# NEW: SECTION 10B — COHORT FIGURES (Duflo-style)
+# ==============================================================================
+message(" [NEW] Generating Cohort Figures...")
+
+# NEW: FIGURE A — THE HEADLINE: Wage gap, Low vs High dose
+if (!is.null(res_gap_low) && !is.null(res_gap_high)) {
+  p_gap <- plot_event_study(
+    res_gap_low$tidy, res_gap_high$tidy,
+    "Low Dose", "High Dose",
+    "#E69F00", "#0072B2",
+    "Cohort Wage Gap: Young (22-28) vs. Old (29-35)",
+    ylab = "ATT on wage gap (young - old)"
+  )
+  ggsave("Figures_Final/fig_cohort_gap.png", p_gap, width = 9, height = 5.5, dpi = 300)
+}
+
+# NEW: FIGURE B — Young vs Old within Low Dose (placebo contrast)
+if (!is.null(res_young_low) && !is.null(res_old_low)) {
+  p_young_old <- plot_event_study(
+    res_young_low$tidy, res_old_low$tidy,
+    "Young (22-28)", "Old (29-35) [Placebo]",
+    "#2166ac", "#999999",
+    "Age-Specific Effects: Exposed vs. Non-Exposed Cohort (Low Dose)",
+    ylab = "ATT on log(wages)"
+  )
+  ggsave("Figures_Final/fig_cohort_young_vs_old.png", p_young_old, width = 9, height = 5.5, dpi = 300)
+}
+
+# NEW: FIGURE C — Young vs Old within High Dose
+if (!is.null(res_young_high) && !is.null(res_old_high)) {
+  p_young_old_high <- plot_event_study(
+    res_young_high$tidy, res_old_high$tidy,
+    "Young (22-28)", "Old (29-35) [Placebo]",
+    "#2166ac", "#999999",
+    "Age-Specific Effects: Exposed vs. Non-Exposed Cohort (High Dose)",
+    ylab = "ATT on log(wages)"
+  )
+  ggsave("Figures_Final/fig_cohort_young_vs_old_high.png", p_young_old_high, width = 9, height = 5.5, dpi = 300)
+}
+
+message("   Cohort figures saved.")
+
 # Save all event-study estimates as CSVs for appendix
 es_exports <- list(
   es_low_wage = res_low$tidy, es_high_wage = res_high$tidy,
@@ -1543,6 +1818,13 @@ if (!is.null(res_high_33_67))  es_exports$es_high_33_67  <- res_high_33_67$tidy
 # NEW: Placebo event-study CSVs
 if (!is.null(res_placebo_low))  es_exports$es_placebo_low  <- res_placebo_low$tidy
 if (!is.null(res_placebo_high)) es_exports$es_placebo_high <- res_placebo_high$tidy
+# NEW: Cohort event-study CSVs
+if (!is.null(res_gap_low))    es_exports$es_gap_low    <- res_gap_low$tidy
+if (!is.null(res_gap_high))   es_exports$es_gap_high   <- res_gap_high$tidy
+if (!is.null(res_young_low))  es_exports$es_young_low  <- res_young_low$tidy
+if (!is.null(res_young_high)) es_exports$es_young_high <- res_young_high$tidy
+if (!is.null(res_old_low))    es_exports$es_old_low    <- res_old_low$tidy
+if (!is.null(res_old_high))   es_exports$es_old_high   <- res_old_high$tidy
 
 for (nm in names(es_exports)) {
   write_csv(es_exports[[nm]], sprintf("Tables_Final/%s.csv", nm))
@@ -1628,6 +1910,15 @@ audit_log <- list(
     continuous = "Figures_Final/fig_map_dose_continuous.png",
     bins       = "Figures_Final/fig_map_dose_bins.png"
   ),
+  # NEW: Cohort-based (Duflo-style) pretrends
+  cohort_pretrend = list(
+    Gap_Low     = if (!is.null(res_gap_low))    res_gap_low$pretrend    else NA,
+    Gap_High    = if (!is.null(res_gap_high))   res_gap_high$pretrend   else NA,
+    Young_Low   = if (!is.null(res_young_low))  res_young_low$pretrend  else NA,
+    Young_High  = if (!is.null(res_young_high)) res_young_high$pretrend else NA,
+    Old_Low     = if (!is.null(res_old_low))    res_old_low$pretrend    else NA,
+    Old_High    = if (!is.null(res_old_high))   res_old_high$pretrend   else NA
+  ),
   case_studies = case_micro
 )
 saveRDS(audit_log, "Documentation_Final/audit_log.rds")
@@ -1681,6 +1972,17 @@ if (!is.null(res_placebo_low) || !is.null(res_placebo_high)) {
   message("  --- Placebo cohort (ages 36-50) ---")
   if (!is.null(res_placebo_low))  message(sprintf("  Placebo/Low:  %.4f (SE %.4f)", res_placebo_low$simple$overall.att, res_placebo_low$simple$overall.se))
   if (!is.null(res_placebo_high)) message(sprintf("  Placebo/High: %.4f (SE %.4f)", res_placebo_high$simple$overall.att, res_placebo_high$simple$overall.se))
+}
+# NEW: Cohort analysis summary
+cohort_results_all <- Filter(Negate(is.null), list(
+  res_gap_low, res_gap_high, res_young_low, res_young_high, res_old_low, res_old_high
+))
+if (length(cohort_results_all) > 0) {
+  message("  === COHORT ANALYSIS (Duflo-style) ===")
+  for (r in cohort_results_all) {
+    message(sprintf("  %-15s ATT = %+.4f (SE = %.4f) | p_pretrend = %.4f",
+                    r$label, r$simple$overall.att, r$simple$overall.se, r$pretrend$p.value))
+  }
 }
 message(sprintf("  --- Models estimated: %d total ---", n_total_models))
 message("=====================\n")
