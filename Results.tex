@@ -1,97 +1,249 @@
 \section{Results}
 \label{sec:results}
 
-\subsection{Baseline Heterogeneous DiD Estimates}
+This chapter presents the empirical findings in four stages. Section~\ref{sec:descriptive} establishes the geographic structure of treatment variation. Section~\ref{sec:pooled_results} reports the primary pooled event-study estimates for wages and employment. Section~\ref{sec:cohort_results} decomposes these effects using the Duflo-style age-cohort design. Section~\ref{sec:heterogeneity} explores distributional impacts by gender and ethnicity, and Section~\ref{sec:robustness_results} reports robustness checks.
 
-Table \ref{tab:att_baseline} presents overall event-study estimates aggregated via \citeA{CallawaySantAnna2021}. The simple average ATT (pooling across all cohorts and post-treatment years) is [YOUR NUMBER]. The event-study aggregation allows dynamic effects: pre-treatment coefficients (relative time $e < 0$) test parallel trends.
+\subsection{Geographic Distribution of Treatment Intensity}
+\label{sec:descriptive}
 
-\begin{table}[ht]
-\centering
-\caption{\textbf{Group-Time ATTs: Event-Study Aggregation}}
-\label{tab:att_baseline}
-\begin{tabular}{lccc}
-\hline
-Event Time $e$ & ATT$(e)$ & 95\% CI & $N$ Obs \\
-\hline
-$e = -4$ & [FILL] & [..., ...] & [FILL] \\
-$e = -3$ & [FILL] & [..., ...] & [FILL] \\
-... & ... & ... & ... \\
-$e = 0$ & [FILL]*** & [..., ...] & [FILL] \\
-$e = +1$ & [FILL]** & [..., ...] & [FILL] \\
-... & ... & ... & ... \\
-\hline
-\end{tabular}
-\end{table}
-
-Figure \ref{fig:eventstudy} plots these estimates. The parallel pre-trends ($e \in \{-4, -3, -2\}$ all close to zero) validate the identifying assumption. Post-treatment effects become significant at $e \geq 0$, consistent with the four-year graduation lag.
+Figure~\ref{fig:heatmap} displays the spatial distribution of cumulative ProUni scholarship density ($D_{r,2019}$) across Brazil's 558 microregions. The map reveals a pronounced geographic concentration: the South and Southeast---particularly the São Paulo metropolitan corridor, Porto Alegre, and Belo Horizonte---exhibit the highest treatment intensities, while the Amazon basin and parts of the Northeast received substantially lower exposure. This pattern reflects the pre-existing private HEI infrastructure rather than any targeting based on local labor market outcomes, supporting the institutional exogeneity argument developed in Section~\ref{sec:assumptions}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.85\textwidth]{Figures/eventstudy_main.png}
-\caption{\textbf{Event-Study Plot: Parallel Trends \& Dynamic Effects}}
-\label{fig:eventstudy}
+\includegraphics[width=0.75\textwidth]{Figures/fig_map_dose_continuous.png}
+\caption{\textbf{ProUni Scholarship Density by Microregion, 2019.} Cumulative scholarships per 1,000 youth (aged 18--24), lagged four years. Color intensity follows a square-root scale to accommodate the right-skewed distribution.}
+\label{fig:heatmap}
 \end{figure}
 
-\subsection{Heterogeneity by Gender, Race, and Region}
+Table~\ref{tab:att_baseline} reports summary statistics by dose bin. [INSERT TABLE FROM table1\_bin\_summary.csv HERE --- include N regions, mean dose, median treatment year for each bin.]
 
-The main novelty of this analysis is revealing how ProUni's earnings effects vary by demographic group and geography. Table \ref{tab:het_gender} compares men and women.
+\subsection{Pooled Event-Study Estimates}
+\label{sec:pooled_results}
+
+\subsubsection{Wages: The Saturation Hypothesis}
+
+Figure~\ref{fig:dose_response} presents the headline result. The dynamic event-study estimates reveal a clear divergence between Low-Dose and High-Dose microregions following treatment onset.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Figures/fig_1_mechanism_dose.png}
+\caption{\textbf{Dose-Response: High vs.\ Low Exposure Intensity.} Dynamic ATT estimates from \citeA{CallawaySantAnna2021}, aggregated via \texttt{aggte(type = ``dynamic'')}. Shaded regions denote 95\% pointwise confidence intervals. The dashed vertical line marks $e = -1$, the last pre-treatment period.}
+\label{fig:dose_response}
+\end{figure}
+
+Three features of Figure~\ref{fig:dose_response} merit emphasis. First, pre-treatment coefficients ($e < 0$) for both dose bins fluctuate closely around zero, with no systematic upward or downward drift, supporting the conditional parallel trends assumption (A1). The joint Wald test fails to reject the null of zero pre-trends at conventional levels for both specifications [INSERT p-values from audit\_log].
+
+Second, the Low-Dose event study displays a gradual, monotonically increasing post-treatment trajectory, reaching approximately 2.5--3.0\% by $e = 5$--$6$. This cumulative pattern is consistent with the progressive entry of ProUni graduates into local labor markets: the four-year lag accounts for degree completion, but subsequent cohorts continue to accumulate, compounding the supply effect.
+
+Third, the High-Dose estimates remain centered on zero throughout the post-treatment window, never departing meaningfully from the null. The contrast between Low and High is precisely what the saturation hypothesis predicts: in microregions where the educational supply shock is moderate, scarcity rents are preserved and the aggregate wage effect is positive; where the shock is massive, credential inflation and labor market congestion erode the returns.
+
+The overall simple ATT estimates (pooling all post-treatment cohort-time cells) are [INSERT Low ATT] for Low Dose and [INSERT High ATT] for High Dose.
+
+\subsubsection{Employment: Extensive Margin}
+
+Figure~\ref{fig:employment} reports the employment-margin estimates. Both dose bins show near-zero effects for the first four post-treatment years. The Low-Dose estimate shows a late positive drift at $e = 5$--$6$, consistent with a lagged formalization effect: as ProUni graduates enter the formal sector, the stock of formal employment expands. However, the confidence intervals widen substantially at long event horizons due to compositional thinning (fewer cohorts contribute to late event times), and these estimates should be interpreted cautiously.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Figures/fig_3_employment_dose.png}
+\caption{\textbf{Employment Margin: High vs.\ Low Exposure.} ATT on log formal employment (vínculos, ages 22--35).}
+\label{fig:employment}
+\end{figure}
+
+The absence of large employment effects is not surprising in a context where RAIS captures only formal employment. ProUni may shift workers from informal to formal jobs without changing the total headcount, an extensive-margin reallocation that the employment outcome cannot fully capture.
+
+\subsection{Age-Cohort Decomposition}
+\label{sec:cohort_results}
+
+\subsubsection{Headline: Cohort Wage Gap}
+
+To isolate the age-specific human capital channel, I estimate the treatment effect on the within-microregion wage gap between the exposed cohort (ages 22--28) and the control cohort (ages 29--35), as described in Section~\ref{sec:estimation_equations}. Figure~\ref{fig:cohort_gap} reports the results.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Figures/fig_cohort_gap.png}
+\caption{\textbf{Cohort Wage Gap: Young (22--28) vs.\ Old (29--35).} ATT on the within-microregion wage gap ($\Delta w_{r,t}$). A positive ATT indicates that ProUni raised the relative wage of the young (exposed) cohort.}
+\label{fig:cohort_gap}
+\end{figure}
+
+The cohort wage gap results reveal a pattern opposite to the pooled estimates: the High-Dose series shows a modest positive drift after treatment (reaching approximately 2--8 percentage points by $e = 3$), while the Low-Dose series remains flat or turns slightly negative at long horizons. However, two important caveats apply. First, the confidence intervals are substantially wider than in the pooled analysis, reflecting the additional noise introduced by the cohort differencing. Second, neither series achieves conventional statistical significance at most event times.
+
+\subsubsection{Decomposition: Young-Only vs.\ Old-Only}
+
+To understand what drives the cohort wage gap dynamics, I estimate the ATT separately for each age group. Figures~\ref{fig:young_old_low} and \ref{fig:young_old_high} report these decompositions.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Figures/fig_cohort_young_vs_old.png}
+\caption{\textbf{Age-Specific Effects: Low Dose.} Separate ATTs for young (22--28, exposed) and old (29--35, control cohort).}
+\label{fig:young_old_low}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Figures/fig_cohort_young_vs_old_high.png}
+\caption{\textbf{Age-Specific Effects: High Dose.} Separate ATTs for young (22--28) and old (29--35).}
+\label{fig:young_old_high}
+\end{figure}
+
+The decomposition reveals a nuanced pattern. In Low-Dose microregions (Figure~\ref{fig:young_old_low}), the young cohort shows a modest positive trajectory ($\sim$1\% by $e = 4$), but the old cohort---which should be unaffected by ProUni under strict partial equilibrium---displays an even stronger positive drift, reaching approximately 4.5--6.5\% at $e = 5$--$6$. This implies positive \emph{general equilibrium spillovers}: when a moderate number of college graduates enter a local labor market, the resulting productivity improvements benefit all workers, including older cohorts. This finding is consistent with the agglomeration and human capital externality literature, which predicts that the social return to education exceeds the private return in settings where skilled workers generate positive spillovers through knowledge diffusion and improved firm productivity.
+
+In High-Dose microregions (Figure~\ref{fig:young_old_high}), the pattern reverses. The young cohort remains near zero, while the old cohort \emph{declines} to approximately $-3$\% to $-5$\% by $e = 2$--$3$. This is consistent with a \emph{displacement} mechanism: when the supply of college-educated young workers is large enough to saturate local demand, older workers---who compete for the same skilled positions---experience relative wage losses. The positive cohort wage gap in High-Dose areas is therefore driven not by young workers gaining, but by old workers losing.
+
+\subsubsection{First Stage: College Attainment Gap}
+
+Figure~\ref{fig:first_stage} reports the estimated effect of ProUni density on the college share gap between young and old workers.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Figures/fig_first_stage.png}
+\caption{\textbf{First Stage: College Share Gap (Young $-$ Old).} ATT on the difference in college-educated worker shares between age cohorts.}
+\label{fig:first_stage}
+\end{figure}
+
+The first-stage estimates are small in magnitude for most post-treatment periods, with the High-Dose series showing a modest positive effect of approximately 0.5--0.8 percentage points and the Low-Dose series remaining volatile. The weakness of the first stage reflects two features of the data: (a) RAIS records education level with measurement error (employer-reported, not administratively verified), and (b) the college share denominator includes all formal workers, not just those who entered higher education during the ProUni era, diluting the signal. As a consequence, the implied Wald LATE estimates should be interpreted as suggestive rather than definitive. Keeping this caveat in mind, the point estimates suggest implied returns in the range of [INSERT from table\_wald\_late.csv], broadly consistent with the Brazilian Mincerian literature \cite{BarbosaFilhoPessoa2008, MenezesFilho2001}, though the standard errors are too large for precise inference.
+
+\subsection{Heterogeneity by Gender and Ethnicity}
+\label{sec:heterogeneity}
+
+\subsubsection{Pooled Heterogeneity}
+
+\paragraph{Gender.}
+Figure~\ref{fig:gender_pooled} reports the gender-stratified pooled event studies. In Low-Dose microregions, male workers exhibit a positive and growing wage effect reaching approximately 3.5--4.0\% by $e = 5$--$6$, while female workers remain indistinguishable from zero throughout. This asymmetry is striking given that women constitute the majority of ProUni beneficiaries. In High-Dose microregions, both genders show near-zero effects, consistent with the saturation hypothesis applying uniformly across genders.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/fig_4a_gender_low.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/fig_4b_gender_high.png}
+\end{minipage}
+\caption{\textbf{Gender Heterogeneity in Pooled Wage Effects.} Left: Low Dose. Right: High Dose.}
+\label{fig:gender_pooled}
+\end{figure}
+
+The male advantage in the pooled estimates admits several interpretations. First, occupational sorting: ProUni men may disproportionately enter STEM and business fields with higher wage returns, while women concentrate in education and health \cite{BusteloEtAl2021}. Second, segmented labor markets: even with equivalent qualifications, men may face fewer structural barriers to converting education into wage gains \cite{GarciaNopoSalardi2009}. Third, compositional effects: if more female workers were already college-educated pre-treatment, the marginal ProUni graduate adds less to the female wage average than to the male average.
+
+\paragraph{Ethnicity.}
+Figure~\ref{fig:race_pooled} shows that in Low-Dose microregions, both White and Non-white workers exhibit similar positive trajectories, reaching approximately 2.5--4.0\% by $e = 5$--$6$. The similar magnitudes suggest that ProUni's racial quotas are functioning as intended: non-white workers benefit at rates comparable to their white peers when the supply shock is moderate. In High-Dose microregions, both groups show near-zero effects.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/fig_5a_race_low.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/fig_5b_race_high.png}
+\end{minipage}
+\caption{\textbf{Ethnicity Heterogeneity in Pooled Wage Effects.} Left: Low Dose. Right: High Dose.}
+\label{fig:race_pooled}
+\end{figure}
+
+\subsubsection{Cohort Heterogeneity}
+
+The cohort wage gap heterogeneity analysis (Figures~\ref{fig:cohort_gender} and \ref{fig:cohort_race}) reveals additional texture.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/fig_cohort_gender_low.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/fig_cohort_gender_high.png}
+\end{minipage}
+\caption{\textbf{Gender Heterogeneity in Cohort Wage Premium.} Left: Low Dose. Right: High Dose. Outcome is the within-microregion young--old wage gap.}
+\label{fig:cohort_gender}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/fig_cohort_race_low.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/fig_cohort_race_high.png}
+\end{minipage}
+\caption{\textbf{Ethnicity Heterogeneity in Cohort Wage Premium.} Left: Low Dose. Right: High Dose.}
+\label{fig:cohort_race}
+\end{figure}
+
+In Low-Dose microregions, the male cohort wage gap \emph{declines} post-treatment (reaching approximately $-7$\% by $e = 6$), while the female gap remains flat near zero. This indicates that the general equilibrium spillover to older workers (documented in Section~\ref{sec:cohort_results}) is concentrated among older male workers---suggesting that ProUni-induced productivity gains propagate most strongly through male-dominated occupational networks.
+
+The racial cohort analysis shows a notable asymmetry in High-Dose microregions: non-white workers exhibit a modestly positive cohort gap ($\sim$1.5\% by $e = 3$), while white workers remain flat. Combined with the near-zero effect for non-white workers in High Dose at the pooled level, this suggests that in saturated markets, ProUni's racial quotas provide a relative---if not absolute---advantage to non-white young workers vis-à-vis their older non-white peers.
+
+\subsection{Robustness Checks}
+\label{sec:robustness_results}
+
+\subsubsection{Lag Sensitivity}
+
+Figure~\ref{fig:robustness_lag} compares the baseline specification (lag = 4 years) with an alternative (lag = 3 years) for the Low-Dose wage model. Both specifications yield qualitatively similar post-treatment trajectories, with the baseline showing slightly larger magnitudes. This is expected: a shorter lag captures partially completed degrees, attenuating the human capital supply shock.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Figures/fig_6_robustness_lag.png}
+\caption{\textbf{Robustness: Sensitivity to Lag Length (Low Dose).}}
+\label{fig:robustness_lag}
+\end{figure}
+
+\subsubsection{Alternative Discretization Cutoffs}
+
+Figure~\ref{fig:altcut} verifies that the main results are not artifacts of the chosen percentile thresholds. The alternative $\tau_{25}/\tau_{75}$ specification tracks the baseline ($\tau_{20}/\tau_{50}$) closely for Low Dose, with slightly more volatile pre-treatment estimates due to the narrower bin width. The qualitative conclusion---positive Low-Dose effects, null High-Dose effects---is preserved.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Figures/fig_9_altcut_low.png}
+\caption{\textbf{Cutoff Robustness: Low Dose.} Baseline ($\tau_{20}/\tau_{50}$) vs.\ alternative ($\tau_{25}/\tau_{75}$).}
+\label{fig:altcut}
+\end{figure}
+
+\subsubsection{Unconditional vs.\ Doubly-Robust Estimation}
+
+Figure~\ref{fig:dr_comparison} compares the unconditional specification ($\texttt{xformla} = \sim 1$) with the doubly-robust estimator conditioning on pre-treatment Census covariates. The two specifications agree closely for $e \leq 4$. At long event horizons ($e = 5$--$6$), the DR estimates diverge upward, driven by extreme inverse probability weights in late periods when few comparison units remain. This instability is a known concern with DR estimation in finite-sample staggered designs \cite{SantAnnaZhao2020} and motivates retaining the unconditional specification as the primary result.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Figures/fig_7_dr_low.png}
+\caption{\textbf{Sensitivity: Unconditional vs.\ Doubly-Robust (Low Dose).}}
+\label{fig:dr_comparison}
+\end{figure}
+
+\subsubsection{TWFE Benchmark}
+
+Table~\ref{tab:twfe} compares the naive TWFE estimates with the \citeA{CallawaySantAnna2021} ATTs. [INSERT from table5\_twfe\_benchmark.csv and table\_twfe\_cohort.csv.] The TWFE wage coefficient is [INSERT], compared to the CS Low-Dose ATT of [INSERT] and the CS High-Dose ATT of [INSERT]. The TWFE estimate represents a weighted average of the two dose bins, confirming that pooling across heterogeneous treatment intensities masks the differential saturation dynamics documented above.
 
 \begin{table}[ht]
 \centering
-\caption{\textbf{Heterogeneous Effects: Gender}}
-\label{tab:het_gender}
-\begin{tabular}{lcc}
-\hline
-Group & ATT (Event Agg.) & 95\% CI \\
-\hline
-Men & [FILL] & [..., ...] \\
-Women & [FILL]** & [..., ...] \\
-Difference (Women - Men) & [FILL]* & [..., ...] \\
-\hline
-\end{tabular}
-\end{table}
-
-[Repeat for Race and Region tables]
-
-These heterogeneous effects are precisely why Callaway-Sant'Anna is necessary: pooling all groups (as TWFE implicitly does) would mask the fact that women and non-white workers experience larger earnings gains. Section \ref{sec:discussion} connects these patterns to theory.
-
-\subsection{Robustness and Specification Checks}
-
-\paragraph{Binary vs. Continuous Treatment.}
-Table \ref{tab:rob_continuous} compares the binary threshold specification (main) to continuous scholarship density as treatment intensity \citeA{CallawayGoodmanBaconSantAnna2024}.
-
-\begin{table}[ht]
-\centering
-\caption{\textbf{Robustness: Binary Threshold vs. Continuous Density}}
-\label{tab:rob_continuous}
-\begin{tabular}{lcc}
-\hline
-Specification & ATT & Ratio (Binary/Continuous) \\
-\hline
-Binary ($\tau = 75$th) & [FILL]*** & 1.00 \\
-Continuous density & [FILL]** & [RATIO] \\
-\hline
-\end{tabular}
-\end{table}
-
-The similar magnitudes suggest the binary specification captures a genuine threshold effect, not an artifact of discretization.
-
-\paragraph{TWFE Bias Diagnostics.}
-Table \ref{tab:twfe_bias} compares TWFE (naive) to Callaway-Sant'Anna estimates, highlighting the bias from negative weighting \citeA{deChaisemartin2020, GoodmanBacon2021}.
-
-\begin{table}[ht]
-\centering
-\caption{\textbf{TWFE Bias: Negative Weights by Cohort}}
-\label{tab:twfe_bias}
+\caption{\textbf{TWFE vs.\ Callaway-Sant'Anna Comparison}}
+\label{tab:twfe}
 \begin{tabular}{lccc}
 \hline
-Cohort & TWFE Coef & CS-ATT & Negative Weight Share \\
+\textbf{Specification} & \textbf{ATT} & \textbf{SE} & \textbf{N} \\
 \hline
-2012 (Early) & [FILL] & [FILL] & 22\% \\
-2015 (Mid) & [FILL] & [FILL] & 18\% \\
-2018 (Late) & [FILL] & [FILL] & 15\% \\
+TWFE / Wages (pooled)       & [FILL] & [FILL] & [FILL] \\
+CS / Low Dose (wages)       & [FILL] & [FILL] & [FILL] \\
+CS / High Dose (wages)      & [FILL] & [FILL] & [FILL] \\
+TWFE / Wage Gap (cohort)    & [FILL] & [FILL] & [FILL] \\
+CS / Gap Low                & [FILL] & [FILL] & [FILL] \\
+CS / Gap High               & [FILL] & [FILL] & [FILL] \\
 \hline
 \end{tabular}
 \end{table}
 
-All cohorts exceed the 20\% negative-weight threshold flagged by \citeA{GoodmanBacon2021}, validating our choice of Callaway-Sant'Anna over TWFE.
+\subsection{Summary of Findings}
+
+Table~\ref{tab:master_summary} consolidates the key estimates. [INSERT full table from table4\_summary\_att.csv --- show all models, group by analysis type.]
+
+The results support four main conclusions. First, ProUni generates a statistically and economically meaningful positive wage effect in Low-Dose microregions, consistent with the scarcity hypothesis. Second, High-Dose microregions show null effects on pooled wages, confirming the saturation hypothesis. Third, the age-cohort decomposition reveals that in Low-Dose areas, the wage gains extend to older workers through general equilibrium spillovers, while in High-Dose areas, the inflow of graduates displaces older workers' wage levels. Fourth, ProUni's racial quotas achieve approximate parity in wage returns between white and non-white workers, though the male wage advantage remains unexplained by the available data.

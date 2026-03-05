@@ -2,10 +2,60 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Mechanisms}
+\subsection{Interpreting the Pooled Effects: Magnitude and Mechanism}
 
+The primary finding of this thesis---a positive 2--3\% wage effect in Low-Dose microregions and a null effect in High-Dose areas---requires careful interpretation regarding economic magnitude. At first glance, a 2--3\% aggregate effect may appear modest. However, this estimate reflects the impact of ProUni on the \emph{average wage of all formal workers aged 22--35} in a microregion, not the private return to individual graduates. Since ProUni beneficiaries constitute a small share of the total labor force in any given microregion, the aggregate effect necessarily understates the individual-level return.
 
-\subsection{Policy Implications}
+A back-of-the-envelope calculation illustrates this. If ProUni graduates represent approximately 5--10\% of formal workers aged 22--35 in a typical Low-Dose microregion, and the aggregate ATT is 0.025, then the implied individual-level wage gain is:
+\begin{equation}
+    \hat{\rho}_{\text{individual}} \;\approx\; \frac{0.025}{0.05 \text{--} 0.10} \;\approx\; 0.25 \text{--} 0.50,
+    \label{eq:back_of_envelope}
+\end{equation}
+yielding a 25--50\% return to a ProUni degree. This range is consistent with Mincerian estimates for Brazilian higher education, which typically find college wage premia of 30--50\% after controlling for selection \cite{BarbosaFilhoPessoa2008, MenezesFilho2001, Leal1990}, and with the causal returns found in comparable policy evaluations such as \citeA{Duflo2001}'s 6.8--10.6\% per year of schooling in Indonesia and \citeA{RiehlMachadoReyes2023}'s 14\% earnings gain from affirmative action at an elite Brazilian university.
 
+\subsection{Scarcity versus Saturation: General Equilibrium Evidence}
 
-\subsection{Cross-Country Analysis}
+The contrast between Low-Dose and High-Dose microregions constitutes the central empirical contribution of this thesis. The pattern is consistent with the theoretical framework of diminishing marginal returns to educational expansion first articulated in \citeA{CardLemieux2001} and empirically documented by \citeA{Duflo2001} for Indonesia's school construction program.
+
+The age-cohort decomposition sharpens the saturation mechanism. In Low-Dose areas, \emph{both} the young (exposed) and old (non-exposed) cohorts benefit, with the old cohort showing even larger gains. This pattern is most consistent with positive general equilibrium spillovers: a moderate inflow of college-educated workers raises local productivity through knowledge diffusion, improved firm-worker matching, and enhanced aggregate demand. The social return to education exceeds the private return. This finding aligns with the broader literature on human capital externalities \cite{Mincer1974, PsacharopoulosPatrinos2004} and is particularly relevant for Brazil's dual economy, where skilled workers in underdeveloped regions may generate outsized spillovers by bridging the productivity gap between the ``Belgium'' and ``India'' components of the \emph{Belíndia} structure \cite{bacha1976}.
+
+In High-Dose areas, the mechanism reverses. The young cohort shows no significant wage gain, while the old cohort experiences wage \emph{losses}. This suggests a displacement effect: the massive supply of college-educated young workers in the São Paulo corridor and other dense metropolitan areas creates competitive pressure on older skilled workers. The wage gains from education are dissipated through credential inflation and labor market congestion. The null aggregate effect in High-Dose areas masks two offsetting forces: modest positive effects for some young graduates, offset by negative spillovers onto older cohorts.
+
+\subsection{Heterogeneity: Gender and Ethnicity}
+
+\subsubsection{The Male Wage Advantage}
+
+The finding that male workers benefit disproportionately from ProUni in the pooled analysis---while women show near-zero effects---is perhaps the most policy-relevant result. This is particularly striking because women constitute the majority of ProUni beneficiaries \cite{BusteloEtAl2021}. Three mechanisms may explain this paradox.
+
+First, field-of-study sorting: \citeA{BusteloEtAl2021} document that female ProUni recipients disproportionately enter Education and Health programs, which offer lower initial wages than the Engineering, Business, and IT programs where men concentrate. This occupational sorting means the \emph{same degree} generates different wage returns depending on the field.
+
+Second, the segmented labor market hypothesis \cite{ReichGordonEdwards1973, DoeringerPiore1971}: even with equivalent qualifications, men may face fewer barriers to entering primary-sector jobs with high returns, while women remain channeled into secondary-sector occupations where the credential premium is lower. The glass-ceiling mechanisms documented by \citeA{Telles2004} and \citeA{GarciaNopoSalardi2009} apply to gender as well as race.
+
+Third, part-time work and labor force attachment: if female ProUni graduates are more likely to work part-time or exit the formal labor market temporarily (e.g., for childcare), their average monthly remuneration in RAIS would understate their effective wage rate, attenuating the measured effect.
+
+\subsubsection{Racial Parity in Low Dose}
+
+The finding that white and non-white workers benefit at similar rates in Low-Dose microregions is encouraging for the policy's equity goals. ProUni's racial quotas---mandating scholarship proportions matching the state population share of \emph{Pretos}, \emph{Pardos}, and \emph{Indígenas}---appear to achieve their intended purpose: equal access to the wage premium from higher education, conditional on the program's existence. This contrasts with the pre-ProUni baseline, where \citeA{AriasYamadaTejerina2002} documented an unexplained 18\% wage gap between white and non-white university graduates.
+
+The cohort analysis reveals an additional nuance in High-Dose areas: non-white young workers show a modestly positive cohort wage gap, while white young workers do not. This suggests that in saturated markets, ProUni's affirmative action provisions provide a relative advantage to non-white graduates, possibly through targeted job placement networks or the credential signal being relatively more valuable for non-white workers facing discrimination.
+
+\subsection{Geographic Concentration and the Belíndia Problem}
+
+The heatmap (Figure~\ref{fig:heatmap}) reveals a fundamental tension in ProUni's design. The program's treatment intensity is highest precisely where the private HEI sector is densest---in the wealthy South and Southeast. But the saturation results show that these are exactly the markets where returns are lowest. Meanwhile, the North and Northeast---where the wage premium is largest (\citeA{deoliveira2021} documents a 60\% labor income gap for Fortaleza relative to the national average)---receive the least exposure because they have fewer private institutions to participate in the tax-exemption scheme.
+
+This geographic mismatch means ProUni inadvertently \emph{reinforces} the Belíndia structure: it floods the ``Belgium'' with excess graduates while leaving the ``India'' underserved. The policy implication is clear: expanding the private HEI infrastructure in underserved regions---or redirecting scholarship allocations northward---would generate substantially higher returns per scholarship dollar than marginal additions in São Paulo.
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+Several limitations qualify the interpretation of these findings.
+
+First, the analysis is restricted to the \emph{formal} labor market. RAIS does not capture informal employment, which accounts for approximately 40\% of the Brazilian workforce. If ProUni graduates disproportionately enter formal employment (a plausible formalization channel), the estimates may overstate the wage effect relative to the full labor market.
+
+Second, the dose variable measures scholarship grants, not observed degree completions. Dropout and non-completion rates---which are substantial in private HEIs---introduce measurement error that attenuates the estimated effects toward zero.
+
+Third, the identification strategy cannot fully separate ProUni from concurrent policies, particularly the FIES loan expansion (2010--2014) and the Lei de Cotas (2012 onwards). While time fixed effects absorb aggregate policy shocks, any differential spatial correlation between ProUni density and FIES/Quotas expansion could bias the estimates.
+
+Fourth, the cohort analysis relies on the assumption that workers aged 29--35 are fully unexposed to ProUni. This may not hold perfectly for the 29--31 age range in later years, where some workers could have received ProUni scholarships as mature students.
+
+Fifth, the Wald LATE estimates should be interpreted with caution given the weak first stage. The RAIS education variable is employer-reported and subject to measurement error; individual-level data (e.g., from ENADE or ENEM records linked to RAIS) would substantially improve the first-stage precision.
