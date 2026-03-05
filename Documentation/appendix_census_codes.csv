@@ -1,0 +1,307 @@
+nome_coluna,chave,valor
+v0502,19,Parente do(a) empregado(a) doméstico(a)
+v0502,16,Convivente
+v0502,20,Individual em domicílio coletivo
+v0502,18,Empregado(a) doméstico(a)
+v0502,17,Pensionista
+v0613,NA,Para as pessoas maiores de 10 anos de idade
+v0619,NA,Se não naturais do município onde foi realizada a entrevista
+v0620,NA,Para os não naturais da unidade da federação onde foi realizada a entrevista
+v0625,NA,Para os não migrantes e os que moravam no município há 10 anos ou mais
+v0629,NA,Para os que não frequentavam e os que nunca frequentaram escola ou creche
+v0630,NA,"Para os que não frequentavam, os que nunca frequentaram escola ou creche, e para quem não frequentava o curso regular do ensino fundamental"
+v0631,NA,"Para os que não frequentavam ou nunca frequentaram escola ou creche, e para quem não frequentava o curso regular do ensino médio"
+v0632,NA,"Para os que não frequentavam ou nunca frequentaram escola ou creche, e para quem não frequentava o curso superior de graduação"
+v0633,NA,Para os que frequentavam escola ou creche ou aqueles que nunca frequentaram
+v0634,NA,Para os que frequentavam escola ou creche ou aqueles que nunca frequentaram
+v0635,NA,"Os que frequentavam escola ou creche mas não frequentavam especialização de nível superior, mestrado ou doutorado; os que não frequentavam escola ou creche, mas já frequentaram até no máximo regular ou  supletivo do ensino médio ou do 2º grau; ou os que não frequentavam escola ou creche, mas já frequentaram e não concluíram o superior de graduação; os que nunca frequentaram escola ou creche"
+v0636,NA,Para os que não frequentavam escola ou creche ou aqueles que nunca frequentaram
+v0637,NA,Para os menores de 10 anos de idade
+v0639,NA,Os menores de 10 anos de idade; para quem não vive em companhia de cônjuge ou companheiro(a) mas já viveu antes; ou para quem nunca viveu em companhia de cônjuge ou companheiro(a)
+v0640,NA,Para os menores de 10 anos de idade
+v0641,NA,Para os menores de 10 anos de idade
+v0642,NA,Para os menores de 10 anos de idade
+v0643,NA,Para os menores de 10 anos de idade
+v0644,NA,Para os menores de 10 anos de idade
+v0645,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e trabalhou ou não na plantação, criação de animais ou pesca, somente para alimentação dos moradores do domicílio."
+v0648,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e trabalhou ou não na plantação, criação de animais ou pesca, somente para alimentação dos moradores do domicílio."
+v0649,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e trabalhou ou não na plantação, criação de animais ou pesca, somente para alimentação dos moradores do domicílio."
+v0650,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e trabalhou ou não na plantação, criação de animais ou pesca, somente para alimentação dos moradores do domicílio; ou era empregado com carteira de trabalho assinada; ou militar do exército, marinha, aeronáutica, polícia militar ou corpo de bombeiros; ou empregado pelo regime jurídico dos funcionários públicos; ou trabalhou como “não remunerado” e tinha apenas um trabalho."
+v0651,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e trabalhou ou não na plantação, criação de animais ou pesca, somente para alimentação dos moradores; ou era não remunerado com apenas um trabalho"
+v0652,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e trabalhou ou não na plantação, criação de animais ou pesca, somente para alimentação dos moradores; ou tinha apenas um trabalho"
+v0654,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; ou tinha algum trabalho remunerado do qual estava temporariamente afastado(a); ou ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; ou trabalhou na plantação, criação de animais ou pesca, somente para alimentação dos moradores."
+v0655,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; ou tinha algum trabalho remunerado do qual estava temporariamente afastado(a); ou ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; ou trabalhou na plantação, criação de animais ou pesca, somente para alimentação dos moradores."
+v0656,NA,"Para quem, na semana de 25 a 31 de julho de 2010 era menor de 10 anos de idade"
+v0657,NA,"Para quem, na semana de 25 a 31 de julho de 2010 era menor de 10 anos de idade"
+v0658,NA,"Para quem, na semana de 25 a 31 de julho de 2010 era menor de 10 anos de idade"
+v0659,NA,"Para quem, na semana de 25 a 31 de julho de 2010 era menor de 10 anos de idade"
+v0660,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e não trabalhou na plantação, criação de animais ou pesca, somente para alimentação dos moradores"
+v0662,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e não trabalhou na plantação, criação de animais ou pesca, somente para alimentação dos moradores; ou trabalhava e não retornava do trabalho diariamente"
+v0663,NA,Para as mulheres com menos de 10 anos de idade na data de referência do censo e os homens
+v0664,NA,"Para as mulheres com menos de 10 anos de idade na data de referência do censo, os homens e as mulheres de 10 anos ou mais de idade que não tiveram filhos nascidos vivos"
+v0665,NA,NA
+v0667,NA,"Para as mulheres com menos de 10 anos de idade na data de referência do censo, os homens e as mulheres de 10 anos ou mais de idade que não tiveram filhos nascidos vivos"
+v0668,NA,"Para as mulheres com menos de 10 anos de idade na data de referência do censo, os homens, e as mulheres de 10 anos ou mais de idade que não tiveram filhos nascidos vivos."
+v0669,NA,Para as mulheres com menos de 10 anos de idade na data de referência do censo e os homens
+v5030,NA,Para pessoas residentes em domicílios coletivos e/ou em unidades domésticas localizadas em terras indígenas
+v5040,NA,Para pessoas residentes em domicílios coletivos e/ou em unidades domésticas localizadas em terras indígenas
+v5090,NA,"Para pessoas residentes em domicílios coletivos e/ou em unidades domésticas residentes em terras indígenas e domicílios coletivos, onde não se fez a identificação de famílias, além das pessoas não pertencentes a famílias únicas ou conviventes principais."
+v5100,NA,"Para pessoas residentes em domicílios coletivos e/ou em unidades domésticas residentes em terras indígenas e domicílios coletivos, onde não se fez a identificação de famílias, além das pessoas não pertencentes a famílias conviventes secundárias (segundas, terceiras, etc.)"
+v6222,NA,Para os não migrantes e os naturais da unidade da federação onde foi realizada a entrevista
+v6664,NA,Para as mulheres com menos de 10 anos de idade na data de referência do censo e os homens
+v6900,NA,Para as pessoas com menos de 10 anos de idade na data de referência do censo
+v6910,NA,"Para as pessoas com menos de 10 anos de idade na data de referência do censo e as pessoas de 10 anos ou mais de idade que não trabalharam na semana de 25 a 31 de julho de 2010 nem tomaram alguma providência, de fato, para conseguir trabalho no período de 02 a 31 de julho de 2010. incluem-se as pessoas que não trabalharam na semana de 25 a 31 de julho de 2010, mas procuraram trabalho no período de 02 a 31 de julho de 2010 e não estavam disponíveis para trabalhar"
+v6920,NA,Para as pessoas com menos de 10 anos de idade na data de referência do censo
+v6930,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e não trabalhou na plantação, criação de animais ou pesca, somente para alimentação dos moradores do domicílio"
+v6940,NA,"Para quem, na semana de 25 a 31 de julho de 2010: era menor de 10 anos de idade; ou não trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios; e não tinha algum trabalho remunerado do qual estava temporariamente afastado(a); e não ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio; e não trabalhou na plantação, criação de animais ou pesca, somente para alimentação dos moradores do domicílio; e trabalhou como conta própria, empregador ou não remunerado"
+v0627 ,NA,Para as pessoas menores de 5 anos de idade
+v0651,0,Não tem
+v0652,0,Não tem
+v0656,0,Não
+v0657,0,Não
+v0658,0,Não
+v0659,0,Não
+v6664,0,Não
+v0502,1,Pessoa responsável pelo domicílio
+v0601,1,Masculino
+v0604,1,Sim e mora neste domicílio
+v0606,1,Branca
+v0613,1,Do cartório
+v0614,1,"Sim, não consegue de modo algum"
+v0616,1,"Sim, não consegue de modo algum"
+v0617,1,Sim
+v0618,1,Sim e sempre morou
+v0619,1,Sim e sempre morou
+v0620,1,Brasileiro nato
+v0625,1,Uf/município
+v0628,1,"Sim, pública"
+v0629,1,Creche
+v0630,1,Primeiro ano
+v0631,1,Primeira série
+v0632,1,Sim
+v0633,1,"Creche, pré-escolar (maternal e jardim de infância), classe de alfabetização - ca"
+v0634,1,Sim
+v0635,1,Superior de graduação
+v0636,1,Neste município
+v0637,1,Sim
+v0639,1,Casamento civil e religioso
+v0640,1,Casado
+v0641,1,Sim
+v0642,1,Sim
+v0643,1,Sim
+v0644,1,Sim
+v0645,1,Um
+v0648,1,Empregado com carteira de trabalho assinada
+v0649,1,1 a 5 pessoas
+v0650,1,"Sim, no trabalho principal"
+v0651,1,"Em dinheiro, produtos ou mercadorias"
+v0652,1,"Em dinheiro, produtos ou mercadorias"
+v0654,1,Sim
+v0655,1,Sim
+v0656,1,Sim
+v0657,1,Sim
+v0658,1,Sim
+v0659,1,Sim
+v0660,1,No próprio domicílio
+v0662,1,Até 05 minutos
+v0663,1,Teve filhos nascidos vivos
+v0664,1,Filhos vivos em 31/07/2010
+v0665,1,Masculino
+v0667,1,Sim
+v0668,1,Sabe o mês e ano ou somente o ano
+v0669,1,Teve filho nascido morto
+v0670,1,A própria pessoa
+v5030,1,Unipessoal
+v5040,1,Arranjo familiar
+v5090,1,Casal sem filho(s)
+v5100,1,Casal sem filho(s)
+v6040,1,Data de nascimento
+v6222,1,Unidade da federação
+v6400,1,Sem instrução e fundamental incompleto
+v6664,1,Sim
+v6900,1,Economicamente ativas
+v6910,1,Ocupadas
+v6920,1,Ocupadas
+v6930,1,Empregados com carteira de trabalho assinada
+v6940,1,Trabalhadores domésticos com carteira de trabalho assinada
+v0615 ,1,"Sim, não consegue de modo algum"
+v0627 ,1,Sim
+v0502,2,Cônjuge ou companheiro(a) de sexo diferente
+v0601,2,Feminino
+v0604,2,Sim e mora em outro domicílio
+v0606,2,Preta
+v0613,2,Declaração de nascido vivo (dnv) do hospital ou da maternidade
+v0614,2,"Sim, grande dificuldade"
+v0616,2,"Sim, grande dificuldade"
+v0617,2,Não
+v0618,2,"Sim, mas morou em outro município ou país estrangeiro"
+v0619,2,"Sim, mas morou em outra unidade da federação ou país estrangeiro"
+v0620,2,Naturalizado brasileiro
+v0625,2,País estrangeiro
+v0628,2,"Sim, particular"
+v0629,2,Pré-escolar (maternal e jardim de infância)
+v0630,2,Primeira série/segundo ano
+v0631,2,Segunda série
+v0632,2,Não
+v0633,2,Alfabetização de jovens e adultos
+v0634,2,Não
+v0635,2,Mestrado
+v0636,2,Em outro município
+v0637,2,"Não, já viveu antes"
+v0639,2,Só casamento civil
+v0640,2,Desquitado(a) ou separado(a) judicialmente
+v0641,2,Não
+v0642,2,Não
+v0643,2,Não
+v0644,2,Não
+v0645,2,Dois ou mais
+v0648,2,"Militar do exército, marinha, aeronáutica, polícia militar ou corpo de bombeiros"
+v0649,2,6 ou mais pessoas
+v0650,2,"Sim, em outro trabalho"
+v0651,2,"Somente em benefícios (moradia, alimentação, treinamento, etc.)"
+v0652,2,"Somente em benefícios (moradia, alimentação, treinamento, etc.)"
+v0654,2,Não
+v0655,2,Não
+v0660,2,"Apenas neste município, mas não no próprio domicílio"
+v0662,2,De 06 minutos até meia hora
+v0663,2,Não teve filho nascido vivo
+v0664,2,Não sabe o número de filhos homens e mulheres vivos em 31/07/2010
+v0665,2,Feminino
+v0667,2,Não
+v0668,2,Não sabe
+v0669,2,Não teve filho nascido morto
+v0670,2,Outro morador
+v5030,2,Duas pessoas ou mais sem parentesco
+v5040,2,Arranjo não familiar
+v5090,2,Casal sem filho(s) e com parente(s)
+v5100,2,Casal com filho(s)
+v6040,2,Idade declarada
+v6222,2,País estrangeiro
+v6400,2,Fundamental completo e médio incompleto
+v6900,2,Não economicamente ativas
+v6910,2,Desocupadas
+v6920,2,Não ocupadas
+v6930,2,Militares e funcionários públicos estatutários
+v6940,2,Trabalhadores domésticos sem carteira de trabalho assinada
+v0615 ,2,"Sim, grande dificuldade"
+v0627 ,2,Não
+v0502,3,Cônjuge ou companheiro(a) do mesmo sexo
+v0604,3,Não
+v0606,3,Amarela
+v0613,3,Registro administrativo de nascimento indígena (rani)
+v0614,3,"Sim, alguma dificuldade"
+v0616,3,"Sim, alguma dificuldade"
+v0618,3,Não
+v0619,3,Não
+v0620,3,Estrangeiro
+v0628,3,"Não, já frequentou"
+v0629,3,Classe de alfabetização – ca
+v0630,3,Segunda série/terceiro ano
+v0631,3,Terceira série
+v0633,3,Antigo primário (elementar)
+v0635,3,Doutorado
+v0636,3,Em país estrangeiro
+v0637,3,"Não, nunca viveu"
+v0639,3,Só casamento religioso
+v0640,3,Divorciado(a)
+v0648,3,Empregado pelo regime jurídico dos funcionários públicos
+v0650,3,Não
+v0660,3,Em outro município
+v0662,3,Mais de meia hora até uma hora
+v0669,3,Não sabe
+v0670,3,Não morador
+v5030,3,Duas pessoas ou mais com parentesco
+v5090,3,Casal com filho(s)
+v5100,3,Mulher sem cônjuge com filho(s)
+v6400,3,Médio completo e superior incompleto
+v6930,3,Empregados sem carteira de trabalho assinada
+v6940,3,Demais empregados com carteira de trabalho assinada
+v0615 ,3,"Sim, alguma dificuldade"
+v0502,4,Filho(a) do responsável e do cônjuge
+v0604,4,Não sabe
+v0606,4,Parda
+v0613,4,Não tem
+v0614,4,"Não, nenhuma dificuldade"
+v0616,4,"Não, nenhuma dificuldade"
+v0628,4,"Não, nunca frequentou"
+v0629,4,Alfabetização de jovens e adultos
+v0630,4,Terceira série/quarto ano
+v0631,4,Quarta série
+v0633,4,Antigo ginásio (médio 1º ciclo)
+v0639,4,União consensual
+v0640,4,Viúvo(a)
+v0648,4,Empregado sem carteira de trabalho assinada
+v0660,4,Em país estrangeiro
+v0662,4,Mais de uma hora até duas horas
+v5090,4,Casal com filho(s) e com parente(s)
+v6400,4,Superior completo
+v6930,4,Conta própria
+v6940,4,Militares e funcionários públicos estatutários
+v0615 ,4,"Não, nenhuma dificuldade"
+v0502,5,Filho(a) somente do responsável
+v0606,5,Indígena
+v0613,5,Não sabe
+v0629,5,Regular do ensino fundamental
+v0630,5,Quarta série/quinto ano
+v0631,5,Curso não seriado
+v0633,5,Regular do ensino fundamental ou 1º grau (da 1aa 3a série/ do 1º ao 4º ano)
+v0640,5,Solteiro(a)
+v0648,5,Conta própria
+v0660,5,Em mais de um município ou país
+v0662,5,Mais de duas horas
+v5090,5,Mulher sem cônjuge com filho(s)
+v6400,5,Não determinado
+v6930,5,Empregadores
+v6940,5,Demais empregados sem carteira de trabalho assinada
+v0502,6,Enteado(a)
+v0629,6,Educação de jovens e adultos – eja ou supletivo do ensino fundamental
+v0630,6,Quinta série/sexto ano
+v0633,6,Regular do ensino fundamental ou 1º grau (da 4a série/5º ano)
+v0648,6,Empregador
+v5090,6,Mulher sem cônjuge com filho(s) e com parente(s)
+v6930,6,Não remunerados
+v0502,7,Genro ou nora: para o genro ou a nora da pessoa responsável ou do cônjuge
+v0629,7,Regular do ensino médio
+v0630,7,Sexta série/sétimo ano
+v0633,7,Regular do ensino fundamental ou 1ºgrau (da 5aa 8asérie/ do 6º ao 9º ano)
+v0648,7,Não remunerado
+v5090,7,Homem sem cônjuge com filho(s)
+v6930,7,Trabalhadores na produção para o próprio consumo
+v0502,8,"Pai, mãe, padrasto ou madrasta"
+v0629,8,Educação de jovens e adultos – eja ou supletivo do ensino médio
+v0630,8,Sétima série/oitavo ano
+v0633,8,Supletivo do ensino fundamental ou do 1ºgrau
+v5090,8,Homem sem cônjuge com filho(s) e com parente(s)
+v0502,9,Sogro(a)
+v0604,9,Ignorado
+v0606,9,Ignorado
+v0613,9,Ignorado
+v0614,9,Ignorado
+v0616,9,Ignorado
+v0617,9,Ignorado
+v0629,9,Superior de graduação
+v0630,9,Oitava série/nono ano
+v0633,9,"Antigo científico, clássico, etc. (médio 2o ciclo)"
+v0656,9,Ignorado
+v0657,9,Ignorado
+v0658,9,Ignorado
+v0659,9,Ignorado
+v0667,9,Não sabe
+v0670,9,Ignorado
+v5090,9,Outro
+v0615 ,9,Ignorado
+v0502,10,Neto(a)
+v0629,10,Especialização de nível superior (mínimo de 360 horas)
+v0630,10,Curso não seriado
+v0633,10,Regular ou supletivo do ensino médio ou do 2º grau
+v0502,11,Bisneto(a)
+v0629,11,Mestrado
+v0633,11,Superior de graduação
+v0502,12,Irmão ou irmã
+v0629,12,Doutorado
+v0633,12,Especialização de nível superior (mínimo de 360 horas)
+v0502,13,Avô ou avó
+v0633,13,Mestrado
+v0502,14,Outro parente
+v0633,14,Doutorado
+v0502,15,Agregado(a)

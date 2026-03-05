@@ -1,0 +1,2895 @@
+nome_coluna,chave,valor
+bairros_fortaleza,2,ALAG NOVO
+bairros_fortaleza,1,ALAGADICO
+bairros_fortaleza,3,ALDEOTA
+bairros_fortaleza,4,ALTO ALEGRE
+bairros_fortaleza,5,ALTO BALANC
+bairros_fortaleza,6,ALVARO WEYN
+bairros_fortaleza,7,AMADEU FURT
+bairros_fortaleza,8,ANT BEZERRA
+bairros_fortaleza,9,ANT DIOGO
+bairros_fortaleza,10,BARRA CEARA
+bairros_fortaleza,11,BELA VISTA
+bairros_fortaleza,12,BENFICA
+bairros_fortaleza,13,BOM FUTURO
+bairros_fortaleza,14,BOM JARDIM
+bairros_fortaleza,15,BONSUCESSO
+bairros_fortaleza,24,C ESPERANCA
+bairros_fortaleza,16,CACHOEIRINH
+bairros_fortaleza,17,CAJAZEIRAS
+bairros_fortaleza,18,CAMBEBA
+bairros_fortaleza,19,CASTELAO
+bairros_fortaleza,20,CENTRO
+bairros_fortaleza,21,CIDADE FUNC
+bairros_fortaleza,22,COCO
+bairros_fortaleza,23,CONJ CEARA
+bairros_fortaleza,25,CR REDENTOR
+bairros_fortaleza,9997,Código não encontrado nos dicionários oficiais.
+bairros_fortaleza,999997,Código não encontrado nos dicionários oficiais.
+bairros_fortaleza,26,DAMAS
+bairros_fortaleza,27,DEMOC ROCHA
+bairros_fortaleza,28,DIAS MACEDO
+bairros_fortaleza,29,DION TORRES
+bairros_fortaleza,30,ED QUEIROZ
+bairros_fortaleza,31,FARIAS BRIT
+bairros_fortaleza,32,FATIMA
+bairros_fortaleza,0,FORA DO CE
+bairros_fortaleza,33,GENIBAU
+bairros_fortaleza,34,GR PORTUGAL
+bairros_fortaleza,35,HENR JORGE
+bairros_fortaleza,-1,IGNORADO
+bairros_fortaleza,36,ITAPERI
+bairros_fortaleza,39,J AMERICA
+bairros_fortaleza,42,J BONIFACIO
+bairros_fortaleza,37,JACARECANGA
+bairros_fortaleza,38,JANGURUSSU
+bairros_fortaleza,40,JOAQ TAVORA
+bairros_fortaleza,41,JOQUEI CLUB
+bairros_fortaleza,43,LAG REDONDA
+bairros_fortaleza,49,M CASTELO
+bairros_fortaleza,44,MAN SATIRO
+bairros_fortaleza,45,MARAPONGA
+bairros_fortaleza,46,MEIRELES
+bairros_fortaleza,47,MESSEJANA
+bairros_fortaleza,48,MONDUBIM
+bairros_fortaleza,50,MONTESE
+bairros_fortaleza,51,MOURA BRASI
+bairros_fortaleza,52,MUCURIPE
+bairros_fortaleza,99,OUTROS CE
+bairros_fortaleza,55,P PR VARGAS
+bairros_fortaleza,56,P SAO JOSE
+bairros_fortaleza,53,PAPICU
+bairros_fortaleza,54,PARANGABA
+bairros_fortaleza,57,PARQUELANDI
+bairros_fortaleza,58,PASSARE
+bairros_fortaleza,61,PF J WALTER
+bairros_fortaleza,59,PICI
+bairros_fortaleza,60,PR IRACEMA
+bairros_fortaleza,62,PRES T NEVE
+bairros_fortaleza,63,ROD TEOFILO
+bairros_fortaleza,64,SERRINHA
+bairros_fortaleza,65,TAUAPE
+bairros_fortaleza,66,VARJOTA
+bairros_fortaleza,67,VICEN PINZO
+bairros_fortaleza,68,VILA ELLERY
+bairros_fortaleza,69,VILA PERI
+bairros_fortaleza,70,VILA UNIAO
+bairros_fortaleza,71,VILA VELHA
+bairros_rj,10,A COSMOS
+bairros_rj,20,A SANTA
+bairros_rj,30,ABOLICAO
+bairros_rj,40,ACARI
+bairros_rj,50,ANCHIETA
+bairros_rj,60,ANDARAI
+bairros_rj,70,ANIL
+bairros_rj,80,AT B VISTA
+bairros_rj,90,B FILHO
+bairros_rj,100,B GUANABARA
+bairros_rj,110,B GUARATIBA
+bairros_rj,120,B PINA
+bairros_rj,130,B RIBEIRO
+bairros_rj,140,B TIJUCA
+bairros_rj,150,BANCARIOS
+bairros_rj,160,BANGU
+bairros_rj,170,BENFICA
+bairros_rj,180,BONSUCESSO
+bairros_rj,190,BOTAFOGO
+bairros_rj,200,C BARROS
+bairros_rj,210,C DEUS
+bairros_rj,220,C FALSO
+bairros_rj,230,C NETO
+bairros_rj,240,C NOVA
+bairros_rj,250,C UNIVERSIT
+bairros_rj,260,C VELHO
+bairros_rj,270,CACHAMBI
+bairros_rj,280,CACHAMORRA
+bairros_rj,290,CACUIA
+bairros_rj,300,CAJU
+bairros_rj,310,CAMORIM
+bairros_rj,320,CAMPINHO
+bairros_rj,330,CASCADURA
+bairros_rj,340,CATETE
+bairros_rj,350,CATUMBI
+bairros_rj,360,CAVALCANTI
+bairros_rj,370,CENTRO
+bairros_rj,380,COCOTA
+bairros_rj,390,COLEGIO
+bairros_rj,400,COPACABANA
+bairros_rj,410,CORDOVIL
+bairros_rj,420,COSMOS
+bairros_rj,430,CPO AFONSOS
+bairros_rj,440,CPO GRANDE
+bairros_rj,450,CURICICA
+bairros_rj,9997,Código não encontrado nos dicionários oficiais.
+bairros_rj,999997,Código não encontrado nos dicionários oficiais.
+bairros_rj,460,D CASTILHO
+bairros_rj,470,DENDE
+bairros_rj,480,DEODORO
+bairros_rj,490,DUMAS
+bairros_rj,500,E DENTRO
+bairros_rj,510,E LEAL
+bairros_rj,520,E NOVO
+bairros_rj,530,E RAINHA
+bairros_rj,540,ENCANTADO
+bairros_rj,550,ESTACIO
+bairros_rj,560,FLAMENGO
+bairros_rj,0,FORA DO RIO
+bairros_rj,580,FREG ILHA
+bairros_rj,590,FREG JACARE
+bairros_rj,570,FREGUESIA
+bairros_rj,600,G AZUL
+bairros_rj,610,GALEAO
+bairros_rj,620,GAMBOA
+bairros_rj,630,GAVEA
+bairros_rj,640,GLORIA
+bairros_rj,650,GRAJAU
+bairros_rj,660,GRUMARI
+bairros_rj,670,GUADALUPE
+bairros_rj,680,GUARABU
+bairros_rj,690,GUARATIBA
+bairros_rj,700,H GURGEL
+bairros_rj,710,HIGIENOPOLI
+bairros_rj,720,HUMAITA
+bairros_rj,-1,IGNORADO
+bairros_rj,730,INHAUMA
+bairros_rj,740,INHOAIBA
+bairros_rj,750,IPANEMA
+bairros_rj,760,IRAJA
+bairros_rj,770,ITACOLOMI
+bairros_rj,780,ITANHANGA
+bairros_rj,790,IZADORA
+bairros_rj,800,JACARE
+bairros_rj,810,JACAREPAGUA
+bairros_rj,820,JD AMERICA
+bairros_rj,830,JD BOTANICO
+bairros_rj,840,JD CARIOCA
+bairros_rj,850,JD GUANABAR
+bairros_rj,870,JD SULACAP
+bairros_rj,880,JOA
+bairros_rj,890,L VASCONCEL
+bairros_rj,900,LAGOA
+bairros_rj,910,LARANJEIRAS
+bairros_rj,920,LEBLON
+bairros_rj,930,LEME
+bairros_rj,940,LOT MADEAN
+bairros_rj,950,LOT S BENED
+bairros_rj,960,M BASTOS
+bairros_rj,970,M GRACA
+bairros_rj,980,M HERMES
+bairros_rj,990,MADUREIRA
+bairros_rj,1000,MANGUEIRA
+bairros_rj,1010,MANGUINHOS
+bairros_rj,1020,MARACANA
+bairros_rj,1030,MARE
+bairros_rj,1040,MEIER
+bairros_rj,1050,MONERO
+bairros_rj,1060,N S GRACAS
+bairros_rj,1070,O CRUZ
+bairros_rj,1080,OITICICA II
+bairros_rj,1090,OLARIA
+bairros_rj,9999,OUTROS RIO
+bairros_rj,1100,P CIRCULAR
+bairros_rj,1110,P GUARATIBA
+bairros_rj,1120,P MIGUEL
+bairros_rj,1130,P N CIDADE
+bairros_rj,1140,PACIENCIA
+bairros_rj,1150,PAQUETA
+bairros_rj,1160,PAVUNA
+bairros_rj,1170,PC BANDEIRA
+bairros_rj,1180,PC SECA
+bairros_rj,1190,PDA LUCAS
+bairros_rj,1200,PECHINCHA
+bairros_rj,1210,PENHA
+bairros_rj,1220,PIEDADE
+bairros_rj,1230,PILARES
+bairros_rj,1240,PITANGUEIRA
+bairros_rj,1250,PORTUGUESA
+bairros_rj,1260,PR BANDEIRA
+bairros_rj,1270,PRQ ANCHIET
+bairros_rj,1280,Q BOCAIUVA
+bairros_rj,1290,R ALBUQUERQ
+bairros_rj,1300,R COMPRIDO
+bairros_rj,1310,R MIRANDA
+bairros_rj,1320,R PRATA
+bairros_rj,1330,RAMOS
+bairros_rj,1340,RCR BANDEIR
+bairros_rj,1350,REALENGO
+bairros_rj,1360,RIACHUELO
+bairros_rj,1370,RIBEIRA
+bairros_rj,1380,ROCHA
+bairros_rj,1390,ROCINHA
+bairros_rj,1400,S CAMARA
+bairros_rj,1410,S CONRADO
+bairros_rj,1420,S CRISTO
+bairros_rj,1430,S CRISTOVAO
+bairros_rj,1440,S CRUZ
+bairros_rj,1450,S F XAVIER
+bairros_rj,1470,S TERESA
+bairros_rj,1480,S VASCONCEL
+bairros_rj,1490,SAMPAIO
+bairros_rj,1500,SANTISSIMO
+bairros_rj,1510,SAUDE
+bairros_rj,1520,SEPETIBA
+bairros_rj,1530,T COELHO
+bairros_rj,1540,T SANTOS
+bairros_rj,1550,TANQUE
+bairros_rj,1560,TAQUARA
+bairros_rj,1570,TAUA
+bairros_rj,1580,TIJUCA
+bairros_rj,1590,TUBIACANGA
+bairros_rj,1600,TURIACU
+bairros_rj,1610,URCA
+bairros_rj,1620,V ALEGRE
+bairros_rj,1630,V CARVALHO
+bairros_rj,1640,V GERAL
+bairros_rj,1650,V GRANDE
+bairros_rj,1660,V LOBO
+bairros_rj,1670,V PEQUENA
+bairros_rj,1680,VIDIGAL
+bairros_rj,1690,VL ISABEL
+bairros_rj,1710,VL KOSMOS
+bairros_rj,1720,VL MILITAR
+bairros_rj,1730,VL PENHA
+bairros_rj,1740,VL VALQUEIR
+bairros_rj,1750,ZUMBI
+bairros_sp,7,Aclimacao
+bairros_sp,2,Agua Branca
+bairros_sp,3,Agua Fria
+bairros_sp,4,Agua Funda
+bairros_sp,5,Agua Rasa
+bairros_sp,11,Alto da Lapa
+bairros_sp,12,Alto da Mooca
+bairros_sp,15,Alto da Riviera
+bairros_sp,14,Alto de Pinheiros
+bairros_sp,13,Alto do Pari
+bairros_sp,6,Altos de Vila Prudente
+bairros_sp,8,Americanopolis
+bairros_sp,9,Anhanguera
+bairros_sp,10,Aricanduva
+bairros_sp,1,Artur Alvim
+bairros_sp,16,Avenida Aguas Espraiadas
+bairros_sp,23,Balneário Dom Carlos
+bairros_sp,24,Balneário Mar Paulista
+bairros_sp,25,Balneário São Francisco
+bairros_sp,26,Balneário São Jose
+bairros_sp,27,Baronesa
+bairros_sp,19,Barra Funda
+bairros_sp,28,Barragem
+bairros_sp,18,Barro Branco
+bairros_sp,17,Bela Alianca
+bairros_sp,22,Bela Vista
+bairros_sp,29,Belem
+bairros_sp,30,Belenzinho
+bairros_sp,31,Boacava
+bairros_sp,21,Bom Retiro
+bairros_sp,32,Borore
+bairros_sp,33,Bortolandia
+bairros_sp,37,Bosque da Saude
+bairros_sp,35,Brasilandia
+bairros_sp,20,Brooklin Novo
+bairros_sp,36,Brooklin Paulista
+bairros_sp,34,Brás
+bairros_sp,38,Burgo Paulista
+bairros_sp,39,Butanta
+bairros_sp,89,Cachoeirinha
+bairros_sp,90,Cambuci
+bairros_sp,91,Campininha
+bairros_sp,203,Campo Belo
+bairros_sp,204,Campo Grande
+bairros_sp,205,Campo Limpo
+bairros_sp,53,Campos Eliseos
+bairros_sp,92,Cangaiba
+bairros_sp,93,Caninde
+bairros_sp,94,Cantareira
+bairros_sp,76,Capao Redondo
+bairros_sp,54,Capao da Embira
+bairros_sp,82,Capela do Socorro
+bairros_sp,95,Carandiru
+bairros_sp,96,Carrao
+bairros_sp,57,Casa Grande
+bairros_sp,88,Casa Verde
+bairros_sp,84,Casa Verde Alta
+bairros_sp,85,Casa Verde Baixa
+bairros_sp,86,Casa Verde Media
+bairros_sp,97,Catumbi
+bairros_sp,98,Caxingui
+bairros_sp,99,Centro
+bairros_sp,47,Cerqueira Cesar
+bairros_sp,147,Chapada
+bairros_sp,67,Chora Menino
+bairros_sp,101,Chácara Bandeirantes
+bairros_sp,102,Chácara Belenzinho
+bairros_sp,103,Chácara Bosque do Sul
+bairros_sp,105,Chácara California
+bairros_sp,106,Chácara Cocaia
+bairros_sp,104,Chácara Cruzeiro do Sul
+bairros_sp,108,Chácara Dona Olivia
+bairros_sp,111,Chácara Figueira Grande
+bairros_sp,112,Chácara Flora
+bairros_sp,113,Chácara Florida
+bairros_sp,114,Chácara Gaivota
+bairros_sp,115,Chácara Inglesa
+bairros_sp,116,Chácara Itaim
+bairros_sp,117,Chácara Japonesa
+bairros_sp,118,Chácara Jaragua
+bairros_sp,120,Chácara Mafalda
+bairros_sp,119,Chácara Maria Trindade
+bairros_sp,121,Chácara Meyer
+bairros_sp,123,Chácara Monte Alegre
+bairros_sp,124,Chácara Monte Sol
+bairros_sp,122,Chácara Morro Alto
+bairros_sp,127,Chácara Nani
+bairros_sp,125,Chácara Nossa Senhora Aparecida
+bairros_sp,126,Chácara Nossa Senhora do Bom Cons
+bairros_sp,130,Chácara Paiva
+bairros_sp,132,Chácara Pirajussara
+bairros_sp,128,Chácara Pouso Alegre
+bairros_sp,136,Chácara Santa Etelvina
+bairros_sp,140,Chácara Santa Maria
+bairros_sp,142,Chácara Santana
+bairros_sp,133,Chácara Santo Amaro
+bairros_sp,134,Chácara Santo Antonio
+bairros_sp,137,Chácara Santo Hubertus
+bairros_sp,100,Chácara Seis de Outubro
+bairros_sp,135,Chácara Sonho Azul
+bairros_sp,138,Chácara São Joao
+bairros_sp,139,Chácara São Luis
+bairros_sp,141,Chácara São Silvestre
+bairros_sp,144,Chácara Tatuape
+bairros_sp,143,Chácara Tres Meninas
+bairros_sp,145,Chácara Vista Alegre
+bairros_sp,146,Chácara Vovo
+bairros_sp,110,Chácara da Enseada
+bairros_sp,107,Chácara das Corujas
+bairros_sp,129,Chácara das Paineiras
+bairros_sp,131,Chácara das Palmeiras
+bairros_sp,109,Chácara do Encosto
+bairros_sp,41,Cidade Ademar
+bairros_sp,40,Cidade Antonio Estevao de Carvalh
+bairros_sp,43,Cidade Auxiliadora
+bairros_sp,46,Cidade Centenario
+bairros_sp,48,Cidade Continental
+bairros_sp,50,Cidade D'abril
+bairros_sp,51,Cidade Domitila
+bairros_sp,52,Cidade Dutra
+bairros_sp,56,Cidade Fim de Semana
+bairros_sp,58,Cidade Ipava
+bairros_sp,59,Cidade Jardim
+bairros_sp,60,Cidade Julia
+bairros_sp,61,Cidade Kemel
+bairros_sp,62,Cidade Leonor
+bairros_sp,63,Cidade Lider
+bairros_sp,64,Cidade Mae do Ceu
+bairros_sp,68,Cidade Moncoes
+bairros_sp,65,Cidade Munhoz Junior
+bairros_sp,73,Cidade Nautica
+bairros_sp,70,Cidade Nitro Operaria
+bairros_sp,71,Cidade Nitro Quimica
+bairros_sp,69,Cidade Nova Heliopolis
+bairros_sp,72,Cidade Nova São Miguel
+bairros_sp,74,Cidade Patriarca
+bairros_sp,75,Cidade Popular
+bairros_sp,81,Cidade Satelite
+bairros_sp,80,Cidade Satelite Santa Barbara
+bairros_sp,77,Cidade São Francisco
+bairros_sp,78,Cidade São Mateus
+bairros_sp,79,Cidade São Miguel
+bairros_sp,83,Cidade Tiradentes
+bairros_sp,87,Cidade Vargas
+bairros_sp,44,Cidade dos Bandeirantes
+bairros_sp,66,Cipo do Meio
+bairros_sp,42,City America
+bairros_sp,45,Clube Campestre de São Paulo
+bairros_sp,49,Clube de Campo Kibom
+bairros_sp,55,Clube dos Funcionarios Publicos C
+bairros_sp,200,Colonia
+bairros_sp,150,Conjunto Habitacional Aguia de Ha
+bairros_sp,155,Conjunto Habitacional Barreira Gr
+bairros_sp,152,Conjunto Habitacional Barro Branc
+bairros_sp,151,Conjunto Habitacional Barro Branc
+bairros_sp,154,Conjunto Habitacional Brigadeiro
+bairros_sp,153,Conjunto Habitacional Brigadeiro
+bairros_sp,156,Conjunto Habitacional Castro Alve
+bairros_sp,158,Conjunto Habitacional Inacio Mont
+bairros_sp,157,Conjunto Habitacional Instituto A
+bairros_sp,162,Conjunto Habitacional Jardim Sant
+bairros_sp,163,Conjunto Habitacional Jardim São
+bairros_sp,161,Conjunto Habitacional Jardim São
+bairros_sp,160,Conjunto Habitacional Jova Rural
+bairros_sp,159,Conjunto Habitacional Juscelino K
+bairros_sp,164,Conjunto Habitacional Marechal Ma
+bairros_sp,165,Conjunto Habitacional Padre Jose
+bairros_sp,167,Conjunto Habitacional Padre Manoe
+bairros_sp,166,Conjunto Habitacional Padre Manoe
+bairros_sp,168,Conjunto Habitacional Pirajussara
+bairros_sp,169,Conjunto Habitacional Recanto dos
+bairros_sp,170,Conjunto Habitacional Santa Etelv
+bairros_sp,171,Conjunto Habitacional Santa Etelv
+bairros_sp,172,Conjunto Habitacional Santa Etelv
+bairros_sp,173,Conjunto Habitacional Sítio Carag
+bairros_sp,174,Conjunto Habitacional Sítio Conce
+bairros_sp,175,Conjunto Habitacional Teotonio Vi
+bairros_sp,176,Conjunto Habitacional Vila Nova C
+bairros_sp,149,Conjunto Habitacional a e Carvalh
+bairros_sp,177,Conjunto Promorar Estrada da Para
+bairros_sp,179,Conjunto Promorar Raposo Tavares
+bairros_sp,178,Conjunto Promorar Rio Claro
+bairros_sp,181,Conjunto Promorar Sapopemba
+bairros_sp,180,Conjunto Promorar São Luis
+bairros_sp,182,Conjunto Promorar Vila Maria III
+bairros_sp,183,Conjunto Residencial Alpes do Jar
+bairros_sp,184,Conjunto Residencial Bandeirantes
+bairros_sp,185,Conjunto Residencial Butanta
+bairros_sp,186,Conjunto Residencial Elisio Teixe
+bairros_sp,187,Conjunto Residencial Ingai
+bairros_sp,189,Conjunto Residencial Jardim Canaa
+bairros_sp,188,Conjunto Residencial Jose Bonifac
+bairros_sp,190,Conjunto Residencial Morumbi
+bairros_sp,191,Conjunto Residencial Novo Pacaemb
+bairros_sp,193,Conjunto Residencial Paraiso
+bairros_sp,194,Conjunto Residencial Pinheirinho
+bairros_sp,192,Conjunto Residencial Prestes Maia
+bairros_sp,197,Conjunto Residencial Salvador Tol
+bairros_sp,195,Conjunto Residencial Santa Maria
+bairros_sp,196,Conjunto Residencial Santa Terezi
+bairros_sp,198,Conjunto Residencial Sítio Orator
+bairros_sp,199,Conjunto Residencial Vista Verde
+bairros_sp,148,Conjunto dos Bancarios
+bairros_sp,201,Consolacao
+bairros_sp,202,Copacabana
+bairros_sp,206,Cupece
+bairros_sp,207,Cursino
+bairros_sp,999997,Código não encontrado nos dicionários oficiais.
+bairros_sp,9997,Código não encontrado nos dicionários oficiais.
+bairros_sp,215,Educandario
+bairros_sp,216,Eldorado
+bairros_sp,212,Embu Mirim
+bairros_sp,217,Embura
+bairros_sp,208,Engenheiro Goulart
+bairros_sp,210,Engenheiro Marsilac
+bairros_sp,214,Engenheiro Trindade
+bairros_sp,211,Ermelino Matarazzo
+bairros_sp,209,Estancia Jaragua
+bairros_sp,218,Estancia Mirim
+bairros_sp,213,Estancia Tangara
+bairros_sp,219,Favela Vila Nova Jaguare
+bairros_sp,220,Fazenda Aricanduva
+bairros_sp,221,Fazenda Itaim
+bairros_sp,222,Fazenda Juta
+bairros_sp,223,Fazenda Morumbi
+bairros_sp,224,Ferreira
+bairros_sp,0,Fora do Estado de São Paulo
+bairros_sp,225,Freguesia do o
+bairros_sp,226,Furnas
+bairros_sp,227,Gleba do Pessego
+bairros_sp,230,Grajau
+bairros_sp,228,Granja Julieta
+bairros_sp,229,Granja Nossa Senhora Aparecida
+bairros_sp,231,Guacuri
+bairros_sp,232,Guaianazes
+bairros_sp,233,Guaiauna
+bairros_sp,234,Guapira
+bairros_sp,235,Guarapiranga
+bairros_sp,236,Guavirutuba
+bairros_sp,238,Higienopolis
+bairros_sp,239,Horto
+bairros_sp,237,Horto Florestal
+bairros_sp,243,Ibirapuera
+bairros_sp,-1,Ignorado
+bairros_sp,244,Iguatemi
+bairros_sp,245,Imirim
+bairros_sp,246,Indianopolis
+bairros_sp,242,Instituto de Previdencia
+bairros_sp,247,Interlagos
+bairros_sp,248,Ipiranga
+bairros_sp,249,Itaberaba
+bairros_sp,250,Itaim
+bairros_sp,240,Itaim Bibi
+bairros_sp,241,Itaim Paulista
+bairros_sp,251,Itaquera
+bairros_sp,252,Itupu
+bairros_sp,254,Jabaquara
+bairros_sp,255,Jacana
+bairros_sp,256,Jaguare
+bairros_sp,257,Jaragua
+bairros_sp,269,Jardim Adelaide
+bairros_sp,270,Jardim Adelfiore
+bairros_sp,271,Jardim Adelia
+bairros_sp,260,Jardim Adhemar de Barros
+bairros_sp,272,Jardim Adutora
+bairros_sp,273,Jardim Aeroporto
+bairros_sp,274,Jardim Aida
+bairros_sp,275,Jardim Aimore
+bairros_sp,276,Jardim Aladim
+bairros_sp,278,Jardim Albano
+bairros_sp,279,Jardim Alfredo
+bairros_sp,280,Jardim Almanara
+bairros_sp,266,Jardim Almeida Prado
+bairros_sp,281,Jardim Alpino
+bairros_sp,282,Jardim Alteza
+bairros_sp,309,Jardim Alto Alegre
+bairros_sp,310,Jardim Alto Pedroso
+bairros_sp,311,Jardim Alto do Rio Bonito
+bairros_sp,284,Jardim Alva
+bairros_sp,285,Jardim Alvarenga
+bairros_sp,286,Jardim Alvina
+bairros_sp,287,Jardim Alviverde
+bairros_sp,288,Jardim Alvorada
+bairros_sp,289,Jardim Alzira
+bairros_sp,290,Jardim Amalia
+bairros_sp,291,Jardim Amaralina
+bairros_sp,292,Jardim America
+bairros_sp,265,Jardim America da Penha
+bairros_sp,293,Jardim Ampliacao
+bairros_sp,263,Jardim Ana Lucia
+bairros_sp,264,Jardim Ana Maria
+bairros_sp,267,Jardim Ana Rosa
+bairros_sp,261,Jardim Analia Franco
+bairros_sp,294,Jardim Anchieta
+bairros_sp,295,Jardim Andarai
+bairros_sp,296,Jardim Angela
+bairros_sp,297,Jardim Angelina
+bairros_sp,298,Jardim Anhanguera
+bairros_sp,299,Jardim Antartica
+bairros_sp,300,Jardim Aparecida
+bairros_sp,301,Jardim Apura
+bairros_sp,302,Jardim Aracati
+bairros_sp,303,Jardim Arco-Iris
+bairros_sp,304,Jardim Aricanduva
+bairros_sp,305,Jardim Arize
+bairros_sp,306,Jardim Arizona
+bairros_sp,307,Jardim Arpoador
+bairros_sp,259,Jardim Artur Alvim
+bairros_sp,308,Jardim Assuncao
+bairros_sp,262,Jardim Ataliba Leonel
+bairros_sp,312,Jardim Atibaia
+bairros_sp,313,Jardim Atlantico
+bairros_sp,314,Jardim Augusta
+bairros_sp,315,Jardim Augusto
+bairros_sp,316,Jardim Aurelia
+bairros_sp,317,Jardim Aurelio
+bairros_sp,318,Jardim Aurora
+bairros_sp,319,Jardim Avelino
+bairros_sp,320,Jardim Avenida
+bairros_sp,327,Jardim Bandeirante
+bairros_sp,329,Jardim Bandeirantes
+bairros_sp,330,Jardim Barros
+bairros_sp,331,Jardim Bartira
+bairros_sp,332,Jardim Batalha
+bairros_sp,333,Jardim Beatriz
+bairros_sp,334,Jardim Bela Vista
+bairros_sp,335,Jardim Belaura
+bairros_sp,336,Jardim Belcito
+bairros_sp,337,Jardim Belem
+bairros_sp,338,Jardim Belgica
+bairros_sp,339,Jardim Benfica
+bairros_sp,340,Jardim Bibi
+bairros_sp,341,Jardim Bichinhos
+bairros_sp,322,Jardim Boa Esperanca
+bairros_sp,326,Jardim Boa Sorte
+bairros_sp,342,Jardim Boa Vista
+bairros_sp,321,Jardim Bom Clima
+bairros_sp,324,Jardim Bom Pastor
+bairros_sp,325,Jardim Bom Refugio
+bairros_sp,343,Jardim Bonfiglioli
+bairros_sp,344,Jardim Bonito
+bairros_sp,323,Jardim Borba Gato
+bairros_sp,350,Jardim Bosque do Sol
+bairros_sp,345,Jardim Botucatu
+bairros_sp,346,Jardim Brasil
+bairros_sp,347,Jardim Brasilia
+bairros_sp,348,Jardim Britania
+bairros_sp,349,Jardim Bronzato
+bairros_sp,351,Jardim Buriti
+bairros_sp,360,Jardim Cabore
+bairros_sp,361,Jardim Cabucu
+bairros_sp,362,Jardim Cachoeira
+bairros_sp,363,Jardim Caguassu
+bairros_sp,364,Jardim Camara
+bairros_sp,365,Jardim Camargo
+bairros_sp,366,Jardim Cambara
+bairros_sp,369,Jardim Campinas
+bairros_sp,418,Jardim Campo Grande
+bairros_sp,419,Jardim Campo Limpo
+bairros_sp,417,Jardim Campo dos Ferreiros
+bairros_sp,371,Jardim Campos
+bairros_sp,358,Jardim Capao Redondo
+bairros_sp,372,Jardim Capela
+bairros_sp,373,Jardim Capelinha
+bairros_sp,374,Jardim Caravelas
+bairros_sp,375,Jardim Carlu
+bairros_sp,377,Jardim Carolina
+bairros_sp,378,Jardim Carombe
+bairros_sp,353,Jardim Casa Grande
+bairros_sp,356,Jardim Casa Pintada
+bairros_sp,379,Jardim Casablanca
+bairros_sp,380,Jardim Castelo
+bairros_sp,382,Jardim Catanduva
+bairros_sp,383,Jardim Catarina
+bairros_sp,384,Jardim Cecy I
+bairros_sp,385,Jardim Cecy II (Cod Bai - 01899)
+bairros_sp,355,Jardim Cedro do Libano
+bairros_sp,386,Jardim Celeste
+bairros_sp,387,Jardim Celia
+bairros_sp,388,Jardim Centenario
+bairros_sp,389,Jardim Central
+bairros_sp,352,Jardim Cercado da Estrada
+bairros_sp,391,Jardim Chester
+bairros_sp,392,Jardim Cibele
+bairros_sp,357,Jardim Cidade Pirituba
+bairros_sp,393,Jardim Cidalia
+bairros_sp,394,Jardim Cimobil
+bairros_sp,354,Jardim Cinco de Julho
+bairros_sp,359,Jardim Clara Regina
+bairros_sp,395,Jardim Clarice
+bairros_sp,396,Jardim Claudia
+bairros_sp,397,Jardim Cleide
+bairros_sp,398,Jardim Clelia
+bairros_sp,399,Jardim Climax
+bairros_sp,400,Jardim Cliper
+bairros_sp,401,Jardim Coimbra
+bairros_sp,402,Jardim Colegio
+bairros_sp,403,Jardim Colina
+bairros_sp,404,Jardim Colombo
+bairros_sp,405,Jardim Colonial
+bairros_sp,406,Jardim Colorado
+bairros_sp,407,Jardim Comercial
+bairros_sp,408,Jardim Concordia
+bairros_sp,410,Jardim Consorcio
+bairros_sp,411,Jardim Consupler
+bairros_sp,412,Jardim Copacabana
+bairros_sp,413,Jardim Cordeiro
+bairros_sp,414,Jardim Cotching
+bairros_sp,415,Jardim Cotiana
+bairros_sp,416,Jardim Cotinha
+bairros_sp,420,Jardim Cristal
+bairros_sp,421,Jardim Cristalia
+bairros_sp,422,Jardim Cristina
+bairros_sp,423,Jardim Cruzeiro
+bairros_sp,424,Jardim Cupece
+bairros_sp,433,Jardim D'abril
+bairros_sp,434,Jardim Dalmo
+bairros_sp,435,Jardim Damasceno
+bairros_sp,436,Jardim Danfer
+bairros_sp,438,Jardim Daysy
+bairros_sp,439,Jardim Denyse
+bairros_sp,440,Jardim Deolinda
+bairros_sp,441,Jardim Dinorah
+bairros_sp,442,Jardim Diomar
+bairros_sp,443,Jardim Dionisio
+bairros_sp,425,Jardim Dom Bosco
+bairros_sp,427,Jardim Dom Fernando
+bairros_sp,428,Jardim Dom Jose
+bairros_sp,446,Jardim Domitila
+bairros_sp,426,Jardim Dona Deolinda
+bairros_sp,429,Jardim Dona Sinha
+bairros_sp,447,Jardim Donaria
+bairros_sp,450,Jardim Dracena
+bairros_sp,451,Jardim Drumond
+bairros_sp,452,Jardim Duprat
+bairros_sp,456,Jardim Edda
+bairros_sp,457,Jardim Edi
+bairros_sp,458,Jardim Edilene
+bairros_sp,459,Jardim Edith
+bairros_sp,460,Jardim Edwiges
+bairros_sp,461,Jardim Egle
+bairros_sp,462,Jardim Elba
+bairros_sp,463,Jardim Eledy
+bairros_sp,464,Jardim Eliana-a
+bairros_sp,465,Jardim Eliane
+bairros_sp,453,Jardim Elisa Maria
+bairros_sp,466,Jardim Elisio
+bairros_sp,467,Jardim Eliza
+bairros_sp,468,Jardim Elizabeth
+bairros_sp,469,Jardim Ellus
+bairros_sp,470,Jardim Elza
+bairros_sp,471,Jardim Emilia
+bairros_sp,454,Jardim Engenheiro Visconti
+bairros_sp,472,Jardim Ernestina
+bairros_sp,473,Jardim Esmeralda
+bairros_sp,475,Jardim Esperanca
+bairros_sp,477,Jardim Ester
+bairros_sp,455,Jardim Ester Yolanda
+bairros_sp,478,Jardim Estrela
+bairros_sp,479,Jardim Etelvina
+bairros_sp,481,Jardim Europa
+bairros_sp,482,Jardim Eva
+bairros_sp,483,Jardim Everest
+bairros_sp,485,Jardim Faria Lima
+bairros_sp,489,Jardim Felicidade
+bairros_sp,490,Jardim Fernandes
+bairros_sp,484,Jardim Figueira Grande
+bairros_sp,488,Jardim Fim de Semana
+bairros_sp,491,Jardim Flamingo
+bairros_sp,493,Jardim Floresta
+bairros_sp,487,Jardim Florida Paulista
+bairros_sp,494,Jardim Fluminense
+bairros_sp,496,Jardim Fonte São Miguel
+bairros_sp,495,Jardim Fonte do Morumbi
+bairros_sp,497,Jardim Franca
+bairros_sp,486,Jardim Francisco Mentem
+bairros_sp,499,Jardim Franganielo
+bairros_sp,500,Jardim Fraternidade
+bairros_sp,501,Jardim Fujihara
+bairros_sp,503,Jardim Galli
+bairros_sp,504,Jardim Germania
+bairros_sp,505,Jardim Gianetti
+bairros_sp,506,Jardim Gilberto
+bairros_sp,502,Jardim Gilda Maria
+bairros_sp,507,Jardim Gloria
+bairros_sp,508,Jardim Gonzaga
+bairros_sp,510,Jardim Grimaldi
+bairros_sp,511,Jardim Guacuri
+bairros_sp,512,Jardim Guaianazes
+bairros_sp,513,Jardim Guairaca
+bairros_sp,514,Jardim Guanabara
+bairros_sp,515,Jardim Guanca
+bairros_sp,516,Jardim Guanhembu
+bairros_sp,517,Jardim Guapira
+bairros_sp,518,Jardim Guarani
+bairros_sp,519,Jardim Guarapiranga
+bairros_sp,520,Jardim Guarau
+bairros_sp,521,Jardim Guaruja
+bairros_sp,522,Jardim Guedala
+bairros_sp,523,Jardim Guiomar
+bairros_sp,524,Jardim Gustavo
+bairros_sp,529,Jardim Hadad
+bairros_sp,526,Jardim Haia do Carrao
+bairros_sp,530,Jardim Harmonia
+bairros_sp,531,Jardim Helena
+bairros_sp,532,Jardim Helga
+bairros_sp,533,Jardim Helian
+bairros_sp,534,Jardim Heliomar
+bairros_sp,535,Jardim Heloisa
+bairros_sp,536,Jardim Hercilia
+bairros_sp,537,Jardim Herculano
+bairros_sp,538,Jardim Herplin
+bairros_sp,539,Jardim Hipico
+bairros_sp,525,Jardim Horizonte Azul
+bairros_sp,527,Jardim Horto Florestal
+bairros_sp,540,Jardim Humaita
+bairros_sp,528,Jardim Humberto Nastari
+bairros_sp,542,Jardim Iae
+bairros_sp,543,Jardim Iara
+bairros_sp,544,Jardim Ibirapuera
+bairros_sp,545,Jardim Ibiratiba
+bairros_sp,546,Jardim Ibitirama
+bairros_sp,547,Jardim Icara
+bairros_sp,548,Jardim Icarai
+bairros_sp,541,Jardim Ida Guedes
+bairros_sp,549,Jardim Ideal
+bairros_sp,550,Jardim Iguatemi
+bairros_sp,551,Jardim Imbe
+bairros_sp,553,Jardim Imperador
+bairros_sp,554,Jardim Imperial
+bairros_sp,555,Jardim Imperio
+bairros_sp,556,Jardim Indaia
+bairros_sp,557,Jardim Independencia
+bairros_sp,558,Jardim Inga
+bairros_sp,559,Jardim Internacional
+bairros_sp,560,Jardim Ipanema
+bairros_sp,561,Jardim Ipe
+bairros_sp,563,Jardim Ipora
+bairros_sp,564,Jardim Iporanga
+bairros_sp,565,Jardim Iracema
+bairros_sp,566,Jardim Irapiranga
+bairros_sp,567,Jardim Irene
+bairros_sp,568,Jardim Iris
+bairros_sp,569,Jardim Itacolomi
+bairros_sp,570,Jardim Itaguacu
+bairros_sp,571,Jardim Itajai
+bairros_sp,572,Jardim Italia
+bairros_sp,573,Jardim Itamaraty
+bairros_sp,574,Jardim Itaoca
+bairros_sp,575,Jardim Itapemirim
+bairros_sp,576,Jardim Itapeva
+bairros_sp,577,Jardim Itapolis
+bairros_sp,578,Jardim Itapura
+bairros_sp,579,Jardim Itatiaia
+bairros_sp,580,Jardim Itatinga
+bairros_sp,581,Jardim Iva
+bairros_sp,582,Jardim Ivana
+bairros_sp,583,Jardim Ivete
+bairros_sp,584,Jardim Ivone
+bairros_sp,586,Jardim Jabaquara
+bairros_sp,587,Jardim Jacana
+bairros_sp,589,Jardim Jamaica
+bairros_sp,590,Jardim Japao
+bairros_sp,591,Jardim Jaqueline
+bairros_sp,592,Jardim Jaragua
+bairros_sp,593,Jardim Jau
+bairros_sp,594,Jardim Jeriva
+bairros_sp,595,Jardim Joamar
+bairros_sp,585,Jardim Joana D Arc
+bairros_sp,596,Jardim Joao Xxiii
+bairros_sp,597,Jardim Joia
+bairros_sp,598,Jardim Jordao
+bairros_sp,599,Jardim Jua
+bairros_sp,600,Jardim Julieta
+bairros_sp,601,Jardim Jurema
+bairros_sp,602,Jardim Jussara
+bairros_sp,603,Jardim Kagohara
+bairros_sp,604,Jardim Kaj
+bairros_sp,605,Jardim Keralux
+bairros_sp,606,Jardim Kika
+bairros_sp,607,Jardim Kioto
+bairros_sp,613,Jardim Lageado
+bairros_sp,616,Jardim Lallo
+bairros_sp,617,Jardim Laone
+bairros_sp,618,Jardim Lapena
+bairros_sp,612,Jardim Lar São Paulo
+bairros_sp,619,Jardim Laranjal
+bairros_sp,620,Jardim Laranjeiras
+bairros_sp,621,Jardim Laura
+bairros_sp,622,Jardim Leila
+bairros_sp,623,Jardim Leme
+bairros_sp,624,Jardim Leni
+bairros_sp,625,Jardim Leonardo
+bairros_sp,611,Jardim Leonidas Moreira
+bairros_sp,626,Jardim Leonor
+bairros_sp,610,Jardim Leonor Mendes de Barros
+bairros_sp,627,Jardim Leticia
+bairros_sp,628,Jardim Libano
+bairros_sp,629,Jardim Lice
+bairros_sp,630,Jardim Lider
+bairros_sp,631,Jardim Lideranca
+bairros_sp,632,Jardim Lidia
+bairros_sp,633,Jardim Lilah
+bairros_sp,634,Jardim Lisboa
+bairros_sp,635,Jardim Londrina
+bairros_sp,608,Jardim Los Angeles
+bairros_sp,637,Jardim Lourdes
+bairros_sp,638,Jardim Luanda
+bairros_sp,639,Jardim Lucelia
+bairros_sp,640,Jardim Lucia
+bairros_sp,641,Jardim Luciana
+bairros_sp,642,Jardim Lucinda
+bairros_sp,609,Jardim Lucio de Castro
+bairros_sp,643,Jardim Lugo
+bairros_sp,644,Jardim Luisa
+bairros_sp,645,Jardim Luso
+bairros_sp,646,Jardim Luzitania
+bairros_sp,663,Jardim Mabel
+bairros_sp,664,Jardim Macedonia
+bairros_sp,665,Jardim Machado
+bairros_sp,666,Jardim Maggi
+bairros_sp,667,Jardim Maia
+bairros_sp,668,Jardim Malia I
+bairros_sp,669,Jardim Malia II
+bairros_sp,671,Jardim Mangalot
+bairros_sp,672,Jardim Maraba
+bairros_sp,673,Jardim Maraca
+bairros_sp,674,Jardim Maracana
+bairros_sp,675,Jardim Marajoara
+bairros_sp,676,Jardim Marcel
+bairros_sp,677,Jardim Marcelo
+bairros_sp,678,Jardim Marciano
+bairros_sp,657,Jardim Marco Paulo
+bairros_sp,679,Jardim Margarida
+bairros_sp,647,Jardim Maria Amalia
+bairros_sp,649,Jardim Maria Duarte
+bairros_sp,650,Jardim Maria Emilia
+bairros_sp,651,Jardim Maria Estela
+bairros_sp,652,Jardim Maria Fernandes
+bairros_sp,653,Jardim Maria Lucia
+bairros_sp,654,Jardim Maria Luiza
+bairros_sp,655,Jardim Maria Margarida
+bairros_sp,656,Jardim Maria Nazare
+bairros_sp,659,Jardim Maria Rita
+bairros_sp,660,Jardim Maria Sampaio
+bairros_sp,662,Jardim Maria Virginia
+bairros_sp,680,Jardim Mariane
+bairros_sp,681,Jardim Marilda
+bairros_sp,682,Jardim Marilia
+bairros_sp,683,Jardim Mariliza
+bairros_sp,684,Jardim Marilu
+bairros_sp,685,Jardim Marina
+bairros_sp,686,Jardim Maringa
+bairros_sp,687,Jardim Marisa
+bairros_sp,688,Jardim Maristela
+bairros_sp,689,Jardim Marpu
+bairros_sp,690,Jardim Marquesa
+bairros_sp,691,Jardim Martha
+bairros_sp,692,Jardim Martini
+bairros_sp,693,Jardim Martinica
+bairros_sp,661,Jardim Martins Silva
+bairros_sp,694,Jardim Mascarenhas
+bairros_sp,695,Jardim Matarazzo
+bairros_sp,696,Jardim Mazza
+bairros_sp,697,Jardim Meliunas
+bairros_sp,698,Jardim Melo
+bairros_sp,699,Jardim Mikail
+bairros_sp,700,Jardim Mimar
+bairros_sp,701,Jardim Miragaia
+bairros_sp,702,Jardim Mirante
+bairros_sp,703,Jardim Miriam
+bairros_sp,704,Jardim Mitsutani
+bairros_sp,705,Jardim Modelo
+bairros_sp,706,Jardim Monica
+bairros_sp,707,Jardim Monjolo
+bairros_sp,712,Jardim Monte Alegre
+bairros_sp,713,Jardim Monte Azul
+bairros_sp,648,Jardim Monte Belo
+bairros_sp,714,Jardim Monte Kemel
+bairros_sp,658,Jardim Morais Prado
+bairros_sp,708,Jardim Moreno
+bairros_sp,709,Jardim Morganti
+bairros_sp,711,Jardim Morro Verde
+bairros_sp,710,Jardim Morumbi
+bairros_sp,715,Jardim Mutinga
+bairros_sp,716,Jardim Myrna
+bairros_sp,732,Jardim Nadir
+bairros_sp,729,Jardim Nagib Salem
+bairros_sp,733,Jardim Nair
+bairros_sp,734,Jardim Nakamura
+bairros_sp,735,Jardim Namba
+bairros_sp,736,Jardim Nardini
+bairros_sp,737,Jardim Nastari
+bairros_sp,738,Jardim Natal
+bairros_sp,739,Jardim Naufal
+bairros_sp,740,Jardim Nazareth
+bairros_sp,741,Jardim Neide
+bairros_sp,742,Jardim Neila
+bairros_sp,743,Jardim Nelia
+bairros_sp,744,Jardim Nelia I
+bairros_sp,745,Jardim Nelia II
+bairros_sp,746,Jardim Nelia III
+bairros_sp,747,Jardim Nelia IV
+bairros_sp,748,Jardim Nelia IV (Cod Bai - 18546)
+bairros_sp,749,Jardim Nelly
+bairros_sp,750,Jardim Nice
+bairros_sp,751,Jardim Niteroi
+bairros_sp,752,Jardim Nizia
+bairros_sp,753,Jardim Noemia
+bairros_sp,754,Jardim Nordeste
+bairros_sp,755,Jardim Norma
+bairros_sp,756,Jardim Noronha
+bairros_sp,728,Jardim Nossa Senhora do Carmo
+bairros_sp,724,Jardim Nosso Lar
+bairros_sp,717,Jardim Nova Brasilia
+bairros_sp,719,Jardim Nova Colonia
+bairros_sp,720,Jardim Nova Germania
+bairros_sp,721,Jardim Nova Guaianazes
+bairros_sp,731,Jardim Nova Tereza
+bairros_sp,723,Jardim Nove de Julho
+bairros_sp,718,Jardim Novo Carrao
+bairros_sp,722,Jardim Novo Horizonte
+bairros_sp,725,Jardim Novo Mundo
+bairros_sp,726,Jardim Novo Parelheiros
+bairros_sp,727,Jardim Novo Santo Amaro
+bairros_sp,730,Jardim Novo Taboao
+bairros_sp,757,Jardim Odete
+bairros_sp,758,Jardim Olinda
+bairros_sp,760,Jardim Olympia
+bairros_sp,761,Jardim Ondina
+bairros_sp,762,Jardim Orbam
+bairros_sp,763,Jardim Oriental
+bairros_sp,764,Jardim Orion
+bairros_sp,765,Jardim Orly
+bairros_sp,766,Jardim Ormendina
+bairros_sp,767,Jardim Outono
+bairros_sp,777,Jardim Palmares
+bairros_sp,780,Jardim Panorama
+bairros_sp,772,Jardim Panorama D'oeste
+bairros_sp,781,Jardim Paqueta
+bairros_sp,783,Jardim Paraguacu
+bairros_sp,784,Jardim Paris
+bairros_sp,820,Jardim Parque Morumbi
+bairros_sp,786,Jardim Patente
+bairros_sp,785,Jardim Patente Novo
+bairros_sp,787,Jardim Pauliceia
+bairros_sp,788,Jardim Paulista
+bairros_sp,789,Jardim Paulistano
+bairros_sp,768,Jardim Paulo Afonso
+bairros_sp,770,Jardim Paulo Borba
+bairros_sp,790,Jardim Paulo VI
+bairros_sp,771,Jardim Pedra Branca
+bairros_sp,792,Jardim Pedreira
+bairros_sp,774,Jardim Pedro Jose Nunes
+bairros_sp,793,Jardim Penha
+bairros_sp,775,Jardim Pereira Leite
+bairros_sp,794,Jardim Peri
+bairros_sp,795,Jardim Peri Novo
+bairros_sp,776,Jardim Peri Peri
+bairros_sp,796,Jardim Perus
+bairros_sp,797,Jardim Petisco
+bairros_sp,798,Jardim Petropolis
+bairros_sp,799,Jardim Picolo
+bairros_sp,800,Jardim Pinheiros
+bairros_sp,801,Jardim Piqueri
+bairros_sp,802,Jardim Piqueroby
+bairros_sp,803,Jardim Piracema
+bairros_sp,804,Jardim Piracuama
+bairros_sp,805,Jardim Pirajussara
+bairros_sp,806,Jardim Piratininga
+bairros_sp,807,Jardim Pirituba
+bairros_sp,808,Jardim Planalto
+bairros_sp,809,Jardim Pongilutti
+bairros_sp,822,Jardim Ponte Rasa
+bairros_sp,810,Jardim Popular
+bairros_sp,773,Jardim Porteira Grande
+bairros_sp,769,Jardim Pouso Alegre
+bairros_sp,813,Jardim Presidencia
+bairros_sp,814,Jardim Presidente
+bairros_sp,815,Jardim Previdencia
+bairros_sp,816,Jardim Primavera
+bairros_sp,817,Jardim Princesa
+bairros_sp,818,Jardim Progresso
+bairros_sp,819,Jardim PromisSão
+bairros_sp,821,Jardim Prudencia
+bairros_sp,823,Jardim Quarto Centenario
+bairros_sp,824,Jardim Quisisana
+bairros_sp,832,Jardim Ramala
+bairros_sp,831,Jardim Raposo Tavares
+bairros_sp,833,Jardim Real
+bairros_sp,834,Jardim Recanto do Sol
+bairros_sp,835,Jardim Record
+bairros_sp,836,Jardim Recreio
+bairros_sp,837,Jardim Redencao
+bairros_sp,838,Jardim Redil
+bairros_sp,839,Jardim Regina
+bairros_sp,825,Jardim Regina Aurea
+bairros_sp,840,Jardim Regis
+bairros_sp,841,Jardim Reimberg
+bairros_sp,842,Jardim Remo
+bairros_sp,843,Jardim Represa
+bairros_sp,844,Jardim Republica
+bairros_sp,845,Jardim Ricardo
+bairros_sp,846,Jardim Rincao
+bairros_sp,826,Jardim Rio Bonito
+bairros_sp,827,Jardim Rio Douro
+bairros_sp,829,Jardim Rio Pequeno
+bairros_sp,847,Jardim Riviera
+bairros_sp,848,Jardim Rizzo
+bairros_sp,849,Jardim Robru
+bairros_sp,830,Jardim Rodolfo Pirani
+bairros_sp,850,Jardim Romano
+bairros_sp,851,Jardim Roni
+bairros_sp,828,Jardim Rosa Maria
+bairros_sp,852,Jardim Rosalina
+bairros_sp,853,Jardim Rosana
+bairros_sp,855,Jardim Roseli
+bairros_sp,856,Jardim Rosider
+bairros_sp,857,Jardim Rosina
+bairros_sp,858,Jardim Rossin
+bairros_sp,859,Jardim Rubilene
+bairros_sp,860,Jardim Rubio
+bairros_sp,861,Jardim Russo
+bairros_sp,862,Jardim Ruth
+bairros_sp,906,Jardim S Kemel
+bairros_sp,942,Jardim Sabara
+bairros_sp,898,Jardim Sabia do Itaim
+bairros_sp,877,Jardim Sagrado Coracao
+bairros_sp,943,Jardim Samambaia
+bairros_sp,944,Jardim Samara
+bairros_sp,945,Jardim Samas
+bairros_sp,947,Jardim Sandra
+bairros_sp,946,Jardim Sandra Maria
+bairros_sp,863,Jardim Santa Adelia
+bairros_sp,870,Jardim Santa Barbara
+bairros_sp,874,Jardim Santa Branca
+bairros_sp,876,Jardim Santa Cecilia
+bairros_sp,879,Jardim Santa Cruz
+bairros_sp,882,Jardim Santa Edwiges
+bairros_sp,883,Jardim Santa Efigenia
+bairros_sp,885,Jardim Santa Emilia
+bairros_sp,886,Jardim Santa Etelvina
+bairros_sp,889,Jardim Santa Fe
+bairros_sp,890,Jardim Santa Filomena
+bairros_sp,888,Jardim Santa Francisca Cabrini
+bairros_sp,893,Jardim Santa Gertrudes
+bairros_sp,895,Jardim Santa Helena
+bairros_sp,896,Jardim Santa Ines
+bairros_sp,905,Jardim Santa Josefina
+bairros_sp,908,Jardim Santa Lucrecia
+bairros_sp,910,Jardim Santa Luisa
+bairros_sp,912,Jardim Santa Marcelina
+bairros_sp,913,Jardim Santa Margarida
+bairros_sp,968,Jardim Santa Maria
+bairros_sp,918,Jardim Santa Monica
+bairros_sp,927,Jardim Santa Rita
+bairros_sp,936,Jardim Santa Teresinha
+bairros_sp,937,Jardim Santa Tereza
+bairros_sp,938,Jardim Santa Terezinha
+bairros_sp,941,Jardim Santa Zelia
+bairros_sp,948,Jardim Santana
+bairros_sp,864,Jardim Santo Alberto
+bairros_sp,865,Jardim Santo Amaro
+bairros_sp,866,Jardim Santo Andre
+bairros_sp,867,Jardim Santo Antoninho
+bairros_sp,868,Jardim Santo Antonio
+bairros_sp,884,Jardim Santo Elias
+bairros_sp,920,Jardim Santo Onofre
+bairros_sp,881,Jardim Santos Dumont
+bairros_sp,949,Jardim Sapopemba
+bairros_sp,950,Jardim Sarah
+bairros_sp,951,Jardim Satelite
+bairros_sp,952,Jardim Saude
+bairros_sp,953,Jardim Scaff
+bairros_sp,954,Jardim Seckler
+bairros_sp,955,Jardim Selma
+bairros_sp,956,Jardim Senice
+bairros_sp,957,Jardim Sertaozinho
+bairros_sp,933,Jardim Sete de Setembro
+bairros_sp,958,Jardim Shangrila
+bairros_sp,935,Jardim Silva Teles
+bairros_sp,959,Jardim Silveira
+bairros_sp,960,Jardim Silvia
+bairros_sp,961,Jardim Soares
+bairros_sp,963,Jardim Solange
+bairros_sp,964,Jardim Somara
+bairros_sp,965,Jardim Sonia
+bairros_sp,897,Jardim Sonia Inga
+bairros_sp,914,Jardim Sonia Marly
+bairros_sp,924,Jardim Sonia Regina
+bairros_sp,966,Jardim Soraia
+bairros_sp,967,Jardim Souza
+bairros_sp,930,Jardim Sul São Paulo
+bairros_sp,969,Jardim Suzana
+bairros_sp,970,Jardim Sydney
+bairros_sp,871,Jardim São Benedito
+bairros_sp,872,Jardim São Bento
+bairros_sp,869,Jardim São Bento Novo
+bairros_sp,873,Jardim São Bernardo
+bairros_sp,875,Jardim São Carlos
+bairros_sp,878,Jardim São Cristovao
+bairros_sp,880,Jardim São Domingos
+bairros_sp,891,Jardim São Francisco
+bairros_sp,887,Jardim São Francisco de Assis
+bairros_sp,892,Jardim São Gabriel
+bairros_sp,894,Jardim São Goncalo
+bairros_sp,900,Jardim São Januario
+bairros_sp,901,Jardim São Joao
+bairros_sp,902,Jardim São Joaquim
+bairros_sp,903,Jardim São Jorge
+bairros_sp,904,Jardim São Jose
+bairros_sp,899,Jardim São Judas Tadeu
+bairros_sp,907,Jardim São Lourenco
+bairros_sp,909,Jardim São Luis
+bairros_sp,911,Jardim São Manoel
+bairros_sp,915,Jardim São Martinho
+bairros_sp,916,Jardim São Mateus
+bairros_sp,917,Jardim São Miguel
+bairros_sp,919,Jardim São Nicolau
+bairros_sp,921,Jardim São Paulo
+bairros_sp,922,Jardim São Pedro
+bairros_sp,923,Jardim São Rafael
+bairros_sp,925,Jardim São Remo
+bairros_sp,926,Jardim São Ricardo
+bairros_sp,928,Jardim São Roberto
+bairros_sp,929,Jardim São Roque
+bairros_sp,931,Jardim São Saverio
+bairros_sp,932,Jardim São Sebastiao
+bairros_sp,934,Jardim São Silvestre
+bairros_sp,939,Jardim São Vicente
+bairros_sp,940,Jardim São Vitor
+bairros_sp,975,Jardim Taboao
+bairros_sp,976,Jardim Taipas
+bairros_sp,977,Jardim Tamoio
+bairros_sp,978,Jardim Tanay
+bairros_sp,979,Jardim Tango
+bairros_sp,980,Jardim Tapera
+bairros_sp,981,Jardim Taquaral
+bairros_sp,982,Jardim Teixeira
+bairros_sp,983,Jardim Tenani
+bairros_sp,984,Jardim Teresa
+bairros_sp,972,Jardim Teresa Cristina
+bairros_sp,985,Jardim Textil
+bairros_sp,986,Jardim Thealia
+bairros_sp,987,Jardim Thomaz
+bairros_sp,988,Jardim Tiete
+bairros_sp,974,Jardim Tiro ao Pombo
+bairros_sp,990,Jardim Toca
+bairros_sp,991,Jardim Tremembe
+bairros_sp,971,Jardim Tres Coracoes
+bairros_sp,973,Jardim Tres Marias
+bairros_sp,992,Jardim Triana
+bairros_sp,993,Jardim Tricolor
+bairros_sp,994,Jardim Tropical
+bairros_sp,995,Jardim Trussardi
+bairros_sp,996,Jardim Tua
+bairros_sp,997,Jardim Tupa
+bairros_sp,998,Jardim Tupi
+bairros_sp,999,Jardim Turquesa
+bairros_sp,1000,Jardim Uberaba
+bairros_sp,1001,Jardim Ubirajara
+bairros_sp,1002,Jardim Uirapuru
+bairros_sp,1003,Jardim Umarizal
+bairros_sp,1004,Jardim Umuarama
+bairros_sp,1005,Jardim Uniao
+bairros_sp,1006,Jardim Universal
+bairros_sp,1007,Jardim Universidade
+bairros_sp,1008,Jardim Universitario
+bairros_sp,1032,Jardim Vale das Virtudes
+bairros_sp,1031,Jardim Vale do Ribeira
+bairros_sp,1017,Jardim Valquiria
+bairros_sp,1013,Jardim Varginha do Itaim
+bairros_sp,1014,Jardim Vaz de Lima
+bairros_sp,1018,Jardim Vazani
+bairros_sp,1012,Jardim Vera Cruz
+bairros_sp,1019,Jardim Vergueiro
+bairros_sp,1020,Jardim Veronica
+bairros_sp,1022,Jardim Viana
+bairros_sp,1023,Jardim Vieira
+bairros_sp,1027,Jardim Vila Carrao
+bairros_sp,1028,Jardim Vila Formosa
+bairros_sp,1029,Jardim Vila Mariana
+bairros_sp,1030,Jardim Vila Nova Progresso
+bairros_sp,1011,Jardim Vilas Boas
+bairros_sp,1024,Jardim Vilma
+bairros_sp,1025,Jardim Virginia
+bairros_sp,1010,Jardim Virginia Bianca
+bairros_sp,1009,Jardim Vista Alegre
+bairros_sp,1015,Jardim Vista Linda
+bairros_sp,1016,Jardim Vitoria Regia
+bairros_sp,1026,Jardim Vivan
+bairros_sp,1034,Jardim Wanda
+bairros_sp,1033,Jardim Wilma Flor
+bairros_sp,1035,Jardim Yara
+bairros_sp,1036,Jardim Ymay
+bairros_sp,1037,Jardim Zaira
+bairros_sp,1038,Jardim Zelia
+bairros_sp,1039,Jardim Zilda
+bairros_sp,368,Jardim da Campina
+bairros_sp,409,Jardim da Conquista
+bairros_sp,430,Jardim da Gloria
+bairros_sp,431,Jardim da Laranjeira
+bairros_sp,432,Jardim da Saude
+bairros_sp,268,Jardim das Acacias
+bairros_sp,328,Jardim das Bandeiras
+bairros_sp,367,Jardim das Camelias
+bairros_sp,474,Jardim das Esmeraldas
+bairros_sp,492,Jardim das Flores
+bairros_sp,509,Jardim das Gracas
+bairros_sp,552,Jardim das Imbuias
+bairros_sp,437,Jardim das Laranjeiras
+bairros_sp,759,Jardim das Oliveiras
+bairros_sp,778,Jardim das Palmas
+bairros_sp,779,Jardim das Palmeiras
+bairros_sp,791,Jardim das Pedras
+bairros_sp,812,Jardim das Praias
+bairros_sp,854,Jardim das Rosas
+bairros_sp,1021,Jardim das Vertentes
+bairros_sp,636,Jardim de Lorenzo
+bairros_sp,283,Jardim do Alto
+bairros_sp,370,Jardim do Campo
+bairros_sp,376,Jardim do Carmo
+bairros_sp,390,Jardim do Centro
+bairros_sp,258,Jardim do Colegio
+bairros_sp,444,Jardim do Divino
+bairros_sp,614,Jardim do Lago
+bairros_sp,445,Jardim do Russo
+bairros_sp,962,Jardim do Sol
+bairros_sp,989,Jardim do Tiro
+bairros_sp,277,Jardim dos Alamos
+bairros_sp,448,Jardim dos Bichinhos
+bairros_sp,381,Jardim dos Cataldis
+bairros_sp,476,Jardim dos Estados
+bairros_sp,480,Jardim dos Eucaliptos
+bairros_sp,498,Jardim dos Francos
+bairros_sp,562,Jardim dos Ipes
+bairros_sp,588,Jardim dos Jacarandas
+bairros_sp,615,Jardim dos Lagos
+bairros_sp,670,Jardim dos Manacas
+bairros_sp,449,Jardim dos Pinheiros
+bairros_sp,811,Jardim dos Prados
+bairros_sp,782,Jardim para
+bairros_sp,1040,Jordanopolis
+bairros_sp,253,Jose Bonifacio
+bairros_sp,1041,Jurubatuba
+bairros_sp,1044,Lageado
+bairros_sp,1045,Lapa
+bairros_sp,1042,Lapa de Baixo
+bairros_sp,1043,Lauzane Paulista
+bairros_sp,1046,Liberdade
+bairros_sp,1047,Limao
+bairros_sp,1048,Limoeiro
+bairros_sp,1049,Loteamento City Jaragua
+bairros_sp,1050,Loteamento Parque das Hortencias
+bairros_sp,1051,Luz
+bairros_sp,1056,Mandaqui
+bairros_sp,1057,Maranhao
+bairros_sp,1052,Mata Fria
+bairros_sp,1053,Miami Paulista
+bairros_sp,1058,Mirandopolis
+bairros_sp,1055,Moinho Velho
+bairros_sp,1059,Mooca
+bairros_sp,1054,Morada do Sol
+bairros_sp,1061,Morro Grande
+bairros_sp,1062,Morro do Indio
+bairros_sp,1063,Morro dos Ingleses
+bairros_sp,1060,Morumbi
+bairros_sp,1067,Nossa Senhora do o
+bairros_sp,1066,Nova Piraju
+bairros_sp,1064,Nucleo Carvalho de Araujo
+bairros_sp,1065,Nucleo Lageado
+bairros_sp,9999,Outros Municípios de São Paulo
+bairros_sp,1071,Pacaembu
+bairros_sp,1072,Paineiras do Morumbi
+bairros_sp,1073,Parada
+bairros_sp,1079,Parada Cinquenta e Sete
+bairros_sp,1080,Parada Inglesa
+bairros_sp,1081,Parada Quinze
+bairros_sp,1074,Paraiso
+bairros_sp,1075,Paraiso do Morumbi
+bairros_sp,1076,Paraisopolis
+bairros_sp,1077,Parelheiros
+bairros_sp,1078,Pari
+bairros_sp,1109,Parque Alto do Rio Bonito
+bairros_sp,1101,Parque Alves de Lima
+bairros_sp,1102,Parque Amazonas
+bairros_sp,1103,Parque Amelia
+bairros_sp,1104,Parque America
+bairros_sp,1105,Parque Anhanguera
+bairros_sp,1106,Parque Anhembi
+bairros_sp,1107,Parque Arariba
+bairros_sp,1100,Parque Artur Alvim
+bairros_sp,1110,Parque Atlantico
+bairros_sp,1112,Parque Bairro Morumbi
+bairros_sp,1114,Parque Belem
+bairros_sp,1111,Parque Boa Esperanca
+bairros_sp,1115,Parque Bologne
+bairros_sp,1116,Parque Boturussu
+bairros_sp,1117,Parque Brasil
+bairros_sp,1118,Parque Bristol
+bairros_sp,1119,Parque Casa de Pedra
+bairros_sp,1122,Parque Central
+bairros_sp,1123,Parque Cisper
+bairros_sp,1124,Parque Claudia
+bairros_sp,1125,Parque Cocaia
+bairros_sp,1126,Parque Colonial
+bairros_sp,1127,Parque Continental
+bairros_sp,1128,Parque Cristina
+bairros_sp,1120,Parque Cruzeiro do Sul
+bairros_sp,1132,Parque Deizy
+bairros_sp,1129,Parque Dom Joao Neri
+bairros_sp,1134,Parque Doroteia
+bairros_sp,1135,Parque Edu Chaves
+bairros_sp,1137,Parque Esmeralda
+bairros_sp,1138,Parque Esperanca
+bairros_sp,1140,Parque Fernanda
+bairros_sp,1141,Parque Flamengo
+bairros_sp,1142,Parque Florestal
+bairros_sp,1143,Parque Fongaro
+bairros_sp,1144,Parque Grajau
+bairros_sp,1145,Parque Guaianazes
+bairros_sp,1146,Parque Guarani
+bairros_sp,1148,Parque Ibirapuera
+bairros_sp,1149,Parque Imperial
+bairros_sp,1150,Parque Independencia
+bairros_sp,1151,Parque Industrial
+bairros_sp,1147,Parque Industrial Tomas Edson
+bairros_sp,1152,Parque Ipe
+bairros_sp,1153,Parque Itaberaba
+bairros_sp,1154,Parque Jabaquara
+bairros_sp,1155,Parque Jardim Mirassol
+bairros_sp,1157,Parque Lagoa Rica
+bairros_sp,1159,Parque Lagoinha
+bairros_sp,1098,Parque Leo
+bairros_sp,1160,Parque Ligia
+bairros_sp,1156,Parque Luis Mucciolo
+bairros_sp,1166,Parque Malagoli
+bairros_sp,1167,Parque Mandaqui
+bairros_sp,1168,Parque Mandi
+bairros_sp,1161,Parque Maria Alice
+bairros_sp,1162,Parque Maria Domitila
+bairros_sp,1163,Parque Maria Helena
+bairros_sp,1164,Parque Maria Luiza
+bairros_sp,1165,Parque Monteiro Soares
+bairros_sp,1171,Parque Morro Doce
+bairros_sp,1172,Parque Muciolo
+bairros_sp,1173,Parque Munhoz
+bairros_sp,1178,Parque Nacoes Unidas
+bairros_sp,1174,Parque Novo Grajau
+bairros_sp,1175,Parque Novo Lar
+bairros_sp,1176,Parque Novo Mundo
+bairros_sp,1177,Parque Novo Santo Amaro
+bairros_sp,1181,Parque Paineiras
+bairros_sp,1182,Parque Paiolzinho
+bairros_sp,1180,Parque Pan Americano
+bairros_sp,1183,Parque Paulistano
+bairros_sp,1184,Parque Penha
+bairros_sp,1185,Parque Pereira
+bairros_sp,1186,Parque Peruche
+bairros_sp,1187,Parque Petropolis
+bairros_sp,1188,Parque Planalto
+bairros_sp,1189,Parque Primavera
+bairros_sp,1192,Parque Ramos Freitas
+bairros_sp,1193,Parque Reboucas
+bairros_sp,1194,Parque Recreio
+bairros_sp,1195,Parque Regina
+bairros_sp,1196,Parque Residencial Cocaia
+bairros_sp,1197,Parque Residencial D'abril
+bairros_sp,1198,Parque Residencial Julia
+bairros_sp,1201,Parque Residencial Oratorio
+bairros_sp,1202,Parque Residencial Rio Bonito
+bairros_sp,1200,Parque Residencial da Lapa
+bairros_sp,1199,Parque Residencial dos Lagos
+bairros_sp,1191,Parque Rodrigues Alves
+bairros_sp,1223,Parque Sabara
+bairros_sp,1204,Parque Santa Amelia
+bairros_sp,1206,Parque Santa Barbara
+bairros_sp,1208,Parque Santa Cecilia
+bairros_sp,1207,Parque Santa Cecilia (Cod Bai - 1
+bairros_sp,1218,Parque Santa Madalena
+bairros_sp,1222,Parque Santa Rita
+bairros_sp,1224,Parque Santana
+bairros_sp,1203,Parque Santo Amaro
+bairros_sp,1205,Parque Santo Antonio
+bairros_sp,1211,Parque Santo Eduardo
+bairros_sp,1209,Parque Savoi City
+bairros_sp,1225,Parque Sevilha
+bairros_sp,1226,Parque Sonia
+bairros_sp,1210,Parque São Domingos
+bairros_sp,1212,Parque São Joaquim
+bairros_sp,1213,Parque São Jorge
+bairros_sp,1214,Parque São Jose
+bairros_sp,1215,Parque São Lourenco
+bairros_sp,1216,Parque São Lucas
+bairros_sp,1217,Parque São Luis
+bairros_sp,1219,Parque São Miguel
+bairros_sp,1220,Parque São Paulo
+bairros_sp,1221,Parque São Rafael
+bairros_sp,1229,Parque Taipas
+bairros_sp,1230,Parque Tamari
+bairros_sp,1231,Parque Tiete
+bairros_sp,1228,Parque Tomas Saraiva
+bairros_sp,1232,Parque Universitario Espirita
+bairros_sp,1233,Parque Veloso
+bairros_sp,1234,Parque Veredas
+bairros_sp,1236,Parque Vila Maria
+bairros_sp,1237,Parque Vila Prudente
+bairros_sp,1235,Parque Vitoria
+bairros_sp,1169,Parque da Mooca
+bairros_sp,1130,Parque da Vila Prudente
+bairros_sp,1108,Parque das Arvores
+bairros_sp,1092,Parque das Cerejeiras
+bairros_sp,1131,Parque das Paineiras
+bairros_sp,1121,Parque do Carmo
+bairros_sp,1133,Parque do Castelo
+bairros_sp,1136,Parque do Engenho
+bairros_sp,1139,Parque do Estado
+bairros_sp,1158,Parque do Lago
+bairros_sp,1170,Parque do Morumbi
+bairros_sp,1179,Parque do Otero
+bairros_sp,1227,Parque do Terceiro Lago
+bairros_sp,1113,Parque dos Bancarios
+bairros_sp,1190,Parque dos Principes
+bairros_sp,1082,Pedreira
+bairros_sp,1068,Penha de Franca
+bairros_sp,1083,Perdizes
+bairros_sp,1084,Pereiras
+bairros_sp,1085,Perus
+bairros_sp,1086,Pinheiros
+bairros_sp,1087,Piqueri
+bairros_sp,1088,Pirajussara
+bairros_sp,1089,Piraporinha
+bairros_sp,1090,Pirituba
+bairros_sp,1069,Planalto Paulista
+bairros_sp,1091,Polvilho
+bairros_sp,1238,Ponte Pequena
+bairros_sp,1239,Ponte Rasa
+bairros_sp,1093,Praia Azul
+bairros_sp,1097,Praia Paulistinha
+bairros_sp,1094,Praia da Lagoa
+bairros_sp,1095,Praia do Leblon
+bairros_sp,1096,Praias Paulistanas
+bairros_sp,1070,Promorar Vila Maria
+bairros_sp,1099,Protendit
+bairros_sp,1240,Quarta Parada
+bairros_sp,1241,Quinta da Paineira
+bairros_sp,1248,Rancho Geraldo
+bairros_sp,1247,Rancho do Abilio
+bairros_sp,1246,Raposo Tavares
+bairros_sp,1243,Real Parque
+bairros_sp,1249,Recanto Ana Maria
+bairros_sp,1250,Recanto Campo Belo
+bairros_sp,1251,Recanto Marisa
+bairros_sp,1252,Recanto Monte Alegre
+bairros_sp,1253,Recanto Paraiso
+bairros_sp,1254,Recanto Santo Antonio
+bairros_sp,1256,Recanto Verde do Sol
+bairros_sp,1255,Recanto dos Sonhos
+bairros_sp,1257,Republica
+bairros_sp,1259,Residencial Borore
+bairros_sp,1260,Residencial Morumbi
+bairros_sp,1261,Residencial Sol Nascente
+bairros_sp,1262,Residencial Taipas
+bairros_sp,1258,Retiro Morumbi
+bairros_sp,1242,Rio Bonito
+bairros_sp,1245,Rio Pequeno
+bairros_sp,1244,Riviera Paulista
+bairros_sp,1263,Rolinopolis
+bairros_sp,1285,SE
+bairros_sp,1281,Sacoma
+bairros_sp,1265,Santa Amelia
+bairros_sp,1266,Santa Cecilia
+bairros_sp,1268,Santa Efigenia
+bairros_sp,1269,Santa Etelvina
+bairros_sp,1270,Santa Ines
+bairros_sp,1275,Santa Maria
+bairros_sp,1280,Santa Teresinha
+bairros_sp,1282,Santana
+bairros_sp,1264,Santo Amaro
+bairros_sp,1283,Sapopemba
+bairros_sp,1284,Saude
+bairros_sp,1277,Sete Praias
+bairros_sp,1286,Siciliano
+bairros_sp,1308,Socorro
+bairros_sp,1309,Sumare
+bairros_sp,1310,Sumarezinho
+bairros_sp,1278,Super Quadra Morumbi
+bairros_sp,1267,São Domingos
+bairros_sp,1271,São Joao Climaro
+bairros_sp,1272,São Judas
+bairros_sp,1273,São Lucas
+bairros_sp,1276,São Mateus
+bairros_sp,1274,São Miguel Paulista
+bairros_sp,1279,São Salvador
+bairros_sp,1287,Sítio Areiao
+bairros_sp,1289,Sítio Barrocada
+bairros_sp,1288,Sítio Boa Vista
+bairros_sp,1290,Sítio Botuquara
+bairros_sp,1291,Sítio Bufalo
+bairros_sp,1292,Sítio Canela Branca
+bairros_sp,1293,Sítio Caraguata
+bairros_sp,1294,Sítio Cocaia
+bairros_sp,1296,Sítio Itaberaba I
+bairros_sp,1297,Sítio Laredo
+bairros_sp,1299,Sítio Matsumura
+bairros_sp,1301,Sítio Morro Grande
+bairros_sp,1302,Sítio Pinheirinho
+bairros_sp,1304,Sítio Ponderosa
+bairros_sp,1305,Sítio Represa
+bairros_sp,1306,Sítio Tapera
+bairros_sp,1307,Sítio Vale Verde
+bairros_sp,1295,Sítio da Figueira
+bairros_sp,1298,Sítio do Mandaqui
+bairros_sp,1300,Sítio do Morro
+bairros_sp,1303,Sítio do Piqueri
+bairros_sp,1314,Taipas
+bairros_sp,1315,Tambore (Barueri)
+bairros_sp,1316,Tatuape
+bairros_sp,1313,Terceira DiviSão
+bairros_sp,1312,Terceira DiviSão de Interlagos
+bairros_sp,1317,Tremembe
+bairros_sp,1311,Tres Cruzes
+bairros_sp,1318,Tucuruvi
+bairros_sp,1319,Tuparacoera
+bairros_sp,1322,Umarizal
+bairros_sp,1321,Uniao da Vila Nova
+bairros_sp,1320,Usina Piratininga
+bairros_sp,1324,Valo Velho
+bairros_sp,1327,Veleiros
+bairros_sp,1335,Vila Abc
+bairros_sp,1336,Vila Acre
+bairros_sp,1337,Vila Adalgisa
+bairros_sp,1338,Vila Ademar
+bairros_sp,1331,Vila Agua Funda
+bairros_sp,1339,Vila Agueda
+bairros_sp,1340,Vila Aimore
+bairros_sp,1341,Vila Alabama
+bairros_sp,1342,Vila Alba
+bairros_sp,1343,Vila Albano
+bairros_sp,1344,Vila Albertina
+bairros_sp,1345,Vila Alexandria
+bairros_sp,1346,Vila Almeida
+bairros_sp,1347,Vila Alpina
+bairros_sp,1348,Vila Alteza
+bairros_sp,1349,Vila Alzira
+bairros_sp,1350,Vila Amalia
+bairros_sp,1351,Vila Amelia
+bairros_sp,1352,Vila America
+bairros_sp,1353,Vila Americana
+bairros_sp,1329,Vila Ana Claudia
+bairros_sp,1333,Vila Ana Rosa
+bairros_sp,1354,Vila Anadir
+bairros_sp,1355,Vila Analia
+bairros_sp,1330,Vila Analia Franco
+bairros_sp,1356,Vila Anastacio
+bairros_sp,1357,Vila Andes
+bairros_sp,1359,Vila Andrade
+bairros_sp,1361,Vila Angelica
+bairros_sp,1362,Vila Angelina
+bairros_sp,1328,Vila Anglo Brasileira
+bairros_sp,1363,Vila Anhanguera
+bairros_sp,1364,Vila Antonieta
+bairros_sp,1365,Vila Antonina
+bairros_sp,1366,Vila Antonio
+bairros_sp,1334,Vila Antonio dos Santos
+bairros_sp,1367,Vila Aparecida
+bairros_sp,1332,Vila Aparecida Ivone
+bairros_sp,1368,Vila Apoena
+bairros_sp,1369,Vila Araguaia
+bairros_sp,1370,Vila Arapua
+bairros_sp,1371,Vila Arcadia
+bairros_sp,1372,Vila Aricanduva
+bairros_sp,1373,Vila Ariete
+bairros_sp,1374,Vila Arruda
+bairros_sp,1375,Vila Augusto
+bairros_sp,1376,Vila Aurea
+bairros_sp,1377,Vila Aurora
+bairros_sp,1378,Vila Azevedo
+bairros_sp,1388,Vila Babilonia
+bairros_sp,1389,Vila Baby
+bairros_sp,1390,Vila Bancaria
+bairros_sp,1384,Vila Bancaria Munhoz
+bairros_sp,1391,Vila Bandeirantes
+bairros_sp,1392,Vila Barbara
+bairros_sp,1393,Vila Barbosa
+bairros_sp,1394,Vila Barreto
+bairros_sp,1395,Vila Baruel
+bairros_sp,1396,Vila Basileia
+bairros_sp,1397,Vila Bauab
+bairros_sp,1398,Vila Beatriz
+bairros_sp,1399,Vila Bela
+bairros_sp,1380,Vila Bela Alianca
+bairros_sp,1387,Vila Bela Vista
+bairros_sp,1386,Vila Bela do Sapopemba
+bairros_sp,1381,Vila Belo Horizonte
+bairros_sp,1401,Vila Bertioga
+bairros_sp,1402,Vila Bianca
+bairros_sp,1403,Vila Boacava
+bairros_sp,1382,Vila Bom Jardim
+bairros_sp,1404,Vila Bonilha
+bairros_sp,1385,Vila Bonilha Nova
+bairros_sp,1405,Vila Borges
+bairros_sp,1407,Vila Botoni
+bairros_sp,1408,Vila Bozzini
+bairros_sp,1409,Vila Brasil
+bairros_sp,1410,Vila Brasilandia
+bairros_sp,1411,Vila Brasilia
+bairros_sp,1412,Vila Brasilina
+bairros_sp,1383,Vila Brasilio Machado
+bairros_sp,1413,Vila Buarque
+bairros_sp,1379,Vila Buenos Aires
+bairros_sp,1414,Vila Buriti
+bairros_sp,1415,Vila Butanta
+bairros_sp,1425,Vila Cachoeira
+bairros_sp,1426,Vila Cachoeirinha
+bairros_sp,1427,Vila Caicara
+bairros_sp,1428,Vila Caiuba
+bairros_sp,1429,Vila Caju
+bairros_sp,1430,Vila California
+bairros_sp,1431,Vila Calu
+bairros_sp,1432,Vila Campanela
+bairros_sp,1433,Vila Campestre
+bairros_sp,1472,Vila Campo Grande
+bairros_sp,1434,Vila Canero
+bairros_sp,1435,Vila Capela
+bairros_sp,1436,Vila Caraguata
+bairros_sp,1437,Vila Carbone
+bairros_sp,1438,Vila Cardoso
+bairros_sp,1419,Vila Cardoso Franco
+bairros_sp,1439,Vila Carioca
+bairros_sp,1418,Vila Carlos de Campos
+bairros_sp,1440,Vila Carmem
+bairros_sp,1441,Vila Carmosina
+bairros_sp,1442,Vila Carolina
+bairros_sp,1443,Vila Carrao
+bairros_sp,1444,Vila Castelo
+bairros_sp,1445,Vila Castro
+bairros_sp,1446,Vila Catupia
+bairros_sp,1447,Vila Cavaton
+bairros_sp,1448,Vila Caxambu
+bairros_sp,1449,Vila Celeste
+bairros_sp,1450,Vila Centenario
+bairros_sp,1451,Vila Central
+bairros_sp,1452,Vila Chabilandia
+bairros_sp,1453,Vila Chalot
+bairros_sp,1454,Vila Charlote
+bairros_sp,1455,Vila Chavantes
+bairros_sp,1420,Vila Chica Luisa
+bairros_sp,1456,Vila Chuca
+bairros_sp,1457,Vila Cisper
+bairros_sp,1458,Vila Clara
+bairros_sp,1459,Vila Clarice
+bairros_sp,1460,Vila Claudia
+bairros_sp,1461,Vila Clelia
+bairros_sp,1462,Vila Clementino
+bairros_sp,1463,Vila Cleonice
+bairros_sp,1464,Vila Comercial
+bairros_sp,1465,Vila Conceicao
+bairros_sp,1423,Vila Conde do Pinhal
+bairros_sp,1466,Vila Congonhas
+bairros_sp,1467,Vila Constancia
+bairros_sp,1468,Vila Continental
+bairros_sp,1469,Vila Corberi
+bairros_sp,1470,Vila Cordeiro
+bairros_sp,1471,Vila Cosmopolita
+bairros_sp,1421,Vila Costa Melo
+bairros_sp,1473,Vila Cristalia
+bairros_sp,1416,Vila Cruz das Almas
+bairros_sp,1474,Vila Cruzeiro
+bairros_sp,1422,Vila Cruzeiro Novo
+bairros_sp,1417,Vila Cunha Bueno
+bairros_sp,1475,Vila Curuca
+bairros_sp,1424,Vila Curuca Velha
+bairros_sp,1485,Vila Dalila
+bairros_sp,1486,Vila Dalva
+bairros_sp,1487,Vila Damaceno
+bairros_sp,1477,Vila Danubio Azul
+bairros_sp,1488,Vila Darli
+bairros_sp,1489,Vila Deodoro
+bairros_sp,1490,Vila Dinorah
+bairros_sp,1491,Vila Dionisia
+bairros_sp,1492,Vila Diva
+bairros_sp,1481,Vila Divina Pastora
+bairros_sp,1479,Vila Dom Jose
+bairros_sp,1482,Vila Dom Pedro I
+bairros_sp,1483,Vila Dom Pedro II
+bairros_sp,1494,Vila Domitila
+bairros_sp,1476,Vila Dona Augusta
+bairros_sp,1480,Vila Dona Meta
+bairros_sp,1484,Vila Dona Sara
+bairros_sp,1495,Vila Dorna
+bairros_sp,1478,Vila Doutor Eiras
+bairros_sp,1496,Vila Duarte
+bairros_sp,1498,Vila Ede
+bairros_sp,1499,Vila Elba
+bairros_sp,1500,Vila Eliana
+bairros_sp,1497,Vila Elias Nigri
+bairros_sp,1501,Vila Elida
+bairros_sp,1502,Vila Eliete
+bairros_sp,1503,Vila Elisio
+bairros_sp,1504,Vila Elvira
+bairros_sp,1505,Vila Elze
+bairros_sp,1506,Vila Ema
+bairros_sp,1507,Vila Emir
+bairros_sp,1509,Vila Erna
+bairros_sp,1510,Vila Ernesto
+bairros_sp,1511,Vila Escolar
+bairros_sp,1512,Vila Esmeralda
+bairros_sp,1513,Vila Espanhola
+bairros_sp,1514,Vila Esperanca
+bairros_sp,1515,Vila Ester
+bairros_sp,1516,Vila Euthalia
+bairros_sp,1520,Vila Fachini
+bairros_sp,1521,Vila Fanton
+bairros_sp,1522,Vila Fatima
+bairros_sp,1523,Vila Fazzeoni
+bairros_sp,1524,Vila Feliz
+bairros_sp,1525,Vila Fernandes
+bairros_sp,1517,Vila Fiat Lux
+bairros_sp,1526,Vila Fidalgo
+bairros_sp,1519,Vila Fidelis Ribeiro
+bairros_sp,1518,Vila Firmiano Pinto
+bairros_sp,1527,Vila Flavia
+bairros_sp,1528,Vila Formosa
+bairros_sp,1529,Vila Franca
+bairros_sp,1530,Vila Franci
+bairros_sp,1531,Vila Francos
+bairros_sp,1532,Vila Friburgo
+bairros_sp,1533,Vila Frugoli
+bairros_sp,1534,Vila Fukuya
+bairros_sp,1536,Vila Gabriel
+bairros_sp,1537,Vila Gea
+bairros_sp,1538,Vila Germaine
+bairros_sp,1539,Vila Germinal
+bairros_sp,1540,Vila Gertrudes
+bairros_sp,1541,Vila Gil
+bairros_sp,1542,Vila Gilda
+bairros_sp,1543,Vila Giordano
+bairros_sp,1544,Vila Gomes
+bairros_sp,1535,Vila Gomes Cardim
+bairros_sp,1545,Vila Gouveia
+bairros_sp,1546,Vila Graciosa
+bairros_sp,1547,Vila Granada
+bairros_sp,1548,Vila Graziela
+bairros_sp,1549,Vila Guaca
+bairros_sp,1550,Vila Guacuri
+bairros_sp,1551,Vila Guaraciaba
+bairros_sp,1552,Vila Guarani
+bairros_sp,1553,Vila Guedes
+bairros_sp,1554,Vila Guilherme
+bairros_sp,1555,Vila Guilhermina
+bairros_sp,1556,Vila Gumercindo
+bairros_sp,1557,Vila Gustavo
+bairros_sp,1558,Vila Hadad
+bairros_sp,1559,Vila Hamburguesa
+bairros_sp,1560,Vila Hebe
+bairros_sp,1561,Vila Helena
+bairros_sp,1562,Vila Heliopolis
+bairros_sp,1563,Vila Herminia
+bairros_sp,1564,Vila Homero
+bairros_sp,1565,Vila Hungaresa
+bairros_sp,1568,Vila Icarai
+bairros_sp,1569,Vila Ida
+bairros_sp,1570,Vila Iguacu
+bairros_sp,1571,Vila Imperio
+bairros_sp,1572,Vila Inacio
+bairros_sp,1573,Vila Inah
+bairros_sp,1574,Vila Independencia
+bairros_sp,1575,Vila Indiana
+bairros_sp,1576,Vila Industrial
+bairros_sp,1577,Vila Inglesa
+bairros_sp,1578,Vila Invernada
+bairros_sp,1579,Vila Iorio
+bairros_sp,1580,Vila Ipojuca
+bairros_sp,1581,Vila Iracema
+bairros_sp,1582,Vila Irene
+bairros_sp,1566,Vila Irmaos Arnoni
+bairros_sp,1583,Vila Isa
+bairros_sp,1584,Vila Isabel
+bairros_sp,1585,Vila Isolina
+bairros_sp,1567,Vila Isolina Mazzei
+bairros_sp,1586,Vila Itaberaba
+bairros_sp,1587,Vila Itaim
+bairros_sp,1588,Vila Ivg
+bairros_sp,1589,Vila Ivone
+bairros_sp,1592,Vila Jacui
+bairros_sp,1593,Vila Jaguara
+bairros_sp,1594,Vila Jaguari
+bairros_sp,1595,Vila Jaragua
+bairros_sp,1596,Vila Jardim Zoologico
+bairros_sp,1597,Vila Joaniza
+bairros_sp,1590,Vila Joao Batista
+bairros_sp,1598,Vila Judith
+bairros_sp,1599,Vila Julio
+bairros_sp,1591,Vila Julio Cesar
+bairros_sp,1600,Vila Jurema
+bairros_sp,1601,Vila Jussara
+bairros_sp,1602,Vila Klaunig
+bairros_sp,1605,Vila Lageado
+bairros_sp,1606,Vila Lais
+bairros_sp,1604,Vila Lar Nacional
+bairros_sp,1607,Vila Leme
+bairros_sp,1608,Vila Leonor
+bairros_sp,1609,Vila Leopoldina
+bairros_sp,1610,Vila Libanesa
+bairros_sp,1611,Vila Lisboa
+bairros_sp,1612,Vila Liviero
+bairros_sp,1613,Vila Londrina
+bairros_sp,1614,Vila Lourdes
+bairros_sp,1615,Vila Lucia
+bairros_sp,1603,Vila Lucia Elvira
+bairros_sp,1625,Vila Macedopolis
+bairros_sp,1626,Vila Madalena
+bairros_sp,1627,Vila Mafra
+bairros_sp,1628,Vila Malvina
+bairros_sp,1629,Vila Mangalot
+bairros_sp,1630,Vila Mara
+bairros_sp,1631,Vila Maracana
+bairros_sp,1632,Vila Marari
+bairros_sp,1633,Vila Marcelo
+bairros_sp,1634,Vila Marconi
+bairros_sp,1635,Vila Margareth
+bairros_sp,1636,Vila Margarida
+bairros_sp,1637,Vila Maria
+bairros_sp,1616,Vila Maria Alta
+bairros_sp,1617,Vila Maria Augusta
+bairros_sp,1618,Vila Maria Baixa
+bairros_sp,1619,Vila Maria Eugenia
+bairros_sp,1620,Vila Maria Luisa
+bairros_sp,1622,Vila Maria Trindade
+bairros_sp,1624,Vila Maria Zelia
+bairros_sp,1638,Vila Mariana
+bairros_sp,1639,Vila Marieta
+bairros_sp,1640,Vila Marilena
+bairros_sp,1641,Vila Marina
+bairros_sp,1642,Vila Maringa
+bairros_sp,1621,Vila Mariza Mazzei
+bairros_sp,1643,Vila Marte
+bairros_sp,1644,Vila Mascote
+bairros_sp,1645,Vila Matias
+bairros_sp,1646,Vila Matilde
+bairros_sp,1647,Vila Mazzei
+bairros_sp,1648,Vila Medeiros
+bairros_sp,1649,Vila Mendes
+bairros_sp,1650,Vila Mercedes
+bairros_sp,1652,Vila Mesquita
+bairros_sp,1653,Vila Miami
+bairros_sp,1654,Vila Michelina
+bairros_sp,1656,Vila Minerva
+bairros_sp,1657,Vila Mira
+bairros_sp,1658,Vila Mirante
+bairros_sp,1659,Vila Miriam
+bairros_sp,1660,Vila Mirim
+bairros_sp,1661,Vila Missionaria
+bairros_sp,1662,Vila Moderna
+bairros_sp,1623,Vila Moinho Velho
+bairros_sp,1670,Vila Monte Alegre
+bairros_sp,1671,Vila Monte Santo
+bairros_sp,1663,Vila Monumento
+bairros_sp,1664,Vila Moraes
+bairros_sp,1665,Vila Moreira
+bairros_sp,1666,Vila Morgadouro
+bairros_sp,1669,Vila Morro Grande
+bairros_sp,1667,Vila Morse
+bairros_sp,1668,Vila Morumbi
+bairros_sp,1698,Vila Nair
+bairros_sp,1699,Vila Nancy
+bairros_sp,1700,Vila Nascente
+bairros_sp,1701,Vila Natal
+bairros_sp,1702,Vila Natalia
+bairros_sp,1703,Vila Neila
+bairros_sp,1704,Vila Nelson
+bairros_sp,1705,Vila Nhocune
+bairros_sp,1706,Vila Nilo
+bairros_sp,1707,Vila Nilva
+bairros_sp,1708,Vila Nina
+bairros_sp,1683,Vila Nitro Operaria
+bairros_sp,1687,Vila Nitro Quimica
+bairros_sp,1709,Vila Nivi
+bairros_sp,1710,Vila Noca
+bairros_sp,1711,Vila Nogueira
+bairros_sp,1712,Vila Norma
+bairros_sp,1688,Vila Nossa Senhora Aparecida
+bairros_sp,1689,Vila Nossa Senhora da Conceicao
+bairros_sp,1690,Vila Nossa Senhora do Libano
+bairros_sp,1692,Vila Nossa Senhora do Retiro
+bairros_sp,1713,Vila Nova
+bairros_sp,1672,Vila Nova Alba
+bairros_sp,1674,Vila Nova Cachoeirinha
+bairros_sp,1675,Vila Nova Caledonia
+bairros_sp,1676,Vila Nova Carolina
+bairros_sp,1677,Vila Nova Conceicao
+bairros_sp,1678,Vila Nova Curuca
+bairros_sp,1679,Vila Nova Galvao
+bairros_sp,1680,Vila Nova Jaragua
+bairros_sp,1681,Vila Nova Manchester
+bairros_sp,1682,Vila Nova Mazzei
+bairros_sp,1684,Vila Nova Pauliceia
+bairros_sp,1685,Vila Nova Perus
+bairros_sp,1686,Vila Nova Pirajussara
+bairros_sp,1693,Vila Nova Savoia
+bairros_sp,1691,Vila Nova São Miguel
+bairros_sp,1694,Vila Nova Teresa
+bairros_sp,1695,Vila Nova Uniao
+bairros_sp,1696,Vila Nova Utinga
+bairros_sp,1697,Vila Nova York
+bairros_sp,1673,Vila Nova das Belezas
+bairros_sp,1714,Vila Odete
+bairros_sp,1715,Vila Olga
+bairros_sp,1716,Vila Olimpia
+bairros_sp,1717,Vila Olinda
+bairros_sp,1718,Vila Oratorio
+bairros_sp,1725,Vila Paiva
+bairros_sp,1727,Vila Palmeiras
+bairros_sp,1728,Vila Paranagua
+bairros_sp,1758,Vila Parque Jabaquara
+bairros_sp,1729,Vila Patrimonial
+bairros_sp,1730,Vila Pauliceia
+bairros_sp,1731,Vila Paulina
+bairros_sp,1732,Vila Paulista
+bairros_sp,1745,Vila Paulistana
+bairros_sp,1746,Vila Paulistania
+bairros_sp,1724,Vila Paulo Silas
+bairros_sp,1720,Vila Pedra Branca
+bairros_sp,1734,Vila Pedroso
+bairros_sp,1735,Vila Penteado
+bairros_sp,1719,Vila Pereira Barreto
+bairros_sp,1721,Vila Pereira Cerca
+bairros_sp,1736,Vila Perus
+bairros_sp,1737,Vila Piaui
+bairros_sp,1738,Vila Picinin
+bairros_sp,1739,Vila Pierina
+bairros_sp,1740,Vila Piracicaba
+bairros_sp,1741,Vila Pirajussara
+bairros_sp,1742,Vila Pirituba
+bairros_sp,1743,Vila Pita
+bairros_sp,1744,Vila Plana
+bairros_sp,1747,Vila Polopoli
+bairros_sp,1748,Vila Pompeia
+bairros_sp,1760,Vila Ponte Rasa
+bairros_sp,1749,Vila Popular
+bairros_sp,1750,Vila Portugal
+bairros_sp,1751,Vila Portuguesa
+bairros_sp,1752,Vila Prado
+bairros_sp,1753,Vila Praia
+bairros_sp,1754,Vila Prel
+bairros_sp,1755,Vila Primavera
+bairros_sp,1723,Vila Primeiro de Outubro
+bairros_sp,1722,Vila Princesa Isabel
+bairros_sp,1756,Vila Progredior
+bairros_sp,1757,Vila Progresso
+bairros_sp,1759,Vila Prudente
+bairros_sp,1761,Vila Quarto Centenario
+bairros_sp,1762,Vila Quintana
+bairros_sp,1769,Vila Ramos
+bairros_sp,1763,Vila Rancho Alegre
+bairros_sp,1770,Vila Raquel
+bairros_sp,1771,Vila Re
+bairros_sp,1767,Vila Regente Feijo
+bairros_sp,1772,Vila Regina
+bairros_sp,1773,Vila Reis
+bairros_sp,1775,Vila Remo
+bairros_sp,1776,Vila Renato
+bairros_sp,1777,Vila Represa
+bairros_sp,1765,Vila Ribeiro de Barros
+bairros_sp,1778,Vila Rica
+bairros_sp,1766,Vila Rio Branco
+bairros_sp,1779,Vila Robertina
+bairros_sp,1780,Vila Rodrigues
+bairros_sp,1781,Vila Romana
+bairros_sp,1782,Vila Romano
+bairros_sp,1783,Vila Romero
+bairros_sp,1784,Vila Roque
+bairros_sp,1768,Vila Rosa Molla
+bairros_sp,1785,Vila Rosaria
+bairros_sp,1786,Vila Roschel
+bairros_sp,1787,Vila Rosina
+bairros_sp,1788,Vila Rubi
+bairros_sp,1764,Vila Rui Barbosa
+bairros_sp,1822,Vila Sabrina
+bairros_sp,1823,Vila Salete
+bairros_sp,1824,Vila Sampaio
+bairros_sp,1791,Vila Santa Catarina
+bairros_sp,1792,Vila Santa Clara
+bairros_sp,1793,Vila Santa Cruz
+bairros_sp,1794,Vila Santa Delfina
+bairros_sp,1797,Vila Santa Edwiges
+bairros_sp,1800,Vila Santa Eulalia
+bairros_sp,1804,Vila Santa Ines
+bairros_sp,1805,Vila Santa Isabel
+bairros_sp,1808,Vila Santa Lucia
+bairros_sp,1810,Vila Santa Maria
+bairros_sp,1817,Vila Santa Teresa
+bairros_sp,1818,Vila Santa Teresinha
+bairros_sp,1819,Vila Santa Terezinha
+bairros_sp,1821,Vila Santa Virginia
+bairros_sp,1825,Vila Santana
+bairros_sp,1826,Vila Santista
+bairros_sp,1789,Vila Santo Antonio
+bairros_sp,1798,Vila Santo Estefano
+bairros_sp,1796,Vila Santo Estevam Reis
+bairros_sp,1799,Vila Santo Estevao
+bairros_sp,1803,Vila Santo Henrique
+bairros_sp,1827,Vila Santos
+bairros_sp,1828,Vila Sapopemba
+bairros_sp,1829,Vila Sara
+bairros_sp,1831,Vila Savoy
+bairros_sp,1832,Vila Seabra
+bairros_sp,1833,Vila Sergio
+bairros_sp,1834,Vila Serralheiro
+bairros_sp,1816,Vila Silva Teles
+bairros_sp,1835,Vila Silveira
+bairros_sp,1836,Vila Silvia
+bairros_sp,1837,Vila Simone
+bairros_sp,1838,Vila Sinha
+bairros_sp,1839,Vila Siqueira
+bairros_sp,1840,Vila Sirene
+bairros_sp,1841,Vila Siria
+bairros_sp,1842,Vila Socorro
+bairros_sp,1843,Vila Sofia
+bairros_sp,1844,Vila Sol
+bairros_sp,1845,Vila Solange
+bairros_sp,1846,Vila Sonia
+bairros_sp,1847,Vila Souza
+bairros_sp,1848,Vila Stela
+bairros_sp,1849,Vila Suica
+bairros_sp,1850,Vila Sulina
+bairros_sp,1851,Vila Suzana
+bairros_sp,1790,Vila São Camilo
+bairros_sp,1795,Vila São Domingos
+bairros_sp,1801,Vila São Francisco
+bairros_sp,1802,Vila São Geraldo
+bairros_sp,1806,Vila São Jose
+bairros_sp,1807,Vila São Judas
+bairros_sp,1809,Vila São Luis
+bairros_sp,1811,Vila São Nicolau
+bairros_sp,1812,Vila São Paulo
+bairros_sp,1813,Vila São Pedro
+bairros_sp,1814,Vila São Sebastiao
+bairros_sp,1815,Vila São Silvestre
+bairros_sp,1820,Vila São Vicente
+bairros_sp,1852,Vila Taiau
+bairros_sp,1853,Vila Talarico
+bairros_sp,1854,Vila Taquari
+bairros_sp,1855,Vila Teresinha
+bairros_sp,1856,Vila Tiradentes
+bairros_sp,1857,Vila Tolstoi
+bairros_sp,1858,Vila Tramontano
+bairros_sp,1859,Vila Uberabinha
+bairros_sp,1860,Vila Uniao
+bairros_sp,1861,Vila Universitaria
+bairros_sp,1862,Vila Ursulina
+bairros_sp,1864,Vila Valdemar
+bairros_sp,1865,Vila Vasconcelos
+bairros_sp,1866,Vila Vera
+bairros_sp,1867,Vila Verde
+bairros_sp,1868,Vila Vermelha
+bairros_sp,1869,Vila Vessoni
+bairros_sp,1870,Vila Virginia
+bairros_sp,1871,Vila Vitoria
+bairros_sp,1863,Vila Vitorio Mazzei
+bairros_sp,1872,Vila Yara
+bairros_sp,1873,Vila Yolanda
+bairros_sp,1874,Vila Zat
+bairros_sp,1875,Vila Zefira
+bairros_sp,1876,Vila Zelina
+bairros_sp,1877,Vila Zilda
+bairros_sp,1878,Vila Zulmira
+bairros_sp,1733,Vila da Paz
+bairros_sp,1830,Vila da Saude
+bairros_sp,1400,Vila das Belezas
+bairros_sp,1651,Vila das Merces
+bairros_sp,1406,Vila do Bosque
+bairros_sp,1493,Vila do Castelo
+bairros_sp,1508,Vila do Encontro
+bairros_sp,1358,Vila dos Andradas
+bairros_sp,1360,Vila dos Andrades
+bairros_sp,1655,Vila dos Minerios
+bairros_sp,1726,Vila dos Palmares
+bairros_sp,1774,Vila dos Remedios
+bairros_sp,1323,Vista Alegre
+bairros_sp,1325,Várzea da Barra Funda
+bairros_sp,1326,Várzea de Baixo
+causa_desligamento_1,10,ACI TRB TIP
+causa_desligamento_1,20,ACI TRB TJT
+causa_desligamento_1,90,ACID DOENC TRAB
+causa_desligamento_1,0,Código não encontrado nos dicionários oficiais.
+causa_desligamento_1,40,DOEN NREL TR
+causa_desligamento_1,30,DOEN REL TR
+causa_desligamento_1,-1,IGNORADO
+causa_desligamento_1,80,LIC COM VENC
+causa_desligamento_1,50,LIC MATERNID
+causa_desligamento_1,70,LIC SEM VENC
+causa_desligamento_1,99,SEM AFASTAMENTOS
+causa_desligamento_1,999,SEM AFASTAMENTOS
+causa_desligamento_1,60,SERV MILITAR
+causa_desligamento_1,85,SUSP TEMP DE TRAB
+causa_desligamento_2,10,ACI TRB TIP
+causa_desligamento_2,20,ACI TRB TJT
+causa_desligamento_2,90,ACID DOENC TRAB
+causa_desligamento_2,0,Código não encontrado nos dicionários oficiais.
+causa_desligamento_2,40,DOEN NREL TR
+causa_desligamento_2,30,DOEN REL TR
+causa_desligamento_2,-1,IGNORADO
+causa_desligamento_2,80,LIC COM VENC
+causa_desligamento_2,50,LIC MATERNID
+causa_desligamento_2,70,LIC SEM VENC
+causa_desligamento_2,99,SEM AFASTAMENTOS
+causa_desligamento_2,999,SEM AFASTAMENTOS
+causa_desligamento_2,60,SERV MILITAR
+causa_desligamento_2,85,SUSP TEMP DE TRAB
+causa_desligamento_3,10,ACI TRB TIP
+causa_desligamento_3,20,ACI TRB TJT
+causa_desligamento_3,90,ACID DOENC TRAB
+causa_desligamento_3,0,Código não encontrado nos dicionários oficiais.
+causa_desligamento_3,40,DOEN NREL TR
+causa_desligamento_3,30,DOEN REL TR
+causa_desligamento_3,-1,IGNORADO
+causa_desligamento_3,80,LIC COM VENC
+causa_desligamento_3,50,LIC MATERNID
+causa_desligamento_3,70,LIC SEM VENC
+causa_desligamento_3,999,SEM AFASTAMENTOS
+causa_desligamento_3,99,SEM AFASTAMENTOS
+causa_desligamento_3,60,SERV MILITAR
+causa_desligamento_3,85,SUSP TEMP DE TRAB
+distritos_sp,5,A ALVIM
+distritos_sp,1,A RASA
+distritos_sp,3,ANHANGUERA
+distritos_sp,4,ARICANDUVA
+distritos_sp,2,AT PINHEIRO
+distritos_sp,6,B FUNDA
+distritos_sp,9,B RETIRO
+distritos_sp,7,B VISTA
+distritos_sp,8,BELEM
+distritos_sp,10,BRAS
+distritos_sp,11,BRASILANDIA
+distritos_sp,12,BUTANTA
+distritos_sp,21,C ADEMAR
+distritos_sp,22,C DUTRA
+distritos_sp,23,C LIDER
+distritos_sp,18,C REDONDO
+distritos_sp,24,C TIRADENTE
+distritos_sp,20,C VERDE
+distritos_sp,13,CAMBUCI
+distritos_sp,17,CANGAIBA
+distritos_sp,19,CARRAO
+distritos_sp,25,CONSOLACAO
+distritos_sp,14,CPO BELO
+distritos_sp,15,CPO GRANDE
+distritos_sp,16,CPO LIMPO
+distritos_sp,26,CURSINO
+distritos_sp,9997,Código não encontrado nos dicionários oficiais.
+distritos_sp,999997,Código não encontrado nos dicionários oficiais.
+distritos_sp,27,E MATARAZZO
+distritos_sp,28,FREGUESIA D
+distritos_sp,29,GRAJAU
+distritos_sp,30,GUAIANAZES
+distritos_sp,31,IGUATEMI
+distritos_sp,32,IPIRANGA
+distritos_sp,33,ITAIM BIBI
+distritos_sp,34,ITAIM PAULI
+distritos_sp,35,ITAQUERA
+distritos_sp,44,J BONIFACIO
+distritos_sp,36,JABAQUARA
+distritos_sp,37,JACANA
+distritos_sp,38,JAGUARA
+distritos_sp,39,JAGUARE
+distritos_sp,40,JARAGUA
+distritos_sp,41,JD ANGELA
+distritos_sp,42,JD HELENA
+distritos_sp,43,JD PAULISTA
+distritos_sp,45,LAJEADO
+distritos_sp,46,LAPA
+distritos_sp,47,LIBERDADE
+distritos_sp,48,LIMAO
+distritos_sp,49,MANDAQUI
+distritos_sp,50,MARSILAC
+distritos_sp,51,MOEMA
+distritos_sp,52,MOOCA
+distritos_sp,53,MORUMBI
+distritos_sp,54,N CACHOEIRI
+distritos_sp,9999,OUTROS SP
+distritos_sp,55,PARELHEIROS
+distritos_sp,56,PARI
+distritos_sp,58,PEDREIRA
+distritos_sp,59,PENHA
+distritos_sp,60,PERDIZES
+distritos_sp,61,PERUS
+distritos_sp,62,PINHEIROS
+distritos_sp,63,PIRITUBA
+distritos_sp,57,PRQ CARMO
+distritos_sp,64,PTE RASA
+distritos_sp,67,R PEQUENO
+distritos_sp,65,R TAVARES
+distritos_sp,66,REPUBLICA
+distritos_sp,71,S AMARO
+distritos_sp,69,S CECILIA
+distritos_sp,72,S DOMINGOS
+distritos_sp,73,S LUCAS
+distritos_sp,74,S LUIS
+distritos_sp,75,S MATEUS
+distritos_sp,76,S MIGUEL
+distritos_sp,77,S RAFAEL
+distritos_sp,68,SACOMA
+distritos_sp,70,SANTANA
+distritos_sp,78,SAPOPEMBA
+distritos_sp,79,SAUDE
+distritos_sp,80,SE
+distritos_sp,81,SOCORRO
+distritos_sp,82,TATUAPE
+distritos_sp,83,TREMEMBE
+distritos_sp,84,TUCURUVI
+distritos_sp,85,VL ANDRADE
+distritos_sp,86,VL CURUCA
+distritos_sp,87,VL FORMOSA
+distritos_sp,91,VL GUILHERM
+distritos_sp,88,VL JACUI
+distritos_sp,89,VL LEOPOLDI
+distritos_sp,90,VL MARIA
+distritos_sp,92,VL MARIANA
+distritos_sp,93,VL MATILDE
+distritos_sp,94,VL MEDEIROS
+distritos_sp,95,VL PRUDENTE
+distritos_sp,96,VL SONIA
+faixa_etaria,1,10 a 14 anos
+faixa_etaria,2,15 a 17 anos
+faixa_etaria,3,18 a 24 anos
+faixa_etaria,4,25 a 29 anos
+faixa_etaria,5,30 a 39 anos
+faixa_etaria,6,40 a 49 anos
+faixa_etaria,7,50 a 64 anos
+faixa_etaria,8,65 anos ou mais
+faixa_etaria,99,Código não encontrado nos dicionários oficiais.
+faixa_horas_contratadas,2,13 a 15 horas
+faixa_horas_contratadas,3,16 a 20 horas
+faixa_horas_contratadas,4,21 a 30 horas
+faixa_horas_contratadas,5,31 a 40 horas
+faixa_horas_contratadas,6,41 a 44 horas
+faixa_horas_contratadas,1,Até 12 horas
+faixa_horas_contratadas,8,Código não encontrado nos dicionários oficiais.
+faixa_horas_contratadas,99,Código não encontrado nos dicionários oficiais.
+faixa_horas_contratadas,7,Código não encontrado nos dicionários oficiais.
+faixa_remuneracao_dezembro_sm,2,"0,51 a 1,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,3,"1,01 a 1,50 salários mínimos"
+faixa_remuneracao_dezembro_sm,4,"1,51 a 2,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,10,"10,01 a 15,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,11,"15,01 a 20,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,5,"2,01 a 3,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,6,"3,01 a 4,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,7,"4,01 a 5,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,8,"5,01 a 7,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,9,"7,01 a 10,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,1,"Até 0,50 salários mínimos"
+faixa_remuneracao_dezembro_sm,99,Código não encontrado nos dicionários oficiais.
+faixa_remuneracao_dezembro_sm,12,"Mais de 20,00 salários mínimos"
+faixa_remuneracao_dezembro_sm,0,Não Ativ Dez
+faixa_remuneracao_media_sm,1,"0,51 a 1,00 salários mínimos"
+faixa_remuneracao_media_sm,2,"1,01 a 1,50 salários mínimos"
+faixa_remuneracao_media_sm,3,"1,51 a 2,00 salários mínimos"
+faixa_remuneracao_media_sm,9,"10,01 a 15,00 salários mínimos"
+faixa_remuneracao_media_sm,10,"15,01 a 20,00 salários mínimos"
+faixa_remuneracao_media_sm,4,"2,01 a 3,00 salários mínimos"
+faixa_remuneracao_media_sm,5,"3,01 a 4,00 salários mínimos"
+faixa_remuneracao_media_sm,6,"4,01 a 5,00 salários mínimos"
+faixa_remuneracao_media_sm,7,"5,01 a 7,00 salários mínimos"
+faixa_remuneracao_media_sm,8,"7,01 a 10,00 salários mínimos"
+faixa_remuneracao_media_sm,0,"Até 0,50 salários mínimos"
+faixa_remuneracao_media_sm,99,Código não encontrado nos dicionários oficiais.
+faixa_remuneracao_media_sm,12,Código não encontrado nos dicionários oficiais.
+faixa_remuneracao_media_sm,98,Código não encontrado nos dicionários oficiais.
+faixa_remuneracao_media_sm,11,"Mais de 20,00 salários mínimos"
+faixa_tempo_emprego,4,"12,0 a 23,9 meses"
+faixa_tempo_emprego,8,"120,00 meses ou mais"
+faixa_tempo_emprego,5,"24,0 a 35,9 meses"
+faixa_tempo_emprego,2,"3,0 a 5,9 meses"
+faixa_tempo_emprego,6,"36,0 a 59,9 meses"
+faixa_tempo_emprego,3,"6,0 a 11,9 meses"
+faixa_tempo_emprego,7,"60,0 a 119,9 meses"
+faixa_tempo_emprego,1,"Até 2,9 meses"
+faixa_tempo_emprego,0,Código não encontrado nos dicionários oficiais.
+faixa_tempo_emprego,99,Ignorado
+faixa_tempo_emprego,-1,Ignorado
+grau_instrucao_1985_2005,3,5.A CO FUND
+grau_instrucao_1985_2005,4,6. A 9. FUND
+grau_instrucao_1985_2005,1,ANALFABETO
+grau_instrucao_1985_2005,2,ATE 5.A INC
+grau_instrucao_1985_2005,11,DOUTORADO
+grau_instrucao_1985_2005,5,FUND COMPL
+grau_instrucao_1985_2005,-1,IGNORADO
+grau_instrucao_1985_2005,7,MEDIO COMPL
+grau_instrucao_1985_2005,6,MEDIO INCOMP
+grau_instrucao_1985_2005,10,MESTRADO
+grau_instrucao_1985_2005,9,SUP. COMP
+grau_instrucao_1985_2005,8,SUP. INCOMP
+grau_instrucao_apos_2005,3,5.A CO FUND
+grau_instrucao_apos_2005,4,6. A 9. FUND
+grau_instrucao_apos_2005,1,ANALFABETO
+grau_instrucao_apos_2005,2,ATE 5.A INC
+grau_instrucao_apos_2005,99,Código não encontrado nos dicionários oficiais.
+grau_instrucao_apos_2005,11,DOUTORADO
+grau_instrucao_apos_2005,5,FUND COMPL
+grau_instrucao_apos_2005,-1,IGNORADO
+grau_instrucao_apos_2005,7,MEDIO COMPL
+grau_instrucao_apos_2005,6,MEDIO INCOMP
+grau_instrucao_apos_2005,10,MESTRADO
+grau_instrucao_apos_2005,9,SUP. COMP
+grau_instrucao_apos_2005,8,SUP. INCOMP
+indicador_cei_vinculado,9,Código não encontrado nos dicionários oficiais.
+indicador_cei_vinculado,0,Não
+indicador_cei_vinculado,1,Sim
+indicador_portador_deficiencia,0,Não
+indicador_portador_deficiencia,1,Sim
+indicador_simples,9,Ignorado
+indicador_simples,0,Não
+indicador_simples,1,Sim
+indicador_trabalho_intermitente,0,Não
+indicador_trabalho_intermitente,1,Sim
+indicador_trabalho_parcial,0,Não
+indicador_trabalho_parcial,1,Sim
+motivo_desligamento,75,Aposentadoria compulsória.
+motivo_desligamento,79,"Aposentadoria especial, com rescisão contratual."
+motivo_desligamento,80,"Aposentadoria especial, sem rescisão contratual."
+motivo_desligamento,72,"Aposentadoria por idade, com rescisão contratual."
+motivo_desligamento,78,"Aposentadoria por idade, sem rescisão contratual."
+motivo_desligamento,73,"Aposentadoria por invalidez, decorrente de acidente do trabalho."
+motivo_desligamento,74,"Aposentadoria por invalidez, decorrente de doença profissional."
+motivo_desligamento,76,"Aposentadoria por invalidez, exceto a decorrente de doença profissional ou acidente do trabalho."
+motivo_desligamento,70,"Aposentadoria por tempo de serviço, com rescisão contratual."
+motivo_desligamento,71,"Aposentadoria por tempo de serviço, sem rescisão contratual."
+motivo_desligamento,33,Cessão
+motivo_desligamento,3,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,89,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,5,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,99,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,7,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,4,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,6,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,2,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,9,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,1,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,8,Código não encontrado nos dicionários oficiais.
+motivo_desligamento,90,Desligamento por Acordo Empregado e Empregador
+motivo_desligamento,63,Falecimento decorrente de acidente do trabalho de trajeto (ocorrido no trajeto residência-trabalho-residência)
+motivo_desligamento,62,Falecimento decorrente de acidente do trabalho típico (que ocorre no exercício de atividades profissionais a serviço da empresa)
+motivo_desligamento,64,Falecimento decorrente de doença profissional.
+motivo_desligamento,60,Falecimento.
+motivo_desligamento,40,Mudança de regime trabalhista.
+motivo_desligamento,0,Não desligado no ano
+motivo_desligamento,-1,Não desligado no ano
+motivo_desligamento,22,Posse em outro cargo inacumulável (específico para servidor público)
+motivo_desligamento,32,Readaptação ou redistribuição (específico para servidor publico)
+motivo_desligamento,34,Redistribuição (específico para servidor publico)
+motivo_desligamento,50,Reforma de militar para a reserva remunerada.
+motivo_desligamento,20,Rescisão com justa causa por iniciativa do empregado (rescisão indireta).
+motivo_desligamento,10,Rescisão com justa causa por iniciativa do empregador ou servidor demitido
+motivo_desligamento,21,Rescisão sem justa causa por iniciativa do empregado ou exoneração a pedido
+motivo_desligamento,11,Rescisão sem justa causa por iniciativa do empregador.
+motivo_desligamento,30,"Transferência de empregado entre estabelecimentos da mesma empresa ou para outra empresa, com ônus para a cedente"
+motivo_desligamento,31,"Transferência de empregado entre estabelecimentos da mesma empresa ou para outra empresa, sem ônus para a cedente"
+motivo_desligamento,12,Término do contrato de trabalho.
+nacionalidade,30,Alemã
+nacionalidade,60,Angolano
+nacionalidade,21,Argentina
+nacionalidade,31,Belga
+nacionalidade,59,Bengalesa
+nacionalidade,22,Boliviana
+nacionalidade,10,Brasileira
+nacionalidade,32,Britânica
+nacionalidade,34,Canadense
+nacionalidade,23,Chilena
+nacionalidade,42,Chinesa
+nacionalidade,27,Colombiano
+nacionalidade,61,Congolês
+nacionalidade,43,Coreana
+nacionalidade,54,Cubano
+nacionalidade,0,Código não encontrado nos dicionários oficiais.
+nacionalidade,{ñ,Código não encontrado nos dicionários oficiais.
+nacionalidade,29,Equatoriano
+nacionalidade,35,Espanhola
+nacionalidade,37,Francesa
+nacionalidade,63,Ganesa
+nacionalidade,52,Guine Bissau (Guineense)
+nacionalidade,40,Haitiano
+nacionalidade,-1,Ignorado
+nacionalidade,47,Indiano
+nacionalidade,39,Italiana
+nacionalidade,41,Japonesa
+nacionalidade,53,Marroquino
+nacionalidade,20,Naturalidade Brasileira
+nacionalidade,36,Norte-Americana
+nacionalidade,65,Norte-Coreana
+nacionalidade,49,Outras Asiáticas
+nacionalidade,48,Outras Latino-Americanas
+nacionalidade,50,Outras Nacionalidades
+nacionalidade,80,Outros
+nacionalidade,70,Outros Africanos
+nacionalidade,51,Outros Europeus
+nacionalidade,46,Paquistanês
+nacionalidade,24,Paraguaia
+nacionalidade,28,Peruano
+nacionalidade,45,Portuguesa
+nacionalidade,44,Russo
+nacionalidade,64,Senegalesa
+nacionalidade,55,Sirio
+nacionalidade,62,Sul-Africano
+nacionalidade,56,Sul-Coreano
+nacionalidade,38,Suíça
+nacionalidade,25,Uruguaia
+nacionalidade,26,Venezuelano
+raca_cor,6,Amarela
+raca_cor,2,Branca
+raca_cor,99,Código não encontrado nos dicionários oficiais.
+raca_cor,-1,Ignorado
+raca_cor,1,Indígena
+raca_cor,9,Não identificado
+raca_cor,8,Parda
+raca_cor,4,Preta
+regioes_administrativas_df,1,BRASILIA
+regioes_administrativas_df,17,BRAZLANDIA
+regioes_administrativas_df,9,CANDANGOLAND
+regioes_administrativas_df,12,CEILANDIA
+regioes_administrativas_df,2,CRUZEIRO
+regioes_administrativas_df,9997,Código não encontrado nos dicionários oficiais.
+regioes_administrativas_df,999997,Código não encontrado nos dicionários oficiais.
+regioes_administrativas_df,14,GAMA
+regioes_administrativas_df,3,GUARA
+regioes_administrativas_df,4,LAGO NORTE
+regioes_administrativas_df,6,LAGO SUL
+regioes_administrativas_df,8,NUCLEO BAND
+regioes_administrativas_df,5,PARANOA
+regioes_administrativas_df,19,PLANALTINA
+regioes_administrativas_df,16,REC DAS EMAS
+regioes_administrativas_df,10,RIACHO FUNDO
+regioes_administrativas_df,13,SAMAMBAIA
+regioes_administrativas_df,15,SANTA MARIA
+regioes_administrativas_df,7,SAO SEBAST
+regioes_administrativas_df,18,SOBRADINHO
+regioes_administrativas_df,11,TAGUATINGA
+regioes_administrativas_df,NA,{ñ class}
+sexo,9,Código não encontrado nos dicionários oficiais.
+sexo,2,Feminino
+sexo,-1,Ignorado
+sexo,1,Masculino
+subatividade_ibge,2620,"Abate animais em matadouros, frigorifico"
+subatividade_ibge,2460,"Acabamentos de fios e tecidos, nao processados em fiaçoes"
+subatividade_ibge,5450,Administracao de condominios
+subatividade_ibge,4610,Administracao e locacao de imoveis
+subatividade_ibge,7023,Aeronautica
+subatividade_ibge,110,Agricultura e silvicultura
+subatividade_ibge,5120,Alimentacao - restaurantes lanchonetes
+subatividade_ibge,5110,"Alojamento - hoteis, moteis e pensoes"
+subatividade_ibge,360,Aquicultura e piscicultura
+subatividade_ibge,4192,Artefatos de borracha e plastico - exclusive para veículos
+subatividade_ibge,4190,Artigos diversos - artefatos de couro e similares
+subatividade_ibge,4390,Artigos diversos - couros preparados e artefatos de couro
+subatividade_ibge,4365,Artigos do vestuario e de armarinho e calçados
+subatividade_ibge,4195,Artigos usados
+subatividade_ibge,4395,Artigos usados para recup industrial - sucata de metais
+subatividade_ibge,6110,Assistencia social - associacoes beneficente
+subatividade_ibge,4375,"Bebidas, fumo e estimulantes"
+subatividade_ibge,2410,"Benef fibras texteis vegetais, artificiais, sintéticas e de origem ..."
+subatividade_ibge,1810,Beneficiamento da borracha natural
+subatividade_ibge,1080,Beneficiamento e preparacao de minerais nao metálicos
+subatividade_ibge,2600,"Beneficiamento, moagem, torrefacao e fabric de produtos alimentares"
+subatividade_ibge,4640,Bolsas de valores comercio e titulos de valores
+subatividade_ibge,1010,Britamento e aparelhamento de pedras
+subatividade_ibge,3530,"Captacao, tratam, distrib de agua potavel e coleta e tratamento de ..."
+subatividade_ibge,210,Coleta de produtos vegetais nao-cultivados
+subatividade_ibge,4155,Combustiveis e lubrificantes - postos de gasolina
+subatividade_ibge,4355,Combustiveis e lubrificantes de origem vegetal e mineral
+subatividade_ibge,4620,Compra e venda de imoveis
+subatividade_ibge,4830,"Comunicacoes tefefonicas - serv comun locais, interurb e internacio..."
+subatividade_ibge,4820,Comunicacoes telegraficas - serv comun telgraf de qq natureza
+subatividade_ibge,4650,Concessionarios de loterias exclusive agencias lotéricas
+subatividade_ibge,2550,Confec artefat divers de tecid- excl os produzid nas fiaçoes e tece...
+subatividade_ibge,2510,"Confecçao de roupas, agasalhos e peças interiores do vestuário"
+subatividade_ibge,5320,Confecçao sob medida e reparacao de artigos do vestuário
+subatividade_ibge,1310,Constr de maq e aparelhos p/ producao e distribuiçao de energia ele...
+subatividade_ibge,1410,Constr e reparacao de embarcacoes
+subatividade_ibge,1420,"Constr, montagem e reparacao de veiculos"
+subatividade_ibge,3490,Construçao civil em geral
+subatividade_ibge,3470,"Construçao de galerias, condutos de agua e esgoto"
+subatividade_ibge,3440,Construçao reforma ampliacao reparacao e demoliçao de edifícios
+subatividade_ibge,1470,"Construçao, montagem e reparacao de avioes"
+subatividade_ibge,3450,"Construçao, reparaçao, conservaçao de rodovias, ferrovias etc"
+subatividade_ibge,7026,Corpo de bombeiro
+subatividade_ibge,4810,Correios - serv transp entrega volumes e correspondencia
+subatividade_ibge,120,Criacao de animais
+subatividade_ibge,1510,Desdobramento da madeira
+subatividade_ibge,2750,Destilacao de alcool etilico
+subatividade_ibge,3520,Distribuicao de gas canalizado
+subatividade_ibge,2910,"Edicao e edicao e impressao de jornais e outros periódicos, livros-..."
+subatividade_ibge,6320,Ensino particular
+subatividade_ibge,6310,Ensino publico
+subatividade_ibge,6130,Entidades de classe e sindicais
+subatividade_ibge,6170,Entidades desportivas e recreativas
+subatividade_ibge,3420,"Escavaçoes, fundaçoes, estaqueamento e outras obras de infra-estrutura"
+subatividade_ibge,1150,"Estamparia, funilaria e latoaria"
+subatividade_ibge,3430,"Estruturas metalicas, montagem, instalacoes industriais etc."
+subatividade_ibge,5770,"Estudios de pintura, desenho e escultura"
+subatividade_ibge,2980,Execucao serviços gráficos diversos
+subatividade_ibge,2990,Execucao serviços gráficos nao especificados
+subatividade_ibge,7021,Exercito
+subatividade_ibge,530,Extracao de combustiveis minerais
+subatividade_ibge,220,Extracao de madeiras
+subatividade_ibge,510,Extracao de minerais metalicos
+subatividade_ibge,520,Extracao de minerais nao-metalicos
+subatividade_ibge,540,Extracao de minerais radioativos
+subatividade_ibge,3020,"Fabr aparelhos, instrumentos e material fotografico"
+subatividade_ibge,3050,"Fabr escovas, broxas, pinceis, vassouras, espanadores e semelhantes"
+subatividade_ibge,3040,Fabr inst musicais grav matrizes reproduçao de discos
+subatividade_ibge,3000,"Fabr instrumentos,utensilios apar medida"
+subatividade_ibge,3010,"Fabricaçao aparelhos, instrumentos e materiais ortopedicos"
+subatividade_ibge,2350,Fabricaçao art de material plastico p/ embalagem e acondicionamento
+subatividade_ibge,1850,Fabricaçao artef borracha (peças/acess p/ veiculos)
+subatividade_ibge,1740,"Fabricaçao artefatos papelao, cartolina e cartao impressos"
+subatividade_ibge,1790,Fabricaçao artigos diversos de fibra prensadada
+subatividade_ibge,1750,"Fabricaçao artigos papel, papelao e etc"
+subatividade_ibge,2440,"Fabricaçao arts de passamanaria, fitas, filos, rendas e bordados"
+subatividade_ibge,2370,Fabricaçao arts diversos de material plasticos
+subatividade_ibge,2390,Fabricaçao arts material plastico nao especicados
+subatividade_ibge,2740,Fabricaçao bebidas n-alcoolicas-incl engarrafamento e gaseificaçao
+subatividade_ibge,1530,Fabricaçao chapas e placas de mad aglomerada
+subatividade_ibge,2050,"Fabricaçao concentrados aromaticos naturais, artificiais e sinteticos"
+subatividade_ibge,1260,Fabricaçao cronometros e relogios eletricos
+subatividade_ibge,2540,Fabricaçao de acessorios do vestuario
+subatividade_ibge,2080,"Fabricaçao de adubos, fertilizantes e corretivos de solo"
+subatividade_ibge,2720,"Fabricaçao de aguardentes, licores e outros"
+subatividade_ibge,1350,"Fabricaçao de aparelhos eletricos, peças e acessorios"
+subatividade_ibge,1640,Fabricaçao de armarios embutidos de madeira
+subatividade_ibge,3080,Fabricaçao de art de caca pesca e desportos
+subatividade_ibge,3090,Fabricaçao de art diversos nao compreendidos em outros grupos
+subatividade_ibge,2330,Fabricaçao de art material plastico p/ uso domestico e pessoal
+subatividade_ibge,1560,"Fabricaçao de artef bambu, vime, junco ou palha"
+subatividade_ibge,1730,"Fabricaçao de artefatos de papel, nao associada a produçao de papel"
+subatividade_ibge,1140,Fabricaçao de artefatos de trefilados de ferro e aço
+subatividade_ibge,1890,Fabricaçao de artefatos diversos de borracha nao especificados
+subatividade_ibge,1990,Fabricaçao de artefatos diversos de couros e peles
+subatividade_ibge,2490,Fabricaçao de artefatos texteis produzidos nas fiaçoes
+subatividade_ibge,1630,Fabricaçao de artigos de colchoaria
+subatividade_ibge,1570,Fabricaçao de artigos de cortiço
+subatividade_ibge,1170,"Fabricaçao de artigos de cutelaria, armas e ferramentas manuais"
+subatividade_ibge,2320,Fabricaçao de artigos de material plasticos
+subatividade_ibge,1920,Fabricaçao de artigos de selaria e correiaria
+subatividade_ibge,1540,Fabricaçao de artigos de tanoaria e de madeira
+subatividade_ibge,1550,Fabricaçao de artigos diversos de madeira
+subatividade_ibge,2660,"Fabricaçao de balas, caramelos, pastilhas, dropes, etc."
+subatividade_ibge,1450,"Fabricaçao de bicicletas, triciclos e monociclos"
+subatividade_ibge,3070,Fabricaçao de brinquedos
+subatividade_ibge,1020,Fabricaçao de cal
+subatividade_ibge,2530,"Fabricaçao de calçados para homem, mulheres e crianças"
+subatividade_ibge,1440,Fabricaçao de carrocarias para veiculos
+subatividade_ibge,1710,Fabricaçao de celulose e de pasta mecanica
+subatividade_ibge,2730,"Fabricaçao de cervejas, chopes e maltes"
+subatividade_ibge,2520,Fabricaçao de chapéus
+subatividade_ibge,2830,Fabricaçao de charutos e cigarrilhas
+subatividade_ibge,2820,Fabricaçao de cigarros e fumos desfiados
+subatividade_ibge,1050,Fabricaçao de cimento
+subatividade_ibge,1490,Fabricaçao de estofados e capas para veiculos
+subatividade_ibge,1520,Fabricaçao de estruturas de madeira e artigos de carpintaria
+subatividade_ibge,1130,Fabricaçao de estruturas metalicas
+subatividade_ibge,1830,Fabricaçao de laminados e fios de borracha
+subatividade_ibge,2310,Fabricaçao de laminados plasticos
+subatividade_ibge,1330,Fabricaçao de lampadas
+subatividade_ibge,1930,"Fabricaçao de malas, valises e outros artigos para viagem"
+subatividade_ibge,1220,"Fabricaçao de maq, aparelhos e equipam industriais"
+subatividade_ibge,1240,"Fabricaçao de maq, aparelhos e materiais p/ agricultura"
+subatividade_ibge,1230,"Fabricaçao de maq-ferramentas, maq operatrizes"
+subatividade_ibge,1210,Fabricaçao de maquinas motrizes nao-eletricas
+subatividade_ibge,1250,"Fabricaçao de maquinas, aparelhos e equipamentos diversos"
+subatividade_ibge,2680,Fabricaçao de massas alimenticias e biscoitos
+subatividade_ibge,1040,Fabricaçao de material ceramico
+subatividade_ibge,1380,Fabricaçao de material de comunicacoes
+subatividade_ibge,1320,Fabricaçao de material eletrico
+subatividade_ibge,1340,Fabricaçao de material eletrico p/ veiculos
+subatividade_ibge,1370,Fabricaçao de material eletronico
+subatividade_ibge,1610,"Fabricaçao de moveis de madeira, vime e junco"
+subatividade_ibge,1620,"Fabricaçao de moveis de metal, revest ou nao com laminas plasticas"
+subatividade_ibge,1690,Fabricaçao de moveis e artigos do mobiliarios
+subatividade_ibge,2340,Fabricaçao de moveis moldados de material plastico
+subatividade_ibge,1190,Fabricaçao de outros artigos de metais
+subatividade_ibge,1480,Fabricaçao de outros veiculos-inclusive peças e acessorios
+subatividade_ibge,1720,"Fabricaçao de papel, papelao, cartolina"
+subatividade_ibge,1060,"Fabricaçao de peças, ornatos e estruturas de cimento"
+subatividade_ibge,2670,"Fabricaçao de produtos de padaria, confeitaria e pastelaria"
+subatividade_ibge,2210,Fabricaçao de produtos de perfumaria
+subatividade_ibge,2110,Fabricaçao de produtos farmaceuticos e veterinários
+subatividade_ibge,2090,Fabricaçao de produtos quimicos diversos
+subatividade_ibge,2220,"Fabricaçao de saboes, detergentes e glicerina"
+subatividade_ibge,2450,Fabricaçao de tecidos especiais
+subatividade_ibge,1030,"Fabricaçao de telhas, tijolos e outros"
+subatividade_ibge,2070,"Fabricaçao de tintas, esmaltes, lacas vernizes"
+subatividade_ibge,1430,Fabricaçao de veiculos automotores
+subatividade_ibge,2230,Fabricaçao de velas
+subatividade_ibge,2710,Fabricaçao de vinhos
+subatividade_ibge,1650,Fabricaçao e acabamento de artigos diversos
+subatividade_ibge,1090,Fabricaçao e elaboracao de produtos diversos de nao metálicos
+subatividade_ibge,1070,Fabricaçao e elaboracao de vidro e cristal
+subatividade_ibge,1270,Fabricaçao e montagem de tratores
+subatividade_ibge,1820,Fabricaçao e recondic de pneumatico e camara de ar
+subatividade_ibge,2650,Fabricaçao e refinacao de açúcar
+subatividade_ibge,1840,Fabricaçao espuma de borracha e artefatos de
+subatividade_ibge,2360,"Fabricaçao manilhas, canos, tubos e conexoes"
+subatividade_ibge,2030,"Fabricaçao polvora, explosivos, detonantes e artigos pirotecnicos"
+subatividade_ibge,2060,"Fabricaçao preparados limpeza e polimento, desinfetantes"
+subatividade_ibge,2010,Fabricaçao prod derivados do proces petroleo
+subatividade_ibge,2020,"Fabricaçao resinas, fibras e fios artificiais e sinteticos"
+subatividade_ibge,4110,"Ferragens prod metalurgicos, artigos sanitarios"
+subatividade_ibge,4310,Ferragens produtos metalurgicos e material de construçao
+subatividade_ibge,2420,"Fiaçao, fiaçao e tecelagem, e tecelagem"
+subatividade_ibge,2920,Impr material escolar mat uso ind e comercial para propaganda
+subatividade_ibge,4630,Incorporacao de imoveis
+subatividade_ibge,4530,Inst seguro resseguro - sociedades seguradora
+subatividade_ibge,3480,"Instalaçoes eletricas,de linhas fontes de transmissao, inclusive te..."
+subatividade_ibge,6140,Instituicoes cientificas e tecnologicas
+subatividade_ibge,4510,Instituicoes credito investimento - bancos comerciais
+subatividade_ibge,4520,Instituicoes de financiamento e bancos de desenvolvimento
+subatividade_ibge,6150,Instituicoes filosoficas e culturais
+subatividade_ibge,6160,Instituicoes relegiosas-orgaos admin
+subatividade_ibge,7012,Justica e atividades auxiliares (cartori
+subatividade_ibge,3030,Lapidacao pedras preciosas e semipreciosas
+subatividade_ibge,3540,Limpeza publica e remocao de lixo
+subatividade_ibge,5440,"Locacao de moveis louças, talheres e semelhantes"
+subatividade_ibge,2430,Malharia e fabricacao de tecidos elasticos
+subatividade_ibge,4320,Maquinas aparelhos equipamentos industriais
+subatividade_ibge,4120,"Maquinas, aparelhos e material eletrico"
+subatividade_ibge,7022,Marinha de guerra
+subatividade_ibge,4325,"Material eletrico,de comunicacoes e aparelhos eletrodomésticos"
+subatividade_ibge,4182,Mercadorias em geral exclusive prod alimenticios (lojas de dept)
+subatividade_ibge,4382,Mercadorias em geral exclusive produtos alimentícios
+subatividade_ibge,4181,Mercadorias em geral inclusive prod alimenticios (supermercados)
+subatividade_ibge,4381,Mercadorias em geral inclusive produtos alimentícios
+subatividade_ibge,1120,Metalurgia do pó
+subatividade_ibge,1110,"Metalurgia dos metais nao-ferrosos, em formas primarias"
+subatividade_ibge,4140,"Moveis artigos decoracao, utilidade domesticas"
+subatividade_ibge,4340,Moveis e artigos de colchoaria e tapecaria
+subatividade_ibge,3410,"Nivelamento, terraplenagem e preparacao de terrenos"
+subatividade_ibge,3460,"Obras hidraulicas, construçao de barragens, usinas, portos, etc"
+subatividade_ibge,4660,"Organizacao de cartoes de credito sorteios, consorcios, etc"
+subatividade_ibge,6180,Organizacoes civicas e politicas
+subatividade_ibge,9000,"Outras atividades, nao classificadas"
+subatividade_ibge,7029,Outras organizacoes governamentais de segurança
+subatividade_ibge,5490,Outros servicos domiciliarios
+subatividade_ibge,5390,Outros servicos pessoais - estudios fotograficos
+subatividade_ibge,5790,Outros servicos tecnicos-profissionais nao especificados
+subatividade_ibge,4145,Papel impressos artigos de escritorio
+subatividade_ibge,4345,"Papel, celulose, impressos e artigos de livraria"
+subatividade_ibge,350,Pesca em alto-mar costeira e interior (fluvial e lacustre)
+subatividade_ibge,7011,Poder legislativo
+subatividade_ibge,7025,Policia civil - inclusive estabelecimentos prisionais
+subatividade_ibge,7024,Policia militar
+subatividade_ibge,2690,Prep e fabr produtos alimenticios diversos
+subatividade_ibge,2810,Preparacao do fumo
+subatividade_ibge,2640,Preparacao do leite e fabricacao de produtos de laticínio
+subatividade_ibge,2630,Preparacao do pescado e fabricacao de conservadas do pescado
+subatividade_ibge,6120,Previdencia social - instituiçoes governamentais
+subatividade_ibge,4170,"Prod alimenticios, bebidas fumo e estimulantes"
+subatividade_ibge,4150,Prod quimicos farmaceuticos inclusive artigos de perfumaria
+subatividade_ibge,3510,Producao e distribuicao de energia eletrica
+subatividade_ibge,2000,Producao elementos quimicos e prod quimicos inorganicos e organicos
+subatividade_ibge,2040,"Producao oleos, gorduras e ceras vegetais"
+subatividade_ibge,4301,Produtos agricolas nao-beneficiados
+subatividade_ibge,4307,Produtos agropecuarios prod extrativos
+subatividade_ibge,4370,Produtos alimenticios
+subatividade_ibge,4302,Produtos de origem animal inclusive gado
+subatividade_ibge,4306,Produtos de pesca
+subatividade_ibge,4304,Produtos extrativos de origem mineral em bruto
+subatividade_ibge,4305,Produtos extrativos de origem vegetal
+subatividade_ibge,4350,Produtos quimicos preparados farmaceuticos
+subatividade_ibge,2610,"Refeicoes conservadas, frutas, legumes e outros vegetais"
+subatividade_ibge,5260,Reparacao art couro prod similares
+subatividade_ibge,5250,Reparacao artigos de borracha
+subatividade_ibge,5240,Reparacao conservacao art mobiliario
+subatividade_ibge,5290,Reparacao de artigos diversos - joias e relogios
+subatividade_ibge,5230,Reparacao de artigos em madeira
+subatividade_ibge,5210,Reparacao e conservacao maq apar eletricos
+subatividade_ibge,1390,Reparacao e manutencao de maq e aparelho
+subatividade_ibge,1280,"Reparacao e manutencao de maq, aparelhos e equipamentos industriais"
+subatividade_ibge,5220,Reparacao e manutencao de veiculos
+subatividade_ibge,5270,Reparacao instalacoes eletricas hidraulicas
+subatividade_ibge,8010,Representaçoes de organismos internacion
+subatividade_ibge,8020,Representaçoes diplomaticas
+subatividade_ibge,3060,"Revelacao, copiagem, corte, montag, gravaçao, dublagem e sonorizaçao"
+subatividade_ibge,1910,"Secagem, salga, curtimento e outras preparacoes de couro e pele"
+subatividade_ibge,1160,"Serralheria e fabrç. de tanques, reservatórios e outro recipi..."
+subatividade_ibge,7018,Servicos administrativos autarquicos
+subatividade_ibge,7014,Servicos administrativos estaduais
+subatividade_ibge,7013,Servicos administrativos federais
+subatividade_ibge,7015,Servicos administrativos municipais
+subatividade_ibge,5810,Servicos auxiliares da agricultura e da criaçao de animais
+subatividade_ibge,5840,Servicos auxiliares de atividades de seguros
+subatividade_ibge,5890,Servicos auxiliares de atividades economicas
+subatividade_ibge,5830,Servicos auxiliares do comercio e industria
+subatividade_ibge,5820,Servicos auxiliares do transporte
+subatividade_ibge,6190,Servicos comunitarios e sociais nao especificados
+subatividade_ibge,5730,"Servicos de assessoria, consultoria, pesquisa, análise e proc de dados"
+subatividade_ibge,5720,Servicos de contabilidade e auditoria
+subatividade_ibge,5430,Servicos de dedetizacao e expurgo
+subatividade_ibge,5510,Servicos de diversoes e promocao de espetaculos artisticos
+subatividade_ibge,5740,"Servicos de engenharia, geologia e geodesia"
+subatividade_ibge,5310,Servicos de higiene e embelezamento pessoal
+subatividade_ibge,5780,Servicos de investigacao particular
+subatividade_ibge,5750,"Servicos de publicidade, propaganda organizaçao de congressos"
+subatividade_ibge,5520,Servicos de radiodifusao e televisao
+subatividade_ibge,5760,"Servicos de traducao, reproducao e documentaçao"
+subatividade_ibge,6230,Servicos de veterinaria - hospitais e clinicas
+subatividade_ibge,5460,Servicos de vigilancia e guarda
+subatividade_ibge,5710,"Servicos juridicos, de despachante e procurador"
+subatividade_ibge,5420,Servicos limpeza e conservacao de casas
+subatividade_ibge,6210,Servicos medicos-hospitais
+subatividade_ibge,6220,Servicos odontologicos
+subatividade_ibge,1100,Siderurgia e elaboracao de produtos siderúrgicos
+subatividade_ibge,4540,Sociedade de capitalizacao
+subatividade_ibge,4160,"Tecidos, artefatos de tecidos, art vestuario, armarinho e de cama"
+subatividade_ibge,4360,"Tecidos, artefatos e fios texteis"
+subatividade_ibge,1180,"Tempera e cementacao de aço, recozimento"
+subatividade_ibge,5410,Tinturarias e lavanderias
+subatividade_ibge,4760,Transporte aereo
+subatividade_ibge,4720,Transporte ferroviario
+subatividade_ibge,4752,Transporte maritimo de cabotagem
+subatividade_ibge,4751,Transporte maritimo de longo curso
+subatividade_ibge,4740,Transporte por oleodutos e gasodutos
+subatividade_ibge,4730,Transporte por veiculos a tracao animal
+subatividade_ibge,4753,Transporte por vias de navegacao interior
+subatividade_ibge,4712,Transporte rodoviario de carga
+subatividade_ibge,4711,Transporte rodoviario de passageiros
+subatividade_ibge,4130,Veiculos e acessorios
+subatividade_ibge,4330,Veiculos e acessorios
+subatividade_ibge,NA,ignorado
+subsetor_ibge,24,Administraçao pública direta e autárquica
+subsetor_ibge,25,"Agricultura, silvicultura, criaçao de animais, extrativismo vegetal"
+subsetor_ibge,19,"Com. e administraçao de imóveis, valores mobiliários, serv. Técnico"
+subsetor_ibge,17,Comércio atacadista
+subsetor_ibge,16,Comércio varejista
+subsetor_ibge,15,Construçao civil
+subsetor_ibge,99,Código não encontrado nos dicionários oficiais.
+subsetor_ibge,98,Código não encontrado nos dicionários oficiais.
+subsetor_ibge,23,Ensino
+subsetor_ibge,1,Extrativa mineral
+subsetor_ibge,NA,Ignorado
+subsetor_ibge,9,"Ind. da borracha, fumo, couros, peles, similares, ind. diversas"
+subsetor_ibge,10,"Ind. química de produtos farmacêuticos, veterinários, perfumaria"
+subsetor_ibge,7,Indústria da madeira e do mobiliário
+subsetor_ibge,12,Indústria de calçados
+subsetor_ibge,13,"Indústria de produtos alimentícios, bebidas e álcool etílico"
+subsetor_ibge,2,Indústria de produtos minerais nao metálicos
+subsetor_ibge,6,Indústria do material de transporte
+subsetor_ibge,5,Indústria do material elétrico e de comunicaçoes
+subsetor_ibge,8,"Indústria do papel, papelao, editorial e gráfica"
+subsetor_ibge,4,Indústria mecânica
+subsetor_ibge,3,Indústria metalúrgica
+subsetor_ibge,11,Indústria têxtil do vestuário e artefatos de tecidos
+subsetor_ibge,18,"Instituiçoes de crédito, seguros e capitalizaçao"
+subsetor_ibge,21,"Serv. de alojamento, alimentaçao, reparaçao, manutençao, redaçao"
+subsetor_ibge,14,Serviços industriais de utilidade pública
+subsetor_ibge,22,"Serviços médicos, odontológicos e veterinários"
+subsetor_ibge,20,Transportes e comunicaçoes
+tamanho_estabelecimento,10,1000 ou mais
+tamanho_estabelecimento,2,Até 4
+tamanho_estabelecimento,4,De 10 a 19
+tamanho_estabelecimento,7,De 100 a 249
+tamanho_estabelecimento,5,De 20 a 49
+tamanho_estabelecimento,8,De 250 a 499
+tamanho_estabelecimento,3,De 5 a 9
+tamanho_estabelecimento,6,De 50 a 99
+tamanho_estabelecimento,9,De 500 a 999
+tamanho_estabelecimento,-1,Ignorado
+tamanho_estabelecimento,1,Zero
+tipo_admissao,13,Exercício descentralizado de servidor oriundo do mesmo órgão/entidade ou de outro órgão/entidade
+tipo_admissao,10,Exercício provisório ou exercício descentralizado de servidor oriundo do mesmo órgão/entidade ou de outro órgão/entidade
+tipo_admissao,-1,IGNORADO
+tipo_admissao,0,Não Admitido Ano
+tipo_admissao,5,OUTROS
+tipo_admissao,1,Primeiro Emprego
+tipo_admissao,11,Readaptação (específico para servidor público)
+tipo_admissao,7,Recondução
+tipo_admissao,12,Redistribuição (específico para servidor público)
+tipo_admissao,2,Reemprego
+tipo_admissao,6,Reintegração
+tipo_admissao,14,Remoção (específico para servidor público)
+tipo_admissao,9,Requisição
+tipo_admissao,8,Reversão
+tipo_admissao,3,Transferência com Ônus
+tipo_admissao,4,Transferência sem Ônus
+tipo_deficiencia,2,Auditiva
+tipo_deficiencia,1,Física
+tipo_deficiencia,-1,Ignorado
+tipo_deficiencia,4,Mental
+tipo_deficiencia,5,Múltipla
+tipo_deficiencia,0,Não deficiente
+tipo_deficiencia,6,Reabilitado
+tipo_deficiencia,3,Visual
+tipo_estabelecimento,5,CAEPF
+tipo_estabelecimento,2,CAEPF
+tipo_estabelecimento,3,CEI
+tipo_estabelecimento,6,CNO
+tipo_estabelecimento,1,CNPJ
+tipo_estabelecimento,4,Código não encontrado nos dicionários oficiais.
+tipo_estabelecimento,-1,Ignorado
+tipo_estabelecimento,NA,Não identificado
+tipo_estabelecimento,Não identificado,Não identificado
+tipo_estabelecimento,9,Não identificado
+tipo_salario,4,DIÁRIO
+tipo_salario,5,HORÁRIO
+tipo_salario,-1,IGNORADO
+tipo_salario,1,MENSAL
+tipo_salario,7,OUTROS
+tipo_salario,2,QUINZENAL
+tipo_salario,3,SEMANAL
+tipo_salario,6,TAREFA
+tipo_vinculo,55,APREND CONTR
+tipo_vinculo,40,AVULSO
+tipo_vinculo,1,CLT
+tipo_vinculo,75,CLT R/PF DET
+tipo_vinculo,25,CLT R/PF IND
+tipo_vinculo,70,CLT R/PJ DET
+tipo_vinculo,20,CLT R/PJ IND
+tipo_vinculo,65,CLT U/PF DET
+tipo_vinculo,15,CLT U/PF IND
+tipo_vinculo,60,CLT U/PJ DET
+tipo_vinculo,10,CLT U/PJ IND
+tipo_vinculo,96,CONT LEI EST
+tipo_vinculo,97,CONT LEI MUN
+tipo_vinculo,90,CONT PRZ DET
+tipo_vinculo,95,CONT TMP DET
+tipo_vinculo,999,Código não encontrado nos dicionários oficiais.
+tipo_vinculo,99,Código não encontrado nos dicionários oficiais.
+tipo_vinculo,80,DIRETOR
+tipo_vinculo,35,ESTAT N/EFET
+tipo_vinculo,31,ESTAT RGPS
+tipo_vinculo,30,ESTATUTARIO
+tipo_vinculo,2,ESTATUTÁRIO
+tipo_vinculo,-1,IGNORADO
+tipo_vinculo,NA,NÃO CLASSIFICADO
+tipo_vinculo,5,OUTROS
+tipo_vinculo,50,TEMPORARIO
+tipo_vinculo,50,TEMPORARIO/FIXO
+tipo_vinculo,3,TRABALHADOR AVULSO
+tipo_vinculo,4,TRABALHADOR TEMP
+vinculo_ativo_3112,0,Não
+vinculo_ativo_3112,1,Sim

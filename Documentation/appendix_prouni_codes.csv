@@ -1,0 +1,21 @@
+nome_coluna,chave,valor
+beneficiario_deficiente,0,Não
+sexo,1,Feminino
+beneficiario_deficiente,1,Sim
+raca_cor,1,Amarela
+modalidade_ensino,1,Presencial
+tipo_bolsa,1,Integral
+turno_curso,1,Matutino
+sexo,2,Masculino
+turno_curso,2,Vespertino
+tipo_bolsa,2,Parcial (50%)
+modalidade_ensino,2,EAD
+raca_cor,2,Branca
+raca_cor,3,Indígena
+tipo_bolsa,3,Complementar (25%)
+turno_curso,3,Noturno
+raca_cor,4,Parda
+turno_curso,4,Integral
+turno_curso,5,Curso à Distancia
+raca_cor,5,Preta
+raca_cor,6,Não Informada
