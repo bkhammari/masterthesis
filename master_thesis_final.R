@@ -480,7 +480,7 @@ for (y in params$years) {
       AND idade BETWEEN 22 AND 35
       AND valor_remuneracao_media_sm > 0
       AND tipo_vinculo = '10'
-      AND vinculo_ativo_3112 = 1
+      AND vinculo_ativo_3112 = '1'
     GROUP BY ano, id_municipio, raca_cor, sexo, age_group
   ")
   tryCatch({
@@ -528,14 +528,14 @@ for (y in params$years) {
       ano = ", y, "
       AND idade BETWEEN 22 AND 35
       AND valor_remuneracao_media_sm > 0
-      AND tipo_vinculo IN ('10')
-      AND vinculo_ativo_3112 = 1
+      AND tipo_vinculo = '10'
+      AND vinculo_ativo_3112 = '1'
     GROUP BY ano, id_municipio, raca_cor, age_group
   ")
   tryCatch({
     rais_educ_list[[as.character(y)]] <- basedosdados::read_sql(q)
     message(sprintf("     Educ year %d OK", y))
-  }, error = function(e) message(sprintf("     ERROR educ year %d: %s", y, e$message)))
+  }, error = function(e) message(sprintf("     ERROR educ year %d: %s", y, safe_err_msg(e))))
   gc()
 }
 df_rais_educ <- bind_rows(rais_educ_list)
