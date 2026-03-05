@@ -1935,7 +1935,7 @@ tryCatch({
   twfe_cohort_summary <- tibble(
     Model = c("TWFE/WageGap", "TWFE/Young"),
     Coef  = c(coef(twfe_gap)["treated"], coef(twfe_young)["treated"]),
-    SE    = c(se(twfe_gap)["treated"], se(twfe_young)["treated"]),
+    SE    = c(coeftable(twfe_gap)["treated", 2], coeftable(twfe_young)["treated", 2]),
     N     = c(nobs(twfe_gap), nobs(twfe_young))
   )
   write_csv(twfe_cohort_summary, "Tables_Final/table_twfe_cohort.csv")
@@ -2093,18 +2093,22 @@ tryCatch({
     }
   }
 
-  # Save
+  # Save — use coeftable() to avoid namespace collisions with se()/tstat()
+  ct_lin <- coeftable(fit_lin)
+  ct_log <- coeftable(fit_log)
+  ct_quad <- coeftable(fit_quad)
+  ct_dr  <- coeftable(fit_lin_dr)
   cont_results <- bind_rows(
-    tibble(Model="Linear D*post", Coef=coef(fit_lin)[1], SE=se(fit_lin)[1],
-            t=tstat(fit_lin)[1], p=fixest_pval(fit_lin)[1], N=nobs(fit_lin)),
-    tibble(Model="Log(1+D)*post", Coef=coef(fit_log)[1], SE=se(fit_log)[1],
-           t=tstat(fit_log)[1], p=fixest_pval(fit_log)[1], N=nobs(fit_log)),
-    tibble(Model="Quad D*post", Coef=coef(fit_quad)[1], SE=se(fit_quad)[1],
-           t=tstat(fit_quad)[1], p=fixest_pval(fit_quad)[1], N=nobs(fit_quad)),
-    tibble(Model="Quad D^2*post", Coef=coef(fit_quad)[2], SE=se(fit_quad)[2],
-           t=tstat(fit_quad)[2], p=fixest_pval(fit_quad)[2], N=nobs(fit_quad)),
-    tibble(Model="Linear+DR D*post", Coef=coef(fit_lin_dr)[1], SE=se(fit_lin_dr)[1],
-           t=tstat(fit_lin_dr)[1], p=fixest_pval(fit_lin_dr)[1], N=nobs(fit_lin_dr))
+    tibble(Model="Linear D*post", Coef=ct_lin[1,1], SE=ct_lin[1,2],
+            t=ct_lin[1,3], p=ct_lin[1,4], N=nobs(fit_lin)),
+    tibble(Model="Log(1+D)*post", Coef=ct_log[1,1], SE=ct_log[1,2],
+           t=ct_log[1,3], p=ct_log[1,4], N=nobs(fit_log)),
+    tibble(Model="Quad D*post", Coef=ct_quad[1,1], SE=ct_quad[1,2],
+           t=ct_quad[1,3], p=ct_quad[1,4], N=nobs(fit_quad)),
+    tibble(Model="Quad D^2*post", Coef=ct_quad[2,1], SE=ct_quad[2,2],
+           t=ct_quad[2,3], p=ct_quad[2,4], N=nobs(fit_quad)),
+    tibble(Model="Linear+DR D*post", Coef=ct_dr[1,1], SE=ct_dr[1,2],
+           t=ct_dr[1,3], p=ct_dr[1,4], N=nobs(fit_lin_dr))
   )
   write_csv(cont_results, "Tables_Final/table_continuous_dose.csv")
   message("   Continuous dose results saved.")
@@ -2123,9 +2127,9 @@ tryCatch({
 
     fit_young_log <- feols(y ~ I(log(1 + D_rt)):post | id_num + ano,
                           data = cont_young_data, cluster = ~id_num)
+    ct_yl <- coeftable(fit_young_log)
     message(sprintf("\n   Young/Log: coef=%.6f SE=%.6f t=%.3f p=%.4f",
-        coef(fit_young_log)[1], se(fit_young_log)[1],
-        tstat(fit_young_log)[1], fixest_pval(fit_young_log)[1]))
+        ct_yl[1,1], ct_yl[1,2], ct_yl[1,3], ct_yl[1,4]))
   }
 
   # --- Birth-cohort wage gap ---
@@ -2135,15 +2139,15 @@ tryCatch({
 
     fit_bc_log <- feols(wage_gap_bc ~ I(log(1 + D_rt)):post | id_num + ano,
                         data = cont_bc_data, cluster = ~id_num)
+    ct_bcl <- coeftable(fit_bc_log)
     message(sprintf("\n   BirthCohort/Log: coef=%.6f SE=%.6f t=%.3f p=%.4f",
-        coef(fit_bc_log)[1], se(fit_bc_log)[1],
-        tstat(fit_bc_log)[1], fixest_pval(fit_bc_log)[1]))
+        ct_bcl[1,1], ct_bcl[1,2], ct_bcl[1,3], ct_bcl[1,4]))
 
     fit_bc_quad <- feols(wage_gap_bc ~ D_rt:post + I(D_rt^2):post | id_num + ano,
                          data = cont_bc_data, cluster = ~id_num)
+    ct_bcq <- coeftable(fit_bc_quad)
     message(sprintf("   BirthCohort/Quad: D coef=%.6f (t=%.3f), D^2 coef=%.8f (t=%.3f)",
-        coef(fit_bc_quad)[1], tstat(fit_bc_quad)[1],
-        coef(fit_bc_quad)[2], tstat(fit_bc_quad)[2]))
+        ct_bcq[1,1], ct_bcq[1,3], ct_bcq[2,1], ct_bcq[2,3]))
   }
 
 }, error = function(e) message(sprintf("   SECTION 9Q FAILED: %s", safe_err_msg(e))))
@@ -2840,12 +2844,14 @@ if (!is.null(cont_results)) {
   }
 }
 if (!is.null(fit_young_log)) {
+  .ct <- coeftable(fit_young_log)
   message(sprintf("  Young/Log(1+D):    coef=%.6f  t=%.3f  p=%.4f",
-      coef(fit_young_log)[1], tstat(fit_young_log)[1], fixest_pval(fit_young_log)[1]))
+      .ct[1,1], .ct[1,3], .ct[1,4]))
 }
 if (!is.null(fit_bc_log)) {
+  .ct <- coeftable(fit_bc_log)
   message(sprintf("  BC_Gap/Log(1+D):   coef=%.6f  t=%.3f  p=%.4f",
-      coef(fit_bc_log)[1], tstat(fit_bc_log)[1], fixest_pval(fit_bc_log)[1]))
+      .ct[1,1], .ct[1,3], .ct[1,4]))
 }
 
 message("\n--- CONTDID (Callaway-Goodman-Bacon-SantAnna 2024) ---")
@@ -2865,12 +2871,13 @@ for (r in Filter(Negate(is.null), list(res_bc_gap_low, res_bc_gap_high,
 
 message("\n--- TWFE BIAS (validates methodology) ---")
 if (exists("twfe_fit") && !is.null(twfe_fit) && exists("twfe_emp") && !is.null(twfe_emp)) {
+  .ct_w <- coeftable(twfe_fit); .ct_e <- coeftable(twfe_emp)
   message(sprintf("  TWFE/Wages: %.4f (SE %.4f) vs CS/Low: %+.4f | CS/Low_DR: %+.4f",
-      coef(twfe_fit)[1], se(twfe_fit)[1],
+      .ct_w[1,1], .ct_w[1,2],
       res_low$simple$overall.att,
       if(!is.null(res_low_dr)) res_low_dr$simple$overall.att else NA))
   message(sprintf("  TWFE/Emp: %.4f*** (SE %.4f) — WRONG SIGN vs CS/Low: %+.4f",
-      coef(twfe_emp)[1], se(twfe_emp)[1], res_low_emp$simple$overall.att))
+      .ct_e[1,1], .ct_e[1,2], res_low_emp$simple$overall.att))
 }
 
 message("\n--- BINNED CS (robustness) ---")
@@ -2894,8 +2901,9 @@ if (!is.null(cont_results)) {
       cont_results$Coef[2], cont_results$p[2], cont_results$N[2]))
 }
 if (exists("twfe_emp") && !is.null(twfe_emp)) {
+  .ct_twfe <- coeftable(twfe_emp)
   message(sprintf("  3. TWFE employment bias: %.1f%% (p=%.3f) — WRONG SIGN",
-      coef(twfe_emp)[1]*100, fixest_pval(twfe_emp)[1]))
+      .ct_twfe[1,1]*100, .ct_twfe[1,4]))
 }
 message("  4. Birth-cohort results: [CHECK above]")
 message("  5. Consistent sign pattern: ALL Low-Dose positive, ALL High-Dose <= 0")
@@ -2965,14 +2973,14 @@ print_all_results <- function() {
     divider("CONTINUOUS DOSE (fixest)")
     print(cont_results)
     if (!is.null(fit_young_log)) {
+      .ct <- coeftable(fit_young_log)
       cat(sprintf("\n  Young/Log(1+D): coef=%.6f SE=%.6f t=%.3f p=%.4f\n",
-          coef(fit_young_log)[1], se(fit_young_log)[1],
-          tstat(fit_young_log)[1], fixest_pval(fit_young_log)[1]))
+          .ct[1,1], .ct[1,2], .ct[1,3], .ct[1,4]))
     }
     if (!is.null(fit_bc_log)) {
+      .ct <- coeftable(fit_bc_log)
       cat(sprintf("  BC_Gap/Log(1+D): coef=%.6f SE=%.6f t=%.3f p=%.4f\n",
-          coef(fit_bc_log)[1], se(fit_bc_log)[1],
-          tstat(fit_bc_log)[1], fixest_pval(fit_bc_log)[1]))
+          .ct[1,1], .ct[1,2], .ct[1,3], .ct[1,4]))
     }
     if (!is.null(fit_bc_quad)) {
       ct <- coeftable(fit_bc_quad)
