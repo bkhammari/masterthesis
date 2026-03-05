@@ -2425,3 +2425,89 @@ message(sprintf("  --- Models estimated: %d total ---", n_total_models))
 message("=====================\n")
 
 message("DONE. All outputs saved to Figures_Final/, Tables_Final/, Documentation_Final/.")
+
+# ==============================================================================
+# CONVENIENCE: print_all_results() — show every result in the console
+# ==============================================================================
+# Call print_all_results() at any time after the script finishes.
+
+print_all_results <- function() {
+
+  divider <- function(title) {
+    cat("\n", strrep("=", 72), "\n", title, "\n", strrep("=", 72), "\n")
+  }
+
+  divider("TABLE 1: BIN SUMMARY")
+  print(tab1, n = Inf)
+
+  divider("TABLE 2: COVARIATE BALANCE")
+  print(tab2, n = Inf)
+
+  divider("TABLE 3: CASE STUDY MICROREGIONS")
+  print(case_micro, n = Inf)
+
+  divider("TABLE 4: ATT SUMMARY (ALL MODELS)")
+  print(tab_att, n = Inf)
+
+  if (exists("twfe_summary") && !is.null(twfe_summary)) {
+    divider("TABLE 5: TWFE BENCHMARK")
+    print(twfe_summary, n = Inf)
+  }
+
+  if (exists("tab_wald") && nrow(tab_wald) > 0) {
+    divider("WALD / LATE ESTIMATES")
+    print(tab_wald, n = Inf)
+  }
+
+  if (exists("twfe_cohort_summary") && !is.null(twfe_cohort_summary)) {
+    divider("TWFE COHORT BENCHMARK")
+    print(as.data.frame(twfe_cohort_summary))
+  }
+
+  # --- Event-study detail for every model ---
+  divider("EVENT-STUDY ESTIMATES (per-period ATTs)")
+  for (nm in names(es_exports)) {
+    cat("\n---", nm, "---\n")
+    print(as.data.frame(es_exports[[nm]]))
+  }
+
+  # --- HonestDiD breakdown values ---
+  if (exists("honest_results") && length(honest_results) > 0) {
+    divider("HONESTDID BREAKDOWN Mbar VALUES")
+    for (nm in names(honest_results)) {
+      cat(sprintf("  %-25s Mbar = %.2f\n", nm, honest_results[[nm]]$breakdown))
+    }
+  }
+
+  # --- Pre-trend p-values at a glance ---
+  divider("PRE-TREND P-VALUES (all models)")
+  pt <- tab_att %>% select(Model, Pretrend_p) %>% filter(!is.na(Pretrend_p))
+  print(as.data.frame(pt), row.names = FALSE)
+
+  # --- Audit metadata ---
+  divider("AUDIT METADATA")
+  cat(sprintf("  Microregions : %d\n", audit_log$n_units))
+  cat(sprintf("  Years        : %d (%d-%d)\n", audit_log$n_years,
+              min(params$years), max(params$years)))
+  cat(sprintf("  Bin method   : %s\n", audit_log$bin_method))
+  cat(sprintf("  Thresholds   : tau_20=%.4f  tau_50=%.4f  tau_75=%.4f\n",
+              tau_20, tau_50, tau_75))
+  cat(sprintf("  Bin sizes    : Low=%d  High=%d\n",
+              audit_log$bin_sizes$Low, audit_log$bin_sizes$High))
+  cat(sprintf("  Treatment g  : %d - %d\n",
+              audit_log$g_range$min, audit_log$g_range$max))
+  cat(sprintf("  Total models : %d\n", nrow(tab_att)))
+
+  # --- Files produced ---
+  divider("OUTPUT FILES")
+  for (d in c("Tables_Final", "Figures_Final", "Documentation_Final")) {
+    if (dir.exists(d)) {
+      files <- list.files(d, full.names = TRUE)
+      cat(sprintf("\n  %s/ (%d files)\n", d, length(files)))
+      for (f in files) cat(sprintf("    %s\n", basename(f)))
+    }
+  }
+
+  cat("\n", strrep("=", 72), "\n")
+  invisible(NULL)
+}
