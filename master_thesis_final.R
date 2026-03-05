@@ -941,7 +941,7 @@ df_case_plot <- df_nonwhite %>%
   ) %>%
   mutate(event_time = ano - g) %>%
   group_by(id_microrregiao, nome_microrregiao, dose_bin, region_type, event_time) %>%
-  summarise(avg_log_wage = mean(log_wage_sm, na.rm = TRUE), .groups = "drop") %>%
+  summarise(avg_log_wage = weighted.mean(log_wage_sm, w = n_vinculos, na.rm = TRUE), .groups = "drop") %>%
   filter(event_time >= -5, event_time <= 5)
 
 p_cases <- ggplot(df_case_plot, aes(
