@@ -1115,7 +1115,7 @@ college_gap_low  <- make_subset(df_educ_wide, "college_gap", "Low")
 college_gap_high <- make_subset(df_educ_wide, "college_gap", "High")
 
 # NEW: E. Gender heterogeneity on wage gap
-for (sex_val in c("1", "3")) {
+for (sex_val in c("1", "2")) {
   sex_label <- ifelse(sex_val == "1", "male", "female")
 
   df_sex <- df_cohort_reg %>%
