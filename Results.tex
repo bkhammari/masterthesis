@@ -159,9 +159,41 @@ Figure~\ref{fig:race_pooled} shows that in Low-Dose microregions, Non-white work
 \subsection{Robustness Checks}
 \label{sec:robustness_results}
 
-\subsubsection{TWFE Benchmark}
+\subsubsection{Continuous TWFE and Omitted Variable Bias}
 
-Table~\ref{tab:twfe} compares the naive TWFE estimates with the \citeA{CallawaySantAnna2021} ATTs. The TWFE wage coefficient is $-0.65\%$ ($SE = 0.0037$), completely masking the positive effect of $1.28\%$ observed in the Low-Dose CS specification. The TWFE estimate represents a weighted average of the two dose bins contaminated by negative weights, confirming that pooling across heterogeneous treatment intensities and time periods severely distorts the evaluation.
+To explicitly test whether the High-Dose saturation estimates are confounded by macroeconomic geography (the ``Bel\'{i}ndia'' effect), I estimate a sequence of continuous treatment TWFE models interacting the continuous dosage measure $D_{r,t}$ with a post-treatment dummy for the non-white subsample. 
+
+Table~\ref{tab:continuous_twfe} summarizes the progressive results. An unconditional linear specification (Model 1) yields a marginally significant negative dose-response penalty ($\beta = -0.00013$, $p = 0.0539$). A logarithmic transformation of the dose (Model 2) provides a better statistical fit ($\beta = -0.0021$, $p = 0.0480$), confirming the presence of \emph{diminishing marginal returns}---the penalty accelerates as treatment intensity scales up. A quadratic specification (Model 3) shows a significant negative linear term but an insignificant squared term ($p = 0.3131$), confirming that the negative returns do not recover at extreme saturation levels.
+
+However, when extending the TWFE model with doubly-robust pre-treatment covariates interacted with the post-treatment dummy (Model 4), the direct effect of the ProUni dose completely disappears ($p = 0.3699$). The negative trajectory is entirely absorbed by baseline microregion wealth: the interaction of post-treatment timing with baseline household income per capita is highly negative and significant ($\beta = -0.0377$, $p = 0.0015$). Because ProUni density mechanically correlates with wealthy geographic hubs (the South/Southeast), the unconditional TWFE models mistook the harsh 2014--2016 macroeconomic recession---which disproportionately compressed formal wages in Brazil's wealthiest economic centers---for a pure educational saturation effect.
+
+\begin{table}[ht]
+\centering
+\caption{\textbf{Continuous TWFE Models: Testing for Saturation and OVB}}
+\label{tab:continuous_twfe}
+\begin{tabular}{lcccc}
+\hline
+ & \textbf{Linear (1)} & \textbf{Log (2)} & \textbf{Quadratic (3)} & \textbf{Covariates (4)} \\
+\hline
+$D_{r,t} \times \text{post}$ & -0.0001$^{*}$ &  & -0.0003$^{**}$ & 0.00007 \\
+ & (0.0001) &  & (0.0001) & (0.0001) \\
+$\ln(1 + D_{r,t}) \times \text{post}$ &  & -0.0021$^{**}$ &  &  \\
+ &  & (0.0011) &  &  \\
+$D_{r,t}^2 \times \text{post}$ &  &  & 0.000001 &  \\
+ &  &  & (0.000001) &  \\
+Avg. HH Income $\times \text{post}$ &  &  &  & -0.0377$^{***}$ \\
+ &  &  &  & (0.0118) \\
+\hline
+Observations & 7,812 & 7,812 & 7,812 & 7,812 \\
+Microregion \& Year FEs & Yes & Yes & Yes & Yes \\
+\hline
+\multicolumn{5}{l}{\small Standard errors clustered by microregion in parentheses. $^{*} p<0.10$, $^{**} p<0.05$, $^{***} p<0.01$.}
+\end{tabular}
+\end{table}
+
+\subsubsection{TWFE Benchmark vs. Callaway-Sant'Anna}
+
+Table~\ref{tab:twfe} compares the naive binary TWFE estimates with the \citeA{CallawaySantAnna2021} ATTs. The TWFE wage coefficient is $-0.65\%$ ($SE = 0.0037$), completely masking the positive effect of $1.28\%$ observed in the Low-Dose CS specification. The TWFE estimate represents a weighted average of the two dose bins contaminated by negative weights, confirming that pooling across heterogeneous treatment intensities and time periods severely distorts the evaluation.
 
 \begin{table}[ht]
 \centering
@@ -180,10 +212,6 @@ CS / Gap High               & 0.0234 & 0.0273 & 3,526 \\
 \hline
 \end{tabular}
 \end{table}
-
-\subsubsection{Unconditional vs.\ Doubly-Robust Estimation}
-
-To ensure results are not driven by pre-existing regional differences, I apply the doubly-robust estimator conditioning on pre-treatment Census covariates. The Doubly-Robust estimate for Low-Dose yields a larger point estimate of $2.59\%$ ($SE = 0.0145$), confirming that the positive scarcity effect holds even after adjusting for baseline demographic and economic covariates.
 
 \subsection{Summary of Findings}
 
