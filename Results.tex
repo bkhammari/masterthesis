@@ -47,9 +47,9 @@ Figure~\ref{fig:dose_response} presents the headline result. The dynamic event-s
 
 Three features of Figure~\ref{fig:dose_response} merit emphasis. First, pre-treatment coefficients ($e < 0$) for both dose bins fluctuate closely around zero, with no systematic upward or downward drift, supporting the conditional parallel trends assumption (A1). The joint Wald test fails to reject the null of zero pre-trends at conventional levels for both specifications ($p = 0.359$ for Low Dose; $p = 0.916$ for High Dose).
 
-Second, the Low-Dose event study displays a gradual, monotonically increasing post-treatment trajectory, reaching an effect of approximately 2.5--3.0\% by $e = 5$--$6$. This cumulative pattern is consistent with the progressive entry of ProUni graduates into local labor markets. The overall simple ATT estimate (pooling all post-treatment cohort-time cells) for the Low-Dose bin is $1.28\%$ ($SE = 0.0128$). While the confidence intervals are wide---a consequence of dilution in the aggregate microregion-level data---the direction and magnitude are economically meaningful.
+Second, the Low-Dose event study displays a gradual, monotonically increasing post-treatment trajectory, reaching an effect of approximately 2.5--3.0\% by $e = 5$--$6$. This cumulative pattern is consistent with the progressive entry of ProUni graduates into local labor markets. The overall simple ATT estimate (pooling all post-treatment cohort-time cells) for the Low-Dose bin is $1.28\%$ ($SE = 0.0128$). While the confidence intervals are wide---a consequence of variance dilution in aggregate microregion-level data---the direction and magnitude are economically meaningful. When adjusted via the Doubly Robust specification (Table \ref{tab:master_summary}), the estimate grows to $2.59\%$ ($SE = 0.0145$, $p < 0.10$), lending further statistical support to the scarcity rent hypothesis.
 
-Third, the High-Dose estimates remain centered on zero throughout the post-treatment window. The overall simple ATT is precisely $-0.70\%$ ($SE = 0.0074$). The contrast between Low and High is precisely what the saturation hypothesis predicts: in microregions where the educational supply shock is moderate, scarcity rents are preserved; where the shock is massive, credential inflation and labor market congestion erode the returns.
+Third, the High-Dose estimates remain centered on zero throughout the post-treatment window. The overall simple ATT is precisely $-0.70\%$ ($SE = 0.0074$). In unadjusted models, the contrast between Low and High aligns with the saturation hypothesis: where the shock is massive, credential inflation and congestion erode private returns. However, as discussed in Section \ref{sec:robustness_results}, this penalty is highly sensitive to macroeconomic controls.
 
 \subsubsection{Employment: Extensive Margin}
 
@@ -161,7 +161,7 @@ Figure~\ref{fig:race_pooled} shows that in Low-Dose microregions, Non-white work
 
 \subsubsection{Continuous TWFE and Omitted Variable Bias}
 
-To explicitly test whether the High-Dose saturation estimates are confounded by macroeconomic geography (the ``Bel\'{i}ndia'' effect), I estimate a sequence of continuous treatment TWFE models interacting the continuous dosage measure $D_{r,t}$ with a post-treatment dummy for the non-white subsample. 
+To explicitly test whether the High-Dose saturation estimates are confounded by macroeconomic geography (the ``Bel\'india'' effect), I estimate a sequence of continuous treatment TWFE models interacting the continuous dosage measure $D_{r,t}$ with a post-treatment dummy for the non-white subsample. 
 
 Table~\ref{tab:continuous_twfe} summarizes the progressive results. An unconditional linear specification (Model 1) yields a marginally significant negative dose-response penalty ($\beta = -0.00013$, $p = 0.0539$). A logarithmic transformation of the dose (Model 2) provides a better statistical fit ($\beta = -0.0021$, $p = 0.0480$), confirming the presence of \emph{diminishing marginal returns}---the penalty accelerates as treatment intensity scales up. A quadratic specification (Model 3) shows a significant negative linear term but an insignificant squared term ($p = 0.3131$), confirming that the negative returns do not recover at extreme saturation levels.
 
@@ -193,7 +193,7 @@ Microregion \& Year FEs & Yes & Yes & Yes & Yes \\
 
 \subsubsection{TWFE Benchmark vs. Callaway-Sant'Anna}
 
-Table~\ref{tab:twfe} compares the naive binary TWFE estimates with the \citeA{CallawaySantAnna2021} ATTs. The TWFE wage coefficient is $-0.65\%$ ($SE = 0.0037$), completely masking the positive effect of $1.28\%$ observed in the Low-Dose CS specification. The TWFE estimate represents a weighted average of the two dose bins contaminated by negative weights, confirming that pooling across heterogeneous treatment intensities and time periods severely distorts the evaluation.
+Table~\ref{tab:twfe} compares the naive binary TWFE estimates with the \citeA{CallawaySantAnna2021} ATTs. The TWFE wage coefficient is $-0.65\%$ ($SE = 0.0037$), completely masking the positive effect observed in the Low-Dose CS specification. The TWFE estimate represents a weighted average of the two dose bins contaminated by negative weights, confirming that pooling across heterogeneous treatment intensities and time periods severely distorts the evaluation.
 
 \begin{table}[ht]
 \centering
@@ -241,4 +241,4 @@ High Dose & 0.0065 & 0.0396 & [-0.071, 0.084] & 0.809 & 3,528 \\
 \end{tabular}
 \end{table}
 
-The results support four main conclusions. First, ProUni generates an economically meaningful positive wage effect in Low-Dose microregions, consistent with the scarcity hypothesis. Second, High-Dose microregions show null or slightly negative effects on pooled wages, confirming the saturation hypothesis. Third, the age-cohort decomposition reveals that in Low-Dose areas, wage gains extend to older workers through general equilibrium spillovers, while in High-Dose areas, the inflow of graduates displaces older workers. Fourth, ProUni's racial quotas successfully direct benefits toward non-white workers, though the male wage advantage remains a persistent feature of the Brazilian labor market.
+The results support four main conclusions. First, point estimates suggest an economically meaningful positive wage trajectory in Low-Dose microregions (reinforced by Doubly Robust specifications), consistent with the scarcity hypothesis. Second, while unadjusted models show wage penalties in High-Dose areas, the Doubly Robust covariates reveal this is largely driven by macroeconomic recessions hitting wealthy regions, making it difficult to isolate pure educational saturation. Third, the age-cohort decomposition reveals that in Low-Dose areas, wage gains extend to older workers through general equilibrium spillovers, while in High-Dose areas, the inflow of graduates displaces older workers. Fourth, ProUni's racial quotas successfully direct benefits toward non-white workers, though the male wage advantage remains a persistent feature of the Brazilian labor market.
