@@ -1,0 +1,2542 @@
+Project keys set successfully
+ [1/12] Fetching Official Dictionaries...
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+ [2/12] Extracting Data from BigQuery...
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+   -> Downloading ProUni (Batched Strategy)...
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+   -> Downloading RAIS (Safe Loop)...
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2005 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2006 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2007 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2008 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2009 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2010 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2011 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2012 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2013 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2014 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2015 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2016 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2017 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2018 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Year 2019 OK
+ [NEW] Downloading RAIS with age-cohort split...
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2005 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2006 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2007 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2008 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2009 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2010 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2011 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2012 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2013 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2014 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2015 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2016 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2017 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2018 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Cohort year 2019 OK
+   Cohort RAIS: 1107684 rows
+
+ SECTION 3F: Downloading RAIS with education level...
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2005 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2006 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2007 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2008 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2009 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2010 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2011 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2012 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2013 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2014 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2015 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2016 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2017 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2018 OK
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+First chunk includes all requested rows.
+     Educ year 2019 OK
+   Education RAIS: 628124 rows
+
+ SECTION 3G: Downloading RAIS birth-cohort data (single query)...
+Job complete
+Billed: 0 B
+Downloading first chunk of data.
+Received 186,931 rows in the first chunk.
+Downloading the remaining 879,812 rows in 7 chunks of (up to) 140,198 rows.
+   Birth-cohort RAIS: 1066743 rows                             
+ [3/12] Defining Treatment Dose & Timing...
+   Thresholds (2019 cross-section): tau_20=20.1552 | tau_50=48.4202 | tau_75=78.8670
+   Microregions: 558 total | 446 with g > 0 | 112 with g = 0
+ [4/12] Running Sanity Checks...
+   [OK] No duplicate (id_microrregiao, ano) pairs.
+   [OK] D_rt = 0 for all years before 2009.
+   Bin sizes:
+# A tibble: 2 × 2
+  dose_bin n_regions
+  <chr>        <int>
+1 High           140
+2 Low            167
+   [OK] Both bins have > 50 microregions.
+   [OK] D_rt is weakly increasing over time.
+ -> All sanity checks passed.
+ [5/12] Generating Descriptive Tables...
+   Table 1 saved.
+   Table 2 saved.
+   NEW: DR covariate dataframe: 558 microregions, 5 covariates
+ [6/12] Selecting Case Study Microregions...
+   Selected case study microregions:
+# A tibble: 4 × 7
+  id_microrregiao nome_microrregiao        sigla_uf region_type dose_bin     g D_rt_2019
+  <chr>           <chr>                    <chr>    <chr>       <chr>    <int>     <dbl>
+1 31028           Conceição do Mato Dentro MG       Central     Low       2014      42.1
+2 35010           São Joaquim da Barra     SP       Central     High      2013      89.0
+3 22001           Baixo Parnaíba Piauiense PI       Marginal    Low       2019      23.1
+4 29021           Salvador                 BA       Marginal    High      2011     104. 
+ Generating Geographic Heatmap...
+Using year/date 2010
+Download status: 27 done; 0 in progress. Total size: 9.88 Mb (100%)... done!             
+   Heatmap figures saved.
+ [7/12] Building Regression Datasets...
+   Main:    data_low=117538 | data_high=132570 rows
+   Region:  data_cen=91910 | data_mar=117161 rows
+   Gender:  low_m=63672 | low_f=53866 | high_m=70818 | high_f=61752
+   Race:    low_w=61047 | low_nw=117538 | high_w=69153 | high_nw=132570
+   Case study figure saved.
+ [NEW] Building cohort-based outcomes...
+   Cohort panel: 7810 microregion-years with both cohorts
+   Young-only: 7812 obs | Old-only: 7810 obs
+   Gap:   low=3904 | high=3526
+   Young: low=3906 | high=3528
+   Old:   low=3904 | high=3526
+
+ SECTION 8D: Building education outcomes...
+   Education panel: 7810 microregion-years
+
+ SECTION 8E: Building extended regression datasets...
+   Extended regression datasets built.
+
+ SECTION 8F: Building birth-cohort outcomes...
+   Birth-cohort panel: 7801 microregion-years with both cohorts
+   Exposed cohort present from year: 2006
+   After filtering to ano >= 2009: 6138 microregion-years
+   Birth-cohort regression datasets built.
+ [8/12] Running Main Wage Models (Callaway & Sant'Anna)...
+   -> Low Dose / Wages...
+   [Low/Wages] 167 treated | 112 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Low/Wages] ATT = 0.0128 (SE = 0.0128) | Pre-trend Wald p = 0.3590
+   -> High Dose / Wages...
+   [High/Wages] 140 treated | 112 not-yet-treated | 3528 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [High/Wages] ATT = -0.0070 (SE = 0.0074) | Pre-trend Wald p = 0.9155
+   -> Central / Wages...
+   -> Marginal / Wages...
+   [Marginal/Wages] 156 treated | 112 not-yet-treated | 3752 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Marginal/Wages] ATT = 0.0136 (SE = 0.0078) | Pre-trend Wald p = 0.3624
+   -> Low Dose / Employment...
+   [Low/Emp] 167 treated | 112 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Low/Emp] ATT = 0.0182 (SE = 0.0332) | Pre-trend Wald p = 0.1199
+   -> High Dose / Employment...
+   [High/Emp] 140 treated | 112 not-yet-treated | 3528 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [High/Emp] ATT = 0.0065 (SE = 0.0396) | Pre-trend Wald p = 0.8093
+   -> Central / Employment...
+   -> Marginal / Employment...
+   [Marginal/Emp] 156 treated | 112 not-yet-treated | 3752 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Marginal/Emp] ATT = -0.0386 (SE = 0.0335) | Pre-trend Wald p = 0.5969
+ [9/12] Running Gender Heterogeneity Models...
+   -> Male / Low Dose...
+   [Male/Low] 167 treated | 112 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Male/Low] ATT = 0.0167 (SE = 0.0169) | Pre-trend Wald p = 0.4182
+   -> Female / Low Dose...
+   [Female/Low] 167 treated | 112 not-yet-treated | 3905 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Female/Low] ATT = -0.0003 (SE = 0.0007) | Pre-trend Wald p = 0.9529
+   -> Male / High Dose...
+   [Male/High] 140 treated | 112 not-yet-treated | 3528 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Male/High] ATT = -0.0083 (SE = 0.0092) | Pre-trend Wald p = 0.9183
+   -> Female / High Dose...
+   [Female/High] 140 treated | 112 not-yet-treated | 3527 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Female/High] ATT = -0.0041 (SE = 0.0073) | Pre-trend Wald p = 0.7358
+   Running Race Heterogeneity Models...
+   -> White / Low Dose...
+   [White/Low] 167 treated | 112 not-yet-treated | 3903 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [White/Low] ATT = -0.0022 (SE = 0.0088) | Pre-trend Wald p = 0.3552
+   -> Non-white / Low Dose...
+   [Nonwhite/Low] 167 treated | 112 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Nonwhite/Low] ATT = 0.0128 (SE = 0.0119) | Pre-trend Wald p = 0.4047
+   -> White / High Dose...
+   [White/High] 140 treated | 112 not-yet-treated | 3525 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [White/High] ATT = -0.0048 (SE = 0.0088) | Pre-trend Wald p = 0.6826
+   -> Non-white / High Dose...
+   [Nonwhite/High] 140 treated | 112 not-yet-treated | 3528 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Nonwhite/High] ATT = -0.0070 (SE = 0.0071) | Pre-trend Wald p = 0.9162
+ [10/12] Running Robustness: Alternative Lag (3 years)...
+   Lag-3 thresholds (2019 cross-section): tau_20=23.6903 | tau_50=54.6043 | tau_75=87.4383
+   -> Low Dose / Lag=3...
+   [Low/Lag3] 167 treated | 112 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Low/Lag3] ATT = -0.0001 (SE = 0.0076) | Pre-trend Wald p = 0.3730
+   -> High Dose / Lag=3...
+   [High/Lag3] 140 treated | 112 not-yet-treated | 3528 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [High/Lag3] ATT = -0.0019 (SE = 0.0059) | Pre-trend Wald p = 0.0986
+ -> All 18 baseline + 2 lag-robustness models completed.
+ [NEW] Running Cohort-Based Models...
+   -> Wage Gap (young - old) / Low Dose...
+   [Gap/Low] 167 treated | 112 not-yet-treated | 3904 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Gap/Low] ATT = -0.0054 (SE = 0.0120) | Pre-trend p = 0.7071
+   -> Wage Gap (young - old) / High Dose...
+   [Gap/High] 140 treated | 112 not-yet-treated | 3526 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Gap/High] ATT = 0.0234 (SE = 0.0273) | Pre-trend p = 0.5390
+   -> Young (22-28) / Low Dose...
+   [Young/Low] 167 treated | 112 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Young/Low] ATT = 0.0095 (SE = 0.0107) | Pre-trend p = 0.6444
+   -> Young (22-28) / High Dose...
+   [Young/High] 140 treated | 112 not-yet-treated | 3528 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Young/High] ATT = -0.0042 (SE = 0.0132) | Pre-trend p = 0.1622
+   -> Old (29-35) / Low Dose [PLACEBO]...
+   [Old/Low] 167 treated | 112 not-yet-treated | 3904 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Old/Low] ATT = 0.0149 (SE = 0.0125) | Pre-trend p = 0.8708
+   -> Old (29-35) / High Dose [PLACEBO]...
+   [Old/High] 140 treated | 112 not-yet-treated | 3526 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Old/High] ATT = -0.0276 (SE = 0.0199) | Pre-trend p = 0.9806
+ -> Cohort-based estimation completed.
+ [NEW] Running Extended Cohort Models...
+   -> College Gap / Low Dose...
+   [CollegeGap/Low] 167 treated | 112 not-yet-treated | 3904 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [CollegeGap/Low] ATT = -0.0003 (SE = 0.0028) | Pre-trend p = 0.9245
+   -> College Gap / High Dose...
+   [CollegeGap/High] 140 treated | 112 not-yet-treated | 3526 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [CollegeGap/High] ATT = 0.0024 (SE = 0.0031) | Pre-trend p = 0.1241
+   -> Wage Gap / Male / Low Dose...
+   [WageGap/Male/Low] 167 treated | 112 not-yet-treated | 3899 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [WageGap/Male/Low] ATT = -0.0066 (SE = 0.0159) | Pre-trend p = 0.5206
+   -> Wage Gap / Male / High Dose...
+   [WageGap/Male/High] 140 treated | 112 not-yet-treated | 3521 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [WageGap/Male/High] ATT = 0.0315 (SE = 0.0325) | Pre-trend p = 0.6049
+   -> Wage Gap / Female / Low Dose...
+   [WageGap/Female/Low] 167 treated | 112 not-yet-treated | 3897 obs
+You have an unbalanced panel. Proceeding as such.
+   [WageGap/Female/Low] ATT = -0.0030 (SE = 0.0024) | Pre-trend p = 0.5950
+   -> Wage Gap / Female / High Dose...
+   [WageGap/Female/High] 140 treated | 112 not-yet-treated | 3520 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [WageGap/Female/High] ATT = 0.0175 (SE = 0.0193) | Pre-trend p = 0.7016
+   -> Wage Gap / White / Low Dose...
+   [WageGap/White/Low] 167 treated | 112 not-yet-treated | 3898 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [WageGap/White/Low] ATT = 0.0135 (SE = 0.0141) | Pre-trend p = 0.5469
+   -> Wage Gap / White / High Dose...
+   [WageGap/White/High] 140 treated | 112 not-yet-treated | 3520 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [WageGap/White/High] ATT = -0.0252 (SE = 0.0103) | Pre-trend p = 0.8509
+   -> Wage Gap / Nonwhite / Low Dose...
+   [WageGap/Nonwhite/Low] 167 treated | 112 not-yet-treated | 3904 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [WageGap/Nonwhite/Low] ATT = -0.0054 (SE = 0.0113) | Pre-trend p = 0.7296
+   -> Wage Gap / Nonwhite / High Dose...
+   [WageGap/Nonwhite/High] 140 treated | 112 not-yet-treated | 3526 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [WageGap/Nonwhite/High] ATT = 0.0234 (SE = 0.0276) | Pre-trend p = 0.5313
+ -> Extended cohort models completed.
+ [NEW] Running Conditional (Doubly-Robust) Wage Models...
+   -> Low Dose / DR Wages...
+   [Low/DR] 167 treated | 112 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Low/DR] ATT = 0.0259 (SE = 0.0145) | Pre-trend Wald p = 0.5351
+   -> High Dose / DR Wages...
+   [High/DR] 140 treated | 112 not-yet-treated | 3528 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   WARNING: High/DR failed: An unexpected error occurred, normally associated with a singular matrix due to not enough control units. Try changing faster_mode=FALSE.
+   WARNING: DR comparison skipped (one or both models failed).
+ [NEW] Running HonestDiD Sensitivity Analysis...
+ [NEW] Running Buffer-Zone Exclusion Test (SUTVA)...
+Using year/date 2010
+Download status: 27 done; 0 in progress. Total size: 9.88 Mb (100%)... done!             
+   13 comparison microregions border High-Dose units (excluded).
+   -> Low Dose / Buffer exclusion...
+   [Low/Buffer] 164 treated | 110 not-yet-treated | 3836 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Low/Buffer] ATT = 0.0129 (SE = 0.0129) | Pre-trend Wald p = 0.4509
+   -> High Dose / Buffer exclusion...
+   [High/Buffer] 140 treated | 110 not-yet-treated | 3500 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [High/Buffer] ATT = -0.0070 (SE = 0.0068) | Pre-trend Wald p = 0.8855
+ [NEW] Placebo Cohort Test (ages 36-50): PLACEHOLDER
+   To run this test, uncomment the block below and re-execute.
+ [NEW] Running TWFE Benchmark...
+   TWFE Wages:  coef=-0.0065 (SE=0.0037)
+   TWFE Employ: coef=-0.0467 (SE=0.0180)
+   TWFE benchmark saved.
+ [NEW] Running Alternative Cutoff Robustness...
+   -> tau_25 / tau_75 cutoffs...
+   Cutoffs q25_75: tau_lo=23.7012 | tau_mid=48.4202 | tau_hi=78.8670
+   [Low/q25_75] 139 treated | 140 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Low/q25_75] ATT = 0.0015 (SE = 0.0135) | Pre-trend Wald p = 0.0802
+   [High/q25_75] 140 treated | 140 not-yet-treated | 3920 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [High/q25_75] ATT = -0.0051 (SE = 0.0094) | Pre-trend Wald p = 0.2192
+   -> tau_33 / tau_67 cutoffs...
+   Cutoffs q33_67: tau_lo=32.6967 | tau_mid=48.4202 | tau_hi=65.8641
+   [Low/q33_67] 93 treated | 186 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [Low/q33_67] ATT = 0.0089 (SE = 0.0117) | Pre-trend Wald p = 0.8433
+   [High/q33_67] 186 treated | 186 not-yet-treated | 5208 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [High/q33_67] ATT = -0.0078 (SE = 0.0063) | Pre-trend Wald p = 0.2238
+ -> All new robustness and sensitivity sections completed.
+
+ SECTION 9M: Computing Implied Returns (Wald LATE)...
+   [High Dose] LATE = 9.598 (SE = 16.560) | RF = 0.0234 | FS = 0.0024
+   Wald estimates saved.
+
+ SECTION 9N: TWFE Benchmark on cohort outcomes...
+   TWFE cohort benchmark saved.
+
+ SECTION 9O: Alternative cutoffs on wage gap...
+   [AltCut/q25_q75/Low] 139 treated | 112 not-yet-treated | 3512 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [AltCut/q25_q75/Low] ATT = -0.0397 (SE = 0.0307) | Pre-trend p = 0.7846
+   [AltCut/q25_q75/High] 140 treated | 112 not-yet-treated | 3526 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [AltCut/q25_q75/High] ATT = 0.0234 (SE = 0.0264) | Pre-trend p = 0.5591
+   [AltCut/q33_q67/Low] 95 treated | 112 not-yet-treated | 2896 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [AltCut/q33_q67/Low] ATT = 0.0048 (SE = 0.0140) | Pre-trend p = 0.0952
+   [AltCut/q33_q67/High] 184 treated | 112 not-yet-treated | 4142 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [AltCut/q33_q67/High] ATT = -0.0049 (SE = 0.0178) | Pre-trend p = 0.6513
+   Alternative cutoff models on wage gap done.
+
+ SECTION 9P: contdid (optional)...
+   contdid SKIPPED: Assertion on 'target_parameter' failed: Must be element of set {'level','slope'}, but is not atomic scalar.
+
+ SECTION 9Q: Continuous dose models (fixest)...
+
+   === CONTINUOUS DOSE RESULTS (POOLED WAGES) ===
+   [Linear] D_rt:post: coef=-0.000129 SE=0.000067 t=-1.932 p=0.0539
+   [Log] I(log(1 + D_rt)):post: coef=-0.002124 SE=0.001072 t=-1.982 p=0.0480
+   [Quadratic] D_rt:post: coef=-0.000256 SE=0.000120 t=-2.139 p=0.0328
+   [Quadratic] post:I(I(D_rt^2)): coef=0.000001 SE=0.000001 t=1.010 p=0.3131
+   [Linear+DR] D_rt:post: coef=0.000063 SE=0.000081 t=0.783 p=0.4337
+   Continuous dose results saved.
+
+# A tibble: 5 × 6
+  Model                   Coef         SE      t      p     N
+  <chr>                  <dbl>      <dbl>  <dbl>  <dbl> <int>
+1 Linear D*post    -0.000129   0.0000669  -1.93  0.0539  7812
+2 Log(1+D)*post    -0.00212    0.00107    -1.98  0.0480  7812
+3 Quad D*post      -0.000256   0.000120   -2.14  0.0328  7812
+4 Quad D^2*post     0.00000119 0.00000117  1.01  0.313   7812
+5 Linear+DR D*post  0.0000631  0.0000806   0.783 0.434   7812
+
+   Young/Log: coef=-0.000875 SE=0.000894 t=-0.979 p=0.3278
+
+   BirthCohort/Log: coef=0.002502 SE=0.001430 t=1.750 p=0.0806
+   BirthCohort/Quad: D coef=0.000465 (t=2.685), D^2 coef=-0.00000422 (t=-2.823)
+
+ SECTION 9R: contdid on pooled wages...
+   contdid panel: 7812 obs, 558 units, dose range [0.0, 226.6]
+   contdid pooled FAILED: Assertion on 'target_parameter' failed: Must be element of set {{'level','slope'}}, but is not atomic scalar.
+   Falling back to fixest continuous dose models (already computed above).
+
+ SECTION 9S: Birth-cohort CS models...
+   -> Birth-cohort gap / Low Dose...
+   [BC_Gap/Low] 167 treated | 112 not-yet-treated | 3069 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [BC_Gap/Low] ATT = 0.0116 (SE = 0.0090) | Pre-trend p = 0.5623
+   -> Birth-cohort gap / High Dose...
+   [BC_Gap/High] 140 treated | 112 not-yet-treated | 2772 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [BC_Gap/High] ATT = 0.0018 (SE = 0.0136) | Pre-trend p = 0.8107
+   -> Birth-cohort exposed / Low Dose...
+   [BC_Exposed/Low] 167 treated | 112 not-yet-treated | 3896 obs
+You have an unbalanced panel. Proceeding as such.
+   [BC_Exposed/Low] ATT = 0.0107 (SE = 0.0101) | Pre-trend p = 0.9684
+   -> Birth-cohort control / Low Dose...
+   [BC_Control/Low] 167 treated | 112 not-yet-treated | 3906 obs
+You have a balanced panel. Setting allow_unbalanced_panel = FALSE.
+   [BC_Control/Low] ATT = -0.0009 (SE = 0.0092) | Pre-trend p = 0.9035
+   Birth-cohort gap figure saved.
+   Birth-cohort decomposition figure saved.
+   Building ATT summary table...
+   Table 4 (ATT summary) saved.
+# A tibble: 45 × 9
+   Model              ATT     SE  CI_low CI_high Pretrend_p N_obs N_treated N_notyet
+   <chr>            <dbl>  <dbl>   <dbl>   <dbl>      <dbl> <int>     <int>    <int>
+ 1 Low/Wages       0.0128 0.0128 -0.0122  0.0379      0.359  3906       167      112
+ 2 High/Wages     -0.007  0.0074 -0.0216  0.0076      0.916  3528       140      112
+ 3 Marginal/Wages  0.0136 0.0078 -0.0017  0.0289      0.362  3752       156      112
+ 4 Low/Emp         0.0182 0.0332 -0.0469  0.0833      0.120  3906       167      112
+ 5 High/Emp        0.0065 0.0396 -0.0711  0.084       0.809  3528       140      112
+ 6 Marginal/Emp   -0.0386 0.0335 -0.104   0.0271      0.597  3752       156      112
+ 7 Male/Low        0.0167 0.0169 -0.0163  0.0498      0.418  3906       167      112
+ 8 Female/Low     -0.0003 0.0007 -0.0017  0.001       0.953  3905       167      112
+ 9 Male/High      -0.0083 0.0092 -0.0264  0.0098      0.918  3528       140      112
+10 Female/High    -0.0041 0.0073 -0.0184  0.0101      0.736  3527       140      112
+# ℹ 35 more rows
+# ℹ Use `print(n = ...)` to see more rows
+ [11/12] Generating Publication Figures...
+   [SKIP] Figure 2: Regional divergence — insufficient units in Central or Marginal subset.
+ [NEW] Generating Cohort Figures...
+   Cohort figures saved.
+ [NEW] Generating extended cohort figures...
+   Extended cohort figures saved.
+   All figures and event-study CSVs saved.
+ [12/12] Saving Audit Log...
+
+=== AUDIT SUMMARY ===
+  Microregions: 558 | Years: 15
+  Bin method: 2019 cross-section (D_rt_2019)
+  Bins: Low = 167 | High = 140
+  Treatment year range: 2010 - 2019
+  --- Headline ATTs (non-white, wages) ---
+  Low:  0.0128 (SE 0.0128) | High: -0.0070 (SE 0.0074)
+  Central/Marginal: skipped (insufficient units)
+  --- Pre-trend p-values (wages, main) ---
+  Low=0.3590 | High=0.9155
+  --- DR estimates ---
+  Low/DR: 0.0259 (SE 0.0145) | High/DR: NA (SE NA)
+  --- HonestDiD breakdown Mbar ---
+  Low/Wages: NA
+  High/Wages: NA
+  Low/DR: NA
+  --- TWFE Wages: -0.0065 (SE 0.0037) ---
+  --- TWFE Employment: -0.0467 (SE 0.0180) ---
+  === COHORT ANALYSIS (Duflo-style) ===
+  Gap/Low                   ATT = -0.0054 (SE = 0.0120) | p_pretrend = 0.7071
+  Gap/High                  ATT = +0.0234 (SE = 0.0273) | p_pretrend = 0.5390
+  Young/Low                 ATT = +0.0095 (SE = 0.0107) | p_pretrend = 0.6444
+  Young/High                ATT = -0.0042 (SE = 0.0132) | p_pretrend = 0.1622
+  Old/Low                   ATT = +0.0149 (SE = 0.0125) | p_pretrend = 0.8708
+  Old/High                  ATT = -0.0276 (SE = 0.0199) | p_pretrend = 0.9806
+  CollegeGap/Low            ATT = -0.0003 (SE = 0.0028) | p_pretrend = 0.9245
+  CollegeGap/High           ATT = +0.0024 (SE = 0.0031) | p_pretrend = 0.1241
+  WageGap/Male/Low          ATT = -0.0066 (SE = 0.0159) | p_pretrend = 0.5206
+  WageGap/Male/High         ATT = +0.0315 (SE = 0.0325) | p_pretrend = 0.6049
+  WageGap/Female/Low        ATT = -0.0030 (SE = 0.0024) | p_pretrend = 0.5950
+  WageGap/Female/High       ATT = +0.0175 (SE = 0.0193) | p_pretrend = 0.7016
+  WageGap/White/Low         ATT = +0.0135 (SE = 0.0141) | p_pretrend = 0.5469
+  WageGap/White/High        ATT = -0.0252 (SE = 0.0103) | p_pretrend = 0.8509
+  WageGap/Nonwhite/Low      ATT = -0.0054 (SE = 0.0113) | p_pretrend = 0.7296
+  WageGap/Nonwhite/High     ATT = +0.0234 (SE = 0.0276) | p_pretrend = 0.5313
+  === IMPLIED RETURNS (Wald LATE) ===
+  High Dose       LATE = 9.598 (SE = 16.560) | RF = 0.0234 | FS = 0.0024
+  --- Models estimated: 45 total ---
+=====================
+
+DONE. All outputs saved to Figures_Final/, Tables_Final/, Documentation_Final/.
+
+
+
+================================================================
+   FINAL RESULTS SUMMARY — RESTRUCTURED FOR THESIS
+================================================================
+
+--- PRIMARY SPECIFICATION: DR (doubly-robust with covariates) ---
+  Low/DR:  ATT = +0.0259 (SE = 0.0145, t = 1.79, p = 0.073)
+
+--- CONTINUOUS DOSE (fixest — all 558 microregions) ---
+  Linear D*post        coef=-0.000129  t=-1.932  p=0.0539  N=7812
+  Log(1+D)*post        coef=-0.002124  t=-1.982  p=0.0480  N=7812
+  Quad D*post          coef=-0.000256  t=-2.139  p=0.0328  N=7812
+  Quad D^2*post        coef=0.000001  t=1.010  p=0.3131  N=7812
+  Linear+DR D*post     coef=0.000063  t=0.783  p=0.4337  N=7812
+  Young/Log(1+D):    coef=-0.000875  t=-0.979  p=0.3278
+  BC_Gap/Log(1+D):   coef=0.002502  t=1.750  p=0.0806
+
+--- CONTDID (Callaway-Goodman-Bacon-SantAnna 2024) ---
+  contdid not available — relying on fixest continuous results
+
+--- BIRTH-COHORT (Duflo-strict: born 1987-93 vs 1975-82) ---
+  BC_Gap/Low           ATT = +0.0116 (SE = 0.0090, t = 1.29)
+  BC_Gap/High          ATT = +0.0018 (SE = 0.0136, t = 0.13)
+  BC_Exposed/Low       ATT = +0.0107 (SE = 0.0101, t = 1.06)
+  BC_Control/Low       ATT = -0.0009 (SE = 0.0092, t = -0.10)
+
+--- TWFE BIAS (validates methodology) ---
+  TWFE/Wages: -0.0065 (SE 0.0037) vs CS/Low: +0.0128 | CS/Low_DR: +0.0259
+  TWFE/Emp: -0.0467*** (SE 0.0180) — WRONG SIGN vs CS/Low: +0.0182
+
+--- BINNED CS (robustness) ---
+  Low/Wages (uncond): +0.0128 (SE 0.0128, t=1.00)
+  High/Wages (uncond): -0.0070 (SE 0.0074, t=-0.94)
+
+================================================================
+   KEY NUMBERS FOR THESIS ABSTRACT
+================================================================
+  1. DR Low-Dose wage effect: +2.6% (p = 0.073)
+  2. Continuous dose (log): coef=-0.002124 (p=0.0480) [N=7812]
+  3. TWFE employment bias: -4.7% (p=0.010) — WRONG SIGN
+  4. Birth-cohort results: [CHECK above]
+  5. Consistent sign pattern: ALL Low-Dose positive, ALL High-Dose <= 0
+================================================================
+
+Updated audit log saved.
+There were 50 or more warnings (use warnings() to see the first 50)
+> print_all_results()
+
+ ======================================================================== 
+  TABLE 1: BIN SUMMARY 
+ ======================================================================== 
+# A tibble: 2 × 5
+  dose_bin N_Regions Avg_Youth_Pop Avg_Density_2019 Median_Treatment_Yr
+  <chr>        <int>         <dbl>            <dbl>               <dbl>
+1 High           140         74598            107.                 2012
+2 Low            167         27689             33.7                2017
+
+ ======================================================================== 
+  TABLE 2: COVARIATE BALANCE 
+ ======================================================================== 
+# A tibble: 2 × 13
+  dose_bin pop_18_24_mean pop_18_24_sd pop_nonwhite_mean pop_nonwhite_sd share_no_formal_inco…¹
+  <chr>             <dbl>        <dbl>             <dbl>           <dbl>                  <dbl>
+1 High             74598.      162230.            33619.          76043.                  0.402
+2 Low              27689.       41479.            18024.          28095.                  0.551
+# ℹ abbreviated name: ¹​share_no_formal_income_mean
+# ℹ 7 more variables: share_no_formal_income_sd <dbl>, avg_hh_income_pc_mw_mean <dbl>,
+#   avg_hh_income_pc_mw_sd <dbl>, literacy_rate_mean <dbl>, literacy_rate_sd <dbl>,
+#   share_in_school_mean <dbl>, share_in_school_sd <dbl>
+
+ ======================================================================== 
+  TABLE 3: CASE STUDY MICROREGIONS 
+ ======================================================================== 
+# A tibble: 4 × 7
+  id_microrregiao nome_microrregiao        sigla_uf region_type dose_bin     g D_rt_2019
+  <chr>           <chr>                    <chr>    <chr>       <chr>    <int>     <dbl>
+1 31028           Conceição do Mato Dentro MG       Central     Low       2014      42.1
+2 35010           São Joaquim da Barra     SP       Central     High      2013      89.0
+3 22001           Baixo Parnaíba Piauiense PI       Marginal    Low       2019      23.1
+4 29021           Salvador                 BA       Marginal    High      2011     104. 
+
+ ======================================================================== 
+  TABLE 4: ATT SUMMARY (ALL MODELS) 
+ ======================================================================== 
+# A tibble: 45 × 9
+   Model                     ATT     SE  CI_low CI_high Pretrend_p N_obs N_treated N_notyet
+   <chr>                   <dbl>  <dbl>   <dbl>   <dbl>      <dbl> <int>     <int>    <int>
+ 1 Low/Wages              0.0128 0.0128 -0.0122  0.0379     0.359   3906       167      112
+ 2 High/Wages            -0.007  0.0074 -0.0216  0.0076     0.916   3528       140      112
+ 3 Marginal/Wages         0.0136 0.0078 -0.0017  0.0289     0.362   3752       156      112
+ 4 Low/Emp                0.0182 0.0332 -0.0469  0.0833     0.120   3906       167      112
+ 5 High/Emp               0.0065 0.0396 -0.0711  0.084      0.809   3528       140      112
+ 6 Marginal/Emp          -0.0386 0.0335 -0.104   0.0271     0.597   3752       156      112
+ 7 Male/Low               0.0167 0.0169 -0.0163  0.0498     0.418   3906       167      112
+ 8 Female/Low            -0.0003 0.0007 -0.0017  0.001      0.953   3905       167      112
+ 9 Male/High             -0.0083 0.0092 -0.0264  0.0098     0.918   3528       140      112
+10 Female/High           -0.0041 0.0073 -0.0184  0.0101     0.736   3527       140      112
+11 White/Low             -0.0022 0.0088 -0.0196  0.0151     0.355   3903       167      112
+12 Nonwhite/Low           0.0128 0.0119 -0.0105  0.0362     0.405   3906       167      112
+13 White/High            -0.0048 0.0088 -0.0221  0.0125     0.683   3525       140      112
+14 Nonwhite/High         -0.007  0.0071 -0.0209  0.0069     0.916   3528       140      112
+15 Low/Lag3              -0.0001 0.0076 -0.0151  0.0149     0.373   3906       167      112
+16 High/Lag3             -0.0019 0.0059 -0.0135  0.0096     0.0986  3528       140      112
+17 Low/DR                 0.0259 0.0145 -0.0025  0.0543     0.535   3906       167      112
+18 Low/Buffer             0.0129 0.0129 -0.0124  0.0382     0.451   3836       164      110
+19 High/Buffer           -0.007  0.0068 -0.0203  0.0062     0.886   3500       140      110
+20 Low/q25_75             0.0015 0.0135 -0.0249  0.0279     0.0802  3906       139      140
+21 High/q25_75           -0.0051 0.0094 -0.0235  0.0132     0.219   3920       140      140
+22 Low/q33_67             0.0089 0.0117 -0.014   0.0317     0.843   3906        93      186
+23 High/q33_67           -0.0078 0.0063 -0.0201  0.0045     0.224   5208       186      186
+24 Gap/Low               -0.0054 0.012  -0.029   0.0182     0.707   3904       167      112
+25 Gap/High               0.0234 0.0273 -0.03    0.0769     0.539   3526       140      112
+26 Young/Low              0.0095 0.0107 -0.0114  0.0304     0.644   3906       167      112
+27 Young/High            -0.0042 0.0132 -0.03    0.0216     0.162   3528       140      112
+28 Old/Low                0.0149 0.0125 -0.0097  0.0395     0.871   3904       167      112
+29 Old/High              -0.0276 0.0199 -0.0667  0.0114     0.981   3526       140      112
+30 CollegeGap/Low        -0.0003 0.0028 -0.0059  0.0052     0.924   3904       167      112
+31 CollegeGap/High        0.0024 0.0031 -0.0037  0.0085     0.124   3526       140      112
+32 WageGap/Male/Low      -0.0066 0.0159 -0.0378  0.0247     0.521   3899       167      112
+33 WageGap/Male/High      0.0315 0.0325 -0.0323  0.0953     0.605   3521       140      112
+34 WageGap/Female/Low    -0.003  0.0024 -0.0077  0.0017     0.595   3897       167      112
+35 WageGap/Female/High    0.0175 0.0193 -0.0204  0.0554     0.702   3520       140      112
+36 WageGap/White/Low      0.0135 0.0141 -0.0142  0.0412     0.547   3898       167      112
+37 WageGap/White/High    -0.0252 0.0103 -0.0453 -0.0051     0.851   3520       140      112
+38 WageGap/Nonwhite/Low  -0.0054 0.0113 -0.0277  0.0168     0.730   3904       167      112
+39 WageGap/Nonwhite/High  0.0234 0.0276 -0.0306  0.0775     0.531   3526       140      112
+40 BC_Gap/Low             0.0116 0.009  -0.006   0.0292     0.562   3069       167      112
+41 BC_Gap/High            0.0018 0.0136 -0.0248  0.0283     0.811   2772       140      112
+42 BC_Exposed/Low         0.0107 0.0101 -0.009   0.0304     0.968   3896       167      112
+43 BC_Control/Low        -0.0009 0.0092 -0.019   0.0171     0.904   3906       167      112
+44 TWFE/Wages            -0.0065 0.0037 -0.0139  0.0008    NA       7812        NA       NA
+45 TWFE/Employment       -0.0467 0.018  -0.082  -0.0113    NA       7812        NA       NA
+
+ ======================================================================== 
+  TABLE 5: TWFE BENCHMARK 
+ ======================================================================== 
+# A tibble: 2 × 4
+  Model               Coef      SE     N
+  <chr>              <dbl>   <dbl> <int>
+1 TWFE/Wages      -0.00652 0.00375  7812
+2 TWFE/Employment -0.0467  0.0180   7812
+
+ ======================================================================== 
+  WALD / LATE ESTIMATES 
+ ======================================================================== 
+# A tibble: 1 × 7
+  Label      LATE SE_LATE RF_ATT  RF_SE  FS_ATT   FS_SE
+  <chr>     <dbl>   <dbl>  <dbl>  <dbl>   <dbl>   <dbl>
+1 High Dose  9.60    16.6 0.0234 0.0273 0.00244 0.00311
+
+ ======================================================================== 
+  TWFE COHORT BENCHMARK 
+ ======================================================================== 
+         Model         Coef          SE    N
+1 TWFE/WageGap  0.007221088 0.004172512 7810
+2   TWFE/Young -0.003260869 0.003336819 7812
+
+ ======================================================================== 
+  CONTINUOUS DOSE (fixest) 
+ ======================================================================== 
+# A tibble: 5 × 6
+  Model                   Coef         SE      t      p     N
+  <chr>                  <dbl>      <dbl>  <dbl>  <dbl> <int>
+1 Linear D*post    -0.000129   0.0000669  -1.93  0.0539  7812
+2 Log(1+D)*post    -0.00212    0.00107    -1.98  0.0480  7812
+3 Quad D*post      -0.000256   0.000120   -2.14  0.0328  7812
+4 Quad D^2*post     0.00000119 0.00000117  1.01  0.313   7812
+5 Linear+DR D*post  0.0000631  0.0000806   0.783 0.434   7812
+
+  Young/Log(1+D): coef=-0.000875 SE=0.000894 t=-0.979 p=0.3278
+  BC_Gap/Log(1+D): coef=0.002502 SE=0.001430 t=1.750 p=0.0806
+  BC_Gap/Quad D:  coef=0.000465 t=2.685 | D^2: coef=-0.00000422 t=-2.823
+
+ ======================================================================== 
+  BIRTH-COHORT CS MODELS (Duflo-strict) 
+ ======================================================================== 
+  BC_Gap/Low           ATT = +0.0116 (SE = 0.0090) | Pre-trend p = 0.5623
+  BC_Gap/High          ATT = +0.0018 (SE = 0.0136) | Pre-trend p = 0.8107
+  BC_Exposed/Low       ATT = +0.0107 (SE = 0.0101) | Pre-trend p = 0.9684
+  BC_Control/Low       ATT = -0.0009 (SE = 0.0092) | Pre-trend p = 0.9035
+
+ ======================================================================== 
+  EVENT-STUDY ESTIMATES (per-period ATTs) 
+ ======================================================================== 
+
+--- es_low_wage ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11 -0.0064800285 0.008593588 -0.027514373 0.014554316
+2  dynamic ATT(-10)        -10  0.0180645193 0.014365715 -0.017098141 0.053227180
+3  dynamic  ATT(-9)         -9 -0.0033512869 0.008008309 -0.022953058 0.016250484
+4  dynamic  ATT(-8)         -8 -0.0008774765 0.006069055 -0.015732576 0.013977623
+5  dynamic  ATT(-7)         -7 -0.0005545878 0.007003448 -0.017696780 0.016587604
+6  dynamic  ATT(-6)         -6 -0.0168557142 0.008652633 -0.038034583 0.004323154
+7  dynamic  ATT(-5)         -5  0.0119636942 0.010306024 -0.013262146 0.037189534
+8  dynamic  ATT(-4)         -4  0.0044615102 0.006854773 -0.012316774 0.021239794
+9  dynamic  ATT(-3)         -3 -0.0107350517 0.006754061 -0.027266825 0.005796722
+10 dynamic  ATT(-2)         -2  0.0053940830 0.005047343 -0.006960193 0.017748359
+11 dynamic  ATT(-1)         -1  0.0029479969 0.007592135 -0.015635112 0.021531106
+12 dynamic   ATT(0)          0  0.0115382462 0.006738731 -0.004956004 0.028032497
+13 dynamic   ATT(1)          1  0.0040159619 0.012736071 -0.027157853 0.035189777
+14 dynamic   ATT(2)          2  0.0130365540 0.019878211 -0.035618927 0.061692035
+15 dynamic   ATT(3)          3  0.0275963779 0.022786323 -0.028177227 0.083369983
+16 dynamic   ATT(4)          4  0.0157694233 0.026868204 -0.049995317 0.081534164
+17 dynamic   ATT(5)          5  0.0297079444 0.026657772 -0.035541726 0.094957615
+18 dynamic   ATT(6)          6  0.0288340557 0.026744170 -0.036627088 0.094295200
+   point.conf.low point.conf.high
+1    -0.023323151    0.0103630940
+2    -0.010091765    0.0462208040
+3    -0.019047285    0.0123447109
+4    -0.012772606    0.0110176535
+5    -0.014281093    0.0131719173
+6    -0.033814563    0.0001031347
+7    -0.008235742    0.0321631308
+8    -0.008973598    0.0178966183
+9    -0.023972768    0.0025026646
+10   -0.004498527    0.0152866934
+11   -0.011932314    0.0178283074
+12   -0.001669424    0.0247459163
+13   -0.020946279    0.0289782030
+14   -0.025924024    0.0519971319
+15   -0.017063994    0.0722567497
+16   -0.036891289    0.0684301361
+17   -0.022540329    0.0819562179
+18   -0.023583554    0.0812516652
+
+--- es_high_wage ---
+      type    term event.time     estimate   std.error    conf.low   conf.high point.conf.low
+1  dynamic ATT(-6)         -6 -0.006733242 0.011497848 -0.03565740 0.022190913   -0.029268610
+2  dynamic ATT(-5)         -5  0.004822790 0.006454657 -0.01141464 0.021060219   -0.007828105
+3  dynamic ATT(-4)         -4  0.004195485 0.007503748 -0.01468105 0.023072025   -0.010511592
+4  dynamic ATT(-3)         -3 -0.006282691 0.006955649 -0.02378042 0.011215041   -0.019915512
+5  dynamic ATT(-2)         -2 -0.002177310 0.006126356 -0.01758886 0.013234240   -0.014184746
+6  dynamic ATT(-1)         -1  0.001123759 0.005830498 -0.01354353 0.015791046   -0.010303807
+7  dynamic  ATT(0)          0 -0.004416701 0.005691348 -0.01873394 0.009900538   -0.015571539
+8  dynamic  ATT(1)          1 -0.008486533 0.012996890 -0.04118170 0.024208633   -0.033959969
+9  dynamic  ATT(2)          2 -0.016717871 0.013820208 -0.05148419 0.018048448   -0.043804981
+10 dynamic  ATT(3)          3  0.014854639 0.043475532 -0.09451305 0.124222326   -0.070355838
+   point.conf.high
+1      0.015802126
+2      0.017473684
+3      0.018902562
+4      0.007350130
+5      0.009830126
+6      0.012551326
+7      0.006738136
+8      0.016986903
+9      0.010369240
+10     0.100065117
+
+--- es_low_emp ---
+      type     term event.time     estimate  std.error     conf.low  conf.high point.conf.low
+1  dynamic ATT(-11)        -11 -0.023285331 0.03250542 -0.109397664 0.06282700   -0.086994784
+2  dynamic ATT(-10)        -10  0.038835211 0.02425241 -0.025413511 0.10308393   -0.008698642
+3  dynamic  ATT(-9)         -9  0.021826905 0.03340349 -0.066664577 0.11031839   -0.043642740
+4  dynamic  ATT(-8)         -8 -0.011924937 0.02481983 -0.077676842 0.05382697   -0.060570906
+5  dynamic  ATT(-7)         -7 -0.027921975 0.01687550 -0.072628017 0.01678407   -0.060997347
+6  dynamic  ATT(-6)         -6 -0.017068057 0.01648566 -0.060741350 0.02660524   -0.049379359
+7  dynamic  ATT(-5)         -5  0.001242462 0.01593482 -0.040971561 0.04345649   -0.029989212
+8  dynamic  ATT(-4)         -4 -0.015071958 0.01682059 -0.059632539 0.02948862   -0.048039712
+9  dynamic  ATT(-3)         -3 -0.024132356 0.01737683 -0.070166498 0.02190179   -0.058190311
+10 dynamic  ATT(-2)         -2  0.016568593 0.01726989 -0.029182254 0.06231944   -0.017279769
+11 dynamic  ATT(-1)         -1  0.035352284 0.01436508 -0.002703232 0.07340780    0.007197245
+12 dynamic   ATT(0)          0  0.009115156 0.01810953 -0.038860048 0.05709036   -0.026378877
+13 dynamic   ATT(1)          1  0.014997484 0.02618216 -0.054363458 0.08435843   -0.036318599
+14 dynamic   ATT(2)          2  0.041868713 0.04674609 -0.081969560 0.16570699   -0.049751945
+15 dynamic   ATT(3)          3  0.026816932 0.05852341 -0.128221429 0.18185529   -0.087886837
+16 dynamic   ATT(4)          4 -0.015730066 0.07889489 -0.224735909 0.19327578   -0.170361203
+17 dynamic   ATT(5)          5  0.028078097 0.21215185 -0.533947877 0.59010407   -0.387731882
+18 dynamic   ATT(6)          6  0.185314752 0.08835006 -0.048739428 0.41936893    0.012151823
+   point.conf.high
+1      0.040424122
+2      0.086369063
+3      0.087296551
+4      0.036721032
+5      0.005153398
+6      0.015243244
+7      0.032474136
+8      0.017895796
+9      0.009925600
+10     0.050416955
+11     0.063507323
+12     0.044609189
+13     0.066313567
+14     0.133489371
+15     0.141520702
+16     0.138901070
+17     0.443888076
+18     0.358477680
+
+--- es_high_emp ---
+      type    term event.time      estimate  std.error    conf.low  conf.high point.conf.low
+1  dynamic ATT(-6)         -6 -0.0108820019 0.02267490 -0.06838273 0.04661873    -0.05532399
+2  dynamic ATT(-5)         -5  0.0227239789 0.01687499 -0.02006889 0.06551685    -0.01035038
+3  dynamic ATT(-4)         -4  0.0002754169 0.01601418 -0.04033455 0.04088538    -0.03111179
+4  dynamic ATT(-3)         -3 -0.0119165159 0.01140784 -0.04084538 0.01701235    -0.03427547
+5  dynamic ATT(-2)         -2  0.0023353508 0.01245520 -0.02924950 0.03392020    -0.02207640
+6  dynamic ATT(-1)         -1  0.0004316123 0.01941770 -0.04880927 0.04967249    -0.03762638
+7  dynamic  ATT(0)          0 -0.0099982656 0.01539941 -0.04904927 0.02905274    -0.04018056
+8  dynamic  ATT(1)          1  0.0169379939 0.04554599 -0.09856097 0.13243696    -0.07233050
+9  dynamic  ATT(2)          2  0.0056075416 0.06617575 -0.16220595 0.17342103    -0.12409455
+10 dynamic  ATT(3)          3  0.0733405086 0.18720545 -0.40138928 0.54807030    -0.29357543
+   point.conf.high
+1       0.03355998
+2       0.05579834
+3       0.03166263
+4       0.01044244
+5       0.02674710
+6       0.03848961
+7       0.02018403
+8       0.10620649
+9       0.13530963
+10      0.44025645
+
+--- es_male_low ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11 -0.0058234249 0.010397199 -0.032466583 0.020819733
+2  dynamic ATT(-10)        -10  0.0218181895 0.019827412 -0.028990196 0.072626575
+3  dynamic  ATT(-9)         -9 -0.0042767392 0.009031986 -0.027421495 0.018868016
+4  dynamic  ATT(-8)         -8 -0.0006663717 0.006872809 -0.018278167 0.016945424
+5  dynamic  ATT(-7)         -7 -0.0019155529 0.008774653 -0.024400885 0.020569779
+6  dynamic  ATT(-6)         -6 -0.0210785868 0.010506470 -0.048001757 0.005844583
+7  dynamic  ATT(-5)         -5  0.0155586691 0.012774107 -0.017175392 0.048292731
+8  dynamic  ATT(-4)         -4  0.0064793443 0.008764204 -0.015979211 0.028937900
+9  dynamic  ATT(-3)         -3 -0.0146679695 0.009073141 -0.037918187 0.008582248
+10 dynamic  ATT(-2)         -2  0.0084755742 0.006259726 -0.007565175 0.024516324
+11 dynamic  ATT(-1)         -1  0.0028118451 0.009286600 -0.020985368 0.026609058
+12 dynamic   ATT(0)          0  0.0153362283 0.008223085 -0.005735693 0.036408150
+13 dynamic   ATT(1)          1  0.0042786373 0.017443714 -0.040421444 0.048978718
+14 dynamic   ATT(2)          2  0.0171585077 0.026958407 -0.051923281 0.086240296
+15 dynamic   ATT(3)          3  0.0379498537 0.031787453 -0.043506521 0.119406229
+16 dynamic   ATT(4)          4  0.0187111764 0.038548748 -0.080071236 0.117493589
+17 dynamic   ATT(5)          5  0.0385572635 0.030982730 -0.040836983 0.117951510
+18 dynamic   ATT(6)          6  0.0381535396 0.033075429 -0.046603317 0.122910396
+   point.conf.low point.conf.high
+1   -0.0262015598    0.0145547100
+2   -0.0170428248    0.0606792037
+3   -0.0219791060    0.0134256277
+4   -0.0141368299    0.0128040865
+5   -0.0191135566    0.0152824508
+6   -0.0416708904   -0.0004862833
+7   -0.0094781202    0.0405954584
+8   -0.0106981794    0.0236568680
+9   -0.0324509996    0.0031150605
+10  -0.0037932627    0.0207444111
+11  -0.0153895567    0.0210132468
+12  -0.0007807225    0.0314531791
+13  -0.0299104140    0.0384676886
+14  -0.0356789986    0.0699960141
+15  -0.0243524087    0.1002521161
+16  -0.0568429811    0.0942653338
+17  -0.0221677709    0.0992822980
+18  -0.0266731107    0.1029801898
+
+--- es_female_low ---
+      type     term event.time      estimate    std.error      conf.low    conf.high
+1  dynamic ATT(-11)        -11 -0.0003899591 0.0028442735 -0.0074415646 0.0066616465
+2  dynamic ATT(-10)        -10  0.0006757156 0.0019465176 -0.0041501475 0.0055015787
+3  dynamic  ATT(-9)         -9  0.0004484935 0.0012504887 -0.0026517544 0.0035487414
+4  dynamic  ATT(-8)         -8 -0.0024894790 0.0034795788 -0.0111161518 0.0061371937
+5  dynamic  ATT(-7)         -7  0.0024263370 0.0028307339 -0.0045917006 0.0094443746
+6  dynamic  ATT(-6)         -6 -0.0015491783 0.0027864609 -0.0084574531 0.0053590965
+7  dynamic  ATT(-5)         -5 -0.0007075679 0.0012553956 -0.0038199811 0.0024048453
+8  dynamic  ATT(-4)         -4 -0.0002160179 0.0009872003 -0.0026635136 0.0022314779
+9  dynamic  ATT(-3)         -3  0.0001957211 0.0004978991 -0.0010386849 0.0014301270
+10 dynamic  ATT(-2)         -2  0.0008268007 0.0005480066 -0.0005318333 0.0021854347
+11 dynamic  ATT(-1)         -1 -0.0002321723 0.0007631666 -0.0021242370 0.0016598924
+12 dynamic   ATT(0)          0  0.0006345060 0.0016196541 -0.0033809874 0.0046499994
+13 dynamic   ATT(1)          1 -0.0003959702 0.0005228899 -0.0016923341 0.0009003937
+14 dynamic   ATT(2)          2 -0.0005631912 0.0007047914 -0.0023105305 0.0011841480
+15 dynamic   ATT(3)          3 -0.0014020221 0.0010899885 -0.0041043532 0.0013003090
+16 dynamic   ATT(4)          4 -0.0006270027 0.0018806935 -0.0052896727 0.0040356673
+17 dynamic   ATT(5)          5 -0.0030321533 0.0028619615 -0.0101276115 0.0040633048
+18 dynamic   ATT(6)          6  0.0012148580 0.0006235815 -0.0003311433 0.0027608594
+   point.conf.low point.conf.high
+1   -5.964633e-03    0.0051847147
+2   -3.139389e-03    0.0044908201
+3   -2.002419e-03    0.0028994063
+4   -9.309328e-03    0.0043303700
+5   -3.121799e-03    0.0079744734
+6   -7.010541e-03    0.0039121847
+7   -3.168098e-03    0.0017529622
+8   -2.150895e-03    0.0017188593
+9   -7.801433e-04    0.0011715854
+10  -2.472726e-04    0.0019008740
+11  -1.727951e-03    0.0012636066
+12  -2.539958e-03    0.0038089696
+13  -1.420816e-03    0.0006288753
+14  -1.944557e-03    0.0008181745
+15  -3.538360e-03    0.0007343161
+16  -4.313094e-03    0.0030590888
+17  -8.641495e-03    0.0025771882
+18  -7.339253e-06    0.0024370553
+
+--- es_male_high ---
+      type    term event.time     estimate   std.error    conf.low  conf.high point.conf.low
+1  dynamic ATT(-6)         -6 -0.007374303 0.013626078 -0.04149852 0.02674992    -0.03408093
+2  dynamic ATT(-5)         -5  0.005978498 0.008419490 -0.01510670 0.02706370    -0.01052340
+3  dynamic ATT(-4)         -4  0.005085317 0.010355462 -0.02084820 0.03101883    -0.01521102
+4  dynamic ATT(-3)         -3 -0.008990421 0.010354784 -0.03492224 0.01694139    -0.02928542
+5  dynamic ATT(-2)         -2 -0.002990459 0.007426945 -0.02158999 0.01560908    -0.01754700
+6  dynamic ATT(-1)         -1  0.002471837 0.007647255 -0.01667943 0.02162310    -0.01251651
+7  dynamic  ATT(0)          0 -0.005527257 0.007946245 -0.02542729 0.01437278    -0.02110161
+8  dynamic  ATT(1)          1 -0.009973064 0.017566753 -0.05396604 0.03401992    -0.04440327
+9  dynamic  ATT(2)          2 -0.019688014 0.016628544 -0.06133140 0.02195538    -0.05227936
+10 dynamic  ATT(3)          3  0.019682904 0.063454980 -0.13922942 0.17859523    -0.10468657
+   point.conf.high
+1       0.01933232
+2       0.02248040
+3       0.02538165
+4       0.01130458
+5       0.01156609
+6       0.01746018
+7       0.01004710
+8       0.02445714
+9       0.01290333
+10      0.14405238
+
+--- es_female_high ---
+      type    term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-6)         -6 -0.0035168772 0.004183267 -0.012730681 0.005696926
+2  dynamic ATT(-5)         -5  0.0006753885 0.002154574 -0.004070142 0.005420919
+3  dynamic ATT(-4)         -4  0.0009585122 0.002030142 -0.003512954 0.005429978
+4  dynamic ATT(-3)         -3  0.0026566517 0.002626355 -0.003127996 0.008441299
+5  dynamic ATT(-2)         -2 -0.0017012740 0.002576269 -0.007375604 0.003973056
+6  dynamic ATT(-1)         -1 -0.0019381351 0.001850632 -0.006014221 0.002137951
+7  dynamic  ATT(0)          0 -0.0005279001 0.002911087 -0.006939680 0.005883880
+8  dynamic  ATT(1)          1 -0.0054129767 0.006417907 -0.019548661 0.008722708
+9  dynamic  ATT(2)          2 -0.0083401378 0.014913601 -0.041187912 0.024507636
+10 dynamic  ATT(3)          3 -0.0100750653 0.021850601 -0.058201845 0.038051715
+   point.conf.low point.conf.high
+1    -0.011715929     0.004682175
+2    -0.003547498     0.004898275
+3    -0.003020494     0.004937518
+4    -0.002490910     0.007804214
+5    -0.006750668     0.003348120
+6    -0.005565306     0.001689036
+7    -0.006233526     0.005177726
+8    -0.017991844     0.007165890
+9    -0.037570259     0.020889984
+10   -0.052901457     0.032751326
+
+--- es_white_low ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11  0.0146108086 0.038881397 -0.081098223 0.110319840
+2  dynamic ATT(-10)        -10 -0.0089998628 0.027329751 -0.076273782 0.058274056
+3  dynamic  ATT(-9)         -9 -0.0122133493 0.011139938 -0.039635016 0.015208317
+4  dynamic  ATT(-8)         -8  0.0143025545 0.007817121 -0.004939786 0.033544895
+5  dynamic  ATT(-7)         -7 -0.0014287383 0.008543957 -0.022460231 0.019602755
+6  dynamic  ATT(-6)         -6 -0.0021588547 0.006318683 -0.017712695 0.013394985
+7  dynamic  ATT(-5)         -5 -0.0048178439 0.008312903 -0.025280584 0.015644896
+8  dynamic  ATT(-4)         -4  0.0046417380 0.009057800 -0.017654613 0.026938089
+9  dynamic  ATT(-3)         -3 -0.0014088362 0.008543316 -0.022438751 0.019621079
+10 dynamic  ATT(-2)         -2  0.0165428084 0.011052206 -0.010662899 0.043748516
+11 dynamic  ATT(-1)         -1 -0.0167558987 0.008942376 -0.038768126 0.005256329
+12 dynamic   ATT(0)          0  0.0019103495 0.007700814 -0.017045695 0.020866394
+13 dynamic   ATT(1)          1 -0.0002010366 0.014710068 -0.036410803 0.036008730
+14 dynamic   ATT(2)          2 -0.0154509857 0.013029260 -0.047523338 0.016621367
+15 dynamic   ATT(3)          3 -0.0044067647 0.016287170 -0.044498669 0.035685139
+16 dynamic   ATT(4)          4 -0.0120962912 0.020472117 -0.062489708 0.038297126
+17 dynamic   ATT(5)          5  0.0474490676 0.047042836 -0.068349864 0.163247999
+18 dynamic   ATT(6)          6  0.0374957557 0.027755735 -0.030826750 0.105818262
+   point.conf.low point.conf.high
+1    -0.061595329    0.0908169467
+2    -0.062565190    0.0445654641
+3    -0.034047227    0.0096205286
+4    -0.001018721    0.0296238303
+5    -0.018174586    0.0153171093
+6    -0.014543246    0.0102255364
+7    -0.021110835    0.0114751474
+8    -0.013111224    0.0223947004
+9    -0.018153427    0.0153357549
+10   -0.005119117    0.0382047337
+11   -0.034282634    0.0007708364
+12   -0.013182969    0.0170036685
+13   -0.029032239    0.0286301660
+14   -0.040987866    0.0100858948
+15   -0.036329031    0.0275155014
+16   -0.052220902    0.0280283200
+17   -0.044753196    0.1396513314
+18   -0.016904485    0.0918959960
+
+--- es_nonwhite_low ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11 -0.0064800285 0.008435241 -0.027409372 0.014449315
+2  dynamic ATT(-10)        -10  0.0180645193 0.014508246 -0.017933035 0.054062073
+3  dynamic  ATT(-9)         -9 -0.0033512869 0.008321656 -0.023998806 0.017296232
+4  dynamic  ATT(-8)         -8 -0.0008774765 0.005521049 -0.014576187 0.012821234
+5  dynamic  ATT(-7)         -7 -0.0005545878 0.007502666 -0.019170045 0.018060870
+6  dynamic  ATT(-6)         -6 -0.0168557142 0.008829402 -0.038763041 0.005051613
+7  dynamic  ATT(-5)         -5  0.0119636942 0.009714255 -0.012139112 0.036066501
+8  dynamic  ATT(-4)         -4  0.0044615102 0.007059303 -0.013053883 0.021976904
+9  dynamic  ATT(-3)         -3 -0.0107350517 0.006666930 -0.027276898 0.005806795
+10 dynamic  ATT(-2)         -2  0.0053940830 0.004869614 -0.006688300 0.017476466
+11 dynamic  ATT(-1)         -1  0.0029479969 0.007418596 -0.015458869 0.021354863
+12 dynamic   ATT(0)          0  0.0115382462 0.006866433 -0.005498602 0.028575095
+13 dynamic   ATT(1)          1  0.0040159619 0.012130377 -0.026081674 0.034113598
+14 dynamic   ATT(2)          2  0.0130365540 0.019427609 -0.035166821 0.061239929
+15 dynamic   ATT(3)          3  0.0275963779 0.022565043 -0.028391532 0.083584288
+16 dynamic   ATT(4)          4  0.0157694233 0.028642824 -0.055298549 0.086837396
+17 dynamic   ATT(5)          5  0.0297079444 0.025594275 -0.033796033 0.093211922
+18 dynamic   ATT(6)          6  0.0288340557 0.025107500 -0.033462146 0.091130257
+   point.conf.low point.conf.high
+1    -0.023012797    0.0100527403
+2    -0.010371119    0.0465001581
+3    -0.019661433    0.0129588596
+4    -0.011698533    0.0099435801
+5    -0.015259543    0.0141503675
+6    -0.034161024    0.0004495961
+7    -0.007075896    0.0310032848
+8    -0.009374469    0.0182974893
+9    -0.023801994    0.0023318911
+10   -0.004150185    0.0149383506
+11   -0.011592185    0.0174881788
+12   -0.001919714    0.0249962069
+13   -0.019759140    0.0277910636
+14   -0.025040859    0.0511139674
+15   -0.016630293    0.0718230488
+16   -0.040369480    0.0719083264
+17   -0.020455913    0.0798718018
+18   -0.020375740    0.0780438512
+
+--- es_white_high ---
+      type    term event.time      estimate   std.error    conf.low   conf.high point.conf.low
+1  dynamic ATT(-6)         -6  0.0083960349 0.013444580 -0.02412541 0.040917478   -0.017954857
+2  dynamic ATT(-5)         -5 -0.0128692224 0.008653139 -0.03380052 0.008062080   -0.029829063
+3  dynamic ATT(-4)         -4  0.0017484809 0.006788663 -0.01467279 0.018169754   -0.011557054
+4  dynamic ATT(-3)         -3  0.0031156405 0.007600249 -0.01526880 0.021500081   -0.011780575
+5  dynamic ATT(-2)         -2 -0.0022240215 0.005781232 -0.01620839 0.011760351   -0.013555028
+6  dynamic ATT(-1)         -1  0.0054702450 0.007067394 -0.01162526 0.022565748   -0.008381593
+7  dynamic  ATT(0)          0 -0.0003328456 0.008799587 -0.02161840 0.020952704   -0.017579719
+8  dynamic  ATT(1)          1 -0.0070926005 0.006078939 -0.02179710 0.007611902   -0.019007102
+9  dynamic  ATT(2)          2 -0.0110968319 0.024168328 -0.06955823 0.047364563   -0.058465884
+10 dynamic  ATT(3)          3 -0.0036542638 0.035110465 -0.08858388 0.081275350   -0.072469510
+   point.conf.high
+1      0.034746927
+2      0.004090618
+3      0.015054016
+4      0.018011856
+5      0.009106985
+6      0.019322083
+7      0.016914028
+8      0.004821901
+9      0.036272220
+10     0.065160983
+
+--- es_nonwhite_high ---
+      type    term event.time     estimate   std.error    conf.low  conf.high point.conf.low
+1  dynamic ATT(-6)         -6 -0.006733242 0.011044036 -0.03475644 0.02128996   -0.028379155
+2  dynamic ATT(-5)         -5  0.004822790 0.006118758 -0.01070298 0.02034856   -0.007169755
+3  dynamic ATT(-4)         -4  0.004195485 0.007711415 -0.01537151 0.02376248   -0.010918611
+4  dynamic ATT(-3)         -3 -0.006282691 0.006828691 -0.02360985 0.01104447   -0.019666679
+5  dynamic ATT(-2)         -2 -0.002177310 0.006256912 -0.01805364 0.01369902   -0.014440632
+6  dynamic ATT(-1)         -1  0.001123759 0.005348199 -0.01244679 0.01469431   -0.009358518
+7  dynamic  ATT(0)          0 -0.004416701 0.005748402 -0.01900273 0.01016933   -0.015683362
+8  dynamic  ATT(1)          1 -0.008486533 0.013501889 -0.04274631 0.02577324   -0.034949749
+9  dynamic  ATT(2)          2 -0.016717871 0.013708678 -0.05150235 0.01806661   -0.043586385
+10 dynamic  ATT(3)          3  0.014854639 0.041337348 -0.09003500 0.11974427   -0.066165075
+   point.conf.high
+1      0.014912671
+2      0.016815334
+3      0.019309581
+4      0.007101298
+5      0.010086012
+6      0.011606036
+7      0.006849960
+8      0.017976682
+9      0.010150644
+10     0.095874353
+
+--- es_low_lag3 ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11  0.0042627584 0.002770305 -0.002664155 0.011189672
+2  dynamic ATT(-10)        -10  0.0132106596 0.017505731 -0.030560937 0.056982256
+3  dynamic  ATT(-9)         -9  0.0044738420 0.008551703 -0.016908965 0.025856649
+4  dynamic  ATT(-8)         -8  0.0017681037 0.004321374 -0.009037125 0.012573333
+5  dynamic  ATT(-7)         -7 -0.0083760883 0.005604410 -0.022389440 0.005637264
+6  dynamic  ATT(-6)         -6 -0.0012306946 0.007263446 -0.019392325 0.016930936
+7  dynamic  ATT(-5)         -5 -0.0023393640 0.011273797 -0.030528538 0.025849810
+8  dynamic  ATT(-4)         -4  0.0137653654 0.008950710 -0.008615127 0.036145858
+9  dynamic  ATT(-3)         -3 -0.0066565956 0.004340050 -0.017508523 0.004195332
+10 dynamic  ATT(-2)         -2 -0.0091980443 0.007559710 -0.028100459 0.009704371
+11 dynamic  ATT(-1)         -1  0.0002541787 0.009969723 -0.024674268 0.025182625
+12 dynamic   ATT(0)          0  0.0022369134 0.004270684 -0.008441570 0.012915397
+13 dynamic   ATT(1)          1 -0.0035482868 0.009207133 -0.026569943 0.019473369
+14 dynamic   ATT(2)          2  0.0042612889 0.013407323 -0.029262586 0.037785164
+15 dynamic   ATT(3)          3 -0.0056192779 0.019336388 -0.053968276 0.042729720
+16 dynamic   ATT(4)          4 -0.0042323567 0.023898526 -0.063988593 0.055523880
+17 dynamic   ATT(5)          5  0.0152844084 0.014749905 -0.021596479 0.052165296
+18 dynamic   ATT(6)          6 -0.0002735715 0.007241991 -0.018381556 0.017834413
+   point.conf.low point.conf.high
+1    -0.001166940     0.009692457
+2    -0.021099943     0.047521263
+3    -0.012287187     0.021234871
+4    -0.006701634     0.010237841
+5    -0.019360530     0.002608353
+6    -0.015466787     0.013005398
+7    -0.024435600     0.019756872
+8    -0.003777705     0.031308435
+9    -0.015162938     0.001849747
+10   -0.024014805     0.005618716
+11   -0.019286119     0.019794476
+12   -0.006133473     0.010607300
+13   -0.021593936     0.014497363
+14   -0.022016582     0.030539160
+15   -0.043517902     0.032279346
+16   -0.051072606     0.042607893
+17   -0.013624875     0.044193692
+18   -0.014467613     0.013920470
+
+--- es_high_lag3 ---
+      type    term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-6)         -6  0.0068533155 0.004473453 -0.004080705 0.017787336
+2  dynamic ATT(-5)         -5 -0.0004178438 0.007854082 -0.019614805 0.018779117
+3  dynamic ATT(-4)         -4  0.0095612886 0.004618717 -0.001727787 0.020850365
+4  dynamic ATT(-3)         -3 -0.0060104415 0.007272084 -0.023784881 0.011763998
+5  dynamic ATT(-2)         -2 -0.0077322705 0.006903768 -0.024606471 0.009141930
+6  dynamic ATT(-1)         -1  0.0079544004 0.006822118 -0.008720232 0.024629033
+7  dynamic  ATT(0)          0 -0.0053873391 0.003765904 -0.014591967 0.003817289
+8  dynamic  ATT(1)          1 -0.0022183520 0.012194115 -0.032023228 0.027586524
+9  dynamic  ATT(2)          2 -0.0059359981 0.009707545 -0.029663195 0.017791199
+10 dynamic  ATT(3)          3  0.0296276343 0.043518562 -0.076740509 0.135995777
+11 dynamic  ATT(4)          4 -0.0563700174 0.048105977 -0.173950728 0.061210693
+   point.conf.low point.conf.high
+1   -0.0019144907     0.015621122
+2   -0.0158115620     0.014975874
+3    0.0005087695     0.018613808
+4   -0.0202634637     0.008242581
+5   -0.0212634062     0.005798865
+6   -0.0054167055     0.021325506
+7   -0.0127683746     0.001993696
+8   -0.0261183783     0.021681674
+9   -0.0249624359     0.013090440
+10  -0.0556671804     0.114922449
+11  -0.1506560006     0.037915966
+
+--- es_mar_wage ---
+      type     term event.time      estimate   std.error      conf.low   conf.high
+1  dynamic ATT(-11)        -11  0.0045813316 0.002151105 -0.0003437539 0.009506417
+2  dynamic ATT(-10)        -10  0.0010484832 0.011542180 -0.0253780410 0.027475007
+3  dynamic  ATT(-9)         -9 -0.0026637989 0.004945129 -0.0139859744 0.008658377
+4  dynamic  ATT(-8)         -8  0.0004240963 0.002883458 -0.0061777563 0.007025949
+5  dynamic  ATT(-7)         -7  0.0064038850 0.008561906 -0.0131991208 0.026006891
+6  dynamic  ATT(-6)         -6 -0.0103330401 0.008063087 -0.0287939708 0.008127891
+7  dynamic  ATT(-5)         -5  0.0086244787 0.009542418 -0.0132234689 0.030472426
+8  dynamic  ATT(-4)         -4 -0.0008353209 0.003362086 -0.0085330226 0.006862381
+9  dynamic  ATT(-3)         -3 -0.0094409539 0.005843004 -0.0228188673 0.003936960
+10 dynamic  ATT(-2)         -2  0.0015240490 0.004420588 -0.0085971562 0.011645254
+11 dynamic  ATT(-1)         -1  0.0055206293 0.005190361 -0.0063630200 0.017404278
+12 dynamic   ATT(0)          0  0.0063254566 0.005044111 -0.0052233424 0.017874256
+13 dynamic   ATT(1)          1  0.0049724303 0.008215666 -0.0138378373 0.023782698
+14 dynamic   ATT(2)          2  0.0145442404 0.011789986 -0.0124496527 0.041538133
+15 dynamic   ATT(3)          3  0.0202843766 0.012344182 -0.0079783802 0.048547133
+16 dynamic   ATT(4)          4  0.0188657691 0.012198645 -0.0090637740 0.046795312
+17 dynamic   ATT(5)          5  0.0307698189 0.020222604 -0.0155310670 0.077070705
+18 dynamic   ATT(6)          6  0.0369864248 0.023543724 -0.0169183671 0.090891217
+19 dynamic   ATT(7)          7  0.0230124694 0.028378154 -0.0419610466 0.087985985
+   point.conf.low point.conf.high
+1    0.0003652439     0.008797419
+2   -0.0215737729     0.023670739
+3   -0.0123560745     0.007028477
+4   -0.0052273772     0.006075570
+5   -0.0103771421     0.023184912
+6   -0.0261364011     0.005470321
+7   -0.0100783163     0.027327274
+8   -0.0074248889     0.005754247
+9   -0.0208930306     0.002011123
+10  -0.0071401437     0.010188242
+11  -0.0046522922     0.015693551
+12  -0.0035608185     0.016211732
+13  -0.0111299784     0.021074839
+14  -0.0085637082     0.037652189
+15  -0.0039097746     0.044478528
+16  -0.0050431367     0.042774675
+17  -0.0088657567     0.070405395
+18  -0.0091584256     0.083131275
+19  -0.0326076911     0.078632630
+
+--- es_mar_emp ---
+      type     term event.time      estimate  std.error    conf.low  conf.high point.conf.low
+1  dynamic ATT(-11)        -11 -0.0021401658 0.02807106 -0.07731338 0.07303304   -0.057158437
+2  dynamic ATT(-10)        -10  0.0233518522 0.02400472 -0.04093185 0.08763555   -0.023696532
+3  dynamic  ATT(-9)         -9  0.0405475186 0.03647555 -0.05713259 0.13822762   -0.030943248
+4  dynamic  ATT(-8)         -8 -0.0150653018 0.02939124 -0.09377391 0.06364330   -0.072671080
+5  dynamic  ATT(-7)         -7 -0.0268373619 0.02143969 -0.08425203 0.03057730   -0.068858389
+6  dynamic  ATT(-6)         -6 -0.0210351544 0.01787650 -0.06890774 0.02683743   -0.056072459
+7  dynamic  ATT(-5)         -5 -0.0109374648 0.01668666 -0.05562369 0.03374876   -0.043642715
+8  dynamic  ATT(-4)         -4  0.0005507239 0.01559194 -0.04120387 0.04230532   -0.030008909
+9  dynamic  ATT(-3)         -3 -0.0125367020 0.01244539 -0.04586497 0.02079157   -0.036929217
+10 dynamic  ATT(-2)         -2  0.0062960417 0.01652085 -0.03794616 0.05053824   -0.026084234
+11 dynamic  ATT(-1)         -1  0.0194570505 0.01494824 -0.02057375 0.05948785   -0.009840958
+12 dynamic   ATT(0)          0 -0.0300994052 0.01538136 -0.07129009 0.01109128   -0.060246316
+13 dynamic   ATT(1)          1 -0.0314327633 0.02342183 -0.09415552 0.03129000   -0.077338715
+14 dynamic   ATT(2)          2 -0.0193463841 0.03697947 -0.11837595 0.07968318   -0.091824805
+15 dynamic   ATT(3)          3 -0.0512088390 0.04582421 -0.17392429 0.07150661   -0.141022644
+16 dynamic   ATT(4)          4 -0.0713272461 0.06056393 -0.23351508 0.09086059   -0.190030363
+17 dynamic   ATT(5)          5 -0.0449213660 0.09468729 -0.29849024 0.20864751   -0.230505048
+18 dynamic   ATT(6)          6  0.0134070978 0.09349846 -0.23697814 0.26379233   -0.169846520
+19 dynamic   ATT(7)          7 -0.1929620418 0.10230631 -0.46693436 0.08101028   -0.393478734
+   point.conf.high
+1     5.287811e-02
+2     7.040024e-02
+3     1.120383e-01
+4     4.254048e-02
+5     1.518367e-02
+6     1.400215e-02
+7     2.176779e-02
+8     3.111036e-02
+9     1.185581e-02
+10    3.867632e-02
+11    4.875506e-02
+12    4.750521e-05
+13    1.447319e-02
+14    5.313204e-02
+15    3.860497e-02
+16    4.737587e-02
+17    1.406623e-01
+18    1.966607e-01
+19    7.554651e-03
+
+--- es_low_dr ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11 -0.0039858413 0.009357997 -0.028748554 0.020776871
+2  dynamic ATT(-10)        -10  0.0180554386 0.015266320 -0.022341615 0.058452493
+3  dynamic  ATT(-9)         -9 -0.0057033090 0.009332602 -0.030398823 0.018992205
+4  dynamic  ATT(-8)         -8  0.0014153127 0.006584961 -0.016009516 0.018840141
+5  dynamic  ATT(-7)         -7 -0.0004830816 0.006470080 -0.017603919 0.016637756
+6  dynamic  ATT(-6)         -6 -0.0176684776 0.008704308 -0.040701428 0.005364473
+7  dynamic  ATT(-5)         -5  0.0114378196 0.009590248 -0.013939465 0.036815104
+8  dynamic  ATT(-4)         -4  0.0029437104 0.007184832 -0.016068471 0.021955891
+9  dynamic  ATT(-3)         -3 -0.0091552031 0.007531130 -0.029083743 0.010773337
+10 dynamic  ATT(-2)         -2  0.0057131291 0.005173637 -0.007977119 0.019403377
+11 dynamic  ATT(-1)         -1  0.0012107366 0.008126200 -0.020292451 0.022713924
+12 dynamic   ATT(0)          0  0.0128936054 0.006502171 -0.004312150 0.030099360
+13 dynamic   ATT(1)          1  0.0031942065 0.012554326 -0.030026489 0.036414902
+14 dynamic   ATT(2)          2  0.0349838869 0.022960453 -0.025773039 0.095740813
+15 dynamic   ATT(3)          3  0.0508798296 0.026645268 -0.019627688 0.121387347
+16 dynamic   ATT(4)          4  0.0791070800 0.050713782 -0.055089463 0.213303623
+17 dynamic   ATT(5)          5  0.0584012752 0.049814053 -0.073414447 0.190216997
+18 dynamic   ATT(6)          6  0.2009633634 0.026526497  0.130770133 0.271156594
+   point.conf.low point.conf.high
+1   -0.0223271779    0.0143554953
+2   -0.0118659991    0.0479768762
+3   -0.0239948723    0.0125882543
+4   -0.0114909728    0.0143215982
+5   -0.0131642061    0.0121980429
+6   -0.0347286074   -0.0006083477
+7   -0.0073587203    0.0302343596
+8   -0.0111383013    0.0170257221
+9   -0.0239159469    0.0056055407
+10  -0.0044270138    0.0158532721
+11  -0.0147163231    0.0171377963
+12   0.0001495839    0.0256376270
+13  -0.0214118195    0.0278002325
+14  -0.0100177749    0.0799855488
+15  -0.0013439366    0.1031035957
+16  -0.0202901063    0.1785042663
+17  -0.0392324755    0.1560350259
+18   0.1489723848    0.2529543420
+
+--- es_low_buffer ---
+      type     term event.time     estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11 -0.006423675 0.008851221 -0.027758792 0.014911442
+2  dynamic ATT(-10)        -10  0.017705530 0.015191782 -0.018912971 0.054324031
+3  dynamic  ATT(-9)         -9 -0.004911396 0.008156124 -0.024571039 0.014748248
+4  dynamic  ATT(-8)         -8 -0.002870657 0.005846437 -0.016962996 0.011221681
+5  dynamic  ATT(-7)         -7  0.001759321 0.006907962 -0.014891735 0.018410377
+6  dynamic  ATT(-6)         -6 -0.013692697 0.008686732 -0.034631327 0.007245932
+7  dynamic  ATT(-5)         -5  0.010266576 0.009881381 -0.013551654 0.034084806
+8  dynamic  ATT(-4)         -4  0.003346109 0.007491417 -0.014711316 0.021403534
+9  dynamic  ATT(-3)         -3 -0.010800645 0.006968738 -0.027598195 0.005996906
+10 dynamic  ATT(-2)         -2  0.005776008 0.004963296 -0.006187597 0.017739613
+11 dynamic  ATT(-1)         -1  0.002966008 0.007609024 -0.015374897 0.021306914
+12 dynamic   ATT(0)          0  0.009656689 0.007031911 -0.007293136 0.026606513
+13 dynamic   ATT(1)          1  0.004456217 0.013230263 -0.027434210 0.036346643
+14 dynamic   ATT(2)          2  0.013700640 0.021079340 -0.037109318 0.064510599
+15 dynamic   ATT(3)          3  0.030422472 0.025119993 -0.030127137 0.090972082
+16 dynamic   ATT(4)          4  0.016005079 0.029438381 -0.054953638 0.086963796
+17 dynamic   ATT(5)          5  0.029800292 0.027137157 -0.035611521 0.095212105
+18 dynamic   ATT(6)          6  0.028834056 0.025057335 -0.031564522 0.089232633
+   point.conf.low point.conf.high
+1    -0.023771749     0.010924400
+2    -0.012069816     0.047480876
+3    -0.020897105     0.011074313
+4    -0.014329463     0.008588148
+5    -0.011780036     0.015298678
+6    -0.030718379     0.003332984
+7    -0.009100575     0.029633727
+8    -0.011336799     0.018029017
+9    -0.024459120     0.002857831
+10   -0.003951874     0.015503890
+11   -0.011947404     0.017879421
+12   -0.004125604     0.023438981
+13   -0.021474623     0.030387056
+14   -0.027614106     0.055015387
+15   -0.018811809     0.079656753
+16   -0.041693087     0.073703245
+17   -0.023387559     0.082988143
+18   -0.020277418     0.077945529
+
+--- es_high_buffer ---
+      type    term event.time     estimate   std.error    conf.low   conf.high point.conf.low
+1  dynamic ATT(-6)         -6 -0.006733242 0.011425206 -0.03571123 0.022244749   -0.029126235
+2  dynamic ATT(-5)         -5  0.004822790 0.006143320 -0.01075864 0.020404221   -0.007217896
+3  dynamic ATT(-4)         -4  0.004195485 0.007837387 -0.01568264 0.024073615   -0.011165511
+4  dynamic ATT(-3)         -3 -0.006282691 0.007506969 -0.02532277 0.012757392   -0.020996079
+5  dynamic ATT(-2)         -2 -0.002177310 0.006263793 -0.01806430 0.013709681   -0.014454120
+6  dynamic ATT(-1)         -1  0.001123759 0.005516657 -0.01286826 0.015115773   -0.009688691
+7  dynamic  ATT(0)          0 -0.004416701 0.005518910 -0.01841443 0.009581026   -0.015233566
+8  dynamic  ATT(1)          1 -0.008486533 0.013519815 -0.04277712 0.025804058   -0.034984884
+9  dynamic  ATT(2)          2 -0.016717871 0.013330019 -0.05052708 0.017091339   -0.042844229
+10 dynamic  ATT(3)          3  0.014854639 0.044045319 -0.09685843 0.126567711   -0.071472601
+   point.conf.high
+1      0.015659751
+2      0.016863475
+3      0.019556481
+4      0.008430697
+5      0.010099500
+6      0.011936209
+7      0.006400163
+8      0.018011817
+9      0.009408487
+10     0.101181879
+
+--- es_low_25_75 ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11 -0.0097852236 0.008593387 -0.030767756 0.011197309
+2  dynamic ATT(-10)        -10  0.0139224943 0.014026493 -0.020326090 0.048171079
+3  dynamic  ATT(-9)         -9 -0.0009203406 0.009367392 -0.023792767 0.021952086
+4  dynamic  ATT(-8)         -8 -0.0118060653 0.006617147 -0.027963199 0.004351068
+5  dynamic  ATT(-7)         -7 -0.0056293511 0.009388751 -0.028553930 0.017295227
+6  dynamic  ATT(-6)         -6 -0.0021368847 0.011485926 -0.030182151 0.025908382
+7  dynamic  ATT(-5)         -5  0.0200008096 0.010791253 -0.006348267 0.046349886
+8  dynamic  ATT(-4)         -4 -0.0070939992 0.006583684 -0.023169426 0.008981428
+9  dynamic  ATT(-3)         -3 -0.0144218242 0.006821904 -0.031078916 0.002235268
+10 dynamic  ATT(-2)         -2 -0.0024267125 0.009821714 -0.026408461 0.021555036
+11 dynamic  ATT(-1)         -1  0.0154878762 0.009811760 -0.008469567 0.039445319
+12 dynamic   ATT(0)          0 -0.0070483183 0.009708132 -0.030752732 0.016656096
+13 dynamic   ATT(1)          1  0.0018671743 0.013967521 -0.032237418 0.035971767
+14 dynamic   ATT(2)          2  0.0004902696 0.024647678 -0.059692137 0.060672676
+15 dynamic   ATT(3)          3  0.0114107528 0.028119755 -0.057249448 0.080070953
+16 dynamic   ATT(4)          4  0.0430875531 0.025135211 -0.018285266 0.104460373
+17 dynamic   ATT(5)          5  0.0346280191 0.029147306 -0.036541162 0.105797200
+   point.conf.low point.conf.high
+1    -0.026627952     0.007057505
+2    -0.013568926     0.041413915
+3    -0.019280092     0.017439411
+4    -0.024775435     0.001163304
+5    -0.024030965     0.012772263
+6    -0.024648887     0.020375117
+7    -0.001149657     0.041151276
+8    -0.019997783     0.005809785
+9    -0.027792511    -0.001051137
+10   -0.021676919     0.016823494
+11   -0.003742820     0.034718573
+12   -0.026075908     0.011979271
+13   -0.025508663     0.029243012
+14   -0.047818291     0.048798830
+15   -0.043702953     0.066524459
+16   -0.006176555     0.092351661
+17   -0.022499652     0.091755690
+
+--- es_high_25_75 ---
+      type    term event.time     estimate   std.error     conf.low   conf.high point.conf.low
+1  dynamic ATT(-7)         -7  0.006030665 0.004327117 -0.005072821 0.017134150  -0.0024503282
+2  dynamic ATT(-6)         -6 -0.002121754 0.008534176 -0.024020655 0.019777148  -0.0188484321
+3  dynamic ATT(-5)         -5  0.008511233 0.004818045 -0.003851985 0.020874451  -0.0009319611
+4  dynamic ATT(-4)         -4 -0.005886988 0.007670253 -0.025569042 0.013795066  -0.0209204077
+5  dynamic ATT(-3)         -3 -0.008024452 0.006658813 -0.025111126 0.009062221  -0.0210754855
+6  dynamic ATT(-2)         -2  0.005988115 0.004893256 -0.006568097 0.018544326  -0.0036024905
+7  dynamic ATT(-1)         -1 -0.005127325 0.003910812 -0.015162562 0.004907911  -0.0127923751
+8  dynamic  ATT(0)          0  0.003643850 0.005389933 -0.010186848 0.017474548  -0.0069202251
+9  dynamic  ATT(1)          1 -0.007603258 0.009001897 -0.030702341 0.015495825  -0.0252466514
+10 dynamic  ATT(2)          2 -0.008315491 0.022774720 -0.066755970 0.050124987  -0.0529531223
+11 dynamic  ATT(3)          3 -0.023208157 0.012474856 -0.055218936 0.008802622  -0.0476584246
+12 dynamic  ATT(4)          4 -0.003866600 0.061453316 -0.161557286 0.153824085  -0.1243128874
+   point.conf.high
+1      0.014511657
+2      0.014604925
+3      0.017954427
+4      0.009146432
+5      0.005026581
+6      0.015578720
+7      0.002537725
+8      0.014207925
+9      0.010040135
+10     0.036322139
+11     0.001242111
+12     0.116579687
+
+--- es_low_33_67 ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11  0.0123093901 0.020704585 -0.035631492 0.060250272
+2  dynamic ATT(-10)        -10 -0.0098578123 0.015139574 -0.044913068 0.025197443
+3  dynamic  ATT(-9)         -9 -0.0092066424 0.007643573 -0.026905119 0.008491834
+4  dynamic  ATT(-8)         -8 -0.0159517290 0.013871776 -0.048071435 0.016167977
+5  dynamic  ATT(-7)         -7  0.0187015243 0.016922797 -0.020482735 0.057885783
+6  dynamic  ATT(-6)         -6  0.0078168294 0.013996804 -0.024592376 0.040226034
+7  dynamic  ATT(-5)         -5 -0.0049978172 0.008433134 -0.024524500 0.014528866
+8  dynamic  ATT(-4)         -4  0.0039942809 0.014406871 -0.029364423 0.037352985
+9  dynamic  ATT(-3)         -3 -0.0076813454 0.014439061 -0.041114583 0.025751892
+10 dynamic  ATT(-2)         -2  0.0052640473 0.018394878 -0.037328773 0.047856867
+11 dynamic  ATT(-1)         -1  0.0005071773 0.010390726 -0.023552256 0.024566611
+12 dynamic   ATT(0)          0  0.0072306831 0.009221742 -0.014122001 0.028583367
+13 dynamic   ATT(1)          1  0.0019546765 0.022765537 -0.050758282 0.054667635
+14 dynamic   ATT(2)          2  0.0331413506 0.016266266 -0.004522730 0.070805431
+15 dynamic   ATT(3)          3  0.0410697423 0.020982214 -0.007513983 0.089653468
+   point.conf.low point.conf.high
+1   -0.0282708505     0.052889631
+2   -0.0395308316     0.019815207
+3   -0.0241877697     0.005774485
+4   -0.0431399107     0.011236453
+5   -0.0144665486     0.051869597
+6   -0.0196164026     0.035250061
+7   -0.0215264556     0.011530821
+8   -0.0242426680     0.032231230
+9   -0.0359813842     0.020618693
+10  -0.0307892504     0.041317345
+11  -0.0198582722     0.020872627
+12  -0.0108436000     0.025304966
+13  -0.0426649561     0.046574309
+14   0.0012600543     0.065022647
+15  -0.0000546423     0.082194127
+
+--- es_high_33_67 ---
+      type    term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-8)         -8 -0.0102128708 0.009216278 -0.034446782 0.014021041
+2  dynamic ATT(-7)         -7  0.0116280912 0.006874294 -0.006447648 0.029703830
+3  dynamic ATT(-6)         -6  0.0075739332 0.005306184 -0.006378508 0.021526374
+4  dynamic ATT(-5)         -5 -0.0096258659 0.006832485 -0.027591668 0.008339936
+5  dynamic ATT(-4)         -4  0.0008254736 0.005400179 -0.013374125 0.015025073
+6  dynamic ATT(-3)         -3  0.0043370360 0.004586949 -0.007724201 0.016398273
+7  dynamic ATT(-2)         -2 -0.0017932884 0.003317035 -0.010515326 0.006928749
+8  dynamic ATT(-1)         -1 -0.0077771806 0.007501215 -0.027501388 0.011947027
+9  dynamic  ATT(0)          0  0.0018580761 0.005471983 -0.012530330 0.016246482
+10 dynamic  ATT(1)          1 -0.0121970071 0.007455085 -0.031799918 0.007405903
+11 dynamic  ATT(2)          2 -0.0154310551 0.012675701 -0.048761407 0.017899297
+12 dynamic  ATT(3)          3 -0.0148750573 0.024029687 -0.078060357 0.048310243
+13 dynamic  ATT(4)          4 -0.0233166584 0.032059852 -0.107617021 0.060983704
+   point.conf.low point.conf.high
+1    -0.028276445     0.007850703
+2    -0.001845278     0.025101461
+3    -0.002825995     0.017973862
+4    -0.023017290     0.003765559
+5    -0.009758683     0.011409630
+6    -0.004653219     0.013327291
+7    -0.008294557     0.004707980
+8    -0.022479292     0.006924931
+9    -0.008866814     0.012582966
+10   -0.026808706     0.002414692
+11   -0.040274972     0.009412861
+12   -0.061972379     0.032222265
+13   -0.086152813     0.039519497
+
+--- es_gap_low ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11  0.0095155079 0.011952488 -0.021966376 0.040997392
+2  dynamic ATT(-10)        -10 -0.0114175196 0.013476480 -0.046913475 0.024078436
+3  dynamic  ATT(-9)         -9  0.0007450029 0.005346468 -0.013337161 0.014827167
+4  dynamic  ATT(-8)         -8 -0.0109988674 0.012535554 -0.044016501 0.022018766
+5  dynamic  ATT(-7)         -7  0.0089807577 0.010652820 -0.019077905 0.037039421
+6  dynamic  ATT(-6)         -6 -0.0070606354 0.009130544 -0.031109748 0.016988477
+7  dynamic  ATT(-5)         -5  0.0154364990 0.009150705 -0.008665715 0.039538713
+8  dynamic  ATT(-4)         -4 -0.0009316965 0.008189513 -0.022502210 0.020638817
+9  dynamic  ATT(-3)         -3 -0.0012741228 0.010276416 -0.028341369 0.025793123
+10 dynamic  ATT(-2)         -2 -0.0141233032 0.009766607 -0.039847754 0.011601148
+11 dynamic  ATT(-1)         -1  0.0010351434 0.008394840 -0.021076185 0.023146472
+12 dynamic   ATT(0)          0 -0.0051583579 0.008722043 -0.028131513 0.017814797
+13 dynamic   ATT(1)          1 -0.0056928343 0.013263712 -0.040628376 0.029242707
+14 dynamic   ATT(2)          2  0.0008770038 0.014793122 -0.038086881 0.039840888
+15 dynamic   ATT(3)          3 -0.0131572702 0.021532074 -0.069871006 0.043556466
+16 dynamic   ATT(4)          4  0.0033484173 0.030940079 -0.078145242 0.084842077
+17 dynamic   ATT(5)          5 -0.0289777177 0.022102181 -0.087193071 0.029237635
+18 dynamic   ATT(6)          6 -0.0608714953 0.026410461 -0.130434507 0.008691517
+   point.conf.low point.conf.high
+1    -0.013910938     0.032941954
+2    -0.037830935     0.014995895
+3    -0.009733882     0.011223888
+4    -0.035568102     0.013570367
+5    -0.011898385     0.029859900
+6    -0.024956173     0.010834902
+7    -0.002498553     0.033371551
+8    -0.016982847     0.015119454
+9    -0.021415527     0.018867282
+10   -0.033265501     0.005018895
+11   -0.015418441     0.017488728
+12   -0.022253249     0.011936533
+13   -0.031689232     0.020303563
+14   -0.028116983     0.029870991
+15   -0.055359359     0.029044818
+16   -0.057293023     0.063989857
+17   -0.072297196     0.014341761
+18   -0.112635047    -0.009107944
+
+--- es_gap_high ---
+      type    term event.time     estimate   std.error    conf.low   conf.high point.conf.low
+1  dynamic ATT(-6)         -6 -0.028419908 0.014710344 -0.06508734 0.008247527    -0.05725165
+2  dynamic ATT(-5)         -5  0.005176615 0.013737920 -0.02906693 0.039420157    -0.02174921
+3  dynamic ATT(-4)         -4  0.007345329 0.011981380 -0.02251981 0.037210466    -0.01613774
+4  dynamic ATT(-3)         -3 -0.007653319 0.009642897 -0.03168949 0.016382849    -0.02655305
+5  dynamic ATT(-2)         -2  0.005190174 0.011609174 -0.02374719 0.034127541    -0.01756339
+6  dynamic ATT(-1)         -1 -0.008265093 0.011896997 -0.03791989 0.021389709    -0.03158278
+7  dynamic  ATT(0)          0  0.017071891 0.014589124 -0.01929339 0.053437169    -0.01152227
+8  dynamic  ATT(1)          1  0.030357690 0.029642902 -0.04353108 0.104246455    -0.02774133
+9  dynamic  ATT(2)          2  0.006792256 0.031950446 -0.07284836 0.086432873    -0.05582947
+10 dynamic  ATT(3)          3  0.086638559 0.152633016 -0.29381896 0.467096080    -0.21251665
+   point.conf.high
+1     0.0004118371
+2     0.0321024441
+3     0.0308284012
+4     0.0112464123
+5     0.0279437370
+6     0.0150525922
+7     0.0456660490
+8     0.0884567107
+9     0.0694139800
+10    0.3857937725
+
+--- es_young_low ---
+      type     term event.time      estimate   std.error    conf.low   conf.high
+1  dynamic ATT(-11)        -11  9.890452e-03 0.012037216 -0.01810755 0.037888456
+2  dynamic ATT(-10)        -10  9.736433e-03 0.012701529 -0.01980673 0.039279598
+3  dynamic  ATT(-9)         -9 -6.097799e-07 0.008293440 -0.01929077 0.019289546
+4  dynamic  ATT(-8)         -8 -1.330181e-02 0.011344637 -0.03968891 0.013085284
+5  dynamic  ATT(-7)         -7  5.502014e-03 0.007249624 -0.01136027 0.022364301
+6  dynamic  ATT(-6)         -6 -9.624664e-03 0.006953929 -0.02579918 0.006549850
+7  dynamic  ATT(-5)         -5  1.263258e-02 0.009432086 -0.00930601 0.034571175
+8  dynamic  ATT(-4)         -4  4.030218e-03 0.006919360 -0.01206389 0.020124326
+9  dynamic  ATT(-3)         -3 -5.068938e-03 0.006888924 -0.02109225 0.010954378
+10 dynamic  ATT(-2)         -2 -3.091395e-03 0.007477714 -0.02048421 0.014301418
+11 dynamic  ATT(-1)         -1 -2.593650e-03 0.005088405 -0.01442904 0.009241743
+12 dynamic   ATT(0)          0  7.032431e-03 0.009175541 -0.01430945 0.028374311
+13 dynamic   ATT(1)          1  5.520860e-03 0.013022683 -0.02476929 0.035811014
+14 dynamic   ATT(2)          2  1.678574e-02 0.014445157 -0.01681302 0.050384506
+15 dynamic   ATT(3)          3  6.981107e-03 0.013409673 -0.02420917 0.038171381
+16 dynamic   ATT(4)          4  1.841984e-02 0.017603410 -0.02252488 0.059364548
+17 dynamic   ATT(5)          5  1.491183e-02 0.018581262 -0.02830732 0.058130985
+18 dynamic   ATT(6)          6  4.659759e-03 0.004169056 -0.00503727 0.014356788
+   point.conf.low point.conf.high
+1    -0.013702058     0.033482962
+2    -0.015158107     0.034630973
+3    -0.016255454     0.016254235
+4    -0.035536893     0.008933267
+5    -0.008706987     0.019711015
+6    -0.023254115     0.004004786
+7    -0.005853966     0.031119131
+8    -0.009531479     0.017591914
+9    -0.018570981     0.008433105
+10   -0.017747445     0.011564654
+11   -0.012566741     0.007379440
+12   -0.010951298     0.025016160
+13   -0.020003130     0.031044850
+14   -0.011526245     0.045097731
+15   -0.019301369     0.033263583
+16   -0.016082215     0.052921886
+17   -0.021506771     0.051330439
+18   -0.003511440     0.012830958
+
+--- es_young_high ---
+      type    term event.time      estimate   std.error    conf.low   conf.high point.conf.low
+1  dynamic ATT(-6)         -6 -0.0219067383 0.010608744 -0.04530628 0.001492804   -0.042699495
+2  dynamic ATT(-5)         -5  0.0119617581 0.010828877 -0.01192333 0.035846843   -0.009262450
+3  dynamic ATT(-4)         -4 -0.0009251350 0.008314846 -0.01926506 0.017414791   -0.017221934
+4  dynamic ATT(-3)         -3 -0.0102888187 0.005835378 -0.02315982 0.002582185   -0.021725950
+5  dynamic ATT(-2)         -2  0.0040994462 0.007176123 -0.01172882 0.019927710   -0.009965497
+6  dynamic ATT(-1)         -1 -0.0040286541 0.013280671 -0.03332162 0.025264316   -0.030058292
+7  dynamic  ATT(0)          0 -0.0009670017 0.008409241 -0.01951513 0.017581130   -0.017448811
+8  dynamic  ATT(1)          1 -0.0068464301 0.013421409 -0.03644982 0.022756962   -0.033151908
+9  dynamic  ATT(2)          2 -0.0171039382 0.016775858 -0.05410619 0.019898310   -0.049984015
+10 dynamic  ATT(3)          3  0.0311558594 0.090494286 -0.16844598 0.230757697   -0.146209682
+   point.conf.high
+1     -0.001113981
+2      0.033185967
+3      0.015371664
+4      0.001148313
+5      0.018164390
+6      0.022000984
+7      0.015514807
+8      0.019459048
+9      0.015776139
+10     0.208521401
+
+--- es_old_low ---
+      type     term event.time      estimate   std.error      conf.low  conf.high
+1  dynamic ATT(-11)        -11  0.0003749438 0.007615949 -0.0196055734 0.02035546
+2  dynamic ATT(-10)        -10  0.0211539521 0.013969889 -0.0154961890 0.05780409
+3  dynamic  ATT(-9)         -9 -0.0007456127 0.008635803 -0.0234017278 0.02191050
+4  dynamic  ATT(-8)         -8 -0.0023029456 0.008992056 -0.0258936933 0.02128780
+5  dynamic  ATT(-7)         -7 -0.0034787434 0.009376325 -0.0280776252 0.02112014
+6  dynamic  ATT(-6)         -6 -0.0025640290 0.008504539 -0.0248757707 0.01974771
+7  dynamic  ATT(-5)         -5 -0.0028039164 0.008260637 -0.0244757794 0.01886795
+8  dynamic  ATT(-4)         -4  0.0049619140 0.006632196 -0.0124377179 0.02236155
+9  dynamic  ATT(-3)         -3 -0.0037948155 0.008556846 -0.0262437843 0.01865415
+10 dynamic  ATT(-2)         -2  0.0110319080 0.007046294 -0.0074541144 0.02951793
+11 dynamic  ATT(-1)         -1 -0.0036287937 0.007439508 -0.0231464155 0.01588883
+12 dynamic   ATT(0)          0  0.0121907888 0.007855052 -0.0084170172 0.03279859
+13 dynamic   ATT(1)          1  0.0112136945 0.011725602 -0.0195485372 0.04197593
+14 dynamic   ATT(2)          2  0.0159087394 0.015424371 -0.0245572494 0.05637473
+15 dynamic   ATT(3)          3  0.0201383769 0.024969893 -0.0453703835 0.08564714
+16 dynamic   ATT(4)          4  0.0150714181 0.032065885 -0.0690537475 0.09919658
+17 dynamic   ATT(5)          5  0.0438895521 0.027206999 -0.0274882767 0.11526738
+18 dynamic   ATT(6)          6  0.0655312544 0.025289328 -0.0008155452 0.13187805
+   point.conf.low point.conf.high
+1    -0.014552042      0.01530193
+2    -0.006226527      0.04853443
+3    -0.017671476      0.01618025
+4    -0.019927052      0.01532116
+5    -0.021856003      0.01489852
+6    -0.019232619      0.01410456
+7    -0.018994468      0.01338664
+8    -0.008036952      0.01796078
+9    -0.020565925      0.01297629
+10   -0.002778575      0.02484239
+11   -0.018209961      0.01095237
+12   -0.003204830      0.02758641
+13   -0.011768063      0.03419545
+14   -0.014322472      0.04613995
+15   -0.028801715      0.06907847
+16   -0.047776562      0.07791940
+17   -0.009435186      0.09721429
+18    0.015965083      0.11509743
+
+--- es_old_high ---
+      type    term event.time     estimate   std.error    conf.low  conf.high point.conf.low
+1  dynamic ATT(-6)         -6  0.006513170 0.017576305 -0.03891859 0.05194493    -0.02793576
+2  dynamic ATT(-5)         -5  0.006785143 0.011114014 -0.02194269 0.03551298    -0.01499792
+3  dynamic ATT(-4)         -4 -0.008270464 0.012349782 -0.04019255 0.02365162    -0.03247559
+4  dynamic ATT(-3)         -3 -0.002635499 0.009122778 -0.02621633 0.02094533    -0.02051582
+5  dynamic ATT(-2)         -2 -0.001090727 0.008613160 -0.02335428 0.02117283    -0.01797221
+6  dynamic ATT(-1)         -1  0.004236439 0.008997848 -0.01902147 0.02749435    -0.01339902
+7  dynamic  ATT(0)          0 -0.018038893 0.012920586 -0.05143641 0.01535862    -0.04336278
+8  dynamic  ATT(1)          1 -0.037204120 0.021591556 -0.09301462 0.01860638    -0.07952279
+9  dynamic  ATT(2)          2 -0.023896194 0.026612834 -0.09268584 0.04489345    -0.07605639
+10 dynamic  ATT(3)          3 -0.055482700 0.063572077 -0.21980570 0.10884030    -0.18008168
+   point.conf.high
+1      0.040962095
+2      0.028568209
+3      0.015934664
+4      0.015244816
+5      0.015790757
+6      0.021871897
+7      0.007284990
+8      0.005114553
+9      0.028264002
+10     0.069116281
+
+--- es_college_low ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11 -0.0059483815 0.010689189 -0.034092508 0.022195745
+2  dynamic ATT(-10)        -10 -0.0033107343 0.004234068 -0.014458833 0.007837364
+3  dynamic  ATT(-9)         -9  0.0035138273 0.004068401 -0.007198077 0.014225732
+4  dynamic  ATT(-8)         -8  0.0004991638 0.003926271 -0.009838520 0.010836847
+5  dynamic  ATT(-7)         -7  0.0001184255 0.002236220 -0.005769435 0.006006286
+6  dynamic  ATT(-6)         -6 -0.0027245738 0.002251123 -0.008651673 0.003202526
+7  dynamic  ATT(-5)         -5 -0.0011926768 0.002509236 -0.007799376 0.005414022
+8  dynamic  ATT(-4)         -4 -0.0027208704 0.002856716 -0.010242466 0.004800725
+9  dynamic  ATT(-3)         -3 -0.0004985187 0.002755278 -0.007753034 0.006755997
+10 dynamic  ATT(-2)         -2  0.0022694479 0.002666868 -0.004752289 0.009291185
+11 dynamic  ATT(-1)         -1  0.0011189327 0.002204708 -0.004685959 0.006923824
+12 dynamic   ATT(0)          0  0.0014481441 0.002073990 -0.004012572 0.006908860
+13 dynamic   ATT(1)          1  0.0007750588 0.002488691 -0.005777547 0.007327664
+14 dynamic   ATT(2)          2 -0.0006613544 0.003775026 -0.010600819 0.009278110
+15 dynamic   ATT(3)          3 -0.0031697488 0.005237303 -0.016959317 0.010619820
+16 dynamic   ATT(4)          4 -0.0038531693 0.008831846 -0.027106998 0.019400659
+17 dynamic   ATT(5)          5 -0.0108844898 0.013017933 -0.045160085 0.023391106
+18 dynamic   ATT(6)          6  0.0571503842 0.005806310  0.041862647 0.072438121
+   point.conf.low point.conf.high
+1    -0.026898808     0.015002045
+2    -0.011609354     0.004987886
+3    -0.004460091     0.011487746
+4    -0.007196185     0.008194513
+5    -0.004264485     0.004501336
+6    -0.007136694     0.001687546
+7    -0.006110689     0.003725335
+8    -0.008319930     0.002878189
+9    -0.005898764     0.004901727
+10   -0.002957518     0.007496414
+11   -0.003202216     0.005440082
+12   -0.002616801     0.005513089
+13   -0.004102687     0.005652804
+14   -0.008060270     0.006737561
+15   -0.013434674     0.007095176
+16   -0.021163269     0.013456930
+17   -0.036399169     0.014630189
+18    0.045770226     0.068530542
+
+--- es_college_high ---
+      type    term event.time      estimate   std.error     conf.low    conf.high
+1  dynamic ATT(-6)         -6  3.792998e-04 0.002409409 -0.005579723  0.006338322
+2  dynamic ATT(-5)         -5 -6.066806e-03 0.002147616 -0.011378354 -0.000755257
+3  dynamic ATT(-4)         -4  1.905186e-03 0.002070237 -0.003214987  0.007025360
+4  dynamic ATT(-3)         -3  1.940491e-03 0.001721192 -0.002316412  0.006197395
+5  dynamic ATT(-2)         -2  3.720333e-04 0.001497600 -0.003331876  0.004075942
+6  dynamic ATT(-1)         -1 -2.451722e-05 0.001682217 -0.004185027  0.004135992
+7  dynamic  ATT(0)          0  7.935884e-04 0.001718145 -0.003455780  0.005042957
+8  dynamic  ATT(1)          1  2.516806e-03 0.003416864 -0.005933884  0.010967496
+9  dynamic  ATT(2)          2  5.505997e-03 0.006718538 -0.011110494  0.022122488
+10 dynamic  ATT(3)          3  4.622074e-03 0.013442436 -0.028624166  0.037868314
+   point.conf.low point.conf.high
+1    -0.004343054     0.005101654
+2    -0.010276056    -0.001857556
+3    -0.002152404     0.005962777
+4    -0.001432983     0.005313965
+5    -0.002563208     0.003307275
+6    -0.003321602     0.003272567
+7    -0.002573914     0.004161091
+8    -0.004180123     0.009213735
+9    -0.007662095     0.018674089
+10   -0.021724616     0.030968765
+
+--- es_gap_male_low ---
+      type     term event.time      estimate   std.error    conf.low  conf.high point.conf.low
+1  dynamic ATT(-11)        -11  1.781324e-03 0.020798155 -0.05222569 0.05578834   -0.038982311
+2  dynamic ATT(-10)        -10 -1.104394e-02 0.015233038 -0.05059989 0.02851202   -0.040900144
+3  dynamic  ATT(-9)         -9  4.048617e-03 0.006810884 -0.01363735 0.02173459   -0.009300471
+4  dynamic  ATT(-8)         -8 -1.842176e-02 0.016747077 -0.06190926 0.02506573   -0.051245431
+5  dynamic  ATT(-7)         -7  1.703790e-02 0.013617610 -0.01832324 0.05239904   -0.009652122
+6  dynamic  ATT(-6)         -6 -1.078725e-02 0.011805926 -0.04144395 0.01986945   -0.033926436
+7  dynamic  ATT(-5)         -5  2.314429e-02 0.012783019 -0.01004965 0.05633823   -0.001909962
+8  dynamic  ATT(-4)         -4 -4.889838e-03 0.009795969 -0.03032724 0.02054757   -0.024089585
+9  dynamic  ATT(-3)         -3  6.711745e-04 0.013757954 -0.03505440 0.03639675   -0.026293920
+10 dynamic  ATT(-2)         -2 -2.181721e-02 0.013725749 -0.05745915 0.01382474   -0.048719180
+11 dynamic  ATT(-1)         -1  2.032255e-03 0.012343953 -0.03002155 0.03408606   -0.022161449
+12 dynamic   ATT(0)          0 -5.621456e-03 0.012655225 -0.03848355 0.02724064   -0.030425242
+13 dynamic   ATT(1)          1 -7.034836e-03 0.018449998 -0.05494434 0.04087467   -0.043196167
+14 dynamic   ATT(2)          2 -3.833361e-05 0.020269862 -0.05267352 0.05259685   -0.039766532
+15 dynamic   ATT(3)          3 -1.715030e-02 0.026246224 -0.08530443 0.05100383   -0.068591952
+16 dynamic   ATT(4)          4  7.529456e-03 0.041144835 -0.09931222 0.11437113   -0.073112939
+17 dynamic   ATT(5)          5 -3.652478e-02 0.031344912 -0.11791879 0.04486922   -0.097959678
+18 dynamic   ATT(6)          6 -8.019372e-02 0.035189745 -0.17157169 0.01118424   -0.149164357
+   point.conf.high
+1      0.042544960
+2      0.018812270
+3      0.017397704
+4      0.014401905
+5      0.043727928
+6      0.012351942
+7      0.048198550
+8      0.014309908
+9      0.027636269
+10     0.005084766
+11     0.026225959
+12     0.019182330
+13     0.029126496
+14     0.039689865
+15     0.034291354
+16     0.088171851
+17     0.024910117
+18    -0.011223090
+
+--- es_gap_male_high ---
+      type    term event.time     estimate  std.error    conf.low  conf.high point.conf.low
+1  dynamic ATT(-6)         -6 -0.040856029 0.02201142 -0.09697985 0.01526779    -0.08399763
+2  dynamic ATT(-5)         -5  0.002883919 0.01888507 -0.04526846 0.05103630    -0.03413015
+3  dynamic ATT(-4)         -4  0.011896718 0.01698414 -0.03140875 0.05520219    -0.02139159
+4  dynamic ATT(-3)         -3 -0.007343566 0.01253802 -0.03931250 0.02462537    -0.03191764
+5  dynamic ATT(-2)         -2  0.003680410 0.01631040 -0.03790717 0.04526799    -0.02828738
+6  dynamic ATT(-1)         -1 -0.014919534 0.01645592 -0.05687816 0.02703909    -0.04717255
+7  dynamic  ATT(0)          0  0.028400384 0.01965065 -0.02170404 0.07850481    -0.01011419
+8  dynamic  ATT(1)          1  0.037494814 0.02986802 -0.03866143 0.11365106    -0.02104543
+9  dynamic  ATT(2)          2  0.008436026 0.03947855 -0.09222476 0.10909681    -0.06894052
+10 dynamic  ATT(3)          3  0.096246463 0.19189733 -0.39304542 0.58553835    -0.27986540
+   point.conf.high
+1      0.002285569
+2      0.039897983
+3      0.045185029
+4      0.017230508
+5      0.035648204
+6      0.017333478
+7      0.066914957
+8      0.096035061
+9      0.085812570
+10     0.472358323
+
+--- es_gap_female_low ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11  0.0441286325 0.045865771 -0.062708106 0.150965371
+2  dynamic ATT(-10)        -10 -0.0113578007 0.006080468 -0.025521246 0.002805644
+3  dynamic  ATT(-9)         -9 -0.0061815293 0.005847460 -0.019802221 0.007439162
+4  dynamic  ATT(-8)         -8  0.0039641965 0.003795626 -0.004877087 0.012805480
+5  dynamic  ATT(-7)         -7 -0.0041294333 0.006889830 -0.020178155 0.011919289
+6  dynamic  ATT(-6)         -6  0.0016492869 0.003826941 -0.007264940 0.010563514
+7  dynamic  ATT(-5)         -5 -0.0075721234 0.010305939 -0.031578107 0.016433860
+8  dynamic  ATT(-4)         -4  0.0086880332 0.011705200 -0.018577298 0.035953364
+9  dynamic  ATT(-3)         -3 -0.0101534970 0.011371360 -0.036641203 0.016334209
+10 dynamic  ATT(-2)         -2  0.0071103283 0.009680948 -0.015439841 0.029660497
+11 dynamic  ATT(-1)         -1 -0.0002828825 0.002119013 -0.005218774 0.004653009
+12 dynamic   ATT(0)          0 -0.0037946465 0.002418172 -0.009427380 0.001838087
+13 dynamic   ATT(1)          1 -0.0018848393 0.003037733 -0.008960736 0.005191057
+14 dynamic   ATT(2)          2 -0.0022198774 0.002480168 -0.007997018 0.003557264
+15 dynamic   ATT(3)          3 -0.0042069436 0.003274227 -0.011833714 0.003419827
+16 dynamic   ATT(4)          4 -0.0036307206 0.005136292 -0.015594865 0.008333424
+17 dynamic   ATT(5)          5 -0.0017002284 0.012743850 -0.031384923 0.027984466
+18 dynamic   ATT(6)          6 -0.0061111672 0.004518178 -0.016635517 0.004413182
+   point.conf.low point.conf.high
+1    -0.045766626    0.1340238916
+2    -0.023275298    0.0005596967
+3    -0.017642340    0.0052792812
+4    -0.003475093    0.0114034861
+5    -0.017633253    0.0093743861
+6    -0.005851380    0.0091499535
+7    -0.027771393    0.0126271466
+8    -0.014253738    0.0316298043
+9    -0.032440954    0.0121339600
+10   -0.011863981    0.0260846372
+11   -0.004436072    0.0038703071
+12   -0.008534177    0.0009448845
+13   -0.007838686    0.0040690074
+14   -0.007080917    0.0026411619
+15   -0.010624310    0.0022104230
+16   -0.013697669    0.0064362274
+17   -0.026677716    0.0232772590
+18   -0.014966634    0.0027442991
+
+--- es_gap_female_high ---
+      type    term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-6)         -6 -0.0041984025 0.005445908 -0.015665411 0.007268606
+2  dynamic ATT(-5)         -5  0.0078111452 0.005290613 -0.003328872 0.018951163
+3  dynamic ATT(-4)         -4  0.0011962391 0.002784429 -0.004666708 0.007059186
+4  dynamic ATT(-3)         -3 -0.0020756793 0.004017896 -0.010535839 0.006384481
+5  dynamic ATT(-2)         -2  0.0005323745 0.005418467 -0.010876855 0.011941604
+6  dynamic ATT(-1)         -1  0.0060989164 0.007877523 -0.010488148 0.022685980
+7  dynamic  ATT(0)          0  0.0013403098 0.005265043 -0.009745867 0.012426487
+8  dynamic  ATT(1)          1  0.0275915684 0.027473783 -0.030257762 0.085440899
+9  dynamic  ATT(2)          2  0.0246748019 0.026761995 -0.031675773 0.081025376
+10 dynamic  ATT(3)          3  0.0562750203 0.038924712 -0.025685607 0.138235648
+   point.conf.low point.conf.high
+1    -0.014872185     0.006475380
+2    -0.002558266     0.018180556
+3    -0.004261141     0.006653619
+4    -0.009950611     0.005799252
+5    -0.010087626     0.011152375
+6    -0.009340744     0.021538577
+7    -0.008978985     0.011659605
+8    -0.026256057     0.081439194
+9    -0.027777744     0.077127348
+10   -0.020016014     0.132566054
+
+--- es_gap_white_low ---
+      type     term event.time      estimate   std.error    conf.low   conf.high
+1  dynamic ATT(-11)        -11 -0.0128151594 0.031596681 -0.09676818 0.071137859
+2  dynamic ATT(-10)        -10  0.0074974065 0.017978997 -0.04027315 0.055267963
+3  dynamic  ATT(-9)         -9  0.0095375578 0.012025796 -0.02241522 0.041490340
+4  dynamic  ATT(-8)         -8 -0.0007885323 0.010771189 -0.02940780 0.027830733
+5  dynamic  ATT(-7)         -7  0.0012749756 0.012174384 -0.03107261 0.033622558
+6  dynamic  ATT(-6)         -6 -0.0125902651 0.010699080 -0.04101794 0.015837405
+7  dynamic  ATT(-5)         -5  0.0026227406 0.009383079 -0.02230829 0.027553770
+8  dynamic  ATT(-4)         -4 -0.0133964721 0.007892389 -0.03436671 0.007573765
+9  dynamic  ATT(-3)         -3  0.0116589331 0.009004057 -0.01226503 0.035582895
+10 dynamic  ATT(-2)         -2  0.0050229984 0.008519684 -0.01761397 0.027659972
+11 dynamic  ATT(-1)         -1 -0.0147059244 0.008974513 -0.03855139 0.009139537
+12 dynamic   ATT(0)          0  0.0099335427 0.014269644 -0.02798119 0.047848275
+13 dynamic   ATT(1)          1  0.0059873644 0.015829511 -0.03607196 0.048046693
+14 dynamic   ATT(2)          2  0.0207088219 0.019399437 -0.03083587 0.072253517
+15 dynamic   ATT(3)          3  0.0271599142 0.027961911 -0.04713545 0.101455275
+16 dynamic   ATT(4)          4  0.0292885796 0.027452994 -0.04365458 0.102231738
+17 dynamic   ATT(5)          5 -0.0248533609 0.066567197 -0.20172374 0.152017023
+18 dynamic   ATT(6)          6  0.0187473799 0.047509997 -0.10748764 0.144982401
+   point.conf.low point.conf.high
+1    -0.074743516     0.049113197
+2    -0.027740780     0.042735593
+3    -0.014032569     0.033107685
+4    -0.021899674     0.020322609
+5    -0.022586378     0.025136329
+6    -0.033560076     0.008379545
+7    -0.015767756     0.021013237
+8    -0.028865271     0.002072327
+9    -0.005988695     0.029306561
+10   -0.011675276     0.021721273
+11   -0.032295646     0.002883798
+12   -0.018034446     0.037901531
+13   -0.025037906     0.037012635
+14   -0.017313376     0.058731019
+15   -0.027644424     0.081964252
+16   -0.024518300     0.083095459
+17   -0.155322669     0.105615947
+18   -0.074370504     0.111865264
+
+--- es_gap_white_high ---
+      type    term event.time     estimate   std.error    conf.low   conf.high point.conf.low
+1  dynamic ATT(-6)         -6  0.023973204 0.032569812 -0.06148891 0.109435316    -0.03986245
+2  dynamic ATT(-5)         -5  0.005168837 0.013620350 -0.03057051 0.040908185    -0.02152656
+3  dynamic ATT(-4)         -4 -0.014719693 0.011901331 -0.04594839 0.016509007    -0.03804587
+4  dynamic ATT(-3)         -3  0.007380977 0.010614508 -0.02047114 0.035233097    -0.01342308
+5  dynamic ATT(-2)         -2 -0.002025347 0.008143005 -0.02339232 0.019341630    -0.01798534
+6  dynamic ATT(-1)         -1  0.002365823 0.008680526 -0.02041159 0.025143236    -0.01464769
+7  dynamic  ATT(0)          0 -0.016427186 0.008693956 -0.03923984 0.006385468    -0.03346703
+8  dynamic  ATT(1)          1 -0.025099107 0.012255389 -0.05725684 0.007058630    -0.04911923
+9  dynamic  ATT(2)          2 -0.055910558 0.023271337 -0.11697378 0.005152662    -0.10152154
+10 dynamic  ATT(3)          3  0.008860807 0.016711205 -0.03498884 0.052710459    -0.02389255
+   point.conf.high
+1      0.087808862
+2      0.031864231
+3      0.008606487
+4      0.028185031
+5      0.013934650
+6      0.019379341
+7      0.000612655
+8     -0.001078986
+9     -0.010299576
+10     0.041614168
+
+--- es_gap_nonwhite_low ---
+      type     term event.time      estimate   std.error    conf.low   conf.high
+1  dynamic ATT(-11)        -11  0.0095155079 0.012407677 -0.02249365 0.041524666
+2  dynamic ATT(-10)        -10 -0.0114175196 0.013043786 -0.04506770 0.022232665
+3  dynamic  ATT(-9)         -9  0.0007450029 0.005031402 -0.01223494 0.013724946
+4  dynamic  ATT(-8)         -8 -0.0109988674 0.012165626 -0.04238359 0.020385851
+5  dynamic  ATT(-7)         -7  0.0089807577 0.010651329 -0.01849740 0.036458914
+6  dynamic  ATT(-6)         -6 -0.0070606354 0.010083004 -0.03307263 0.018951364
+7  dynamic  ATT(-5)         -5  0.0154364990 0.010306975 -0.01115330 0.042026295
+8  dynamic  ATT(-4)         -4 -0.0009316965 0.008845381 -0.02375089 0.021887500
+9  dynamic  ATT(-3)         -3 -0.0012741228 0.010550577 -0.02849236 0.025944115
+10 dynamic  ATT(-2)         -2 -0.0141233032 0.010870154 -0.04216598 0.013919375
+11 dynamic  ATT(-1)         -1  0.0010351434 0.008729582 -0.02148532 0.023555602
+12 dynamic   ATT(0)          0 -0.0051583579 0.009542021 -0.02977474 0.019458020
+13 dynamic   ATT(1)          1 -0.0056928343 0.013792703 -0.04127506 0.029889395
+14 dynamic   ATT(2)          2  0.0008770038 0.014244958 -0.03587195 0.037625955
+15 dynamic   ATT(3)          3 -0.0131572702 0.019606321 -0.06373739 0.037422854
+16 dynamic   ATT(4)          4  0.0033484173 0.031997287 -0.07919776 0.085894590
+17 dynamic   ATT(5)          5 -0.0289777177 0.020738515 -0.08247866 0.024523225
+18 dynamic   ATT(6)          6 -0.0608714953 0.025759332 -0.12732507 0.005582084
+   point.conf.low point.conf.high
+1    -0.014803092     0.033834107
+2    -0.036982870     0.014147831
+3    -0.009116364     0.010606370
+4    -0.034843056     0.012845321
+5    -0.011895464     0.029856979
+6    -0.026822960     0.012701689
+7    -0.004764801     0.035637799
+8    -0.018268325     0.016404932
+9    -0.021952874     0.019404628
+10   -0.035428414     0.007181807
+11   -0.016074523     0.018144810
+12   -0.023860375     0.013543659
+13   -0.032726035     0.021340366
+14   -0.027042600     0.028796608
+15   -0.051584953     0.025270413
+16   -0.059365113     0.066061947
+17   -0.069624459     0.011669024
+18   -0.111358858    -0.010384133
+
+--- es_gap_nonwhite_high ---
+      type    term event.time     estimate  std.error    conf.low  conf.high point.conf.low
+1  dynamic ATT(-6)         -6 -0.028419908 0.01541276 -0.06816397 0.01132415    -0.05862836
+2  dynamic ATT(-5)         -5  0.005176615 0.01282959 -0.02790638 0.03825961    -0.01996893
+3  dynamic ATT(-4)         -4  0.007345329 0.01164110 -0.02267296 0.03736362    -0.01547081
+4  dynamic ATT(-3)         -3 -0.007653319 0.00896764 -0.03077770 0.01547106    -0.02522957
+5  dynamic ATT(-2)         -2  0.005190174 0.01249944 -0.02704148 0.03742183    -0.01930829
+6  dynamic ATT(-1)         -1 -0.008265093 0.01299120 -0.04176482 0.02523464    -0.03372739
+7  dynamic  ATT(0)          0  0.017071891 0.01500352 -0.02161689 0.05576067    -0.01233447
+8  dynamic  ATT(1)          1  0.030357690 0.02738576 -0.04026052 0.10097590    -0.02331741
+9  dynamic  ATT(2)          2  0.006792256 0.03367849 -0.08005268 0.09363719    -0.05921637
+10 dynamic  ATT(3)          3  0.086638559 0.15259896 -0.30686028 0.48013740    -0.21244991
+   point.conf.high
+1      0.001788541
+2      0.030322158
+3      0.030161465
+4      0.009922931
+5      0.029688634
+6      0.017197201
+7      0.046478251
+8      0.084032793
+9      0.072800882
+10     0.385727025
+
+--- es_bc_gap_low ---
+      type    term event.time      estimate   std.error     conf.low  conf.high point.conf.low
+1  dynamic ATT(-8)         -8  0.0195389504 0.010979910 -0.008425771 0.04750367   -0.001981278
+2  dynamic ATT(-7)         -7 -0.0151372616 0.014713074 -0.052609972 0.02233545   -0.043974356
+3  dynamic ATT(-6)         -6 -0.0008180069 0.013565750 -0.035368601 0.03373259   -0.027406388
+4  dynamic ATT(-5)         -5  0.0152211297 0.011509559 -0.014092553 0.04453481   -0.007337191
+5  dynamic ATT(-4)         -4 -0.0100145071 0.007893760 -0.030119116 0.01009010   -0.025485993
+6  dynamic ATT(-3)         -3 -0.0022633737 0.008604391 -0.024177887 0.01965114   -0.019127669
+7  dynamic ATT(-2)         -2  0.0032770764 0.008584010 -0.018585529 0.02513968   -0.013547274
+8  dynamic ATT(-1)         -1 -0.0006758482 0.008698916 -0.022831108 0.02147941   -0.017725410
+9  dynamic  ATT(0)          0  0.0131557755 0.007633379 -0.006285668 0.03259722   -0.001805372
+10 dynamic  ATT(1)          1  0.0166750718 0.009577359 -0.007717494 0.04106764   -0.002096207
+11 dynamic  ATT(2)          2  0.0181481398 0.012901389 -0.014710395 0.05100667   -0.007138119
+12 dynamic  ATT(3)          3  0.0161746758 0.016272533 -0.025269822 0.05761917   -0.015718904
+13 dynamic  ATT(4)          4 -0.0227751291 0.018868473 -0.070831222 0.02528096   -0.059756656
+14 dynamic  ATT(5)          5 -0.0228098035 0.020721638 -0.075585721 0.02996611   -0.063423468
+15 dynamic  ATT(6)          6 -0.0370201362 0.018839532 -0.085002520 0.01096225   -0.073944940
+   point.conf.high
+1     4.105918e-02
+2     1.369983e-02
+3     2.577037e-02
+4     3.777945e-02
+5     5.456979e-03
+6     1.460092e-02
+7     2.010143e-02
+8     1.637371e-02
+9     2.811692e-02
+10    3.544635e-02
+11    4.343440e-02
+12    4.806826e-02
+13    1.420640e-02
+14    1.780386e-02
+15   -9.533214e-05
+
+--- es_bc_gap_high ---
+     type    term event.time     estimate  std.error    conf.low  conf.high point.conf.low
+1 dynamic ATT(-3)         -3 -0.016238663 0.02301413 -0.07155620 0.03907887    -0.06134554
+2 dynamic ATT(-2)         -2 -0.001500785 0.01561303 -0.03902879 0.03602722    -0.03210177
+3 dynamic ATT(-1)         -1 -0.007882885 0.01212180 -0.03701924 0.02125347    -0.03164118
+4 dynamic  ATT(0)          0  0.007546309 0.01085590 -0.01854728 0.03363990    -0.01373085
+5 dynamic  ATT(1)          1  0.010220105 0.01767098 -0.03225444 0.05269465    -0.02441437
+6 dynamic  ATT(2)          2 -0.001774350 0.02204528 -0.05476311 0.05121441    -0.04498230
+7 dynamic  ATT(3)          3 -0.086470476 0.06471296 -0.24201668 0.06907573    -0.21330554
+  point.conf.high
+1      0.02886821
+2      0.02910020
+3      0.01587541
+4      0.02882347
+5      0.04485458
+6      0.04143360
+7      0.04036459
+
+--- es_bc_exposed_low ---
+      type     term event.time      estimate   std.error     conf.low   conf.high
+1  dynamic ATT(-11)        -11  0.0013716979 0.002138162 -0.003286539 0.006029935
+2  dynamic ATT(-10)        -10  0.0006395600 0.003740186 -0.007508876 0.008787996
+3  dynamic  ATT(-9)         -9  0.0008862531 0.002776526 -0.005162735 0.006935241
+4  dynamic  ATT(-8)         -8  0.0003842800 0.002627670 -0.005340408 0.006108968
+5  dynamic  ATT(-7)         -7 -0.0009626975 0.001668191 -0.004597049 0.002671654
+6  dynamic  ATT(-6)         -6 -0.0020306332 0.001588134 -0.005490570 0.001429304
+7  dynamic  ATT(-5)         -5  0.0034251787 0.006179107 -0.010036734 0.016887091
+8  dynamic  ATT(-4)         -4  0.0004474115 0.003453972 -0.007077474 0.007972297
+9  dynamic  ATT(-3)         -3 -0.0018215914 0.003497564 -0.009441448 0.005798265
+10 dynamic  ATT(-2)         -2  0.0053199832 0.006599943 -0.009058770 0.019698736
+11 dynamic  ATT(-1)         -1 -0.0034215973 0.005873787 -0.016218334 0.009375139
+12 dynamic   ATT(0)          0  0.0090489724 0.008854191 -0.010240926 0.028338871
+13 dynamic   ATT(1)          1  0.0095438431 0.009979079 -0.012196757 0.031284444
+14 dynamic   ATT(2)          2  0.0151686991 0.013842639 -0.014989122 0.045326520
+15 dynamic   ATT(3)          3  0.0241023756 0.019719315 -0.018858475 0.067063226
+16 dynamic   ATT(4)          4 -0.0053344820 0.004689224 -0.015550508 0.004881544
+17 dynamic   ATT(5)          5 -0.0074386954 0.006155209 -0.020848544 0.005971153
+18 dynamic   ATT(6)          6 -0.0031122049 0.006752454 -0.017823223 0.011598813
+   point.conf.low point.conf.high
+1    -0.002819022     0.005562417
+2    -0.006691070     0.007970190
+3    -0.004555637     0.006328143
+4    -0.004765858     0.005534418
+5    -0.004232292     0.002306897
+6    -0.005143319     0.001082053
+7    -0.008685648     0.015536006
+8    -0.006322250     0.007217073
+9    -0.008676692     0.005033509
+10   -0.007615667     0.018255634
+11   -0.014934007     0.008090813
+12   -0.008304923     0.026402868
+13   -0.010014793     0.029102479
+14   -0.011962376     0.042299774
+15   -0.014546771     0.062751522
+16   -0.014525192     0.003856228
+17   -0.019502684     0.004625293
+18   -0.016346772     0.010122363
+
+--- es_bc_control_low ---
+      type     term event.time      estimate   std.error    conf.low  conf.high point.conf.low
+1  dynamic ATT(-11)        -11  0.0066896361 0.007556679 -0.01284053 0.02621980   -0.008121182
+2  dynamic ATT(-10)        -10  0.0147305936 0.013780843 -0.02088587 0.05034705   -0.012279363
+3  dynamic  ATT(-9)         -9 -0.0070844764 0.008331400 -0.02861690 0.01444795   -0.023413721
+4  dynamic  ATT(-8)         -8 -0.0025507670 0.006937606 -0.02048095 0.01537941   -0.016148226
+5  dynamic  ATT(-7)         -7  0.0008550622 0.008518897 -0.02116195 0.02287207   -0.015841669
+6  dynamic  ATT(-6)         -6 -0.0052920659 0.008165063 -0.02639459 0.01581046   -0.021295296
+7  dynamic  ATT(-5)         -5 -0.0061756961 0.009085284 -0.02965653 0.01730513   -0.023982526
+8  dynamic  ATT(-4)         -4  0.0096401055 0.007971555 -0.01096230 0.03024251   -0.005983854
+9  dynamic  ATT(-3)         -3  0.0004238707 0.008708319 -0.02208270 0.02293044   -0.016644121
+10 dynamic  ATT(-2)         -2  0.0020429068 0.007033302 -0.01613460 0.02022041   -0.011742112
+11 dynamic  ATT(-1)         -1 -0.0027457491 0.006812336 -0.02035217 0.01486067   -0.016097681
+12 dynamic   ATT(0)          0 -0.0041068031 0.007735765 -0.02409982 0.01588621   -0.019268625
+13 dynamic   ATT(1)          1 -0.0071312287 0.009630793 -0.03202192 0.01775947   -0.026007236
+14 dynamic   ATT(2)          2 -0.0029794407 0.014146879 -0.03954192 0.03358304   -0.030706815
+15 dynamic   ATT(3)          3  0.0079276998 0.016671482 -0.03515959 0.05101499   -0.024747805
+16 dynamic   ATT(4)          4  0.0174406471 0.018803671 -0.03115726 0.06603856   -0.019413870
+17 dynamic   ATT(5)          5  0.0153711082 0.022112014 -0.04177718 0.07251940   -0.027967642
+18 dynamic   ATT(6)          6  0.0339079313 0.018904692 -0.01495107 0.08276693   -0.003144583
+   point.conf.high
+1      0.021500454
+2      0.041740551
+3      0.009244768
+4      0.011046692
+5      0.017551794
+6      0.010711164
+7      0.011631134
+8      0.025264066
+9      0.017491862
+10     0.015827926
+11     0.010606183
+12     0.011055018
+13     0.011744779
+14     0.024747933
+15     0.040603205
+16     0.054295164
+17     0.058709858
+18     0.070960446
+
+ ======================================================================== 
+  HONESTDID BREAKDOWN Mbar VALUES 
+ ======================================================================== 
+  Low/Wages                 Mbar = NA
+  High/Wages                Mbar = NA
+  Low/DR                    Mbar = NA
+
+ ======================================================================== 
+  PRE-TREND P-VALUES (all models) 
+ ======================================================================== 
+                 Model Pretrend_p
+             Low/Wages     0.3590
+            High/Wages     0.9155
+        Marginal/Wages     0.3624
+               Low/Emp     0.1199
+              High/Emp     0.8093
+          Marginal/Emp     0.5969
+              Male/Low     0.4182
+            Female/Low     0.9529
+             Male/High     0.9183
+           Female/High     0.7358
+             White/Low     0.3552
+          Nonwhite/Low     0.4047
+            White/High     0.6826
+         Nonwhite/High     0.9162
+              Low/Lag3     0.3730
+             High/Lag3     0.0986
+                Low/DR     0.5351
+            Low/Buffer     0.4509
+           High/Buffer     0.8855
+            Low/q25_75     0.0802
+           High/q25_75     0.2192
+            Low/q33_67     0.8433
+           High/q33_67     0.2238
+               Gap/Low     0.7071
+              Gap/High     0.5390
+             Young/Low     0.6444
+            Young/High     0.1622
+               Old/Low     0.8708
+              Old/High     0.9806
+        CollegeGap/Low     0.9245
+       CollegeGap/High     0.1241
+      WageGap/Male/Low     0.5206
+     WageGap/Male/High     0.6049
+    WageGap/Female/Low     0.5950
+   WageGap/Female/High     0.7016
+     WageGap/White/Low     0.5469
+    WageGap/White/High     0.8509
+  WageGap/Nonwhite/Low     0.7296
+ WageGap/Nonwhite/High     0.5313
+            BC_Gap/Low     0.5623
+           BC_Gap/High     0.8107
+        BC_Exposed/Low     0.9684
+        BC_Control/Low     0.9035
+
+ ======================================================================== 
+  THESIS SUMMARY (DR = primary, binned = robustness) 
+ ======================================================================== 
+  PRIMARY Low/DR:  ATT = +0.0259 (SE = 0.0145, p = 0.073)
+  ROBUSTNESS Low/Uncond:  ATT = +0.0128 (SE = 0.0128)
+  ROBUSTNESS High/Uncond: ATT = -0.0070 (SE = 0.0074)
+
+ ======================================================================== 
+  AUDIT METADATA 
+ ======================================================================== 
+  Microregions : 558
+  Years        : 15 (2005-2019)
+  Bin method   : 2019 cross-section (D_rt_2019)
+  Thresholds   : tau_20=20.1552  tau_50=48.4202  tau_75=78.8670
+  Bin sizes    : Low=167  High=140
+  Treatment g  : 2010 - 2019
+  Total models : 45
+
+ ======================================================================== 
+  OUTPUT FILES 
+ ======================================================================== 
+
+  Tables_Final/ (62 files)
+    es_bc_control_low.csv
+    es_bc_exposed_low.csv
+    es_bc_gap_high.csv
+    es_bc_gap_low.csv
+    es_college_high.csv
+    es_college_low.csv
+    es_female_high.csv
+    es_female_low.csv
+    es_gap_female_high.csv
+    es_gap_female_low.csv
+    es_gap_high.csv
+    es_gap_low.csv
+    es_gap_male_high.csv
+    es_gap_male_low.csv
+    es_gap_nonwhite_high.csv
+    es_gap_nonwhite_low.csv
+    es_gap_white_high.csv
+    es_gap_white_low.csv
+    es_high_25_75.csv
+    es_high_33_67.csv
+    es_high_buffer.csv
+    es_high_emp.csv
+    es_high_lag3.csv
+    es_high_wage.csv
+    es_low_25_75.csv
+    es_low_33_67.csv
+    es_low_buffer.csv
+    es_low_dr.csv
+    es_low_emp.csv
+    es_low_lag3.csv
+    es_low_wage.csv
+    es_male_high.csv
+    es_male_low.csv
+    es_mar_emp.csv
+    es_mar_wage.csv
+    es_nonwhite_high.csv
+    es_nonwhite_low.csv
+    es_old_high.csv
+    es_old_low.csv
+    es_white_high.csv
+    es_white_low.csv
+    es_young_high.csv
+    es_young_low.csv
+    table_att_master.tex
+    table_bin_summary.tex
+    table_birthcohort.tex
+    table_cohort_heterogeneity.tex
+    table_continuous_dose.csv
+    table_continuous_dose.tex
+    table_heterogeneity.tex
+    table_primary_results.tex
+    table_robustness.tex
+    table_twfe_cohort.csv
+    table_wald_late.csv
+    table1_bin_summary.csv
+    table1_bin_summary.tex
+    table2_balance.csv
+    table2_balance.tex
+    table3_casestudy_units.csv
+    table4_summary_att.csv
+    table4_summary_att.tex
+    table5_twfe_benchmark.csv
+
+  Figures_Final/ (24 files)
+    fig_0_casestudy_trajectories.png
+    fig_1_mechanism_dose.png
+    fig_3_employment_dose.png
+    fig_4a_gender_low.png
+    fig_4b_gender_high.png
+    fig_5a_race_low.png
+    fig_5b_race_high.png
+    fig_6_robustness_lag.png
+    fig_7_dr_low.png
+    fig_8_buffer_low.png
+    fig_8b_buffer_high.png
+    fig_9_altcut_low.png
+    fig_birthcohort_decomp.png
+    fig_birthcohort_gap.png
+    fig_cohort_gap.png
+    fig_cohort_gender_high.png
+    fig_cohort_gender_low.png
+    fig_cohort_race_high.png
+    fig_cohort_race_low.png
+    fig_cohort_young_vs_old.png
+    fig_cohort_young_vs_old_high.png
+    fig_first_stage.png
+    fig_map_dose_bins.png
+    fig_map_dose_continuous.png
+
+  Documentation_Final/ (5 files)
+    appendix_census_codes.csv
+    appendix_prouni_codes.csv
+    appendix_rais_codes.csv
+    audit_log.rds
+    console_output.txt
+
+ ======================================================================== 
+> 
+> warnings()
+Warning messages:
+1: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+2: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+3: In did_standarization(data, args) :
+  Be aware that there are some small groups in your dataset.
+  Check groups: 2012.
+4: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+5: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+6: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+7: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+8: In run_cs(data_cen, "log_wage_sm", label = "Central/Wages") :
+  [Central/Wages] Only 0 not-yet-treated units (need >= 20). Skipping.
+9: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+10: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+11: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+12: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+13: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+14: In did_standarization(data, args) :
+  Be aware that there are some small groups in your dataset.
+  Check groups: 2012.
+15: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+16: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+17: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+18: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+19: In run_cs(data_cen, "n_vinculos", label = "Central/Emp",  ... :
+  [Central/Emp] Only 0 not-yet-treated units (need >= 20). Skipping.
+20: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+21: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+22: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+23: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+24: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+25: In did_standarization(data, args) :
+  Be aware that there are some small groups in your dataset.
+  Check groups: 2012.
+26: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+27: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+28: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+29: In did_standarization(data, args) :
+  Be aware that there are some small groups in your dataset.
+  Check groups: 2012.
+30: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+31: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+32: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+33: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+34: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+35: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+36: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+37: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+38: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+39: In did_standarization(data, args) :
+  Be aware that there are some small groups in your dataset.
+  Check groups: 2012.
+40: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+41: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+42: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+43: In did_standarization(data, args) :
+  Be aware that there are some small groups in your dataset.
+  Check groups: 2012.
+44: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+45: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+46: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+47: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
+48: In `[.data.table`(data, get(args$gname) == 0, `:=`((args$gname),  ... :
+  inf (type 'double') at RHS position 1 out-of-range(NA) or truncated (precision lost) when assigning to type 'integer' (column 3 named 'g')
+49: In did_standarization(data, args) :
+  Dropped 112 observations that had missing data.
+50: In pretrend_ftest(att) :
+  VCov matrix not available; falling back to pointwise SEs.
