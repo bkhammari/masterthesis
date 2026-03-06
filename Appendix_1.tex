@@ -30,3 +30,37 @@ Telework and app-based work &  &  &  &  &  &  & X &  &  \\
 \vspace{4pt}
 \footnotesize \textit{Source:} \citeA{IBGE2025NotasTecnicas}.
 \end{table}
+
+\subsection{Administrative codes used in the empirical pipeline}
+\label{app:key_codes}
+
+This appendix summarises the principal administrative codes that directly affect sample restrictions, subgroup definitions, treatment construction, and pre-treatment covariates in the empirical script. It is intended as a compact guide for replication rather than an exhaustive codebook; the full raw dictionaries were downloaded separately from Base dos Dados, which standardises Brazilian public microdata and provides harmonised access through a unified BigQuery infrastructure.\footnote{See Base dos Dados at \url{https://basedosdados.org/}.}
+
+\begin{table}[htbp]
+\centering
+\caption{Principal administrative codes used in variable construction}
+\label{tab:key_codes_script}
+\small
+\begin{tabular}{p{2.3cm} p{3.5cm} p{2.5cm} p{6.2cm}}
+\hline
+\textbf{Source} & \textbf{Variable} & \textbf{Key codes} & \textbf{Role in the script} \\
+\hline
+RAIS & \texttt{tipo\_vinculo} & 10 = CLT & Restricts the estimation sample to formal private-sector employment relationships. \\
+RAIS & \texttt{vinculo\_ativo\_3112} & 1 = active on 31 December & Keeps only employment links that remain active at year-end. \\
+RAIS & \texttt{sexo} & 1 = male; 2 = female & Defines the gender-specific heterogeneity subsamples. \\
+RAIS & \texttt{raca\_cor} & 1 = Indigenous; 2 = White; 4 = Black; 8 = Parda & White workers are coded as 2, while the non-white group is defined as codes 1, 4, and 8. \\
+RAIS & \texttt{grau\_instrucao\_apos\_2005} & 9 = completed tertiary; 10 = master's; 11 = doctorate & Used to construct the college-share first stage in the Wald/LATE exercise. \\
+ProUni & \texttt{sexo} & administrative sex code & Used descriptively in the scholarship extraction query. \\
+ProUni & \texttt{raca\_cor} & administrative ethnicity/colour code & Used descriptively in the scholarship extraction query. \\
+ProUni & \texttt{tipo\_bolsa} & scholarship type code & Used to distinguish scholarship categories in the ProUni microdata. \\
+Census 2010 & \texttt{v6036} & age in years & Restricts the denominator to the population aged 18--24. \\
+Census 2010 & \texttt{peso\_amostral} & survey weight & Expands observations to the estimated youth population at microregion level. \\
+Census 2010 & \texttt{v0601} & 1 = male; 2 = female & Captures baseline gender composition in the Census denominator. \\
+Census 2010 & \texttt{v0606} & 1 = White; 2 = Black; 3 = Asian descent; 4 = Parda; 5 = Indigenous & Used to construct baseline ethnicity composition and the non-white denominator. \\
+Census 2010 & \texttt{v6400}, \texttt{v0633}, \texttt{v6511}, \texttt{v6532}, \texttt{v0627}, \texttt{v0628}, \texttt{v0616} & see official Census dictionary & Used to construct pre-treatment covariates for the doubly robust specification. \\
+\hline
+\end{tabular}
+
+\vspace{4pt}
+\footnotesize \textit{Notes:} The table reports only the codes that directly enter sample restrictions, subgroup definitions, treatment measurement, or baseline covariates in the script. Full official dictionaries for ProUni, RAIS, and the 2010 Census are exported separately in the project documentation files.
+\end{table}
