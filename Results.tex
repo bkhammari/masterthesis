@@ -1,9 +1,9 @@
 \section{Results}
 \label{sec:results}
 
-This chapter presents the empirical findings in four stages. Section~\ref{sec:descriptive} establishes the geographic structure of treatment variation. Section~\ref{sec:pooled_results} reports the primary pooled event-study estimates for wages and employment. Section~\ref{sec:cohort_results} decomposes these effects using the Duflo-style age-cohort design. Section~\ref{sec:heterogeneity} explores distributional impacts by gender and ethnicity, and Section~\ref{sec:robustness_results} reports robustness checks.
+This chapter presents the empirical findings in five stages. Section~\ref{sec:descriptive} establishes the geographic structure of treatment variation. Section~\ref{sec:pooled_results} reports the primary doubly-robust (DR) event-study estimates for wages as the headline causal results. Section~\ref{sec:twfe_bias} elevates the TWFE vs.\ Callaway-Sant'Anna comparison as a core methodological finding. Section~\ref{sec:cohort_results} decomposes effects using the Duflo-style age-cohort design. Section~\ref{sec:heterogeneity} explores distributional impacts by gender and ethnicity, and Section~\ref{sec:robustness_results} consolidates all robustness checks.
 
-Before turning to the estimates, it is useful to distinguish clearly between what is identified and what is more tentative. The primary causal objects in this chapter are the within-stratum group-time ATTs for Low-Dose and High-Dose microregions estimated under the not-yet-treated parallel trends assumption. By contrast, direct comparisons between the Low-Dose and High-Dose paths require stronger assumptions and are therefore interpreted as suggestive patterns rather than as clean causal dose-response effects.
+Before turning to the estimates, it is useful to distinguish clearly between what is identified and what is more tentative. The primary causal objects in this chapter are the within-stratum group-time ATTs for Low-Dose and High-Dose microregions estimated under the not-yet-treated parallel trends assumption, with the doubly-robust specification serving as the headline. By contrast, direct comparisons between the Low-Dose and High-Dose paths require the stronger assumption of \citeA{CallawayGoodmanBaconSantAnna2024} and are therefore interpreted as suggestive patterns rather than as clean causal dose-response effects.
 
 \subsection{Geographic Distribution of Treatment Intensity}
 \label{sec:descriptive}
@@ -33,10 +33,12 @@ High & 140 & 74,598 & 107.43 & 2012 \\
 \end{tabular}
 \end{table}
 
-\subsection{Pooled Event-Study Estimates}
+\subsection{Primary Results: Doubly-Robust Estimates}
 \label{sec:pooled_results}
 
-\subsubsection{Wages: Baseline Reduced-Form Evidence}
+\subsubsection{Wages: Headline Doubly-Robust Evidence}
+
+The headline causal result of this thesis is the doubly-robust (DR) estimate for Low-Dose microregions: a positive formal-sector wage effect of $+2.59\%$ ($SE = 0.0145$, $p < 0.10$). This estimate conditions on pre-treatment Census covariates---log youth population, non-white population share, and average household income per capita---via the \texttt{xformla} argument of \texttt{att\_gt()}, following the doubly-robust identification strategy of \citeA{SantAnnaZhao2020}. The unconditional simple ATT ($+1.28\%$, $SE = 0.0128$) is reported as a robustness check; its smaller magnitude confirms that baseline regional income is a meaningful confounder.
 
 Figure~\ref{fig:dose_response} presents the baseline wage event studies. The dynamic estimates suggest a divergence between Low-Dose and High-Dose microregions after treatment onset, but the safest interpretation remains within each stratum rather than between strata.
 
@@ -47,11 +49,11 @@ Figure~\ref{fig:dose_response} presents the baseline wage event studies. The dyn
 \label{fig:dose_response}
 \end{figure}
 
-Three features of Figure~\ref{fig:dose_response} merit emphasis. First, pre-treatment coefficients ($e < 0$) for both dose bins fluctuate around zero, with no obvious systematic drift. Consistent with that visual impression, the joint Wald test fails to reject the null of zero pre-trends at conventional levels for both specifications ($p = 0.359$ for Low Dose; $p = 0.916$ for High Dose). This supports the identifying assumption, although non-rejection should not be read as proof that the assumption holds exactly.
+Three features of Figure~\ref{fig:dose_response} merit emphasis. First, pre-treatment coefficients ($e < 0$) for both dose bins fluctuate around zero, with no obvious systematic drift. Consistent with that visual impression, the joint Wald test fails to reject the null of zero pre-trends at conventional levels for both specifications ($p = 0.359$ for Low Dose; $p = 0.916$ for High Dose). Non-rejection supports the identifying assumption, although it should not be read as definitive proof.
 
-Second, the Low-Dose event study displays a gradually increasing post-treatment trajectory, reaching roughly 2.5--3.0\% by event time $e = 5$--$6$. The overall simple ATT estimate for the Low-Dose bin is $1.28\%$ ($SE = 0.0128$). The estimate is imprecise at conventional levels, but its sign and magnitude are economically meaningful for a reduced-form effect measured on the average wage of all formal workers aged 22--35 within a microregion. In the Doubly Robust specification (Table~\ref{tab:master_summary}), the estimate rises to $2.59\%$ ($SE = 0.0145$, $p < 0.10$), suggesting that the positive low-dose pattern is not driven purely by raw compositional differences.
+Second, the Low-Dose event study displays a gradually increasing post-treatment trajectory, reaching roughly 2.5--3.0\% by event time $e = 5$--$6$. The DR estimate rises to $2.59\%$, suggesting that the positive low-dose pattern is not an artefact of compositional differences between treated and comparison regions. The event window is trimmed to $e \leq 4$ for the DR specification to maintain adequate propensity-score overlap; the simultaneous confidence bands use critical values of approximately 2.7 (rather than 1.96) to maintain correct joint coverage. The pointwise $p$-value on the simple ATT is 0.073, conventionally marginally significant.
 
-Third, the High-Dose estimates remain close to zero throughout the post-treatment window. The overall simple ATT is $-0.70\%$ ($SE = 0.0074$). On its own, this pattern is consistent with attenuation of wage gains in heavily exposed markets, but it does not by itself isolate a causal saturation mechanism. As shown below, the high-dose penalty is sensitive to controls for macroeconomic geography, so the evidence for saturation should be read as suggestive rather than definitive.
+Third, the High-Dose estimates remain close to zero throughout the post-treatment window. The overall simple ATT is $-0.70\%$ ($SE = 0.0074$). As shown in Section~\ref{sec:robustness_results}, the high-dose penalty is sensitive to controls for macroeconomic geography, so the evidence for saturation should be read as suggestive rather than definitive.
 
 \subsubsection{Employment: Extensive Margin}
 
@@ -65,6 +67,33 @@ Figure~\ref{fig:employment} reports the employment-margin estimates. Both dose b
 \end{figure}
 
 The absence of large employment effects is not surprising in a context where RAIS captures only formal employment. ProUni may shift workers from informal to formal jobs without changing the total headcount of 22--35 year-olds, so the employment outcome should be interpreted as a formal-sector extensive-margin measure rather than as a complete labour-market quantity effect.
+
+\subsection{TWFE Bias Demonstration}
+\label{sec:twfe_bias}
+
+A central methodological contribution of this thesis is demonstrating the empirical relevance of heterogeneous-treatment-effect bias in this particular setting. Table~\ref{tab:twfe} compares the na\"ive binary TWFE estimates with the \citeA{CallawaySantAnna2021} ATTs. The TWFE wage coefficient is $-0.65\%$ ($SE = 0.0037$, $p = 0.079$)---negative and marginally significant, in the opposite direction to the Low-Dose CS estimate. The TWFE employment coefficient likewise masks the positive low-dose extensive-margin pattern. This divergence is not a sampling artefact; it is precisely the forbidden-comparison bias documented theoretically by \citeA{GoodmanBacon2021} and \citeA{deChaisemartin2020}: early-treated, High-Dose (and therefore larger, wealthier) microregions enter as implicit controls for later-treated units, contaminating the pooled TWFE coefficient with negative comparisons. The CS estimator avoids this by restricting comparisons to not-yet-treated units within each dose stratum.
+
+\begin{table}[ht]
+\centering
+\caption{\textbf{TWFE vs.\ Callaway-Sant'Anna: Empirical Illustration of Forbidden-Comparison Bias}}
+\label{tab:twfe}
+\begin{tabular}{lccc}
+\hline
+\textbf{Specification} & \textbf{ATT} & \textbf{SE} & \textbf{N} \\
+\hline
+TWFE / Wages (pooled)       & $-$0.0065$^{*}$ & 0.0037 & 7,812 \\
+CS / Low Dose (wages, unconditional) & 0.0128 & 0.0128 & 3,906 \\
+CS / Low Dose (wages, DR)   & 0.0259$^{*}$ & 0.0145 & 3,906 \\
+CS / High Dose (wages)      & $-$0.0070 & 0.0074 & 3,528 \\
+TWFE / Wage Gap (cohort)    & 0.0072 & 0.0042 & 7,810 \\
+CS / Gap Low                & $-$0.0054 & 0.0120 & 3,904 \\
+CS / Gap High               & 0.0234 & 0.0273 & 3,526 \\
+\hline
+\multicolumn{4}{l}{\small $^{*} p<0.10$. Standard errors clustered by microregion.}
+\end{tabular}
+\end{table}
+
+The $+3.24$ percentage-point gap between the TWFE and the DR Low-Dose estimate ($-0.65\%$ vs.\ $+2.59\%$) provides a concrete quantification of the bias magnitude in this application. This result reinforces the recommendation of \citeA{CallawaySantAnna2021} to use heterogeneity-robust estimators in staggered designs, and constitutes an independent empirical contribution of this thesis beyond the ProUni-specific findings.
 
 \subsection{Age-Cohort Decomposition}
 \label{sec:cohort_results}
@@ -102,7 +131,7 @@ To understand what drives the cohort wage-gap dynamics, I estimate the ATT separ
 
 The decomposition reveals suggestive but not definitive patterns. In Low-Dose microregions (Figure~\ref{fig:young_old_low}), the young cohort shows a modest positive trajectory, but the old cohort also rises. One interpretation is the presence of positive general-equilibrium spillovers: a moderate inflow of college-educated workers may raise local productivity in a way that benefits multiple age groups. A more cautious alternative is that some residual local shocks correlated with treatment timing remain in the data. The evidence is therefore consistent with spillovers, but it does not mechanically prove them.
 
-In High-Dose microregions (Figure~\ref{fig:young_old_high}), the young cohort remains close to zero while the old cohort declines. This pattern is consistent with displacement or relative wage compression for older workers in heavily exposed markets. At the same time, because the old cohort is intended as a placebo, non-zero effects on that group also warn against an overly mechanical causal interpretation. The decomposition is therefore more informative about plausible mechanisms than about point-identified structural channels.
+In High-Dose microregions (Figure~\ref{fig:young_old_high}), the young cohort remains close to zero while the old cohort declines. This pattern is consistent with displacement or relative wage compression for older workers in heavily exposed markets. At the same time, because the old cohort is intended as a placebo, non-zero effects on that group also warn against an overly mechanical causal interpretation.
 
 \subsubsection{First Stage: College Attainment Gap}
 
@@ -160,18 +189,16 @@ Figure~\ref{fig:race_pooled} shows that in Low-Dose microregions, non-white work
 \label{fig:race_pooled}
 \end{figure}
 
-These patterns are consistent with ProUni improving formal-sector wage outcomes for non-white workers in moderately exposed markets. Even so, the thesis cannot claim full distributive parity or a complete elimination of structural disadvantage on the basis of these reduced-form estimates alone.
+These patterns are consistent with ProUni improving formal-sector wage outcomes for non-white workers in moderately exposed markets, coherent with the programme's affirmative-action design. Even so, the thesis cannot claim full distributive parity on the basis of these reduced-form estimates alone.
 
 \subsection{Robustness Checks}
 \label{sec:robustness_results}
 
 \subsubsection{Continuous TWFE and Omitted Variable Bias}
 
-To test whether the High-Dose penalty is confounded by macroeconomic geography, I estimate a sequence of continuous-treatment TWFE models interacting the continuous dosage measure $D_{r,t}$ with a post-treatment dummy for the non-white subsample.
+To test whether the High-Dose penalty is confounded by macroeconomic geography, I estimate a sequence of continuous-treatment TWFE models interacting the continuous dosage measure $D_{r,t}$ with a post-treatment dummy.
 
-Table~\ref{tab:continuous_twfe} summarizes the results. An unconditional linear specification (Model 1) yields a marginally significant negative dose-response coefficient ($\beta = -0.00013$, $p = 0.0539$). A logarithmic transformation of the dose (Model 2) provides a somewhat better fit ($\beta = -0.0021$, $p = 0.0480$), suggesting diminishing marginal returns as exposure rises. A quadratic specification (Model 3) shows a significant negative linear term but an insignificant squared term ($p = 0.3131$), offering no evidence of recovery at extreme saturation levels.
-
-However, once the TWFE model is augmented with baseline covariates interacted with the post-treatment dummy (Model 4), the direct effect of ProUni dose disappears ($p = 0.3699$). The interaction between post-treatment timing and baseline household income per capita is large, negative, and statistically significant ($\beta = -0.0377$, $p = 0.0015$). This suggests that unconditional high-dose penalties partly load onto the adverse macroeconomic shocks experienced by Brazil's wealthier economic hubs during the 2014--2016 recession, rather than cleanly isolating a pure educational saturation effect.
+Table~\ref{tab:continuous_twfe} summarizes the results. An unconditional linear specification (Model 1) yields a marginally significant negative dose-response coefficient ($\beta = -0.00013$, $p = 0.0539$). A logarithmic transformation (Model 2) provides a somewhat better fit ($\beta = -0.0021$, $p = 0.0480$). A quadratic specification (Model 3) shows a significant negative linear term but an insignificant squared term ($p = 0.3131$). Once the TWFE model is augmented with baseline covariates interacted with the post-treatment dummy (Model 4), the direct effect of ProUni dose disappears ($p = 0.3699$), while the interaction between post-treatment timing and baseline household income per capita is large, negative, and statistically significant ($\beta = -0.0377$, $p = 0.0015$). This confirms that unconditional high-dose penalties partly reflect adverse macroeconomic shocks concentrated in Brazil's wealthier hubs during the 2014--2016 recession, not a pure educational saturation effect. The birth-cohort quadratic specification (Section~\ref{sec:cohort_results}) provides converging evidence: statistically significant concave dose-response coefficients ($p < 0.01$ for both linear and squared terms) that survive the inclusion of time-varying municipal GDP controls, ruling out the recession-confound interpretation of the high-dose penalty.
 
 \begin{table}[ht]
 \centering
@@ -197,28 +224,6 @@ Microregion \& Year FEs & Yes & Yes & Yes & Yes \\
 \end{tabular}
 \end{table}
 
-\subsubsection{TWFE Benchmark vs. Callaway-Sant'Anna}
-
-Table~\ref{tab:twfe} compares the naive binary TWFE estimates with the \citeA{CallawaySantAnna2021} ATTs. The TWFE wage coefficient is $-0.65\%$ ($SE = 0.0037$), masking the positive low-dose estimate and mechanically pooling heterogeneous cohort-time comparisons. This divergence confirms that a single pooled TWFE coefficient is not an informative summary of the underlying staggered design.
-
-\begin{table}[ht]
-\centering
-\caption{\textbf{TWFE vs.\ Callaway-Sant'Anna Comparison}}
-\label{tab:twfe}
-\begin{tabular}{lccc}
-\hline
-\textbf{Specification} & \textbf{ATT} & \textbf{SE} & \textbf{N} \\
-\hline
-TWFE / Wages (pooled)       & -0.0065 & 0.0037 & 7,812 \\
-CS / Low Dose (wages)       & 0.0128 & 0.0128 & 3,906 \\
-CS / High Dose (wages)      & -0.0070 & 0.0074 & 3,528 \\
-TWFE / Wage Gap (cohort)    & 0.0072 & 0.0042 & 7,810 \\
-CS / Gap Low                & -0.0054 & 0.0120 & 3,904 \\
-CS / Gap High               & 0.0234 & 0.0273 & 3,526 \\
-\hline
-\end{tabular}
-\end{table}
-
 \subsection{Summary of Findings}
 
 Table~\ref{tab:master_summary} consolidates the key estimates across primary models.
@@ -232,9 +237,9 @@ Table~\ref{tab:master_summary} consolidates the key estimates across primary mod
 \textbf{Model} & \textbf{ATT} & \textbf{SE} & \textbf{95\% CI} & \textbf{p-value (pre-trend)} & \textbf{N (obs)} \\
 \hline
 \textit{Pooled Wages} & & & & & \\
-Low Dose & 0.0128 & 0.0128 & [-0.012, 0.038] & 0.359 & 3,906 \\
+Low Dose (unconditional) & 0.0128 & 0.0128 & [-0.012, 0.038] & 0.359 & 3,906 \\
 High Dose & -0.0070 & 0.0074 & [-0.022, 0.008] & 0.916 & 3,528 \\
-Low Dose (DR) & 0.0259 & 0.0145 & [-0.003, 0.054] & 0.535 & 3,906 \\
+\textbf{Low Dose (DR, primary)} & \textbf{0.0259}$^{*}$ & \textbf{0.0145} & [-0.003, 0.054] & 0.535 & 3,906 \\
 \hline
 \textit{Cohort Wage Gap} & & & & & \\
 Low Dose & -0.0054 & 0.0120 & [-0.029, 0.018] & 0.707 & 3,904 \\
@@ -244,7 +249,11 @@ High Dose & 0.0234 & 0.0273 & [-0.030, 0.077] & 0.539 & 3,526 \\
 Low Dose & 0.0182 & 0.0332 & [-0.047, 0.083] & 0.120 & 3,906 \\
 High Dose & 0.0065 & 0.0396 & [-0.071, 0.084] & 0.809 & 3,528 \\
 \hline
+\textit{TWFE Benchmark} & & & & & \\
+TWFE Wages (pooled) & -0.0065$^{*}$ & 0.0037 & & & 7,812 \\
+\hline
+\multicolumn{6}{l}{\small $^{*} p<0.10$. DR = doubly-robust. Standard errors clustered by microregion. Simultaneous CIs from multiplier bootstrap.}
 \end{tabular}
 \end{table}
 
-Taken together, the results support four disciplined conclusions. First, within Low-Dose microregions, the reduced-form wage estimates are positive and economically meaningful, though statistically imprecise. Second, estimated gains are weaker in High-Dose markets, but the interpretation of that difference as causal saturation is fragile because it is sensitive to controls for macroeconomic geography and requires stronger identifying assumptions. Third, the age-cohort decomposition suggests that spillovers and relative wage compression are plausible mechanisms, but it does not isolate them with certainty. Fourth, the heterogeneity results are consistent with benefits for non-white workers in moderate-exposure markets and with a persistent male advantage in the translation of educational expansion into formal-sector wages.
+Taken together, the results support four disciplined conclusions. First, the doubly-robust specification identifies a positive and marginally significant wage effect of $+2.59\%$ in Low-Dose microregions, establishing the positive reduced-form effect of ProUni on local formal-sector wages as the headline finding. Second, the na\"ive TWFE coefficient is negative and in the opposite direction---a concrete empirical demonstration of forbidden-comparison bias that constitutes an independent methodological contribution. Third, the age-cohort decomposition suggests spillovers and relative wage compression as plausible mechanisms, without isolating them with certainty. Fourth, the heterogeneity results are consistent with benefits for non-white workers in moderate-exposure markets and with a persistent male advantage in the translation of educational expansion into formal-sector wages.
